@@ -49,6 +49,12 @@ export default function MapPage() {
             >
               Destinations
             </Link>
+            <Link
+              href="/journal"
+              className="hidden text-[0.61rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/56 transition-colors hover:text-[#f4efe2] sm:block"
+            >
+              Journal
+            </Link>
             <span className="text-[0.61rem] font-medium uppercase tracking-[0.22em] text-[#d8c9a7]">
               Map
             </span>
@@ -59,7 +65,7 @@ export default function MapPage() {
       <section className="relative z-10 px-5 pb-14 pt-16 sm:px-8 sm:pb-16 sm:pt-20 md:px-12 lg:pb-20 lg:pt-24">
         <div className="mx-auto max-w-7xl">
           <Link
-            href="/"
+            href="/journal"
             className="mb-10 inline-flex items-center gap-3 text-[0.63rem] font-medium uppercase tracking-[0.29em] text-[#f4efe2]/52 transition-colors hover:text-[#f4efe2]/86"
           >
             <ArrowLeft className="h-3.5 w-3.5" />

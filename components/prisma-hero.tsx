@@ -119,8 +119,8 @@ export const WordsPullUpMultiStyle = ({ segments, className = "", style }: Words
 /* ---------------- Hero ---------------- */
 const navItems = [
   { label: "Destinations", href: "#destinations" },
-  { label: "Routes", href: "#" },
-  { label: "Journal", href: "#" },
+  { label: "Routes", href: "/routes" },
+  { label: "Journal", href: "/journal" },
   { label: "Map", href: "/map" },
   { label: "About", href: "#" },
 ];
@@ -249,24 +249,31 @@ const PrismaHero = () => {
               )}
 
               {animationsEnabled ? (
-                <motion.button
+                <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="group inline-flex h-12 items-center gap-4 self-start rounded-full border border-[#f4efe2]/18 bg-[#f4efe2] py-1 pl-6 pr-1 text-sm font-medium text-[#07100f] shadow-[0_20px_70px_rgba(0,0,0,0.35)] transition-all hover:bg-white sm:h-[3.25rem] sm:text-base"
+                >
+                  <Link
+                    href="/routes"
+                    className="group inline-flex h-12 items-center gap-4 self-start rounded-full border border-[#f4efe2]/18 bg-[#f4efe2] py-1 pl-6 pr-1 text-sm font-medium text-[#07100f] shadow-[0_20px_70px_rgba(0,0,0,0.35)] transition-all hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:h-[3.25rem] sm:text-base"
+                  >
+                    Explore routes
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#07100f] transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
+                      <ArrowRight className="h-4 w-4 text-[#f4efe2]" />
+                    </span>
+                  </Link>
+                </motion.div>
+              ) : (
+                <Link
+                  href="/routes"
+                  className="group inline-flex h-12 items-center gap-4 self-start rounded-full border border-[#f4efe2]/18 bg-[#f4efe2] py-1 pl-6 pr-1 text-sm font-medium text-[#07100f] shadow-[0_20px_70px_rgba(0,0,0,0.35)] transition-all hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:h-[3.25rem] sm:text-base"
                 >
                   Explore routes
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#07100f] transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
                     <ArrowRight className="h-4 w-4 text-[#f4efe2]" />
                   </span>
-                </motion.button>
-              ) : (
-                <button className="group inline-flex h-12 items-center gap-4 self-start rounded-full border border-[#f4efe2]/18 bg-[#f4efe2] py-1 pl-6 pr-1 text-sm font-medium text-[#07100f] shadow-[0_20px_70px_rgba(0,0,0,0.35)] transition-all hover:bg-white sm:h-[3.25rem] sm:text-base">
-                  Explore routes
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#07100f] transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
-                    <ArrowRight className="h-4 w-4 text-[#f4efe2]" />
-                  </span>
-                </button>
+                </Link>
               )}
             </div>
           </div>
