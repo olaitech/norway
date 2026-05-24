@@ -24,3 +24,86 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.hero-mist {
+  opacity: 0.7;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.hero-mist-layer {
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  background:
+    radial-gradient(ellipse at 22% 50%, rgba(239, 246, 248, 0.2), rgba(239, 246, 248, 0) 58%),
+    radial-gradient(ellipse at 62% 42%, rgba(204, 221, 226, 0.14), rgba(204, 221, 226, 0) 64%),
+    linear-gradient(90deg, rgba(213, 229, 232, 0), rgba(213, 229, 232, 0.12), rgba(213, 229, 232, 0));
+  filter: blur(30px);
+  transform: translate3d(-22vw, 0, 0);
+  animation: hero-mist-drift linear infinite;
+  will-change: transform;
+}
+
+.hero-mist-layer-a {
+  top: 30%;
+  left: -42vw;
+  width: 88vw;
+  height: 24vh;
+  opacity: 0.14;
+  animation-duration: 82s;
+}
+
+.hero-mist-layer-b {
+  top: 48%;
+  left: -58vw;
+  width: 116vw;
+  height: 28vh;
+  opacity: 0.1;
+  animation-delay: -31s;
+  animation-duration: 112s;
+}
+
+.hero-mist-layer-c {
+  top: 18%;
+  left: -36vw;
+  width: 76vw;
+  height: 18vh;
+  opacity: 0.08;
+  animation-delay: -64s;
+  animation-duration: 138s;
+}
+
+@keyframes hero-mist-drift {
+  from {
+    transform: translate3d(-22vw, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(126vw, 0, 0) scale(1.04);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-mist-layer-a {
+    top: 34%;
+    width: 120vw;
+  }
+
+  .hero-mist-layer-b {
+    top: 54%;
+    width: 140vw;
+  }
+
+  .hero-mist-layer-c {
+    top: 22%;
+    width: 104vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mist-layer {
+    animation: none;
+    transform: translate3d(12vw, 0, 0);
+  }
+}
