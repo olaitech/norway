@@ -332,15 +332,15 @@ export const destinations: Destination[] = [
   },
   {
     slug: "tromso",
-    title: "Troms\u00f8",
+    title: "Tromsø",
     subtitle: "Northern lights & Arctic city life",
     label: "Arctic city | Troms",
     intro:
       "A compact northern city framed by mountains and water, balancing warm interiors, Arctic culture and easy departures into darker skies.",
-    imageSrc: "/images/cards/troms\u00f8.png",
+    imageSrc: "/images/cards/tromsø.png",
     imageAlt: "Tromso waterfront beneath an Arctic evening sky",
     imagePosition: "center center",
-    metaTitle: "Troms\u00f8 | Norge Destinations",
+    metaTitle: "Tromsø | Norge Destinations",
     metaDescription:
       "Explore a refined placeholder guide to Tromso, including northern seasons, city experiences and quiet Arctic excursions.",
     facts: [

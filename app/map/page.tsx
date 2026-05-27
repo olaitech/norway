@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 
 import "leaflet/dist/leaflet.css";
 
+import { GatewaysToNorthernNorway } from "@/src/components/sections/map/GatewaysToNorthernNorway";
 import { MapExplorer } from "@/src/components/sections/map/MapExplorer";
 import { featuredRoutes, mapFilters, mapPlaces } from "@/src/data/map";
 
@@ -32,6 +33,7 @@ export default function MapPage() {
               alt=""
               width={48}
               height={48}
+              priority
               className="h-11 w-11 object-contain"
             />
             Norge
@@ -89,6 +91,7 @@ export default function MapPage() {
         places={mapPlaces}
         routes={featuredRoutes}
       />
+      <GatewaysToNorthernNorway />
     </main>
   );
 }

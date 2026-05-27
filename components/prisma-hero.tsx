@@ -190,6 +190,7 @@ const PrismaHero = () => {
                 alt=""
                 width={72}
                 height={72}
+                priority
                 className="h-full w-full object-contain"
               />
             </Link>

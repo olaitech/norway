@@ -36,7 +36,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
       "Where to go, when to travel and how to give yourself the best chance beneath the polar sky.",
     meta: "ARCTIC LIGHT / WINTER GUIDE",
     href: "/northern-lights-norway",
-    image: "/images/cards/troms\u00f8.png",
+    image: "/images/cards/tromsø.png",
   },
   {
     title: "Fjords of Norway",

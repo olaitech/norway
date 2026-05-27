@@ -83,7 +83,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
             if (!animationsEnabled) {
               return (
                 <article
-                  key={item.href}
+                  key={`${item.href}-${index}`}
                   className={`${itemClassName} ${isActive ? "opacity-100" : "opacity-45"}`}
                 >
                   {itemContent}
@@ -93,7 +93,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
 
             return (
               <motion.article
-                key={item.href}
+                key={`${item.href}-${index}`}
                 animate={{
                   opacity: isActive ? 1 : 0.38,
                   y: isActive ? 0 : 8,
@@ -112,7 +112,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
             {animationsEnabled ? (
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
-                  key={active.href}
+                  key={`${active.href}-${activeItem}`}
                   initial={{ opacity: 0.72, scale: 1.02 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0.72, scale: 0.995 }}
@@ -164,9 +164,9 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
       </div>
 
       <div className="space-y-5 lg:hidden">
-        {content.map((item) => (
+        {content.map((item, index) => (
           <article
-            key={item.href}
+            key={`${item.href}-${index}`}
             className="overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/[0.02]"
           >
             <div className="relative h-60">
@@ -174,7 +174,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
                 src={item.image}
                 alt={item.title}
                 fill
-                sizes="100vw"
+                sizes="(min-width: 768px) calc(100vw - 6rem), (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.04)_0%,rgba(3,8,10,0.6)_100%)]" />
