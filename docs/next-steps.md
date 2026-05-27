@@ -95,6 +95,11 @@ Completion criteria:
 
 Goal: begin the next content phase with a high-intent road-trip planning page.
 
+Recently completed foundation pages:
+
+- `/about`
+- `/responsible-travel`
+
 Starting target:
 
 - `/norway-road-trip-routes`
@@ -159,4 +164,3 @@ After the current work plan is complete:
   established.
 - Prepare the platform for future travel collaborations without compromising
   editorial trust.
-

@@ -122,7 +122,7 @@ const navItems = [
   { label: "Routes", href: "/routes" },
   { label: "Journal", href: "/journal" },
   { label: "Map", href: "/map" },
-  { label: "About", href: "#" },
+  { label: "About", href: "/about" },
 ];
 
 const PrismaHero = () => {

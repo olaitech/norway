@@ -13,6 +13,8 @@ const routes = [
   { path: "/map", changeFrequency: "monthly", priority: 0.8 },
   { path: "/best-time-to-visit-norway", changeFrequency: "monthly", priority: 0.8 },
   { path: "/northern-lights-norway", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/responsible-travel", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/about", changeFrequency: "monthly", priority: 0.65 },
 ] satisfies Array<{
   path: string;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];

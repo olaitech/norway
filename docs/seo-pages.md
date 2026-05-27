@@ -20,6 +20,8 @@ Before creating pages, confirm:
 | `/norway-road-trip-routes` | Road trip route hub | Topic exists at `/routes`; canonical decision needed |
 | `/lofoten-travel-guide` | Lofoten planning guide | Topic exists at `/lofoten`; canonical decision needed |
 | `/northern-lights-norway` | Aurora planning | Route exists |
+| `/responsible-travel` | Responsible tourism pillar | Route exists |
+| `/about` | Project trust and editorial positioning | Route exists |
 | `/fjords-of-norway` | Fjord travel planning | Planned; no exact route confirmed |
 | `/norway-itinerary-7-days` | One-week itinerary | Planned; no exact route confirmed |
 | `/norway-itinerary-10-days` | Ten-day itinerary | Planned; no exact route confirmed |
@@ -110,6 +112,39 @@ Core sections:
 - Winter transport and comfort considerations.
 
 Internal links: seasonal guide, map, relevant destinations and routes.
+
+### Responsible Travel In Norway
+
+**Search intent:** understand how to travel through Norway respectfully,
+realistically and safely.
+
+Status: route created at `/responsible-travel`.
+
+Core sections:
+
+- Travel slowly.
+- Respect private land and local communities.
+- Weather, mountain and coastal safety.
+- Ferry routes and realistic distances.
+- Leave no trace.
+- Sami cultural awareness.
+- Support local businesses.
+- Practical pre-trip checklist.
+
+Internal links: about, map, routes and future responsible-travel articles.
+
+### About This Portal
+
+**Search intent:** understand who the project is for and why it exists.
+
+Status: route created at `/about`.
+
+Content role:
+
+- Establish independent editorial positioning.
+- Explain the Northern Norway perspective.
+- Clarify that the site is a knowledge portal, not a generic booking platform.
+- Link naturally to map, journal and responsible-travel content.
 
 ### Fjords Of Norway
 
