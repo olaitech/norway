@@ -30,6 +30,23 @@ Existing route detail pages also support SEO and planning:
 - `/routes/helgeland-coast-road-trip`
 - `/destinations/[slug]`
 
+## Sitemap TODOs
+
+These requested URLs are intentionally excluded from `app/sitemap.ts` until
+matching routes or canonical redirect decisions exist:
+
+- TODO: Add `/destinations` to the sitemap only after a destination index route
+  exists.
+- TODO: Decide whether `/norway-road-trip-routes` should become canonical or
+  redirect to `/routes`.
+- TODO: Decide whether `/lofoten-travel-guide` should become canonical or
+  redirect to `/lofoten`.
+- TODO: Create or route `/fjords-of-norway` before adding it to the sitemap.
+- TODO: Create or route `/norway-itinerary-7-days` before adding it to the
+  sitemap.
+- TODO: Create or route `/norway-itinerary-10-days` before adding it to the
+  sitemap.
+
 ## Page Briefs
 
 ### Best Time To Visit Norway
@@ -145,4 +162,3 @@ Each published SEO page should have:
 Do not publish a page that is only a cinematic shell. A page is ready when it
 contains enough practical guidance for a traveller to make at least one real
 planning decision.
-
