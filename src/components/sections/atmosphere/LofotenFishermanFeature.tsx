@@ -7,7 +7,7 @@ export function LofotenFishermanFeature() {
   return (
     <section
       aria-labelledby="lofoten-fisherman-feature-title"
-      className="relative overflow-hidden bg-[#050607] px-5 py-20 text-[#f4efe2] sm:px-8 sm:py-24 md:px-12 lg:py-28"
+      className="relative overflow-hidden bg-[#050607] px-5 pt-20 pb-8 text-[#f4efe2] sm:px-8 sm:pt-24 sm:pb-10 md:px-12 lg:pt-28 lg:pb-12"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(216,201,167,0.07),transparent_30%),radial-gradient(circle_at_78%_36%,rgba(126,176,192,0.09),transparent_34%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(5,6,7,0.62),rgba(5,6,7,0))]" />

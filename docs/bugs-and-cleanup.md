@@ -19,6 +19,8 @@
 | Map presentation | Improve map page using a real map image | Image-based arrival-map work is represented locally; verify visually before marking delivered | Real map remains legible on desktop/mobile and functionality remains intact |
 | Map presentation | Remove abstract decorative map visuals from the arrival-map concept | Verify against delivered branch | No fake coastline base substitutes the real map image |
 | Content | Continue building SEO-friendly, useful travel content pages | Ongoing | Pages meet content and metadata criteria in `seo-pages.md` |
+| SEO/canonical | `/routes` and `/norway-road-trip-routes` currently overlap in purpose/content | Pending canonical decision | One canonical strategy is documented and implemented with redirects/canonical metadata as appropriate |
+| SEO/canonical | `/lofoten` and `/lofoten-travel-guide` currently overlap in purpose/content | Pending canonical decision | One canonical strategy is documented and implemented with redirects/canonical metadata as appropriate |
 
 ## Content And Text Quality Checks
 
@@ -39,11 +41,12 @@ Required visible spellings include:
 
 These require deliberate review before any implementation:
 
-- Replace default scaffold metadata with project-specific site metadata.
 - Confirm a canonical URL plan for `/routes` versus
   `/norway-road-trip-routes`.
 - Confirm a canonical URL plan for `/lofoten` versus
   `/lofoten-travel-guide`.
+- Implement a real privacy preference system only if optional cookies,
+  analytics, embedded media or marketing scripts are introduced.
 - Confirm media licensing and production optimization.
 - Validate map/animation behavior under reduced-motion preferences.
 
@@ -60,4 +63,3 @@ These require deliberate review before any implementation:
 - Verification performed:
 - Files changed when fixed:
 ```
-

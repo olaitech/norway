@@ -61,14 +61,27 @@ code because the installed version may differ from assumed APIs.
 
 Implemented or represented in the application:
 
-- Homepage with cinematic hero, featured destinations and the `Ways Into
-  Norway` scroll-reveal section.
+- Homepage with a cinematic Preikestolen-led hero, the `Coastal Memory`
+  fisherman video feature, the `Ways Into Norway` planning/archive section,
+  an ambient divider and featured destinations.
 - Destination detail pages driven by destination data.
 - Journal index and article routes.
 - Map page with interactive destinations, featured routes and an arrival-map
   concept for Northern Norway.
 - Routes hub with Lofoten and Helgeland route detail pages.
-- Seasonal and Arctic-light editorial pages.
+- Seasonal, road-trip, Lofoten, fjord and Arctic-light editorial pages.
+- Global footer with destination, route, guide and information links.
+- Foundation trust/information pages: about, contact, privacy policy, privacy
+  settings and terms.
+
+Current homepage order:
+
+1. `PrismaHero` using the Preikestolen image.
+2. `LofotenFishermanFeature` / `Coastal Memory`.
+3. `WaysIntoNorway` / Planning Archive.
+4. `AmbientDivider`.
+5. `FeaturedDestinations`.
+6. Shared `Footer` from the root layout.
 
 See [site-structure.md](./site-structure.md) for the current route inventory
 and [seo-pages.md](./seo-pages.md) for SEO expansion targets.
@@ -106,4 +119,3 @@ and [seo-pages.md](./seo-pages.md) for SEO expansion targets.
 - Record known issues in [bugs-and-cleanup.md](./bugs-and-cleanup.md).
 - Update [next-steps.md](./next-steps.md) when a substantial milestone is
   completed.
-

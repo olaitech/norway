@@ -17,12 +17,17 @@ Before creating pages, confirm:
 | Target URL | Topic | Current implementation status |
 | --- | --- | --- |
 | `/best-time-to-visit-norway` | Seasonal planning | Route exists |
-| `/norway-road-trip-routes` | Road trip route hub | Topic exists at `/routes`; canonical decision needed |
-| `/lofoten-travel-guide` | Lofoten planning guide | Topic exists at `/lofoten`; canonical decision needed |
+| `/norway-road-trip-routes` | Road trip route hub | Route exists; currently reuses `/routes` content; canonical decision still needed |
+| `/lofoten-travel-guide` | Lofoten planning guide | Route exists; currently reuses `/lofoten` content; canonical decision still needed |
 | `/northern-lights-norway` | Aurora planning | Route exists |
 | `/responsible-travel` | Responsible tourism pillar | Route exists |
 | `/about` | Project trust and editorial positioning | Route exists |
-| `/fjords-of-norway` | Fjord travel planning | Planned; no exact route confirmed |
+| `/contact` | Contact and collaboration information | Route exists |
+| `/privacy` | Privacy policy | Route exists |
+| `/privacy-settings` | Privacy preference placeholder | Route exists; not a real consent system yet |
+| `/terms` | Terms of use | Route exists |
+| `/destinations` | Destination index | Route exists |
+| `/fjords-of-norway` | Fjord travel planning | Route exists with introductory guide content |
 | `/norway-itinerary-7-days` | One-week itinerary | Planned; no exact route confirmed |
 | `/norway-itinerary-10-days` | Ten-day itinerary | Planned; no exact route confirmed |
 
@@ -32,18 +37,21 @@ Existing route detail pages also support SEO and planning:
 - `/routes/helgeland-coast-road-trip`
 - `/destinations/[slug]`
 
-## Sitemap TODOs
+## Sitemap Status And TODOs
 
-These requested URLs are intentionally excluded from `app/sitemap.ts` until
-matching routes or canonical redirect decisions exist:
+Current implemented footer and guide routes are represented in `app/sitemap.ts`,
+including `/destinations`, `/norway-road-trip-routes`,
+`/lofoten-travel-guide`, `/fjords-of-norway`, `/contact`, `/privacy`,
+`/privacy-settings` and `/terms`.
 
-- TODO: Add `/destinations` to the sitemap only after a destination index route
-  exists.
+Remaining SEO TODOs:
+
 - TODO: Decide whether `/norway-road-trip-routes` should become canonical or
-  redirect to `/routes`.
+  redirect/canonicalize to `/routes`.
 - TODO: Decide whether `/lofoten-travel-guide` should become canonical or
-  redirect to `/lofoten`.
-- TODO: Create or route `/fjords-of-norway` before adding it to the sitemap.
+  redirect/canonicalize to `/lofoten`.
+- TODO: Expand `/fjords-of-norway` beyond introductory content before treating
+  it as complete.
 - TODO: Create or route `/norway-itinerary-7-days` before adding it to the
   sitemap.
 - TODO: Create or route `/norway-itinerary-10-days` before adding it to the

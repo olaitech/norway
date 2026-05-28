@@ -59,7 +59,7 @@ export function FeaturedDestinations() {
   return (
     <section
       id="destinations"
-      className="relative overflow-hidden bg-[#050607] px-5 py-24 text-[#f4efe2] sm:px-8 sm:py-28 md:px-12 lg:py-36"
+      className="relative overflow-hidden bg-[#050607] px-5 pt-14 pb-14 text-[#f4efe2] sm:px-8 sm:pt-16 sm:pb-16 md:px-12 lg:pt-16 lg:pb-16"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(216,201,167,0.08),rgba(216,201,167,0)_34%),radial-gradient(circle_at_86%_8%,rgba(151,182,190,0.08),rgba(151,182,190,0)_30%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />

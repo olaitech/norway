@@ -73,7 +73,7 @@ export function WaysIntoNorway() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_16%,rgba(151,182,190,0.09),transparent_30%),radial-gradient(circle_at_14%_82%,rgba(216,201,167,0.075),transparent_34%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
 
-      <div className="relative px-5 py-24 sm:px-8 sm:py-28 md:px-12 lg:py-32">
+      <div className="relative px-5 pt-10 pb-24 sm:px-8 sm:pt-12 sm:pb-28 md:px-12 lg:pt-16 lg:pb-32">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:gap-20">
             <div>

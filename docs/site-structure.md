@@ -7,7 +7,8 @@ application route tree again before changing navigation or adding aliases.
 
 | Route | Current purpose |
 | --- | --- |
-| `/` | Homepage: hero, featured destinations and `Ways Into Norway` |
+| `/` | Homepage: hero, `Coastal Memory`, `Ways Into Norway`, ambient divider and featured destinations |
+| `/destinations` | Destination index page |
 | `/destinations/[slug]` | Destination detail pages sourced from destination data |
 | `/journal` | Cinematic journal archive/index |
 | `/journal/[slug]` | Journal article detail route |
@@ -16,8 +17,17 @@ application route tree again before changing navigation or adding aliases.
 | `/routes/lofoten-road-trip` | Lofoten route detail |
 | `/routes/helgeland-coast-road-trip` | Helgeland Coast route detail |
 | `/best-time-to-visit-norway` | Seasonal planning page |
+| `/norway-road-trip-routes` | SEO-friendly road-trip route hub using the current routes content |
+| `/lofoten-travel-guide` | SEO-friendly Lofoten guide using the current Lofoten hub content |
 | `/northern-lights-norway` | Northern lights planning page |
+| `/fjords-of-norway` | Introductory fjord travel planning page |
+| `/responsible-travel` | Responsible tourism pillar page |
 | `/lofoten` | Lofoten editorial/destination hub page |
+| `/about` | Independent portal positioning and trust page |
+| `/contact` | Contact and collaboration information page |
+| `/privacy` | Plain-English privacy policy |
+| `/privacy-settings` | Placeholder privacy settings center; not a functional consent system yet |
+| `/terms` | Terms of use |
 
 ## Page Composition
 
@@ -29,9 +39,22 @@ Primary files and responsibilities:
 | --- | --- |
 | Route composition | `app/page.tsx` |
 | Hero and navigation | `components/prisma-hero.tsx` |
-| Featured destinations | `src/components/sections/destinations/FeaturedDestinations.tsx` |
+| Coastal Memory video feature | `src/components/sections/atmosphere/LofotenFishermanFeature.tsx` |
 | Ways Into Norway | `src/components/sections/home/WaysIntoNorway.tsx` |
 | Sticky reveal display | `components/ui/sticky-scroll-reveal.tsx` |
+| Ambient transition | `src/components/ui/ambient-divider.tsx` |
+| Featured destinations | `src/components/sections/destinations/FeaturedDestinations.tsx` |
+
+Current homepage section order is:
+
+1. `PrismaHero`
+2. `LofotenFishermanFeature`
+3. `WaysIntoNorway`
+4. `AmbientDivider`
+5. `FeaturedDestinations`
+
+The shared footer is rendered from `app/layout.tsx` through
+`src/components/layout/Footer.tsx`, so it appears after route content.
 
 ### Destination Experience
 
@@ -76,18 +99,18 @@ enhancements.
   `src/data/`.
 - Public media should be referenced from `/images/...` and `/video/...` paths.
 
-## Planned/Requested SEO Route Alignment
+## SEO Route Alignment
 
-Several editorial topics are desired using explicit SEO-friendly URL names.
-Some currently exist through shorter or different routes:
+Several editorial topics use explicit SEO-friendly URL names. Some also have
+shorter legacy/current equivalents, so canonical strategy still matters.
 
-| Requested topic path | Current closest route | Planning note |
+| Topic path | Current route status | Planning note |
 | --- | --- | --- |
-| `/norway-road-trip-routes` | `/routes` | Decide whether to add canonical alias or migrate route |
-| `/lofoten-travel-guide` | `/lofoten` | Decide canonical URL and redirect/internal-link approach |
-| `/fjords-of-norway` | None confirmed | New route/content needed |
-| `/norway-itinerary-7-days` | None confirmed | New route/content needed |
-| `/norway-itinerary-10-days` | None confirmed | New route/content needed |
+| `/norway-road-trip-routes` | Route exists and currently reuses the routes hub content | Decide canonical URL versus `/routes`; avoid long-term duplicate thin content |
+| `/lofoten-travel-guide` | Route exists and currently reuses the Lofoten hub content | Decide canonical URL versus `/lofoten`; avoid long-term duplicate thin content |
+| `/fjords-of-norway` | Route exists with introductory guide content | Expand practical depth before treating as complete |
+| `/norway-itinerary-7-days` | Not implemented | Planned SEO/content page |
+| `/norway-itinerary-10-days` | Not implemented | Planned SEO/content page |
 
 See [seo-pages.md](./seo-pages.md) before implementing new pages or aliases.
 
@@ -99,4 +122,3 @@ See [seo-pages.md](./seo-pages.md) before implementing new pages or aliases.
 - Avoid adding duplicate visible navigation entries solely to target alternate
   SEO slugs.
 - Establish canonical URLs before broadening cross-linking.
-

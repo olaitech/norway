@@ -34,6 +34,20 @@ Build substantial content for:
 These pages should answer search intent while preserving the documentary tone.
 See [seo-pages.md](./seo-pages.md) for page-by-page briefs.
 
+Current implementation status:
+
+- `/best-time-to-visit-norway` and `/northern-lights-norway` exist as
+  cinematic SEO guide pages.
+- `/norway-road-trip-routes` exists and currently reuses the routes hub content.
+  It needs a canonical decision against `/routes` and deeper route-selection
+  content before it should be considered complete.
+- `/lofoten-travel-guide` exists and currently reuses the Lofoten hub content.
+  It needs a canonical decision against `/lofoten` and more practical guide
+  depth before it should be considered complete.
+- `/fjords-of-norway` exists as an introductory guide and should be expanded
+  with more practical regional and route-planning detail.
+- `/norway-itinerary-7-days` and `/norway-itinerary-10-days` remain planned.
+
 ### 2. Destination Depth
 
 Expand current destination pages with practical depth:
@@ -70,6 +84,18 @@ The map page should grow beyond a visual feature:
 - Explain regional connections, ferry considerations and travel pacing.
 - Keep outbound map links useful for live navigation checks.
 
+### 5. Trust, Footer And Information Pages
+
+The footer and foundation information pages now exist and should stay aligned
+with the site's actual behavior:
+
+- About, contact, privacy policy, privacy settings and terms are implemented.
+- The privacy settings page is intentionally a placeholder and should not imply
+  consent storage until optional cookies, analytics, embedded media or
+  marketing scripts are actually introduced.
+- Footer links should remain practical and should not point to unimplemented
+  placeholder URLs without a clear content plan.
+
 ## Suggested Guide Template
 
 Use this outline as a starting point, adapted to the subject:
@@ -104,4 +130,3 @@ Use this outline as a starting point, adapted to the subject:
 - Does the voice feel calm and informed, not promotional?
 - Are facts requiring current verification clearly identified before
   publication?
-

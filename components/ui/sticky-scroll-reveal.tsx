@@ -56,23 +56,24 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
         <div className="space-y-12 pr-2">
           {content.map((item, index) => {
             const isActive = index === activeItem;
+            const paperTone = index % 2 === 0 ? "bg-[#ddd4c4]" : "bg-[#d6ccbc]";
             const itemClassName =
-              "rounded-2xl border border-white/8 bg-white/[0.015] px-7 py-8";
+              `${paperTone} rounded-2xl border border-[#beb29f] px-7 py-8 text-[#1c1a17] shadow-[0_14px_42px_rgba(0,0,0,0.16)] transition-[border-color,box-shadow] duration-300 hover:border-[#9d8458]/55 hover:shadow-[0_18px_50px_rgba(0,0,0,0.18)]`;
 
             const itemContent = (
               <>
-                <p className="text-[0.61rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/78">
+                <p className="text-[0.61rem] font-medium uppercase tracking-[0.28em] text-[#9d8458]">
                   {item.meta}
                 </p>
-                <h3 className="mt-5 font-serif text-[clamp(2rem,3.2vw,3rem)] leading-[0.96] tracking-[-0.04em] text-[#f4efe2]">
+                <h3 className="mt-5 font-serif text-[clamp(2rem,3.2vw,3rem)] leading-[0.96] tracking-[-0.04em] text-[#1c1a17]">
                   {item.title}
                 </h3>
-                <p className="mt-5 max-w-xl text-base font-light leading-[1.85] text-[#f4efe2]/68">
+                <p className="mt-5 max-w-xl text-base font-light leading-[1.85] text-[#4e4a43]">
                   {item.description}
                 </p>
                 <Link
                   href={item.href}
-                  className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/82 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  className="mt-8 inline-flex items-center gap-3 rounded-full border border-[#beb29f] bg-[#d6ccbc]/55 px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#1c1a17] transition-colors hover:bg-[#cfc2b0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d8458]/55"
                 >
                   Open guide
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -84,7 +85,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
               return (
                 <article
                   key={`${item.href}-${index}`}
-                  className={`${itemClassName} ${isActive ? "opacity-100" : "opacity-45"}`}
+                  className={`${itemClassName} ${isActive ? "opacity-100" : "opacity-70"}`}
                 >
                   {itemContent}
                 </article>
@@ -95,7 +96,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
               <motion.article
                 key={`${item.href}-${index}`}
                 animate={{
-                  opacity: isActive ? 1 : 0.38,
+                  opacity: isActive ? 1 : 0.7,
                   y: isActive ? 0 : 8,
                 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
@@ -164,41 +165,45 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
       </div>
 
       <div className="space-y-5 lg:hidden">
-        {content.map((item, index) => (
-          <article
-            key={`${item.href}-${index}`}
-            className="overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/[0.02]"
-          >
-            <div className="relative h-60">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                sizes="(min-width: 768px) calc(100vw - 6rem), (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.04)_0%,rgba(3,8,10,0.6)_100%)]" />
-            </div>
-            <div className="px-6 py-6">
-              <p className="text-[0.58rem] font-medium uppercase tracking-[0.27em] text-[#d8c9a7]/78">
-                {item.meta}
-              </p>
-              <h3 className="mt-4 font-serif text-[2rem] leading-[0.96] tracking-[-0.04em] text-[#f4efe2]">
-                {item.title}
-              </h3>
-              <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/68">
-                {item.description}
-              </p>
-              <Link
-                href={item.href}
-                className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 text-[0.61rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/82"
-              >
-                Open guide
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </article>
-        ))}
+        {content.map((item, index) => {
+          const paperTone = index % 2 === 0 ? "bg-[#ddd4c4]" : "bg-[#d6ccbc]";
+
+          return (
+            <article
+              key={`${item.href}-${index}`}
+              className={`${paperTone} overflow-hidden rounded-[1.3rem] border border-[#beb29f] shadow-[0_14px_42px_rgba(0,0,0,0.16)]`}
+            >
+              <div className="relative h-60">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(min-width: 768px) calc(100vw - 6rem), (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.04)_0%,rgba(3,8,10,0.6)_100%)]" />
+              </div>
+              <div className="px-6 py-6 text-[#1c1a17]">
+                <p className="text-[0.58rem] font-medium uppercase tracking-[0.27em] text-[#9d8458]">
+                  {item.meta}
+                </p>
+                <h3 className="mt-4 font-serif text-[2rem] leading-[0.96] tracking-[-0.04em] text-[#1c1a17]">
+                  {item.title}
+                </h3>
+                <p className="mt-4 text-sm font-light leading-[1.8] text-[#4e4a43]">
+                  {item.description}
+                </p>
+                <Link
+                  href={item.href}
+                  className="mt-6 inline-flex items-center gap-3 rounded-full border border-[#beb29f] bg-[#d6ccbc]/55 px-5 py-3 text-[0.61rem] font-medium uppercase tracking-[0.24em] text-[#1c1a17] transition-colors hover:bg-[#cfc2b0]"
+                >
+                  Open guide
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   );

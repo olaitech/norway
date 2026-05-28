@@ -10,12 +10,13 @@ they enter the project.
 
 | Asset path | Role | Current/planned use | Notes |
 | --- | --- | --- | --- |
-| `public/images/hero/preikestolen.png` | Hero landscape | Homepage and seasonal/editorial visuals | High-impact above-the-fold image; optimize loading intentionally |
+| `public/images/hero/preikestolen.png` | Hero landscape | Homepage hero and seasonal/editorial visuals | High-impact above-the-fold image; optimize loading intentionally |
 | `public/images/cards/lofoten.png` | Destination/route image | Lofoten cards and guide content | Maintain realistic landscape treatment |
 | `public/images/cards/senja.png` | Destination image | Senja features and journal/route references | Use with accurate place context |
 | `public/images/cards/helgeland.png` | Destination/route image | Helgeland Coast content | Supports coastal route storytelling |
 | `public/images/cards/tromsø.png` | Destination/Arctic image | Tromsø and aurora content | Preserve real `ø` in references and visible labels |
 | `public/video/journal/lofoten.mp4` | Cinematic video | Journal hero experience | Provide robust fallback and avoid excessive load cost |
+| `public/video/atmosphere/lofoten-fisherman-sjar.mp4` | Atmosphere video | Homepage `Coastal Memory` / `LofotenFishermanFeature` section | Actual current path; autoplay, loop, muted, inline; no poster currently configured |
 | `public/images/map/map-norway.jpg` | Real map image | Gateways to Northern Norway arrival-map panel | Foundation image for cinematic map presentation |
 | `public/images/branding/logo-norge-removebg-preview.png` | Brand mark | Header/hero navigation | Treat as decorative when text label supplies name |
 
@@ -24,6 +25,9 @@ they enter the project.
 - Prefer public-facing assets under `public/images/` or `public/video/`.
 - Use stable descriptive paths; avoid leaving production references tied to
   component-local image folders.
+- The current fisherman video path is `public/video/atmosphere/`, not
+  `public/videos/atmosphere/`. The current filename is
+  `lofoten-fisherman-sjar.mp4`.
 - Prefer realistic visuals that support trust and location recognition.
 - Avoid over-darkening maps and informational imagery.
 - Use `next/image` for rendered images in the Next.js UI.
@@ -70,4 +74,3 @@ Copy this block when adding an asset:
 - Review large hero and video media for performance impact before production.
 - Keep only intentional production copies of assets once the asset workflow is
   finalized.
-

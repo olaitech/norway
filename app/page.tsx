@@ -17,9 +17,9 @@ export default function Home() {
     <>
       <PrismaHero />
       <LofotenFishermanFeature />
+      <WaysIntoNorway />
       <AmbientDivider />
       <FeaturedDestinations />
-      <WaysIntoNorway />
     </>
   );
 }

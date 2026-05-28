@@ -34,6 +34,8 @@ off-white type, muted gold metadata and cool map accents.
 | Main text | `#f4efe2` | Titles and primary copy |
 | Warm metadata accent | `#d8c9a7` | Eyebrows, route metadata, selective emphasis |
 | Cool route accent | `#9ecad8` or muted teal equivalents | Ferry/road/map information |
+| Editorial paper cards | `#DDD4C4`, `#D6CCBC` | Warm beige homepage planning/archive cards and light text panels |
+| Editorial paper text | `#1C1A17`, `#4E4A43`, `#9D8458` | Dark text, muted body copy and warm labels on beige cards |
 | Borders | Low-opacity white | Quiet separation without strong boxes |
 
 These are currently observed visual references, not a mandate to create new
@@ -70,6 +72,8 @@ The experience also uses editorial serif headings in key visual components.
 - Keep image panels large enough to carry the narrative.
 - Treat borders, gradients and glows as subtle framing devices.
 - Avoid adding visual effects that reduce map or photography readability.
+- Section transitions should keep breathing room without forcing visitors
+  through viewport-sized empty dark gaps.
 
 ## Imagery
 
@@ -116,6 +120,20 @@ performance.
 - Small metadata labels in warm accent colour.
 - Concise, practical descriptions.
 - Minimal action treatment.
+- Homepage planning/archive cards currently use warm beige editorial paper
+  surfaces rather than bright white cards. Keep the look closer to a premium
+  Scandinavian travel magazine than a generic SaaS card grid.
+- Destination image cards should remain dark and atmospheric; light paper
+  treatment can be used for overlaid text panels where readability benefits.
+
+### Atmosphere Video Inserts
+
+- The homepage includes a `Coastal Memory` video feature using a restrained
+  landscape-format video card.
+- Video inserts should feel like documentary pauses, not secondary hero
+  sections or social-media-style vertical crops.
+- Keep autoplay video muted, looping and inline; provide meaningful
+  reduced-motion fallback content.
 
 ### Map Panels
 
@@ -125,6 +143,14 @@ performance.
   coastline drawings.
 - Gold can denote flights; blue/teal can denote road or ferry continuation.
 
+### Footer
+
+- The shared footer is dark, editorial and link-focused.
+- Use muted text, warm gold accents, subtle borders and a soft top gradient to
+  transition out of the final page section.
+- Footer content should support trust and navigation without becoming
+  corporate, sales-heavy or visually loud.
+
 ## Accessibility And Quality Guardrails
 
 - Keep text contrast readable despite the dark aesthetic.
@@ -133,4 +159,3 @@ performance.
 - Provide keyboard-accessible interactive controls.
 - Check mobile stacking and overflow.
 - Verify animation fallback/reduced-motion behavior when modifying motion.
-

@@ -14,6 +14,23 @@ All major work should preserve the calm, cinematic Scandinavian direction
 defined in `project-vision.md`: atmospheric, trustworthy, useful, visually
 premium and never a generic tourism-template experience.
 
+## Current Implementation Snapshot
+
+The current workspace includes:
+
+- A homepage flow of `PrismaHero`, `Coastal Memory` fisherman video,
+  `WaysIntoNorway`, `AmbientDivider` and `FeaturedDestinations`.
+- A shared global footer with links to destinations, routes, journal, map,
+  responsible travel, guide pages and information/legal pages.
+- Basic professional pages for about, contact, privacy policy, privacy
+  settings and terms.
+- SEO-friendly routes for `/norway-road-trip-routes`,
+  `/lofoten-travel-guide` and `/fjords-of-norway`.
+- Warm beige editorial card styling for homepage planning/archive cards and
+  destination text panels.
+- Adjusted homepage spacing to avoid large empty scroll areas between sections
+  and above the footer.
+
 ## Current Work Plan
 
 ### 1. Stabilize The Project After Map Experiments
@@ -91,24 +108,30 @@ Completion criteria:
 - No abstract coastline substitute replaces the real image.
 - Practical travel-planning links remain available.
 
-### 4. Continue SEO Content Work With Norway Road Trip Routes
+### 4. Deepen SEO Content And Resolve Canonical Route Pairs
 
-Goal: begin the next content phase with a high-intent road-trip planning page.
+Goal: turn the current route shells/aliases into a clear, non-duplicative SEO
+structure with useful practical content.
 
-Recently completed foundation pages:
+Recently completed or represented foundation pages:
 
 - `/about`
+- `/contact`
+- `/privacy`
+- `/privacy-settings`
 - `/responsible-travel`
-
-Starting target:
-
+- `/terms`
+- `/destinations`
 - `/norway-road-trip-routes`
+- `/lofoten-travel-guide`
+- `/fjords-of-norway`
 
 Before implementation:
 
-- Confirm whether `/norway-road-trip-routes` should become the canonical route
-  or whether current `/routes` content should be migrated, aliased or
-  redirected.
+- Confirm whether `/norway-road-trip-routes` should become canonical or
+  whether `/routes` should remain canonical with redirects/canonical metadata.
+- Confirm whether `/lofoten-travel-guide` should become canonical or whether
+  `/lofoten` should remain canonical with redirects/canonical metadata.
 - Review [seo-pages.md](./seo-pages.md) and avoid creating conflicting
   navigation or duplicated thin content.
 
@@ -119,11 +142,14 @@ Content priorities:
   map experience.
 - Realistic pacing, ferry/logistics awareness and weather flexibility.
 - Human editorial writing that supports search intent without keyword filler.
+- Fjord travel guidance with concrete regions, pacing and transport context.
+- Planned one-week and ten-day itinerary pages that do not overpromise all of
+  Norway in too little time.
 
 Completion criteria:
 
 - Canonical URL strategy is clear.
-- The page provides meaningful planning value, not only cinematic presentation.
+- Each page provides meaningful planning value, not only cinematic presentation.
 - Internal links connect naturally to maps, routes, seasonal guidance and
   destinations.
 
@@ -134,7 +160,7 @@ Proceed in this order:
 1. Stabilize `/map` and assess current recent changes.
 2. Resolve warnings and visible encoding issues.
 3. Refine the real-image arrival-map presentation.
-4. Start `/norway-road-trip-routes` SEO content work.
+4. Resolve canonical strategy and deepen SEO guide content.
 5. Continue broader content and editorial development only after the above
    baseline is reliable.
 
@@ -162,5 +188,11 @@ After the current work plan is complete:
 - Add responsible-travel and local-context content.
 - Plan a partner/media-kit page when content depth and visual consistency are
   established.
+- Implement a real privacy preference system only when the site actually uses
+  optional cookies, analytics, embedded media or marketing scripts. Future
+  implementation must block non-essential analytics before consent, store
+  consent locally, allow changes from `/privacy-settings`, cover necessary,
+  analytics, embedded media and marketing categories, and keep the UI
+  GDPR-friendly, transparent and aligned with the premium Scandinavian design.
 - Prepare the platform for future travel collaborations without compromising
   editorial trust.

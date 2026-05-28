@@ -484,6 +484,111 @@ export const seoPages = {
       secondaryLabel: "Back to routes",
     },
   },
+  fjordsOfNorway: {
+    meta: {
+      title: "Fjords of Norway | Norge",
+      description:
+        "A cinematic introductory guide to the fjords of Norway, with practical planning notes for routes, seasons, ferries and slow travel.",
+    },
+    hero: {
+      label: "Landscape guide",
+      title: "Fjords of Norway",
+      intro:
+        "A calm planning guide to deep water, steep mountains, ferry routes and the slower rhythm of fjord travel.",
+      imageSrc: "/images/hero/preikestolen.png",
+      imageAlt: "A wide Norwegian fjord landscape framed by steep mountain walls",
+      imagePosition: "center 45%",
+    },
+    sections: [
+      {
+        label: "01 / Landscape character",
+        title: "Where water shapes the route",
+        intro:
+          "Norway's fjords are not one destination. They are a way of moving through the country: by road, ferry, viewpoint, village and weather window.",
+        cards: [
+          {
+            title: "Western fjords",
+            description:
+              "Classic steep-sided fjord landscapes, long viewpoints and road journeys shaped by tunnels, ferries and mountain passes.",
+          },
+          {
+            title: "Northern fjords",
+            description:
+              "Quieter Arctic fjords with broader light, smaller communities and routes that often connect coast, islands and inland valleys.",
+          },
+          {
+            title: "Ferry rhythm",
+            description:
+              "Fjord travel often depends on crossing schedules. Treat ferries as part of the experience, not an interruption.",
+          },
+        ],
+      },
+      {
+        label: "02 / Planning notes",
+        title: "Build time into every fjord day",
+        intro:
+          "A strong fjord itinerary leaves room for slow roads, weather changes, viewpoints and short pauses that rarely fit into a rushed schedule.",
+        cards: [
+          {
+            title: "Choose fewer bases",
+            description:
+              "Staying longer in fewer places usually works better than changing accommodation every night.",
+            href: "/responsible-travel",
+          },
+          {
+            title: "Plan by season",
+            description:
+              "Late spring through early autumn is usually easiest for roads, ferries and high mountain access.",
+            href: "/best-time-to-visit-norway",
+          },
+          {
+            title: "Use the map early",
+            description:
+              "Distances can look short across water but become longer once roads, ferries and detours are included.",
+            href: "/map",
+          },
+        ],
+      },
+      {
+        label: "03 / Travel style",
+        title: "Fjords reward slower movement",
+        intro:
+          "The most memorable fjord days are often simple: one road, one ferry, one village, one weather break.",
+        cards: [
+          {
+            title: "Road trips",
+            description:
+              "Fjord drives are best planned with conservative daily distances and frequent stops.",
+            href: "/norway-road-trip-routes",
+          },
+          {
+            title: "Photography",
+            description:
+              "Low cloud, rain and shifting light can make fjord landscapes more atmospheric than clear midday sun.",
+          },
+          {
+            title: "Local awareness",
+            description:
+              "Small fjord communities are lived-in places. Park carefully, respect private land and support local businesses.",
+          },
+        ],
+      },
+    ],
+    relatedLinks: [
+      { label: "Norway road trip routes", href: "/norway-road-trip-routes" },
+      { label: "Best time to visit Norway", href: "/best-time-to-visit-norway" },
+      { label: "Responsible travel", href: "/responsible-travel" },
+      { label: "Explore Norway by Map", href: "/map" },
+    ],
+    cta: {
+      label: "Continue planning",
+      text: "Place the fjords inside a realistic route, then adjust the journey around season, ferry timing and weather.",
+      primaryHref: "/norway-road-trip-routes",
+      primaryLabel: "Browse road trip routes",
+      secondaryHref: "/map",
+      secondaryLabel: "Open map",
+    },
+  },
   bestTimeToVisitNorway: {
     meta: {
       title: "Best Time to Visit Norway | Norge",
@@ -707,4 +812,3 @@ export const seoPages = {
     },
   },
 } as const satisfies Record<string, SeoPageData>;
-

@@ -30,7 +30,7 @@ export function AmbientDivider() {
 
   return (
     <div
-      className="pointer-events-none relative z-30 -mt-24 -mb-20 h-[220px] overflow-hidden isolate sm:-mt-28 sm:-mb-24 sm:h-[240px] lg:-mt-32 lg:-mb-28 lg:h-[270px]"
+      className="pointer-events-none relative z-30 -mt-16 -mb-20 h-[180px] overflow-hidden isolate sm:-mt-20 sm:-mb-24 sm:h-[200px] lg:-mt-20 lg:-mb-24 lg:h-[220px]"
       aria-hidden="true"
       style={fadeMask}
     >
