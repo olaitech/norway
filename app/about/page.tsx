@@ -27,6 +27,14 @@ const sections = [
   },
 ] as const;
 
+const founderContext = [
+  "I have lived in Mosjøen for most of my life, with Northern Norway not as a destination, but as home.",
+  "The islands, ferries, weather, long summer light, winter darkness, coastal roads and small communities are not just travel subjects to me. They are part of the landscape I have grown up with, visited, returned to and learned from over many years.",
+  "This website is my attempt to combine that lived experience with my background in IT and web development. I wanted to build something that feels calmer, more cinematic and more useful than a typical travel page, a place where visitors can understand Northern Norway before they try to plan it.",
+  "The project is independent and currently built without external funding. It is not an official tourism portal, but a personal contribution to the public knowledge around this region.",
+  "The long term dream is that this can grow into something that supports better travel, stronger local storytelling and perhaps future collaboration with people and businesses across the Northern Norwegian tourism community.",
+] as const;
+
 export default function AboutPage() {
   return (
     <InfoPageShell
@@ -50,7 +58,21 @@ export default function AboutPage() {
           </p>
         </aside>
 
-        <div className="space-y-5">
+        <div className="space-y-8">
+          <section className="rounded-[1.45rem] border border-[#d8c9a7]/18 bg-[linear-gradient(135deg,rgba(216,201,167,0.075),rgba(255,255,255,0.018))] p-7 shadow-[0_28px_90px_rgba(0,0,0,0.22)] sm:p-9 lg:p-10">
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/76">
+              Local context
+            </p>
+            <h2 className="mt-5 font-serif text-[clamp(2.3rem,4.7vw,4.7rem)] font-normal leading-[0.92] tracking-[-0.055em] text-[#f4efe2]">
+              Built from Northern Norway
+            </h2>
+            <div className="mt-8 max-w-4xl space-y-5 text-sm font-light leading-[1.9] text-[#f4efe2]/70 sm:text-base md:text-lg">
+              {founderContext.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </section>
+
           {sections.map((section, index) => (
             <article
               key={section.title}
