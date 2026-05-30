@@ -197,6 +197,51 @@ const itinerary = [
   },
 ] as const;
 
+const itineraryNotes = [
+  {
+    drivingTime: "Short",
+    pace: "Relaxed",
+    planningNote:
+      "A gentle opening day; keep the schedule loose so the first ferry or coastal stop does not feel forced.",
+  },
+  {
+    drivingTime: "Moderate",
+    pace: "Flexible",
+    planningNote:
+      "Check ferry timing and leave room for a slower island rhythm rather than trying to overpack the day.",
+  },
+  {
+    drivingTime: "Moderate",
+    pace: "Weather-dependent",
+    planningNote:
+      "A good day for checking forecast shifts and keeping accommodation timing a little loose.",
+  },
+  {
+    drivingTime: "Short to moderate",
+    pace: "Weather-dependent",
+    planningNote:
+      "Decide on the hike or island route after checking conditions, not before breakfast.",
+  },
+  {
+    drivingTime: "Moderate",
+    pace: "Flexible",
+    planningNote:
+      "This is a good day to stay loose with departures and avoid planning too many crossings in one afternoon.",
+  },
+  {
+    drivingTime: "Long",
+    pace: "Weather-dependent",
+    planningNote:
+      "Book ferry and overnight logistics early if you choose the detour, especially in the main summer season.",
+  },
+  {
+    drivingTime: "Long",
+    pace: "Flexible",
+    planningNote:
+      "Leave time for weather and ferry changes so the last day still feels like part of the journey, not a transfer.",
+  },
+] as const;
+
 const thingsToDo = [
   "Drive Fv17 slowly.",
   "Hike Torghatten.",
@@ -273,6 +318,66 @@ const faqs = [
   },
 ] as const;
 
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: "Destinations", href: "/destinations" },
+  { label: "Helgeland Coast", href: "/destinations/helgeland-coast" },
+] as const;
+
+const guideIndexItems = [
+  { label: "First impression", href: "#first-impression" },
+  { label: "Why visit", href: "#why-visit" },
+  { label: "Where it is", href: "#where-it-is" },
+  { label: "Travel essentials", href: "#travel-essentials" },
+  { label: "Best time to visit", href: "#best-time" },
+  { label: "How many days", href: "#how-many-days" },
+  { label: "How to get there", href: "#how-to-get-there" },
+  { label: "Coastal Route Fv17", href: "#route" },
+  { label: "Places worth slowing down for", href: "#places" },
+  { label: "7-day itinerary", href: "#itinerary" },
+  { label: "Responsible travel", href: "#responsible-travel" },
+  { label: "FAQ", href: "#faq" },
+] as const;
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: helgelandCoastGuideMetadata.title,
+  description: helgelandCoastGuideMetadata.description,
+  articleSection: "Destinations",
+  inLanguage: "en",
+  author: {
+    "@type": "Organization",
+    name: "Norge",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Norge",
+  },
+  about: {
+    "@type": "Place",
+    name: "Helgeland Coast",
+    address: {
+      "@type": "PostalAddress",
+      addressRegion: "Nordland",
+      addressCountry: "NO",
+    },
+  },
+};
+
 const relatedGuides = [
   { label: "Routes", href: "/routes" },
   { label: "Lofoten Islands", href: "/destinations/lofoten-islands" },
@@ -337,6 +442,12 @@ function AnchorButton({
 export function HelgelandCoastTravelGuide() {
   return (
     <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([articleJsonLd, faqJsonLd]),
+        }}
+      />
       <section className="relative flex min-h-screen flex-col overflow-hidden">
         <Image
           src="/images/destinations/helgeland/helgeland.jpg"
@@ -423,9 +534,75 @@ export function HelgelandCoastTravelGuide() {
         </dl>
       </section>
 
+      <nav
+        aria-label="Breadcrumb"
+        className="border-b border-white/8 px-5 py-5 sm:px-8 md:px-12"
+      >
+        <ol className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 text-[0.62rem] font-medium uppercase tracking-[0.28em] text-[#f4efe2]/58">
+          {breadcrumbItems.map((item, index) => (
+            <li key={item.label} className="flex items-center gap-3">
+              {index > 0 ? (
+                <span aria-hidden="true" className="text-[#d8c9a7]/40">
+                  /
+                </span>
+              ) : null}
+              {index === breadcrumbItems.length - 1 ? (
+                <span className="text-[#d8c9a7]">{item.label}</span>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                >
+                  {item.label}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <section className="border-b border-white/8 px-5 py-6 sm:px-8 md:px-12">
+        <div className="mx-auto max-w-7xl rounded-[1.15rem] border border-white/8 bg-white/[0.02] px-5 py-5 sm:px-6 sm:py-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-8">
+            <div className="max-w-[14rem]">
+              <p className="text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#d8c9a7]/72">
+                On this guide
+              </p>
+              <p className="mt-3 text-sm font-light leading-[1.75] text-[#f4efe2]/58">
+                Jump to the sections that matter while planning the route.
+              </p>
+            </div>
+            <nav aria-label="On this guide" className="min-w-0 flex-1">
+              <div className="flex flex-wrap gap-2 sm:hidden">
+                {guideIndexItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="inline-flex items-center rounded-full border border-white/10 bg-black/20 px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="hidden gap-2 sm:flex sm:flex-wrap">
+                {guideIndexItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="inline-flex items-center rounded-full border border-white/10 bg-black/20 px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </section>
+
       <div className="px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-28">
         <div className="mx-auto max-w-7xl space-y-24 sm:space-y-28">
-          <section className="grid gap-10 lg:grid-cols-[0.74fr_1.26fr] lg:gap-20">
+          <section id="first-impression" className="grid gap-10 lg:grid-cols-[0.74fr_1.26fr] lg:gap-20">
             <DestinationReveal>
               <SectionHeader
                 eyebrow="01 / First impression"
@@ -447,7 +624,8 @@ export function HelgelandCoastTravelGuide() {
                 This guide is for travellers who want the north without turning
                 it into a checklist. It is for road trips, ferry days, island
                 detours, long summer light, sudden weather and places that feel
-                stronger when you give them time.
+                stronger when you give them time. If you want a sharper coastal
+                contrast, compare it with <Link href="/destinations/lofoten-islands" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Lofoten</Link> or <Link href="/destinations/senja" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Senja</Link>, then return here for a quieter pace.
               </p>
             </DestinationReveal>
           </section>
@@ -469,7 +647,7 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </DestinationReveal>
 
-          <section className="border-t border-white/8 pt-16 sm:pt-20">
+          <section id="why-visit" className="border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
                 eyebrow="02 / Why go"
@@ -496,7 +674,7 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </section>
 
-          <section className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <section id="where-it-is" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
                 eyebrow="03 / Geography"
@@ -518,7 +696,63 @@ export function HelgelandCoastTravelGuide() {
                 Sandnessjøen, the E6 inland route and the Coastal Route Fv17.
                 That flexibility is part of its appeal: you can treat Helgeland
                 as a full journey or as the coastal alternative to a faster
-                north-south transfer.
+                north-south transfer. For rail, bus and ferry combinations, use <Link href="https://entur.no" target="_blank" rel="noreferrer" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Entur</Link> and, for local ferry planning, <Link href="https://www.reisnordland.no/hjem" target="_blank" rel="noreferrer" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Reis Nordland</Link>.
+              </p>
+            </DestinationReveal>
+          </section>
+
+          <section id="travel-essentials" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+            <DestinationReveal>
+              <SectionHeader
+                eyebrow="04 / Essentials"
+                title="Travel essentials"
+                intro="The coast is straightforward when you respect the ferries, weather and local rhythm. A little preparation keeps the trip calm."
+              />
+            </DestinationReveal>
+            <DestinationReveal delay={0.08}>
+              <dl className="grid gap-4 sm:grid-cols-2">
+                {[
+                  [
+                    "Ferries",
+                    "Ferries are part of the route, not interruptions. Check ferry times before each travel day, and use official planners for current schedules and disruptions instead of trying to improvise around them.",
+                  ],
+                  [
+                    "Fuel",
+                    "Keep the tank reasonably full before long coastal stretches, especially if you are leaving the main towns or travelling late in the day.",
+                  ],
+                  [
+                    "Food",
+                    "Small cafés and local shops are part of the charm, but opening hours can be limited outside summer. Carry simple food and water in the car.",
+                  ],
+                  [
+                    "Accommodation",
+                    "In June, July and August, book key overnight stops in advance, especially on islands or near popular hiking areas.",
+                  ],
+                  [
+                    "Weather",
+                    "Weather can change quickly along the coast. Check conditions before hikes, ferry-heavy days and long drives.",
+                  ],
+                  [
+                    "Mobile signal",
+                    "Coverage is generally good near towns and roads, but can be weaker in remote areas, on islands or close to mountains.",
+                  ],
+                  [
+                    "Emergency",
+                    "The Norwegian emergency numbers are 113 for medical emergency, 112 for police and 110 for fire.",
+                  ],
+                ].map(([label, value]) => (
+                  <div key={label} className="rounded-[1rem] border border-white/8 bg-white/[0.025] p-5">
+                    <dt className="text-[0.62rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/70">
+                      {label}
+                    </dt>
+                    <dd className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/66 sm:text-base">
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-5 text-sm font-light leading-[1.85] text-[#f4efe2]/58 sm:text-base">
+                For live route planning, check the official scenic-route map and ferry links, then confirm timing in Entur or Reis Nordland on the day of travel.
               </p>
             </DestinationReveal>
           </section>
@@ -526,7 +760,7 @@ export function HelgelandCoastTravelGuide() {
           <section id="best-time" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="04 / Seasons"
+                eyebrow="05 / Seasons"
                 title="Best time to visit"
                 intro="The route changes with light, ferry frequency and weather. Summer is easiest, but the shoulder seasons can be deeply atmospheric."
               />
@@ -550,10 +784,10 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </section>
 
-          <section className="border-t border-white/8 pt-16 sm:pt-20">
+          <section id="how-many-days" className="border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="05 / Pacing"
+                eyebrow="06 / Pacing"
                 title="How many days you need"
                 intro="The mistake is not driving too slowly. The mistake is planning Helgeland like a highway."
               />
@@ -577,10 +811,10 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </section>
 
-          <section className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <section id="how-to-get-there" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="06 / Arrival"
+                eyebrow="07 / Arrival"
                 title="How to get there"
               />
             </DestinationReveal>
@@ -601,7 +835,7 @@ export function HelgelandCoastTravelGuide() {
           <section id="route" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="07 / Coastal Route Fv17"
+                eyebrow="08 / Coastal Route Fv17"
                 title="Driving the Coastal Route"
                 intro="Fv17 is not just a road; it is a rhythm of driving, waiting, crossing and continuing."
               />
@@ -612,13 +846,18 @@ export function HelgelandCoastTravelGuide() {
                   Norwegian Scenic Route Helgelandskysten runs between Holm and
                   Godøystraumen, with important coastal detours including
                   Torghatten. The official scenic route is approximately 433 km
-                  and includes six ferry crossings.
+                  and includes six ferry crossings: Holm–Vennesund,
+                  Horn–Anddalsvågen, Forvik–Tjøtta, Levang–Nesna,
+                  Kilboghavn–Jektvik and Ågskardet–Forøy.
                 </p>
-                <p className="mt-6 text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg">
-                  The ferries slow the trip down in the best way. They also
-                  make planning real: check timetables, avoid overfilled days
-                  and let weather decide what kind of route each stage becomes.
-                </p>
+              <p className="mt-6 text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg">
+                The ferries slow the trip down in the best way. They also
+                make planning real: check timetables, avoid overfilled days
+                and use <Link href="/routes" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Routes</Link> planning to let weather decide what kind of route each stage becomes.
+              </p>
+              <p className="mt-6 text-sm font-light leading-[1.85] text-[#f4efe2]/60 sm:text-base">
+                If your plan includes late crossings or a busy summer day, confirm the evening before and again in the morning before you drive to the quay.
+              </p>
               </DestinationReveal>
               <DestinationReveal delay={0.08}>
                 <div className="overflow-hidden rounded-[1.35rem] border border-[#d8c9a7]/18 bg-[#d8c9a7]/[0.045]">
@@ -652,10 +891,10 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </section>
 
-          <section className="border-t border-white/8 pt-16 sm:pt-20">
+          <section id="places" className="border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="08 / Places"
+                eyebrow="09 / Places"
                 title="Places worth slowing down for"
                 intro="Treat these as anchors, not a checklist. The route is better when weather and ferry timing have room to breathe."
               />
@@ -679,10 +918,10 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </section>
 
-          <section className="border-t border-white/8 pt-16 sm:pt-20">
+          <section id="itinerary" className="border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="09 / Itinerary"
+                eyebrow="10 / Itinerary"
                 title="Suggested 7-day itinerary"
                 intro="Use this as a flexible framework, not a strict schedule. Ferries, weather and personal pace should decide the final route."
               />
@@ -700,9 +939,14 @@ export function HelgelandCoastTravelGuide() {
                   <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
                     {stop.title}
                   </h3>
-                  <p className="text-sm font-light leading-[1.8] text-[#f4efe2]/62 sm:text-base">
-                    {stop.text}
-                  </p>
+                  <div className="space-y-3 text-sm font-light leading-[1.8] text-[#f4efe2]/62 sm:text-base">
+                    <p>{stop.text}</p>
+                    <p className="text-[#d8c9a7]/74">
+                      Driving/ferry time: {itineraryNotes[index]?.drivingTime} · Pace:{" "}
+                      {itineraryNotes[index]?.pace}
+                    </p>
+                    <p>{itineraryNotes[index]?.planningNote}</p>
+                  </div>
                 </DestinationReveal>
               ))}
             </div>
@@ -711,7 +955,7 @@ export function HelgelandCoastTravelGuide() {
           <section className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="10 / Experiences"
+                eyebrow="11 / Experiences"
                 title="Things to do"
               />
             </DestinationReveal>
@@ -729,10 +973,10 @@ export function HelgelandCoastTravelGuide() {
             </DestinationReveal>
           </section>
 
-          <section className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+          <section id="responsible-travel" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="11 / Responsibility"
+                eyebrow="12 / Responsibility"
                 title="Travel with care"
                 intro="Helgeland's quietness is part of its value. Protect that by moving carefully through local communities and fragile coastal places."
               />
@@ -751,9 +995,9 @@ export function HelgelandCoastTravelGuide() {
             </DestinationReveal>
           </section>
 
-          <section className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+          <section id="faq" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
             <DestinationReveal>
-              <SectionHeader eyebrow="12 / FAQ" title="Planning questions" />
+              <SectionHeader eyebrow="13 / FAQ" title="Planning questions" />
             </DestinationReveal>
             <DestinationReveal delay={0.08} className="divide-y divide-white/8">
               {faqs.map((item) => (
@@ -776,7 +1020,7 @@ export function HelgelandCoastTravelGuide() {
             <DestinationReveal>
               <article className="rounded-[1.35rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.036),rgba(255,255,255,0.014))] p-8 sm:p-10">
                 <SectionHeader
-                  eyebrow="13 / Related guides"
+                  eyebrow="14 / Related guides"
                   title="Continue planning"
                   intro="Connect Helgeland with the wider Norway planning system: seasons, nearby destinations, responsible travel and the map."
                 />
@@ -792,6 +1036,9 @@ export function HelgelandCoastTravelGuide() {
                     </Link>
                   ))}
                 </div>
+                <p className="mt-8 max-w-2xl text-sm font-light leading-[1.85] text-[#f4efe2]/62 sm:text-base">
+                  For a wider planning context, see <Link href="/responsible-travel" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Responsible travel</Link> or open the <Link href="/map" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Map</Link> before choosing where to start.
+                </p>
               </article>
             </DestinationReveal>
           </section>

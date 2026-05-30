@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 
 import { DestinationPage } from "@/src/components/sections/destinations/DestinationPage";
 import {
+  LofotenIslandsTravelGuide,
+  lofotenIslandsTravelGuideMetadata,
+} from "@/src/components/sections/destinations/LofotenIslandsTravelGuide";
+import {
   HelgelandCoastTravelGuide,
   helgelandCoastGuideMetadata,
 } from "@/src/components/sections/destinations/HelgelandCoastTravelGuide";
@@ -26,6 +30,27 @@ export async function generateMetadata({
 
   if (!destination) {
     return {};
+  }
+
+  if (slug === "lofoten-islands") {
+    return {
+      title: lofotenIslandsTravelGuideMetadata.title,
+      description: lofotenIslandsTravelGuideMetadata.description,
+      alternates: {
+        canonical: "/destinations/lofoten-islands",
+      },
+      openGraph: {
+        title: lofotenIslandsTravelGuideMetadata.title,
+        description: lofotenIslandsTravelGuideMetadata.description,
+        type: "article",
+        images: [
+          {
+            url: "/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg",
+            alt: "Red rorbuer and steep mountains in Lofoten under soft Arctic light",
+          },
+        ],
+      },
+    };
   }
 
   if (slug === "helgeland-coast") {
@@ -63,6 +88,10 @@ export default async function DestinationRoute({
 
   if (!destination) {
     notFound();
+  }
+
+  if (slug === "lofoten-islands") {
+    return <LofotenIslandsTravelGuide />;
   }
 
   if (slug === "helgeland-coast") {
