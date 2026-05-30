@@ -10,6 +10,14 @@ import {
   HelgelandCoastTravelGuide,
   helgelandCoastGuideMetadata,
 } from "@/src/components/sections/destinations/HelgelandCoastTravelGuide";
+import {
+  SenjaTravelGuide,
+  senjaTravelGuideMetadata,
+} from "@/src/components/sections/destinations/SenjaTravelGuide";
+import {
+  TromsoTravelGuide,
+  tromsoTravelGuideMetadata,
+} from "@/src/components/sections/destinations/TromsoTravelGuide";
 import { destinations, getDestination } from "@/src/data/destinations";
 
 type DestinationRouteProps = {
@@ -74,6 +82,48 @@ export async function generateMetadata({
     };
   }
 
+  if (slug === "senja") {
+    return {
+      title: senjaTravelGuideMetadata.title,
+      description: senjaTravelGuideMetadata.description,
+      alternates: {
+        canonical: "/destinations/senja",
+      },
+      openGraph: {
+        title: senjaTravelGuideMetadata.title,
+        description: senjaTravelGuideMetadata.description,
+        type: "article",
+        images: [
+          {
+            url: "/images/destinations/senja/senja-hero.jpg",
+            alt: "Dramatic mountains and fjord landscape on Senja in moody northern light",
+          },
+        ],
+      },
+    };
+  }
+
+  if (slug === "tromso") {
+    return {
+      title: tromsoTravelGuideMetadata.title,
+      description: tromsoTravelGuideMetadata.description,
+      alternates: {
+        canonical: "/destinations/tromso",
+      },
+      openGraph: {
+        title: tromsoTravelGuideMetadata.title,
+        description: tromsoTravelGuideMetadata.description,
+        type: "article",
+        images: [
+          {
+            url: "/images/destinations/tromso/tromso-header.jpg",
+            alt: "Tromso city lights surrounded by Arctic mountains at night",
+          },
+        ],
+      },
+    };
+  }
+
   return {
     title: destination.metaTitle,
     description: destination.metaDescription,
@@ -96,6 +146,14 @@ export default async function DestinationRoute({
 
   if (slug === "helgeland-coast") {
     return <HelgelandCoastTravelGuide />;
+  }
+
+  if (slug === "senja") {
+    return <SenjaTravelGuide />;
+  }
+
+  if (slug === "tromso") {
+    return <TromsoTravelGuide />;
   }
 
   return <DestinationPage destination={destination} />;
