@@ -46,6 +46,16 @@ export type Destination = {
   faq: DestinationFaq[];
 };
 
+export type DestinationArchiveCard = {
+  title: string;
+  label: string;
+  href: string;
+  text: string;
+  image: string;
+  imageAlt: string;
+  imagePosition?: string;
+};
+
 export const destinations: Destination[] = [
   {
     slug: "lofoten-islands",
@@ -435,6 +445,46 @@ export const featuredDestinations = destinations.map(
     href: `/destinations/${slug}`,
   }),
 );
+
+export const destinationArchiveCards: DestinationArchiveCard[] = [
+  {
+    title: "Lofoten Islands",
+    label: "Island archipelago / Nordland",
+    href: "/destinations/lofoten-islands",
+    text: "Sharp peaks, fishing villages, Arctic beaches and road-trip days shaped by weather and light.",
+    image: "/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg",
+    imageAlt:
+      "Rorbuer and steep mountains above the sea in Lofoten under soft Arctic light",
+    imagePosition: "center 56%",
+  },
+  {
+    title: "Senja",
+    label: "Wild island / Troms",
+    href: "/destinations/senja",
+    text: "A quieter northern island of ridges, fjords, outer-coast roads and cinematic viewpoints.",
+    image: "/images/destinations/senja/senja-hero.jpg",
+    imageAlt: "Dramatic mountain-and-fjord landscape on Senja",
+    imagePosition: "center 56%",
+  },
+  {
+    title: "Helgeland Coast",
+    label: "Coastal passage / Nordland",
+    href: "/destinations/helgeland-coast",
+    text: "Island ferries, open shoreline, slow roads and one of Norway's most understated coastal journeys.",
+    image: "/images/destinations/helgeland/helgeland.jpg",
+    imageAlt: "Quiet coastal road and sea landscape on the Helgeland Coast",
+    imagePosition: "center 50%",
+  },
+  {
+    title: "Tromso",
+    label: "Arctic city / Troms",
+    href: "/destinations/tromso",
+    text: "A compact northern city for Arctic culture, winter light, fjord trips and northern lights planning.",
+    image: "/images/destinations/tromso/tromso-header.jpg",
+    imageAlt: "Tromso city lights below Arctic mountains at night",
+    imagePosition: "center 50%",
+  },
+] as const;
 
 export function getDestination(slug: string) {
   return destinations.find((destination) => destination.slug === slug);
