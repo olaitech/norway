@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Responsible Travel in Norway",
   description:
     "A practical guide to responsible travel in Norway, covering slow travel, weather, safety, local communities, ferry planning, Sami cultural awareness and leave-no-trace principles.",
+  alternates: {
+    canonical: "/responsible-travel",
+  },
 };
 
 const principles = [

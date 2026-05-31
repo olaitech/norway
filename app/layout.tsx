@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { Footer } from "@/src/components/layout/Footer";
+import { SITE_URL } from "@/src/config/site";
 
 import "./globals.css";
 
-const siteUrl = "https://norway-umber.vercel.app";
 const siteName = "Norway Travel Knowledge Portal";
 const siteDescription =
   "A cinematic travel knowledge portal for Norway and Northern Norway, built around slow travel, dramatic landscapes, scenic routes, fjords, northern light skies and responsible destination guidance.";
@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: siteName,
     template: `%s | ${siteName}`,

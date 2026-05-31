@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://norway-umber.vercel.app";
+import { SITE_URL } from "@/src/config/site";
 
 const routes = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
@@ -10,11 +10,14 @@ const routes = [
   { path: "/destinations/helgeland-coast", changeFrequency: "monthly", priority: 0.8 },
   { path: "/destinations/tromso", changeFrequency: "monthly", priority: 0.8 },
   { path: "/routes", changeFrequency: "weekly", priority: 0.85 },
+  { path: "/routes/lofoten-road-trip", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/routes/helgeland-coast-road-trip", changeFrequency: "monthly", priority: 0.8 },
   { path: "/journal", changeFrequency: "weekly", priority: 0.75 },
   { path: "/map", changeFrequency: "monthly", priority: 0.8 },
   { path: "/best-time-to-visit-norway", changeFrequency: "monthly", priority: 0.8 },
   { path: "/norway-road-trip-routes", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/lofoten-travel-guide", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/norway-itinerary-7-days", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/norway-itinerary-10-days", changeFrequency: "monthly", priority: 0.7 },
   { path: "/northern-lights-norway", changeFrequency: "monthly", priority: 0.8 },
   { path: "/fjords-of-norway", changeFrequency: "monthly", priority: 0.75 },
   { path: "/responsible-travel", changeFrequency: "monthly", priority: 0.7 },
@@ -31,7 +34,7 @@ const routes = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
-    url: new URL(route.path, siteUrl).toString(),
+    url: new URL(route.path, SITE_URL).toString(),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));

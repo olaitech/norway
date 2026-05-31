@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "About this portal",
   description:
     "Learn about the independent Norway Travel Knowledge Portal, built around cinematic storytelling, practical guidance, slow travel, scenic roads and responsible tourism in Norway and Northern Norway.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const sections = [

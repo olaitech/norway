@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Terms of use",
   description:
     "Read the terms of use for the Norway Travel Knowledge Portal, including travel guidance limitations, changing conditions, content rights and external links.",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 const terms = [

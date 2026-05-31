@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Explore Norway by Map | Norge",
   description:
     "Trace featured Norwegian islands, fjords and scenic routes on an interactive travel map.",
+  alternates: {
+    canonical: "/map",
+  },
 };
 
 export default function MapPage() {

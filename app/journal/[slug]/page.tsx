@@ -31,10 +31,26 @@ export async function generateMetadata({
   return {
     title: article.seoTitle,
     description: article.seoDescription,
+    alternates: {
+      canonical: `/journal/${slug}`,
+    },
     openGraph: {
       title: article.seoTitle,
       description: article.seoDescription,
+      url: `/journal/${slug}`,
       type: "article",
+      images: [
+        {
+          url: article.image,
+          alt: article.imageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.seoTitle,
+      description: article.seoDescription,
+      images: [article.image],
     },
   };
 }
@@ -53,4 +69,3 @@ export default async function JournalArticleRoute({
 
   return <JournalArticlePage article={article} relatedArticles={relatedArticles} />;
 }
-

@@ -50,6 +50,7 @@ export async function generateMetadata({
       openGraph: {
         title: lofotenIslandsTravelGuideMetadata.title,
         description: lofotenIslandsTravelGuideMetadata.description,
+        url: "/destinations/lofoten-islands",
         type: "article",
         images: [
           {
@@ -57,6 +58,12 @@ export async function generateMetadata({
             alt: "Red rorbuer and steep mountains in Lofoten under soft Arctic light",
           },
         ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: lofotenIslandsTravelGuideMetadata.title,
+        description: lofotenIslandsTravelGuideMetadata.description,
+        images: ["/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg"],
       },
     };
   }
@@ -71,6 +78,7 @@ export async function generateMetadata({
       openGraph: {
         title: helgelandCoastGuideMetadata.title,
         description: helgelandCoastGuideMetadata.description,
+        url: "/destinations/helgeland-coast",
         type: "article",
         images: [
           {
@@ -78,6 +86,12 @@ export async function generateMetadata({
             alt: "A quiet road along the Helgeland Coast in Northern Norway",
           },
         ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: helgelandCoastGuideMetadata.title,
+        description: helgelandCoastGuideMetadata.description,
+        images: ["/images/cards/helgeland.png"],
       },
     };
   }
@@ -92,6 +106,7 @@ export async function generateMetadata({
       openGraph: {
         title: senjaTravelGuideMetadata.title,
         description: senjaTravelGuideMetadata.description,
+        url: "/destinations/senja",
         type: "article",
         images: [
           {
@@ -99,6 +114,12 @@ export async function generateMetadata({
             alt: "Dramatic mountains and fjord landscape on Senja in moody northern light",
           },
         ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: senjaTravelGuideMetadata.title,
+        description: senjaTravelGuideMetadata.description,
+        images: ["/images/destinations/senja/senja-hero.jpg"],
       },
     };
   }
@@ -113,6 +134,7 @@ export async function generateMetadata({
       openGraph: {
         title: tromsoTravelGuideMetadata.title,
         description: tromsoTravelGuideMetadata.description,
+        url: "/destinations/tromso",
         type: "article",
         images: [
           {
@@ -121,12 +143,39 @@ export async function generateMetadata({
           },
         ],
       },
+      twitter: {
+        card: "summary_large_image",
+        title: tromsoTravelGuideMetadata.title,
+        description: tromsoTravelGuideMetadata.description,
+        images: ["/images/destinations/tromso/tromso-header.jpg"],
+      },
     };
   }
 
   return {
     title: destination.metaTitle,
     description: destination.metaDescription,
+    alternates: {
+      canonical: `/destinations/${slug}`,
+    },
+    openGraph: {
+      title: destination.metaTitle,
+      description: destination.metaDescription,
+      url: `/destinations/${slug}`,
+      type: "article",
+      images: [
+        {
+          url: destination.imageSrc,
+          alt: destination.imageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: destination.metaTitle,
+      description: destination.metaDescription,
+      images: [destination.imageSrc],
+    },
   };
 }
 

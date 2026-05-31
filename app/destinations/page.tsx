@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Destinations",
   description:
     "Explore cinematic destination guides for Northern Norway, including Lofoten, Senja, the Helgeland Coast and Tromso.",
+  alternates: {
+    canonical: "/destinations",
+  },
 };
 
 export default function DestinationsPage() {

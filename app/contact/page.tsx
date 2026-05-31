@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact the Norway Travel Knowledge Portal about corrections, local knowledge, story ideas, partnerships, photography, writing or future collaboration.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 const contactTopics = [

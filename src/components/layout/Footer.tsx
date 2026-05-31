@@ -11,7 +11,7 @@ const exploreLinks = [
 const guideLinks = [
   { label: "Best time to visit Norway", href: "/best-time-to-visit-norway" },
   { label: "Norway road trip routes", href: "/norway-road-trip-routes" },
-  { label: "Lofoten travel guide", href: "/lofoten-travel-guide" },
+  { label: "Lofoten travel guide", href: "/destinations/lofoten-islands" },
   { label: "Northern lights in Norway", href: "/northern-lights-norway" },
   { label: "Fjords of Norway", href: "/fjords-of-norway" },
 ] as const;

@@ -1,0 +1,59 @@
+warning: in the working copy of 'app/about/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/best-time-to-visit-norway/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/contact/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/destinations/[slug]/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/destinations/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/fjords-of-norway/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/journal/[slug]/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/journal/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/layout.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/lofoten-travel-guide/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/lofoten/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/map/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/northern-lights-norway/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/norway-road-trip-routes/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/privacy-settings/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/privacy/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/responsible-travel/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/robots.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/routes/helgeland-coast-road-trip/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/routes/lofoten-road-trip/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/routes/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/sitemap.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/terms/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/check-seo-foundation.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/layout/Footer.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/sections/home/WaysIntoNorway.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/sections/journal/JournalArticlePage.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/data/seo-pages.ts', LF will be replaced by CRLF the next time Git touches it
+ app/about/page.tsx                                 |  3 [32m++[m
+ app/best-time-to-visit-norway/page.tsx             |  6 [32m++[m[31m-[m
+ app/contact/page.tsx                               |  3 [32m++[m
+ app/destinations/[slug]/page.tsx                   | 49 [32m++++++++++++++++++++++[m
+ app/destinations/page.tsx                          |  3 [32m++[m
+ app/fjords-of-norway/page.tsx                      |  5 [32m++[m[31m-[m
+ app/journal/[slug]/page.tsx                        | 17 [32m+++++++[m[31m-[m
+ app/journal/page.tsx                               |  3 [32m++[m
+ app/layout.tsx                                     |  4 [32m+[m[31m-[m
+ app/lofoten-travel-guide/page.tsx                  |  9 [32m+[m[31m---[m
+ app/lofoten/page.tsx                               | 10 [32m+[m[31m----[m
+ app/map/page.tsx                                   |  3 [32m++[m
+ app/northern-lights-norway/page.tsx                |  6 [32m++[m[31m-[m
+ app/norway-road-trip-routes/page.tsx               |  5 [32m++[m[31m-[m
+ app/privacy-settings/page.tsx                      |  3 [32m++[m
+ app/privacy/page.tsx                               |  3 [32m++[m
+ app/responsible-travel/page.tsx                    |  3 [32m++[m
+ app/robots.ts                                      |  6 [32m+[m[31m--[m
+ app/routes/helgeland-coast-road-trip/page.tsx      |  6 [32m++[m[31m-[m
+ app/routes/lofoten-road-trip/page.tsx              |  6 [32m++[m[31m-[m
+ app/routes/page.tsx                                |  3 [32m+[m[31m-[m
+ app/sitemap.ts                                     |  9 [32m++[m[31m--[m
+ app/terms/page.tsx                                 |  3 [32m++[m
+ package.json                                       |  3 [32m+[m[31m-[m
+ scripts/check-seo-foundation.mjs                   |  7 [32m+++[m[31m-[m
+ src/components/layout/Footer.tsx                   |  2 [32m+[m[31m-[m
+ src/components/sections/home/WaysIntoNorway.tsx    |  2 [32m+[m[31m-[m
+ .../sections/journal/JournalArticlePage.tsx        |  2 [32m+[m[31m-[m
+ src/data/seo-pages.ts                              | 36 [32m++++++++++++[m[31m----[m
+ 29 files changed, 171 insertions(+), 49 deletions(-)

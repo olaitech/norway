@@ -41,14 +41,34 @@ export type SeoPageData = {
   };
 };
 
-export function toMetadata(page: SeoPageData): Metadata {
+export function toMetadata(page: SeoPageData, canonicalPath: string): Metadata {
+  const openGraphTitle = page.meta.openGraphTitle ?? page.meta.title;
+  const openGraphDescription =
+    page.meta.openGraphDescription ?? page.meta.description;
+
   return {
     title: page.meta.title,
     description: page.meta.description,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
-      title: page.meta.openGraphTitle ?? page.meta.title,
-      description: page.meta.openGraphDescription ?? page.meta.description,
+      title: openGraphTitle,
+      description: openGraphDescription,
+      url: canonicalPath,
       type: "website",
+      images: [
+        {
+          url: page.hero.imageSrc,
+          alt: page.hero.imageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: openGraphTitle,
+      description: openGraphDescription,
+      images: [page.hero.imageSrc],
     },
   };
 }
@@ -117,7 +137,7 @@ export const seoPages = {
             title: "Use Lofoten as a route anchor",
             description:
               "Treat Lofoten as a base and connect outward with short extensions and ferry crossings.",
-            href: "/lofoten",
+            href: "/destinations/lofoten-islands",
           },
           {
             label: "Map first",
@@ -153,7 +173,7 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Lofoten Guide", href: "/lofoten" },
+      { label: "Lofoten Guide", href: "/destinations/lofoten-islands" },
       { label: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
       { label: "Northern Lights in Norway", href: "/northern-lights-norway" },
       { label: "Interactive Norway Map", href: "/map" },
@@ -260,7 +280,7 @@ export const seoPages = {
     ],
     relatedLinks: [
       { label: "Routes Hub", href: "/routes" },
-      { label: "Lofoten Destination Hub", href: "/lofoten" },
+      { label: "Lofoten Destination Hub", href: "/destinations/lofoten-islands" },
       { label: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
       { label: "Northern Lights in Norway", href: "/northern-lights-norway" },
     ],
@@ -472,7 +492,7 @@ export const seoPages = {
     relatedLinks: [
       { label: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
       { label: "Routes Hub", href: "/routes" },
-      { label: "Lofoten Destination Hub", href: "/lofoten" },
+      { label: "Lofoten Destination Hub", href: "/destinations/lofoten-islands" },
       { label: "Explore Norway by Map", href: "/map" },
     ],
     cta: {
@@ -695,7 +715,7 @@ export const seoPages = {
     relatedLinks: [
       { label: "Northern Lights in Norway", href: "/northern-lights-norway" },
       { label: "Routes Hub", href: "/routes" },
-      { label: "Lofoten Hub", href: "/lofoten" },
+      { label: "Lofoten Hub", href: "/destinations/lofoten-islands" },
       { label: "Interactive Map", href: "/map" },
     ],
     cta: {

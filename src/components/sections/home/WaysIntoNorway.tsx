@@ -27,7 +27,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     description:
       "Sharp peaks, fishing villages, Arctic beaches and weather that turns every hour cinematic.",
     meta: "DESTINATION / NORTHERN NORWAY",
-    href: "/lofoten",
+    href: "/destinations/lofoten-islands",
     image: "/images/cards/lofoten.png",
   },
   {

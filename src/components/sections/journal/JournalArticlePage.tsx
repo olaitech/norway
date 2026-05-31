@@ -21,7 +21,7 @@ const planningLinks = [
   },
   { label: "Northern Lights", href: "/northern-lights-norway" },
   { label: "Best Time to Visit", href: "/best-time-to-visit-norway" },
-  { label: "Lofoten Guide", href: "/lofoten" },
+  { label: "Lofoten Guide", href: "/destinations/lofoten-islands" },
 ];
 
 export function JournalArticlePage({

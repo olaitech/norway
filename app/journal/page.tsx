@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Journal | Norge",
   description:
     "A cinematic visual archive of Norway's quiet roads, remote coastlines and northern light.",
+  alternates: {
+    canonical: "/journal",
+  },
 };
 
 export default function JournalRoute() {
