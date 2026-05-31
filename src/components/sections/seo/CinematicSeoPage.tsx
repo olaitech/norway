@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import type { SeoCard, SeoPageData, SeoSection } from "@/src/data/seo-pages";
 
 type CinematicSeoPageProps = {
@@ -193,9 +194,17 @@ export function CinematicSeoPage({ page }: CinematicSeoPageProps) {
               </div>
             </article>
           </section>
+
+          {page.guideMeta ? (
+            <section className="border-t border-white/8 pt-14 sm:pt-16">
+              <GuideMetaFooter
+                lastUpdated={page.guideMeta.lastUpdated}
+                sources={page.guideMeta.sources}
+              />
+            </section>
+          ) : null}
         </div>
       </section>
     </main>
   );
 }
-

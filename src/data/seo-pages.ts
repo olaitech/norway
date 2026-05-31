@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 
+import {
+  GUIDE_LAST_UPDATED,
+  guideSourceSets,
+} from "@/src/data/guide-meta-sources";
+
 export type SeoCard = {
   title: string;
   description: string;
@@ -38,6 +43,10 @@ export type SeoPageData = {
     primaryLabel: string;
     secondaryHref: string;
     secondaryLabel: string;
+  };
+  guideMeta?: {
+    lastUpdated: string;
+    sources: ReadonlyArray<{ label: string; href: string }>;
   };
 };
 
@@ -186,6 +195,10 @@ export const seoPages = {
       secondaryHref: "/#destinations",
       secondaryLabel: "Browse destinations",
     },
+    guideMeta: {
+      lastUpdated: GUIDE_LAST_UPDATED,
+      sources: guideSourceSets.roadTripScenic,
+    },
   },
   lofotenRoadTrip: {
     meta: {
@@ -291,6 +304,10 @@ export const seoPages = {
       primaryLabel: "View Helgeland route",
       secondaryHref: "/map",
       secondaryLabel: "Open map",
+    },
+    guideMeta: {
+      lastUpdated: GUIDE_LAST_UPDATED,
+      sources: guideSourceSets.roadTripScenic,
     },
   },
   helgelandCoastRoadTrip: {
@@ -399,6 +416,10 @@ export const seoPages = {
       secondaryHref: "/#destinations",
       secondaryLabel: "View destinations",
     },
+    guideMeta: {
+      lastUpdated: GUIDE_LAST_UPDATED,
+      sources: guideSourceSets.destinationHelgeland,
+    },
   },
   northernLightsNorway: {
     meta: {
@@ -502,6 +523,10 @@ export const seoPages = {
       primaryLabel: "Open seasonal guide",
       secondaryHref: "/routes",
       secondaryLabel: "Back to routes",
+    },
+    guideMeta: {
+      lastUpdated: GUIDE_LAST_UPDATED,
+      sources: guideSourceSets.northernLightsWeatherSafety,
     },
   },
   fjordsOfNorway: {
@@ -607,6 +632,10 @@ export const seoPages = {
       primaryLabel: "Browse road trip routes",
       secondaryHref: "/map",
       secondaryLabel: "Open map",
+    },
+    guideMeta: {
+      lastUpdated: GUIDE_LAST_UPDATED,
+      sources: guideSourceSets.roadTripScenic,
     },
   },
   bestTimeToVisitNorway: {
@@ -726,6 +755,10 @@ export const seoPages = {
       secondaryHref: "/map",
       secondaryLabel: "Open map",
     },
+    guideMeta: {
+      lastUpdated: GUIDE_LAST_UPDATED,
+      sources: guideSourceSets.northernLightsWeatherSafety,
+    },
   },
   lofotenHub: {
     meta: {
@@ -829,6 +862,10 @@ export const seoPages = {
       primaryLabel: "Explore route hub",
       secondaryHref: "/map",
       secondaryLabel: "Open map",
+    },
+    guideMeta: {
+      lastUpdated: GUIDE_LAST_UPDATED,
+      sources: guideSourceSets.destinationLofoten,
     },
   },
 } as const satisfies Record<string, SeoPageData>;

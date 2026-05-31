@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 import { destinationArchiveCards } from "@/src/data/destinations";
 
@@ -15,6 +16,33 @@ export const metadata: Metadata = {
 };
 
 export default function DestinationsPage() {
+  const destinationSources = [
+    {
+      label: "Visit Norway",
+      href: "https://www.visitnorway.com/",
+    },
+    {
+      label: "Visit Tromsø",
+      href: "https://www.visittromso.no/",
+    },
+    {
+      label: "Reis Nordland",
+      href: "https://www.reisnordland.no/",
+    },
+    {
+      label: "Entur",
+      href: "https://entur.no/",
+    },
+    {
+      label: "Avinor",
+      href: "https://avinor.no/",
+    },
+    {
+      label: "Norwegian Scenic Routes",
+      href: "https://www.nasjonaleturistveger.no/en/",
+    },
+  ] as const;
+
   return (
     <InfoPageShell
       eyebrow="Destination archive"
@@ -24,6 +52,9 @@ export default function DestinationsPage() {
         { label: "Explore routes", href: "/routes" },
         { label: "Open map", href: "/map" },
       ]}
+      bottomContent={
+        <GuideMetaFooter lastUpdated="May 2026" sources={destinationSources} />
+      }
     >
       <div className="grid gap-5 md:grid-cols-2">
         {destinationArchiveCards.map((destination) => (

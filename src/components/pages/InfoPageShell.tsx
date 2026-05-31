@@ -13,6 +13,7 @@ type InfoPageShellProps = {
   intro: string;
   children: ReactNode;
   actions?: readonly InfoPageAction[];
+  bottomContent?: ReactNode;
 };
 
 export function InfoPageShell({
@@ -21,6 +22,7 @@ export function InfoPageShell({
   intro,
   children,
   actions = [],
+  bottomContent,
 }: InfoPageShellProps) {
   return (
     <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
@@ -92,6 +94,12 @@ export function InfoPageShell({
               ))}
             </div>
           </div>
+        </section>
+      ) : null}
+
+      {bottomContent ? (
+        <section className="border-t border-white/8 px-5 py-14 sm:px-8 sm:py-16 md:px-12">
+          <div className="mx-auto max-w-7xl">{bottomContent}</div>
         </section>
       ) : null}
     </main>

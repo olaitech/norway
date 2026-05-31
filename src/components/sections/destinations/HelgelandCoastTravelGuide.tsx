@@ -2,6 +2,12 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
+import {
+  GUIDE_LAST_UPDATED,
+  guideSourceSets,
+} from "@/src/data/guide-meta-sources";
+
 import { DestinationReveal } from "./DestinationReveal";
 
 export const helgelandCoastGuideMetadata = {
@@ -833,6 +839,13 @@ export function HelgelandCoastTravelGuide() {
           </section>
 
           <section id="route" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
+            <span id="scenic-route" className="block scroll-mt-24" aria-hidden="true" />
+            <span id="ferries" className="block scroll-mt-24" aria-hidden="true" />
+            <span
+              id="official-planners"
+              className="block scroll-mt-24"
+              aria-hidden="true"
+            />
             <DestinationReveal>
               <SectionHeader
                 eyebrow="08 / Coastal Route Fv17"
@@ -1040,6 +1053,15 @@ export function HelgelandCoastTravelGuide() {
                   For a wider planning context, see <Link href="/responsible-travel" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Responsible travel</Link> or open the <Link href="/map" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Map</Link> before choosing where to start.
                 </p>
               </article>
+            </DestinationReveal>
+          </section>
+
+          <section className="border-t border-white/8 pt-16 sm:pt-20">
+            <DestinationReveal>
+              <GuideMetaFooter
+                lastUpdated={GUIDE_LAST_UPDATED}
+                sources={guideSourceSets.destinationHelgeland}
+              />
             </DestinationReveal>
           </section>
         </div>

@@ -2,6 +2,12 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
+import {
+  GUIDE_LAST_UPDATED,
+  guideSourceSets,
+} from "@/src/data/guide-meta-sources";
+
 import { DestinationReveal } from "./DestinationReveal";
 
 export const lofotenIslandsTravelGuideMetadata = {
@@ -746,6 +752,7 @@ export function LofotenIslandsTravelGuide() {
             id="how-to-get-to-lofoten"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
+            <span id="ferries" className="block scroll-mt-24" aria-hidden="true" />
             <DestinationReveal>
               <SectionIntro
                 label="07 / Access"
@@ -800,6 +807,11 @@ export function LofotenIslandsTravelGuide() {
             id="getting-around"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
+            <span
+              id="official-planners"
+              className="block scroll-mt-24"
+              aria-hidden="true"
+            />
             <DestinationReveal>
               <SectionIntro
                 label="08 / Mobility"
@@ -1313,6 +1325,15 @@ export function LofotenIslandsTravelGuide() {
                 </DestinationReveal>
               ))}
             </div>
+          </section>
+
+          <section className="border-t border-white/8 pt-16 sm:pt-20">
+            <DestinationReveal>
+              <GuideMetaFooter
+                lastUpdated={GUIDE_LAST_UPDATED}
+                sources={guideSourceSets.destinationLofoten}
+              />
+            </DestinationReveal>
           </section>
         </div>
       </div>

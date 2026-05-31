@@ -6,71 +6,26 @@ import { startTransition, useDeferredValue, useState } from "react";
 
 import { SectionHeading } from "@/src/components/ui/section-heading";
 import {
-  homeSearchIndex,
-  homeSearchSuggestions,
-  type HomeSearchEntry,
-} from "@/src/data/home-search-index";
-
-type RankedSearchResult = HomeSearchEntry & {
-  score: number;
-};
-
-function normalizeSearchText(value: string) {
-  return value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
-}
-
-function scoreSearchEntry(entry: HomeSearchEntry, normalizedQuery: string) {
-  if (!normalizedQuery) {
-    return 0;
-  }
-
-  const title = normalizeSearchText(entry.title);
-  const description = normalizeSearchText(entry.description);
-  const category = normalizeSearchText(entry.category);
-  const route = normalizeSearchText(entry.route);
-  const keywords = entry.keywords.map(normalizeSearchText);
-  const tokens = normalizedQuery.split(/\s+/).filter(Boolean);
-
-  let score = 0;
-
-  if (title.includes(normalizedQuery)) score += 48;
-  if (description.includes(normalizedQuery)) score += 30;
-  if (route.includes(normalizedQuery)) score += 20;
-  if (category.includes(normalizedQuery)) score += 12;
-  if (keywords.some((keyword) => keyword.includes(normalizedQuery))) score += 28;
-
-  for (const token of tokens) {
-    if (title.includes(token)) score += 9;
-    if (description.includes(token)) score += 6;
-    if (route.includes(token)) score += 5;
-    if (category.includes(token)) score += 4;
-    if (keywords.some((keyword) => keyword.includes(token))) score += 8;
-  }
-
-  return score;
-}
+  getGuidedSearchRecommendation,
+  getGuidedSearchResults,
+  normalizeGuidedSearchText,
+} from "@/src/lib/search/guidedSearch";
+import { guidedSearchSuggestions } from "@/src/lib/search/guidedSearchIndex";
 
 export function SearchTheNorth() {
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
-  const normalizedQuery = normalizeSearchText(deferredQuery);
+  const normalizedQuery = normalizeGuidedSearchText(deferredQuery);
   const hasQuery = normalizedQuery.length > 0;
 
-  const rankedResults: RankedSearchResult[] = hasQuery
-    ? homeSearchIndex
-        .map((entry) => ({
-          ...entry,
-          score: scoreSearchEntry(entry, normalizedQuery),
-        }))
-        .filter((entry) => entry.score > 0)
-        .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
-    : [];
-
+  const rankedResults = hasQuery ? getGuidedSearchResults(deferredQuery) : [];
   const topResults = rankedResults.slice(0, 8);
+  const recommendation = getGuidedSearchRecommendation(topResults);
+  const bestResultId = recommendation?.bestResult.id;
+  const secondaryResults = bestResultId
+    ? topResults.filter((result) => result.id !== bestResultId).slice(0, 7)
+    : topResults;
+  const showNoResults = hasQuery && topResults.length === 0;
 
   return (
     <section
@@ -108,13 +63,13 @@ export function SearchTheNorth() {
                 const nextQuery = event.currentTarget.value;
                 startTransition(() => setQuery(nextQuery));
               }}
-              placeholder='Try "Senja ferry", "Tromsø northern lights", "Lofoten rorbuer"...'
+              placeholder='Try "Senja ferry", "Tromso northern lights", "Lofoten ferry"...'
               className="w-full rounded-[1.05rem] border border-white/12 bg-[#080a0d]/78 py-3.5 pl-11 pr-4 text-sm font-light text-[#f4efe2]/88 outline-none placeholder:text-[#f4efe2]/45 focus:border-[#d8c9a7]/45 focus:ring-2 focus:ring-[#d8c9a7]/35 sm:text-base"
             />
           </div>
 
           <div className="mt-5 flex flex-wrap gap-2.5">
-            {homeSearchSuggestions.map((suggestion) => (
+            {guidedSearchSuggestions.map((suggestion) => (
               <button
                 key={suggestion}
                 type="button"
@@ -137,49 +92,78 @@ export function SearchTheNorth() {
             </p>
           ) : null}
 
-          {hasQuery && topResults.length === 0 ? (
+          {showNoResults ? (
             <p className="rounded-[1rem] border border-white/10 bg-white/[0.02] px-5 py-4 text-sm font-light leading-[1.78] text-[#f4efe2]/62 sm:text-base">
-              No direct match yet. Try broader terms like
-              {" "}
+              No direct match yet. Try broader terms like{" "}
               <span className="text-[#f4efe2]/82">
                 northern lights, ferry, where to stay, camping
-              </span>
-              {" "}
-              or
-              {" "}
-              <span className="text-[#f4efe2]/82">best time to visit</span>.
+              </span>{" "}
+              or <span className="text-[#f4efe2]/82">best time to visit</span>.
             </p>
           ) : null}
 
-          {topResults.length > 0 ? (
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {topResults.map((result) => (
-                <Link
-                  key={result.href}
-                  href={result.href}
-                  className="group h-full rounded-[1.15rem] border border-white/10 bg-[linear-gradient(170deg,rgba(255,255,255,0.035),rgba(255,255,255,0.014))] p-5 transition-colors hover:border-[#d8c9a7]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:p-6"
-                >
-                  <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/74">
-                    {result.category}
-                  </p>
-                  <h3 className="mt-4 font-serif text-[1.75rem] leading-[1.02] tracking-[-0.033em] text-[#f4efe2]">
-                    {result.title}
-                  </h3>
-                  <p className="mt-4 text-sm font-light leading-[1.78] text-[#f4efe2]/64 sm:text-[0.97rem]">
-                    {result.description}
-                  </p>
-                  <div className="mt-5 flex items-center justify-between gap-4">
-                    <p className="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/52">
-                      {result.route}
+          {recommendation ? (
+            <Link
+              href={recommendation.bestResult.href}
+              className="group mb-4 block rounded-[1.2rem] border border-[#d8c9a7]/28 bg-[linear-gradient(168deg,rgba(216,201,167,0.08),rgba(255,255,255,0.015)_42%,rgba(255,255,255,0.02))] p-6 transition-colors hover:border-[#d8c9a7]/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:p-7"
+            >
+              <p className="text-[0.58rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/82">
+                Recommended result
+              </p>
+              <h3 className="mt-4 font-serif text-[clamp(1.8rem,3.4vw,2.5rem)] leading-[0.98] tracking-[-0.035em] text-[#f4efe2]">
+                Best match: {recommendation.bestResult.title}
+              </h3>
+              <p className="mt-4 max-w-4xl text-sm font-light leading-[1.78] text-[#f4efe2]/68 sm:text-base">
+                {recommendation.bestResult.description}
+              </p>
+              <div className="mt-5 flex items-center justify-between gap-4">
+                <p className="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/56">
+                  {recommendation.bestResult.href}
+                </p>
+                <span className="inline-flex items-center gap-2 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 transition-colors group-hover:text-[#f4efe2]">
+                  Open section
+                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          ) : null}
+
+          {secondaryResults.length > 0 ? (
+            <>
+              {recommendation ? (
+                <p className="mb-4 text-[0.6rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/54">
+                  More matches
+                </p>
+              ) : null}
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {secondaryResults.map((result) => (
+                  <Link
+                    key={result.id}
+                    href={result.href}
+                    className="group h-full rounded-[1.15rem] border border-white/10 bg-[linear-gradient(170deg,rgba(255,255,255,0.035),rgba(255,255,255,0.014))] p-5 transition-colors hover:border-[#d8c9a7]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:p-6"
+                  >
+                    <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/74">
+                      {result.category}
                     </p>
-                    <span className="inline-flex items-center gap-2 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/72 transition-colors group-hover:text-[#f4efe2]">
-                      Open page
-                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                    <h3 className="mt-4 font-serif text-[1.75rem] leading-[1.02] tracking-[-0.033em] text-[#f4efe2]">
+                      {result.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.78] text-[#f4efe2]/64 sm:text-[0.97rem]">
+                      {result.description}
+                    </p>
+                    <div className="mt-5 flex items-center justify-between gap-4">
+                      <p className="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/52">
+                        {result.href}
+                      </p>
+                      <span className="inline-flex items-center gap-2 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/72 transition-colors group-hover:text-[#f4efe2]">
+                        Open page
+                        <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </>
           ) : null}
         </div>
       </div>

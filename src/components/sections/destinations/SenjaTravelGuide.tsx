@@ -2,6 +2,12 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
+import {
+  GUIDE_LAST_UPDATED,
+  guideSourceSets,
+} from "@/src/data/guide-meta-sources";
+
 import { DestinationReveal } from "./DestinationReveal";
 
 export const senjaTravelGuideMetadata = {
@@ -876,6 +882,7 @@ export function SenjaTravelGuide() {
             id="getting-around-senja"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
+            <span id="getting-around" className="block scroll-mt-24" aria-hidden="true" />
             <DestinationReveal>
               <SectionIntro
                 label="08 / Mobility"
@@ -902,6 +909,12 @@ export function SenjaTravelGuide() {
             id="senja-ferries"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
+            <span id="ferries" className="block scroll-mt-24" aria-hidden="true" />
+            <span
+              id="official-planners"
+              className="block scroll-mt-24"
+              aria-hidden="true"
+            />
             <DestinationReveal>
               <SectionIntro
                 label="09 / Ferries and planners"
@@ -1034,6 +1047,7 @@ export function SenjaTravelGuide() {
             id="places-worth-slowing-down"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
+            <span id="scenic-route" className="block scroll-mt-24" aria-hidden="true" />
             <DestinationReveal>
               <SectionIntro
                 label="13 / Places"
@@ -1282,6 +1296,15 @@ export function SenjaTravelGuide() {
                 </DestinationReveal>
               ))}
             </div>
+          </section>
+
+          <section className="border-t border-white/8 pt-16 sm:pt-20">
+            <DestinationReveal>
+              <GuideMetaFooter
+                lastUpdated={GUIDE_LAST_UPDATED}
+                sources={guideSourceSets.destinationSenja}
+              />
+            </DestinationReveal>
           </section>
         </div>
       </div>

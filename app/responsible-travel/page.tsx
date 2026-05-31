@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
+import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
+import {
+  GUIDE_LAST_UPDATED,
+  guideSourceSets,
+} from "@/src/data/guide-meta-sources";
+
 export const metadata: Metadata = {
   title: "Responsible Travel in Norway",
   description:
@@ -48,9 +54,11 @@ const principles = [
 
 const checklist = [
   "Check weather, road and ferry conditions before each transfer.",
+  "For winter driving, use proper winter tires, add time buffers and avoid long mountain transfers in unstable conditions.",
   "Plan daily distances with pauses, daylight and fatigue in mind.",
   "Carry layers, water, charged devices and route alternatives.",
   "Confirm parking, camping and access rules locally.",
+  "Wild camping requires right-to-roam distance: stay at least 150 metres from inhabited houses and leave no trace.",
   "Leave beaches, trails, viewpoints and ferry quays cleaner than you found them.",
 ];
 
@@ -100,7 +108,10 @@ export default function ResponsibleTravelPage() {
         </div>
       </section>
 
-      <section className="relative border-t border-white/8 px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-28">
+      <section
+        id="winter-driving"
+        className="relative border-t border-white/8 px-5 py-20 scroll-mt-24 sm:px-8 sm:py-24 md:px-12 lg:py-28"
+      >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_24%,rgba(126,176,192,0.07),transparent_34%),radial-gradient(circle_at_12%_88%,rgba(216,201,167,0.05),transparent_32%)]" />
         <div className="relative mx-auto max-w-7xl">
           <div className="max-w-3xl">
@@ -133,7 +144,10 @@ export default function ResponsibleTravelPage() {
         </div>
       </section>
 
-      <section className="border-t border-white/8 px-5 py-20 sm:px-8 sm:py-24 md:px-12">
+      <section
+        id="camping"
+        className="border-t border-white/8 px-5 py-20 scroll-mt-24 sm:px-8 sm:py-24 md:px-12"
+      >
         <div className="mx-auto grid max-w-7xl gap-10 rounded-[1.35rem] border border-white/10 bg-white/[0.025] p-8 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
             <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/76">
@@ -176,6 +190,13 @@ export default function ResponsibleTravelPage() {
             Explore the map
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-7xl">
+          <GuideMetaFooter
+            lastUpdated={GUIDE_LAST_UPDATED}
+            sources={guideSourceSets.campingResponsibleTravel}
+          />
         </div>
       </section>
     </main>

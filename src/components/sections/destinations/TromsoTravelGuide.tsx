@@ -2,6 +2,12 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
+import {
+  GUIDE_LAST_UPDATED,
+  guideSourceSets,
+} from "@/src/data/guide-meta-sources";
+
 import { DestinationReveal } from "./DestinationReveal";
 
 export const tromsoTravelGuideMetadata = {
@@ -959,6 +965,7 @@ export function TromsoTravelGuide() {
             id="getting-around-tromso"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
+            <span id="getting-around" className="block scroll-mt-24" aria-hidden="true" />
             <DestinationReveal>
               <SectionIntro
                 label="08 / Mobility"
@@ -1539,6 +1546,15 @@ export function TromsoTravelGuide() {
                 </DestinationReveal>
               ))}
             </div>
+          </section>
+
+          <section className="border-t border-white/8 pt-16 sm:pt-20">
+            <DestinationReveal>
+              <GuideMetaFooter
+                lastUpdated={GUIDE_LAST_UPDATED}
+                sources={guideSourceSets.destinationTromso}
+              />
+            </DestinationReveal>
           </section>
         </div>
       </div>
