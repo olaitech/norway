@@ -59,10 +59,11 @@ export function FeaturedDestinations() {
   return (
     <section
       id="destinations"
-      className="relative overflow-hidden bg-[#050607] px-5 pt-14 pb-14 text-[#f4efe2] sm:px-8 sm:pt-16 sm:pb-16 md:px-12 lg:pt-16 lg:pb-16"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#131b25_0%,#10161f_54%,#0b0f14_100%)] px-5 pt-14 pb-14 text-[#f7f3ed] sm:px-8 sm:pt-16 sm:pb-16 md:px-12 lg:pt-16 lg:pb-16"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(216,201,167,0.08),rgba(216,201,167,0)_34%),radial-gradient(circle_at_86%_8%,rgba(151,182,190,0.08),rgba(151,182,190,0)_30%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(216,201,181,0.08),rgba(216,201,181,0)_36%),radial-gradient(circle_at_86%_8%,rgba(151,182,190,0.09),rgba(151,182,190,0)_32%)]" />
+      <div className="home-transition-warm-to-dark pointer-events-none absolute inset-x-0 top-0 h-14" />
+      <div className="home-transition-dark-footer pointer-events-none absolute inset-x-0 bottom-0 h-16" />
 
       {animationsEnabled ? (
         <motion.div

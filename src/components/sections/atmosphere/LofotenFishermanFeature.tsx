@@ -7,11 +7,11 @@ export function LofotenFishermanFeature() {
   return (
     <section
       aria-labelledby="lofoten-fisherman-feature-title"
-      className="relative overflow-hidden bg-[#050607] px-5 pt-20 pb-8 text-[#f4efe2] sm:px-8 sm:pt-24 sm:pb-10 md:px-12 lg:pt-28 lg:pb-12"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#0b0f14_0%,#121821_58%,#1a2430_100%)] px-5 pt-20 pb-8 text-[#f7f3ed] sm:px-8 sm:pt-24 sm:pb-10 md:px-12 lg:pt-28 lg:pb-12"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(216,201,167,0.07),transparent_30%),radial-gradient(circle_at_78%_36%,rgba(126,176,192,0.09),transparent_34%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(5,6,7,0.62),rgba(5,6,7,0))]" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(216,201,167,0.08),transparent_32%),radial-gradient(circle_at_78%_36%,rgba(126,176,192,0.1),transparent_36%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-[linear-gradient(180deg,rgba(5,6,7,0.78),rgba(5,6,7,0.2)_56%,rgba(5,6,7,0))]" />
+      <div className="home-transition-dark-to-warm pointer-events-none absolute inset-x-0 bottom-0 h-14" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 xl:gap-20">
         <div className="max-w-3xl">
@@ -32,7 +32,7 @@ export function LofotenFishermanFeature() {
           </p>
           <Link
             href="/destinations/lofoten-islands"
-            className="mt-9 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.23em] text-[#f4efe2]/78 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+            className="mt-9 inline-flex items-center gap-2 rounded-full border border-[#d8c9b5]/26 bg-[#f7f3ed]/9 px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.23em] text-[#f7f3ed]/78 transition-colors hover:text-[#f7f3ed] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
           >
             Explore Lofoten
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
