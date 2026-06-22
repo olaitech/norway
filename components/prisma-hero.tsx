@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type CSSProperties, useRef } from "react";
 
+import { NavBar } from "@/src/components/navigation/NavBar";
 import { useMounted } from "@/src/hooks/useMounted";
 
 /* ---------------- WordsPullUp ---------------- */
@@ -116,23 +117,18 @@ export const WordsPullUpMultiStyle = ({ segments, className = "", style }: Words
   );
 };
 
-/* ---------------- Hero ---------------- */
-const navItems = [
-  { label: "Destinations", href: "/destinations" },
-  { label: "Routes", href: "/routes" },
-  { label: "Guides", href: "/guides" },
-  { label: "Journal", href: "/journal" },
-  { label: "Map", href: "/map" },
-  { label: "About", href: "/about" },
-];
-
 const PrismaHero = () => {
   const mounted = useMounted();
   const shouldReduceMotion = useReducedMotion() === true;
   const animationsEnabled = mounted && !shouldReduceMotion;
+  const heroHeadingId = "hero-title";
 
   return (
-    <section className="h-screen min-h-[640px] w-full bg-[#050607] text-[#f4efe2]">
+    <section
+      id="hero"
+      aria-labelledby={heroHeadingId}
+      className="h-screen min-h-[640px] w-full scroll-mt-24 bg-[#050607] text-[#f4efe2]"
+    >
       <div className="relative h-full w-full overflow-hidden">
         {/* Cinematic background */}
         {animationsEnabled ? (
@@ -179,35 +175,7 @@ const PrismaHero = () => {
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(2,5,8,0.42)_0%,rgba(2,5,8,0.05)_45%,rgba(2,5,8,0.76)_100%)]" />
 
         {/* Navbar */}
-        <nav className="absolute left-0 right-0 top-0 z-20 px-5 py-5 sm:px-8 md:px-12">
-          <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
-            <Link
-              href="/"
-              aria-label="Norge home"
-              className="flex h-[72px] w-[72px] shrink-0 items-center justify-center opacity-90 transition-opacity duration-300 hover:opacity-100 sm:h-12 sm:w-12"
-            >
-              <Image
-                src="/images/branding/logo-norge-removebg-preview.png"
-                alt=""
-                width={72}
-                height={72}
-                priority
-                className="h-full w-full object-contain"
-              />
-            </Link>
-            <div className="flex max-w-[calc(100vw-8rem)] items-center gap-5 overflow-x-auto rounded-full border border-white/10 bg-black/18 px-4 py-2.5 backdrop-blur-md sm:gap-8 sm:px-5 md:gap-10">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="shrink-0 text-[0.62rem] font-medium uppercase tracking-[0.18em] text-[#f4efe2]/72 transition-colors hover:text-[#f4efe2] sm:text-[0.68rem] sm:tracking-[0.22em]"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </nav>
+        <NavBar />
 
         {/* Hero content */}
         <div className="absolute inset-x-0 bottom-0 z-10 px-5 pb-10 sm:px-8 sm:pb-12 md:px-12 lg:pb-16">
@@ -228,6 +196,7 @@ const PrismaHero = () => {
                 </p>
               )}
               <h1
+                id={heroHeadingId}
                 className="font-serif text-[clamp(4.75rem,15vw,13rem)] font-normal leading-[0.82] tracking-[-0.055em] text-[#f4efe2]"
               >
                 <WordsPullUp text="Norway" />

@@ -67,8 +67,9 @@ const norwayPlanningContent: StickyScrollItem[] = [
 export function WaysIntoNorway() {
   return (
     <section
+      id="routes"
       aria-labelledby="ways-into-norway-title"
-      className="relative overflow-x-clip bg-[linear-gradient(180deg,#1b2530_0%,#121821_48%,#0b0f14_100%)] text-[#f7f3ed]"
+      className="relative scroll-mt-24 overflow-x-clip bg-[linear-gradient(180deg,#1b2530_0%,#121821_48%,#0b0f14_100%)] text-[#f7f3ed]"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_16%,rgba(151,182,190,0.09),transparent_30%),radial-gradient(circle_at_14%_82%,rgba(216,201,167,0.09),transparent_34%)]" />
       <div className="home-transition-warm-to-dark pointer-events-none absolute inset-x-0 top-0 h-16" />

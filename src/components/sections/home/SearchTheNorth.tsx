@@ -38,6 +38,7 @@ export function SearchTheNorth() {
 
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
+          id="search-the-north-title"
           eyebrow="Search archive"
           heading="Search the north"
           intro="Find ferries, road trips, places to stay, northern lights advice, camping rules and practical travel notes across the guide."

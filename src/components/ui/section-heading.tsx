@@ -1,4 +1,5 @@
 type SectionHeadingProps = {
+  id?: string;
   eyebrow: string;
   heading: string;
   intro?: string;
@@ -9,6 +10,7 @@ type SectionHeadingProps = {
 };
 
 export function SectionHeading({
+  id,
   eyebrow,
   heading,
   intro,
@@ -18,7 +20,7 @@ export function SectionHeading({
   introClassName = "",
 }: SectionHeadingProps) {
   return (
-    <div className={`max-w-3xl ${className}`}>
+    <div id={id} className={`max-w-3xl ${className}`}>
       <p
         className={`mb-4 text-[0.68rem] font-medium uppercase tracking-[0.36em] text-[#d8c9a7]/76 ${eyebrowClassName}`}
       >

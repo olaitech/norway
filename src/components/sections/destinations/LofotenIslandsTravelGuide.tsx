@@ -489,6 +489,7 @@ export function LofotenIslandsTravelGuide() {
           alt="Red rorbuer and steep mountains in Lofoten under soft Arctic light"
           fill
           priority
+          loading="eager"
           sizes="100vw"
           className="object-cover"
           style={{ objectPosition: "center center" }}
