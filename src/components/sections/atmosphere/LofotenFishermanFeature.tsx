@@ -11,7 +11,7 @@ export function LofotenFishermanFeature() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(216,201,167,0.08),transparent_32%),radial-gradient(circle_at_78%_36%,rgba(126,176,192,0.1),transparent_36%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-[linear-gradient(180deg,rgba(5,6,7,0.78),rgba(5,6,7,0.2)_56%,rgba(5,6,7,0))]" />
-      <div className="home-transition-dark-to-warm pointer-events-none absolute inset-x-0 bottom-0 h-14" />
+      <div className="home-transition-dark-to-warm pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-20 lg:h-24" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 xl:gap-20">
         <div className="max-w-3xl">

@@ -3,6 +3,7 @@ import {
   journalEntries,
 } from "@/src/data/journal";
 
+import { JournalFeaturedStory } from "./JournalFeaturedStory";
 import { JournalCard } from "./JournalCard";
 import { JournalHero } from "./JournalHero";
 import { JournalReveal } from "./JournalReveal";
@@ -13,12 +14,18 @@ export function JournalPage() {
       <JournalHero />
 
       <section className="relative z-10 px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-32">
-        <JournalReveal className="mx-auto max-w-7xl">
-          <p className="mb-8 text-[0.63rem] font-medium uppercase tracking-[0.36em] text-[#d8c9a7]/64">
-            Featured field note
-          </p>
-          <JournalCard entry={featuredJournalEntry} featured />
-        </JournalReveal>
+        <div className="mx-auto max-w-7xl space-y-16 sm:space-y-20">
+          <JournalReveal>
+            <JournalFeaturedStory />
+          </JournalReveal>
+
+          <JournalReveal>
+            <p className="mb-8 text-[0.63rem] font-medium uppercase tracking-[0.36em] text-[#d8c9a7]/64">
+              Featured field note
+            </p>
+            <JournalCard entry={featuredJournalEntry} featured />
+          </JournalReveal>
+        </div>
       </section>
 
       <section className="relative z-10 border-t border-white/8 px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-32">
