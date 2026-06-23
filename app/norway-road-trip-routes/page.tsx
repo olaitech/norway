@@ -9,5 +9,10 @@ export const metadata: Metadata = toMetadata(
 );
 
 export default function NorwayRoadTripRoutesPage() {
-  return <CinematicSeoPage page={seoPages.routesHub} />;
+  return (
+    <CinematicSeoPage
+      page={seoPages.routesHub}
+      canonicalPath="/norway-road-trip-routes"
+    />
+  );
 }

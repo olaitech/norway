@@ -20,6 +20,7 @@ export default function CampingRulesInNorwayPage() {
       category="Responsible Outdoor Travel"
       readTime="10 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/camping-rules-in-norway"
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         {

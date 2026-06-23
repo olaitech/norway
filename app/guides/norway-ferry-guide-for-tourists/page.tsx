@@ -20,6 +20,7 @@ export default function NorwayFerryGuideForTouristsPage() {
       category="Transport & Planning"
       readTime="14 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/norway-ferry-guide-for-tourists"
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         { label: "Entur", href: "https://entur.no/" },

@@ -7,6 +7,11 @@ import {
   GUIDE_LAST_UPDATED,
   guideSourceSets,
 } from "@/src/data/guide-meta-sources";
+import {
+  JsonLd,
+  createArticleJsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 import { DestinationReveal } from "./DestinationReveal";
 
@@ -16,6 +21,13 @@ export const tromsoTravelGuideMetadata = {
   description:
     "Plan a slower, smarter trip to Tromso in Northern Norway. Explore northern lights, midnight sun, winter tours, city life, transport, where to stay and what not to do.",
 } as const;
+
+const tromsoCanonicalPath = "/destinations/tromso";
+const tromsoJsonLdBreadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Destinations", href: "/destinations" },
+  { name: "Tromso", href: tromsoCanonicalPath },
+] as const;
 
 const quickFacts = [
   { label: "Region", value: "Troms, Northern Norway" },
@@ -623,7 +635,20 @@ function SectionIntro({ label, title, intro }: SectionIntroProps) {
 
 export function TromsoTravelGuide() {
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+    <>
+      <JsonLd
+        value={[
+          createBreadcrumbListJsonLd(tromsoJsonLdBreadcrumbs),
+          createArticleJsonLd({
+            headline: tromsoTravelGuideMetadata.title,
+            description: tromsoTravelGuideMetadata.description,
+            url: tromsoCanonicalPath,
+            image: "/images/destinations/tromso/tromso-header.jpg",
+            articleSection: "Destinations",
+          }),
+        ]}
+      />
+      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
       <section className="relative flex min-h-[92svh] flex-col overflow-hidden">
         <Image
           src="/images/destinations/tromso/tromso-header.jpg"
@@ -1558,6 +1583,7 @@ export function TromsoTravelGuide() {
           </section>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

@@ -493,6 +493,7 @@ export default function LocalMoneySavingTipsForNorwayPage() {
       category="Money & Budget"
       readTime="12 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/50-local-money-saving-tips-for-norway"
       sources={[
         {
           label: "Visit Norway",

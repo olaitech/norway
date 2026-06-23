@@ -8,6 +8,10 @@ import { GatewaysToNorthernNorway } from "@/src/components/sections/map/Gateways
 import { MapExplorer } from "@/src/components/sections/map/MapExplorer";
 import { featuredRoutes, mapFilters, mapPlaces } from "@/src/data/map";
 import { createPageMetadata } from "@/src/lib/metadata";
+import {
+  JsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 export const metadata = createPageMetadata({
   title: "Norway Travel Map | Routes, Destinations and Northern Norway Planning",
@@ -22,9 +26,16 @@ export const metadata = createPageMetadata({
 
 export default function MapPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050607] text-[#f4efe2]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_68%_8%,rgba(106,151,160,0.12),transparent_31%),radial-gradient(circle_at_16%_24%,rgba(216,201,167,0.07),transparent_27%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[linear-gradient(180deg,rgba(12,23,25,0.48),transparent)]" />
+    <>
+      <JsonLd
+        value={createBreadcrumbListJsonLd([
+          { name: "Home", href: "/" },
+          { name: "Map", href: "/map" },
+        ])}
+      />
+      <main className="relative min-h-screen overflow-hidden bg-[#050607] text-[#f4efe2]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_68%_8%,rgba(106,151,160,0.12),transparent_31%),radial-gradient(circle_at_16%_24%,rgba(216,201,167,0.07),transparent_27%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[linear-gradient(180deg,rgba(12,23,25,0.48),transparent)]" />
 
       <header className="relative z-10 px-5 py-6 sm:px-8 md:px-12">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
@@ -97,6 +108,7 @@ export default function MapPage() {
         routes={featuredRoutes}
       />
       <GatewaysToNorthernNorway />
-    </main>
+      </main>
+    </>
   );
 }

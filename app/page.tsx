@@ -7,6 +7,11 @@ import { SearchTheNorth } from "@/src/components/sections/home/SearchTheNorth";
 import { StartHereSection } from "@/src/components/sections/home/StartHereSection";
 import { WaysIntoNorway } from "@/src/components/sections/home/WaysIntoNorway";
 import { createPageMetadata } from "@/src/lib/metadata";
+import {
+  JsonLd,
+  createOrganizationJsonLd,
+  createWebSiteJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 export const metadata = createPageMetadata({
   title: "Trips Norway | Cinematic Travel Guide to Norway and Northern Norway",
@@ -18,6 +23,7 @@ export const metadata = createPageMetadata({
 export default function Home() {
   return (
     <>
+      <JsonLd value={[createWebSiteJsonLd(), createOrganizationJsonLd()]} />
       <PrismaHero />
       <SectionProgressNav />
       <LofotenFishermanFeature />

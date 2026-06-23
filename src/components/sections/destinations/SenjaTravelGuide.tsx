@@ -7,6 +7,11 @@ import {
   GUIDE_LAST_UPDATED,
   guideSourceSets,
 } from "@/src/data/guide-meta-sources";
+import {
+  JsonLd,
+  createArticleJsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 import { DestinationReveal } from "./DestinationReveal";
 
@@ -15,6 +20,13 @@ export const senjaTravelGuideMetadata = {
   description:
     "Plan a slower, smarter trip to Senja in Northern Norway. Explore the scenic route, Segla and Hesten hikes, ferries, places to stay, best seasons, camping rules and responsible travel advice.",
 } as const;
+
+const senjaCanonicalPath = "/destinations/senja";
+const senjaJsonLdBreadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Destinations", href: "/destinations" },
+  { name: "Senja", href: senjaCanonicalPath },
+] as const;
 
 const quickFacts = [
   { label: "Location", value: "Troms, Northern Norway" },
@@ -514,7 +526,20 @@ function SectionIntro({ label, title, intro }: SectionIntroProps) {
 
 export function SenjaTravelGuide() {
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+    <>
+      <JsonLd
+        value={[
+          createBreadcrumbListJsonLd(senjaJsonLdBreadcrumbs),
+          createArticleJsonLd({
+            headline: senjaTravelGuideMetadata.title,
+            description: senjaTravelGuideMetadata.description,
+            url: senjaCanonicalPath,
+            image: "/images/destinations/senja/senja-hero.jpg",
+            articleSection: "Destinations",
+          }),
+        ]}
+      />
+      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
       <section className="relative flex min-h-[92svh] flex-col overflow-hidden">
         <Image
           src="/images/destinations/senja/senja-hero.jpg"
@@ -1308,6 +1333,7 @@ export function SenjaTravelGuide() {
           </section>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

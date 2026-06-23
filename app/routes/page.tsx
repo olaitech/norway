@@ -14,5 +14,5 @@ export const metadata = createPageMetadata({
 });
 
 export default function RoutesPage() {
-  return <CinematicSeoPage page={seoPages.routesHub} />;
+  return <CinematicSeoPage page={seoPages.routesHub} canonicalPath="/routes" />;
 }

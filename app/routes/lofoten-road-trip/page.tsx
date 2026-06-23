@@ -9,5 +9,10 @@ export const metadata: Metadata = toMetadata(
 );
 
 export default function LofotenRoadTripPage() {
-  return <CinematicSeoPage page={seoPages.lofotenRoadTrip} />;
+  return (
+    <CinematicSeoPage
+      page={seoPages.lofotenRoadTrip}
+      canonicalPath="/routes/lofoten-road-trip"
+    />
+  );
 }

@@ -21,6 +21,7 @@ export default function HowToTravelNorthernNorwayWithoutCarPage() {
       category="Transport & Planning"
       readTime="13 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/how-to-travel-northern-norway-without-a-car"
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         { label: "Entur", href: "https://entur.no/" },

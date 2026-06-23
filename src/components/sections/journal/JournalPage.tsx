@@ -2,6 +2,10 @@ import {
   featuredJournalEntry,
   journalEntries,
 } from "@/src/data/journal";
+import {
+  JsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 import { JournalFeaturedStory } from "./JournalFeaturedStory";
 import { JournalCard } from "./JournalCard";
@@ -10,8 +14,15 @@ import { JournalReveal } from "./JournalReveal";
 
 export function JournalPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050607] text-[#f4efe2]">
-      <JournalHero />
+    <>
+      <JsonLd
+        value={createBreadcrumbListJsonLd([
+          { name: "Home", href: "/" },
+          { name: "Journal", href: "/journal" },
+        ])}
+      />
+      <main className="relative min-h-screen overflow-hidden bg-[#050607] text-[#f4efe2]">
+        <JournalHero />
 
       <section className="relative z-10 px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-32">
         <div className="mx-auto max-w-7xl space-y-16 sm:space-y-20">
@@ -58,12 +69,13 @@ export function JournalPage() {
         </div>
       </section>
 
-      <footer className="relative z-10 border-t border-white/8 px-5 py-10 sm:px-8 md:px-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 text-[0.59rem] font-medium uppercase tracking-[0.28em] text-[#f4efe2]/38 sm:flex-row sm:items-center sm:justify-between">
-          <p>Visual notes from the north</p>
-          <p>The archive expands with the seasons</p>
-        </div>
-      </footer>
-    </main>
+        <footer className="relative z-10 border-t border-white/8 px-5 py-10 sm:px-8 md:px-12">
+          <div className="mx-auto flex max-w-7xl flex-col gap-3 text-[0.59rem] font-medium uppercase tracking-[0.28em] text-[#f4efe2]/38 sm:flex-row sm:items-center sm:justify-between">
+            <p>Visual notes from the north</p>
+            <p>The archive expands with the seasons</p>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 }

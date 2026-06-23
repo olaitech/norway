@@ -7,6 +7,11 @@ import {
   GUIDE_LAST_UPDATED,
   guideSourceSets,
 } from "@/src/data/guide-meta-sources";
+import {
+  JsonLd,
+  createArticleJsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 import { DestinationReveal } from "./DestinationReveal";
 
@@ -15,6 +20,13 @@ export const helgelandCoastGuideMetadata = {
   description:
     "A cinematic slow travel guide to the Helgeland Coast in Northern Norway, with scenic roads, ferries, islands, UNESCO Vega, Torghatten, the Seven Sisters and practical route advice.",
 };
+
+const helgelandCoastCanonicalPath = "/destinations/helgeland-coast";
+const helgelandCoastJsonLdBreadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Destinations", href: "/destinations" },
+  { name: "Helgeland Coast", href: helgelandCoastCanonicalPath },
+] as const;
 
 const heroStats = [
   "433 km scenic route",
@@ -358,32 +370,6 @@ const faqJsonLd = {
   })),
 };
 
-const articleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: helgelandCoastGuideMetadata.title,
-  description: helgelandCoastGuideMetadata.description,
-  articleSection: "Destinations",
-  inLanguage: "en",
-  author: {
-    "@type": "Organization",
-    name: "Norge",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Norge",
-  },
-  about: {
-    "@type": "Place",
-    name: "Helgeland Coast",
-    address: {
-      "@type": "PostalAddress",
-      addressRegion: "Nordland",
-      addressCountry: "NO",
-    },
-  },
-};
-
 const relatedGuides = [
   { label: "Routes", href: "/routes" },
   { label: "Lofoten Islands", href: "/destinations/lofoten-islands" },
@@ -447,13 +433,21 @@ function AnchorButton({
 
 export function HelgelandCoastTravelGuide() {
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([articleJsonLd, faqJsonLd]),
-        }}
+    <>
+      <JsonLd
+        value={[
+          createBreadcrumbListJsonLd(helgelandCoastJsonLdBreadcrumbs),
+          createArticleJsonLd({
+            headline: helgelandCoastGuideMetadata.title,
+            description: helgelandCoastGuideMetadata.description,
+            url: helgelandCoastCanonicalPath,
+            image: "/images/destinations/helgeland/helgeland.jpg",
+            articleSection: "Destinations",
+          }),
+          faqJsonLd,
+        ]}
       />
+      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
       <section className="relative flex min-h-screen flex-col overflow-hidden">
         <Image
           src="/images/destinations/helgeland/helgeland.jpg"
@@ -1066,6 +1060,7 @@ export function HelgelandCoastTravelGuide() {
           </section>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

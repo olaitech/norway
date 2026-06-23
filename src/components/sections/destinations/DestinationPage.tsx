@@ -4,6 +4,11 @@ import Link from "next/link";
 
 import type { Destination } from "@/src/data/destinations";
 import { getRelatedDestinations } from "@/src/data/destinations";
+import {
+  JsonLd,
+  createArticleJsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 import { DestinationReveal } from "./DestinationReveal";
 
@@ -31,9 +36,27 @@ function SectionIntro({ label, title }: SectionIntroProps) {
 
 export function DestinationPage({ destination }: DestinationPageProps) {
   const relatedDestinations = getRelatedDestinations(destination.slug);
+  const canonicalPath = `/destinations/${destination.slug}`;
 
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+    <>
+      <JsonLd
+        value={[
+          createBreadcrumbListJsonLd([
+            { name: "Home", href: "/" },
+            { name: "Destinations", href: "/destinations" },
+            { name: destination.title, href: canonicalPath },
+          ]),
+          createArticleJsonLd({
+            headline: destination.metaTitle,
+            description: destination.metaDescription,
+            url: canonicalPath,
+            image: destination.imageSrc,
+            articleSection: destination.label,
+          }),
+        ]}
+      />
+      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
       <section className="relative flex min-h-screen flex-col overflow-hidden">
         <Image
           src={destination.imageSrc}
@@ -269,6 +292,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

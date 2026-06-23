@@ -9,5 +9,10 @@ export const metadata: Metadata = toMetadata(
 );
 
 export default function NorthernLightsNorwayPage() {
-  return <CinematicSeoPage page={seoPages.northernLightsNorway} />;
+  return (
+    <CinematicSeoPage
+      page={seoPages.northernLightsNorway}
+      canonicalPath="/northern-lights-norway"
+    />
+  );
 }

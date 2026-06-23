@@ -29,6 +29,7 @@ export default function HowExpensiveIsNorwayGuidePage() {
       category="Money & Budget"
       readTime="10 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/how-expensive-is-norway-for-tourists"
       sources={[
         {
           label: "Visit Norway",

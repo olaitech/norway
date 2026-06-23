@@ -20,6 +20,7 @@ export default function BestTimeToVisitNorthernNorwayPage() {
       category="Seasons & Weather"
       readTime="11 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/best-time-to-visit-northern-norway"
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         {

@@ -5,6 +5,7 @@ import {
   guideSourceSets,
 } from "@/src/data/guide-meta-sources";
 import { SITE_NAME } from "@/src/config/site";
+import type { BreadcrumbItem } from "@/src/lib/seo/jsonLd";
 
 export type SeoCard = {
   title: string;
@@ -49,6 +50,10 @@ export type SeoPageData = {
     lastUpdated: string;
     sources: ReadonlyArray<{ label: string; href: string }>;
   };
+  jsonLd?: {
+    breadcrumbs: readonly BreadcrumbItem[];
+    article?: boolean;
+  };
 };
 
 export function toMetadata(page: SeoPageData, canonicalPath: string): Metadata {
@@ -90,6 +95,12 @@ export const seoPages = {
       title: "Norway Road Trip Routes",
       description:
         "A cinematic route hub for Norway road trips across Lofoten, Helgeland, Arctic coastlines, fjords and quiet scenic roads.",
+    },
+    jsonLd: {
+      breadcrumbs: [
+        { name: "Home", href: "/" },
+        { name: "Routes", href: "/routes" },
+      ],
     },
     hero: {
       label: "Planning archive",
@@ -208,6 +219,14 @@ export const seoPages = {
       description:
         "A premium placeholder guide for a 5-7 day Lofoten road trip across Arctic villages, beaches and mountain roads.",
     },
+    jsonLd: {
+      breadcrumbs: [
+        { name: "Home", href: "/" },
+        { name: "Routes", href: "/routes" },
+        { name: "Lofoten Road Trip", href: "/routes/lofoten-road-trip" },
+      ],
+      article: true,
+    },
     hero: {
       label: "Route field note",
       title: "Lofoten Road Trip",
@@ -317,6 +336,17 @@ export const seoPages = {
       title: "Helgeland Coast Road Trip",
       description:
         "A cinematic placeholder guide for a slow Helgeland Coast road trip with island ferries, quiet roads and coastal landscapes.",
+    },
+    jsonLd: {
+      breadcrumbs: [
+        { name: "Home", href: "/" },
+        { name: "Routes", href: "/routes" },
+        {
+          name: "Helgeland Coast Road Trip",
+          href: "/routes/helgeland-coast-road-trip",
+        },
+      ],
+      article: true,
     },
     hero: {
       label: "Route field note",
@@ -429,6 +459,14 @@ export const seoPages = {
       description:
         "A cinematic placeholder guide to seeing northern lights in Norway across Tromso, Lofoten, Senja, Alta and Bodo.",
     },
+    jsonLd: {
+      breadcrumbs: [
+        { name: "Home", href: "/" },
+        { name: "Guides", href: "/guides" },
+        { name: "Northern Lights in Norway", href: "/northern-lights-norway" },
+      ],
+      article: true,
+    },
     hero: {
       label: "Arctic light guide",
       title: "Northern Lights in Norway",
@@ -536,6 +574,14 @@ export const seoPages = {
       title: "Fjords of Norway",
       description:
         "A cinematic introductory guide to the fjords of Norway, with practical planning notes for routes, seasons, ferries and slow travel.",
+    },
+    jsonLd: {
+      breadcrumbs: [
+        { name: "Home", href: "/" },
+        { name: "Guides", href: "/guides" },
+        { name: "Fjords of Norway", href: "/fjords-of-norway" },
+      ],
+      article: true,
     },
     hero: {
       label: "Landscape guide",
@@ -645,6 +691,14 @@ export const seoPages = {
       title: "Best Time to Visit Norway",
       description:
         "A month-by-month seasonal placeholder guide for Norway covering winter, spring, summer, autumn, fjords, road trips and Arctic light.",
+    },
+    jsonLd: {
+      breadcrumbs: [
+        { name: "Home", href: "/" },
+        { name: "Guides", href: "/guides" },
+        { name: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
+      ],
+      article: true,
     },
     hero: {
       label: "Seasonal field guide",

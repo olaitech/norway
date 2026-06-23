@@ -9,5 +9,10 @@ export const metadata: Metadata = toMetadata(
 );
 
 export default function BestTimeToVisitNorwayPage() {
-  return <CinematicSeoPage page={seoPages.bestTimeToVisitNorway} />;
+  return (
+    <CinematicSeoPage
+      page={seoPages.bestTimeToVisitNorway}
+      canonicalPath="/best-time-to-visit-norway"
+    />
+  );
 }

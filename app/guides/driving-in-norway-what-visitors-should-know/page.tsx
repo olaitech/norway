@@ -74,6 +74,7 @@ export default function DrivingInNorwayGuidePage() {
       category="Transport & Planning"
       readTime="12 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/driving-in-norway-what-visitors-should-know"
       sources={[
         {
           label: "Visit Norway",

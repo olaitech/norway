@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import type { JournalArticle } from "@/src/data/journal-articles";
+import {
+  JsonLd,
+  createArticleJsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 import { JournalReveal } from "./JournalReveal";
 
@@ -28,8 +33,27 @@ export function JournalArticlePage({
   article,
   relatedArticles,
 }: JournalArticlePageProps) {
+  const canonicalPath = `/journal/${article.slug}`;
+
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+    <>
+      <JsonLd
+        value={[
+          createBreadcrumbListJsonLd([
+            { name: "Home", href: "/" },
+            { name: "Journal", href: "/journal" },
+            { name: article.title, href: canonicalPath },
+          ]),
+          createArticleJsonLd({
+            headline: article.title,
+            description: article.excerpt,
+            url: canonicalPath,
+            image: article.image,
+            articleSection: article.category,
+          }),
+        ]}
+      />
+      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
       <section className="relative flex min-h-[78vh] flex-col overflow-hidden">
         <Image
           src={article.image}
@@ -249,6 +273,7 @@ export function JournalArticlePage({
           </Link>
         </JournalReveal>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

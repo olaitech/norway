@@ -20,6 +20,7 @@ export default function WhatToPackForNorwayPage() {
       category="Seasons & Weather"
       readTime="9 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/what-to-pack-for-norway"
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         { label: "Yr", href: "https://www.yr.no/" },

@@ -9,5 +9,10 @@ export const metadata: Metadata = toMetadata(
 );
 
 export default function HelgelandCoastRoadTripPage() {
-  return <CinematicSeoPage page={seoPages.helgelandCoastRoadTrip} />;
+  return (
+    <CinematicSeoPage
+      page={seoPages.helgelandCoastRoadTrip}
+      canonicalPath="/routes/helgeland-coast-road-trip"
+    />
+  );
 }

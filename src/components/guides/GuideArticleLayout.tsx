@@ -2,6 +2,11 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
+import {
+  JsonLd,
+  createArticleJsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 type GuideSource = {
   label: string;
@@ -14,6 +19,7 @@ type GuideArticleLayoutProps = {
   category: string;
   readTime: string;
   lastUpdated: string;
+  canonicalPath: string;
   sources?: GuideSource[];
   children: ReactNode;
 };
@@ -24,13 +30,31 @@ export function GuideArticleLayout({
   category,
   readTime,
   lastUpdated,
+  canonicalPath,
   sources,
   children,
 }: GuideArticleLayoutProps) {
   const hasSources = Boolean(sources && sources.length > 0);
+  const guideBreadcrumbs = [
+    { name: "Home", href: "/" },
+    { name: "Guides", href: "/guides" },
+    { name: title, href: canonicalPath },
+  ] as const;
 
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+    <>
+      <JsonLd
+        value={[
+          createBreadcrumbListJsonLd(guideBreadcrumbs),
+          createArticleJsonLd({
+            headline: title,
+            description: subtitle ?? title,
+            url: canonicalPath,
+            articleSection: category,
+          }),
+        ]}
+      />
+      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
       <section className="relative overflow-hidden px-5 pb-12 pt-8 sm:px-8 sm:pb-14 sm:pt-10 md:px-12">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(216,201,167,0.08),transparent_30%),radial-gradient(circle_at_82%_16%,rgba(126,176,192,0.1),transparent_34%)]" />
 
@@ -81,7 +105,8 @@ export function GuideArticleLayout({
           ) : null}
         </article>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
 

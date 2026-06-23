@@ -7,6 +7,11 @@ import {
   GUIDE_LAST_UPDATED,
   guideSourceSets,
 } from "@/src/data/guide-meta-sources";
+import {
+  JsonLd,
+  createArticleJsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 import { DestinationReveal } from "./DestinationReveal";
 
@@ -16,6 +21,13 @@ export const lofotenIslandsTravelGuideMetadata = {
   description:
     "Plan a slower, smarter trip to the Lofoten Islands with this source-backed guide to seasons, ferries, road trips, rorbuer, camping, villages and responsible travel.",
 } as const;
+
+const lofotenIslandsCanonicalPath = "/destinations/lofoten-islands";
+const lofotenIslandsJsonLdBreadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Destinations", href: "/destinations" },
+  { name: "Lofoten Islands", href: lofotenIslandsCanonicalPath },
+] as const;
 
 const quickFacts = [
   { label: "Region", value: "Northern Norway, Nordland" },
@@ -482,7 +494,20 @@ function SectionIntro({ label, title, intro }: SectionIntroProps) {
 
 export function LofotenIslandsTravelGuide() {
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+    <>
+      <JsonLd
+        value={[
+          createBreadcrumbListJsonLd(lofotenIslandsJsonLdBreadcrumbs),
+          createArticleJsonLd({
+            headline: lofotenIslandsTravelGuideMetadata.title,
+            description: lofotenIslandsTravelGuideMetadata.description,
+            url: lofotenIslandsCanonicalPath,
+            image: "/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg",
+            articleSection: "Destinations",
+          }),
+        ]}
+      />
+      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
       <section className="relative flex min-h-[92svh] flex-col overflow-hidden">
         <Image
           src="/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg"
@@ -1338,6 +1363,7 @@ export function LofotenIslandsTravelGuide() {
           </section>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

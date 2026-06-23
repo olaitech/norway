@@ -21,6 +21,7 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
       category="Seasons & Weather"
       readTime="10 min read"
       lastUpdated="May 2026"
+      canonicalPath="/guides/how-to-see-the-northern-lights-in-norway"
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         { label: "Visit Tromso", href: "https://www.visittromso.no/" },

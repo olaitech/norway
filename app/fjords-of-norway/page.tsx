@@ -9,5 +9,10 @@ export const metadata: Metadata = toMetadata(
 );
 
 export default function FjordsOfNorwayPage() {
-  return <CinematicSeoPage page={seoPages.fjordsOfNorway} />;
+  return (
+    <CinematicSeoPage
+      page={seoPages.fjordsOfNorway}
+      canonicalPath="/fjords-of-norway"
+    />
+  );
 }

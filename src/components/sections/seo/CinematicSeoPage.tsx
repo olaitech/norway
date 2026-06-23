@@ -4,9 +4,15 @@ import Link from "next/link";
 
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import type { SeoCard, SeoPageData, SeoSection } from "@/src/data/seo-pages";
+import {
+  JsonLd,
+  createArticleJsonLd,
+  createBreadcrumbListJsonLd,
+} from "@/src/lib/seo/jsonLd";
 
 type CinematicSeoPageProps = {
   page: SeoPageData;
+  canonicalPath: string;
 };
 
 function SectionHeader({ section }: { section: SeoSection }) {
@@ -62,9 +68,37 @@ function ContentCard({ card }: { card: SeoCard }) {
   );
 }
 
-export function CinematicSeoPage({ page }: CinematicSeoPageProps) {
+export function CinematicSeoPage({
+  page,
+  canonicalPath,
+}: CinematicSeoPageProps) {
+  const jsonLdSchemas = page.jsonLd
+    ? [
+        createBreadcrumbListJsonLd(page.jsonLd.breadcrumbs),
+        page.jsonLd.article
+          ? createArticleJsonLd({
+              headline: page.hero.title,
+              description: page.meta.description,
+              url: canonicalPath,
+              image: page.hero.imageSrc,
+              articleSection: page.hero.label,
+            })
+          : null,
+      ].filter(
+        (schema): schema is Record<string, unknown> => schema !== null,
+      )
+    : [];
+
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+    <>
+      {jsonLdSchemas.length > 0 ? (
+        <JsonLd
+          value={
+            jsonLdSchemas.length === 1 ? jsonLdSchemas[0] : jsonLdSchemas
+          }
+        />
+      ) : null}
+      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
       <section className="relative flex min-h-[74vh] flex-col overflow-hidden">
         <Image
           src={page.hero.imageSrc}
@@ -205,6 +239,7 @@ export function CinematicSeoPage({ page }: CinematicSeoPageProps) {
           ) : null}
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
