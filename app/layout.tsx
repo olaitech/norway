@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import { Footer } from "@/src/components/layout/Footer";
 import {
@@ -76,6 +77,7 @@ export default function RootLayout({
       <body id="top" className="min-h-full flex flex-col">
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
