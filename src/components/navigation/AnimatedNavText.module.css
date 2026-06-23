@@ -1,9 +1,60 @@
-.letterGlyph {
+.root {
+  position: relative;
   display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  perspective: 900px;
+  transform-style: preserve-3d;
   line-height: 1;
 }
 
-.letterGlyph::before {
-  content: attr(data-letter);
-  display: inline-block;
+.text {
+  display: block;
+  transform: translate3d(0, 0, 0) rotateX(0deg);
+  transform-origin: center center;
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.root::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform: translate3d(0, 112%, 0) rotateX(78deg);
+  transform-origin: center top;
+  opacity: 0;
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+
+:global(.group:hover) .text,
+:global(.group:focus-visible) .text {
+  transform: translate3d(0, -112%, 0) rotateX(-78deg);
+  opacity: 0;
+}
+
+:global(.group:hover) .root::after,
+:global(.group:focus-visible) .root::after {
+  transform: translate3d(0, 0, 0) rotateX(0deg);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text,
+  .root::after {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .root::after {
+    content: none;
+  }
 }

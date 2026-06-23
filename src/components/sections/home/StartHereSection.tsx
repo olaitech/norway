@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
@@ -136,27 +136,28 @@ export function StartHereSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const startHereCards = getStartHereItems();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isDesktopRail, setIsDesktopRail] = useState(false);
+  const isDesktopRail = useSyncExternalStore(
+    (onStoreChange) => {
+      if (shouldReduceMotion || typeof window === "undefined") {
+        return () => {};
+      }
 
-  useEffect(() => {
-    if (shouldReduceMotion) {
-      setIsDesktopRail(false);
-      return;
-    }
+      const mediaQuery = window.matchMedia("(min-width: 1024px)");
+      mediaQuery.addEventListener("change", onStoreChange);
 
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+      return () => {
+        mediaQuery.removeEventListener("change", onStoreChange);
+      };
+    },
+    () => {
+      if (shouldReduceMotion || typeof window === "undefined") {
+        return false;
+      }
 
-    const updateIsDesktopRail = () => {
-      setIsDesktopRail(mediaQuery.matches);
-    };
-
-    updateIsDesktopRail();
-    mediaQuery.addEventListener("change", updateIsDesktopRail);
-
-    return () => {
-      mediaQuery.removeEventListener("change", updateIsDesktopRail);
-    };
-  }, [shouldReduceMotion]);
+      return window.matchMedia("(min-width: 1024px)").matches;
+    },
+    () => false,
+  );
 
   useEffect(() => {
     if (shouldReduceMotion || !isDesktopRail || !startHereCards.length) {

@@ -1,10 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-import { useMounted } from "@/src/hooks/useMounted";
 
 import { AnimatedNavText } from "./AnimatedNavText";
 
@@ -12,8 +9,6 @@ export type NavItem = {
   label: string;
   href: string;
 };
-
-const MotionLink = motion.create(Link);
 
 export const primaryNavItems = [
   { label: "Destinations", href: "/destinations" },
@@ -34,7 +29,7 @@ type NavBarProps = {
 };
 
 const linkClassName =
-  "inline-flex items-center rounded-full px-3 py-2 text-[0.62rem] font-medium uppercase tracking-[0.18em] text-[#f4efe2]/72 transition-[color,background-color,opacity] duration-300 hover:bg-white/[0.03] hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/45 motion-reduce:transition-colors motion-reduce:hover:bg-transparent motion-reduce:hover:opacity-90 motion-reduce:hover:underline motion-reduce:underline-offset-[0.32em] motion-reduce:decoration-[#f4efe2]/25 sm:px-3.5 sm:py-2.5 sm:text-[0.68rem] sm:tracking-[0.22em]";
+  "group inline-flex items-center rounded-full px-3 py-2 text-[0.62rem] font-medium uppercase tracking-[0.18em] text-[#f4efe2]/72 transition-[color,background-color,opacity] duration-300 hover:bg-white/[0.03] hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/45 motion-reduce:transition-colors motion-reduce:hover:bg-transparent motion-reduce:hover:opacity-90 motion-reduce:hover:underline motion-reduce:underline-offset-[0.32em] motion-reduce:decoration-[#f4efe2]/25 sm:px-3.5 sm:py-2.5 sm:text-[0.68rem] sm:tracking-[0.22em]";
 
 export function NavBar({
   items = primaryNavItems,
@@ -44,10 +39,6 @@ export function NavBar({
   brandImageAlt = "",
   className = "",
 }: NavBarProps) {
-  const mounted = useMounted();
-  const shouldReduceMotion = useReducedMotion() === true;
-  const interactive = mounted && !shouldReduceMotion;
-
   return (
     <header
       className={`absolute inset-x-0 top-0 z-20 px-5 py-5 sm:px-8 md:px-12 ${className}`}
@@ -77,18 +68,13 @@ export function NavBar({
 
           <div className="relative z-10 flex min-w-0 max-w-full items-center gap-1 overflow-x-auto px-3 py-2.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:gap-1.5 sm:px-4 sm:py-3 md:gap-2 md:px-5">
             {items.map((item) => (
-              <MotionLink
+              <Link
                 key={item.href}
                 href={item.href}
-                aria-label={item.label}
-                initial="rest"
-                animate="rest"
-                whileHover={interactive ? "hover" : undefined}
-                whileFocus={interactive ? "hover" : undefined}
                 className={linkClassName}
               >
                 <AnimatedNavText text={item.label} />
-              </MotionLink>
+              </Link>
             ))}
           </div>
         </nav>

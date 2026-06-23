@@ -596,7 +596,6 @@ export function NorthernNorwayStory() {
     offset: ["start start", "end start"],
   });
 
-  const heroImageY = useTransform(heroScrollProgress, [0, 1], ["0%", "12%"]);
   const heroGlowX = useTransform(heroScrollProgress, [0, 1], ["0%", "6%"]);
   const heroGlowY = useTransform(heroScrollProgress, [0, 1], ["0%", "8%"]);
   const heroGlowOpacity = useTransform(heroScrollProgress, [0, 1], [0.46, 0.2]);
