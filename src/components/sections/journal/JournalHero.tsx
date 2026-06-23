@@ -61,15 +61,15 @@ export function JournalHero() {
           <Link
             href="/"
             aria-label="Norge home"
-            className="flex items-center gap-3 text-[0.64rem] font-medium uppercase tracking-[0.27em] text-[#f4efe2]/72 transition-colors hover:text-[#f4efe2]"
+            className="flex items-center gap-4 text-[0.64rem] font-medium uppercase tracking-[0.27em] text-[#f4efe2]/72 transition-colors hover:text-[#f4efe2]"
           >
             <Image
-              src="/images/branding/logo-norge-removebg-preview.png"
+              src="/images/branding/logo2.png"
               alt=""
-              width={48}
-              height={48}
+              width={80}
+              height={80}
               priority
-              className="h-11 w-11 object-contain"
+              className="h-20 w-20 object-contain"
             />
             Norge
           </Link>

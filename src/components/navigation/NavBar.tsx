@@ -40,7 +40,7 @@ export function NavBar({
   items = primaryNavItems,
   brandHref = "/",
   brandAriaLabel = "Norge home",
-  brandImageSrc = "/images/branding/logo-norge-removebg-preview.png",
+  brandImageSrc = "/images/branding/logo2.png",
   brandImageAlt = "",
   className = "",
 }: NavBarProps) {
@@ -56,13 +56,13 @@ export function NavBar({
         <Link
           href={brandHref}
           aria-label={brandAriaLabel}
-          className="flex h-[72px] w-[72px] shrink-0 items-center justify-center opacity-90 transition-opacity duration-300 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:h-12 sm:w-12"
+          className="flex h-24 w-24 shrink-0 items-center justify-center opacity-90 transition-opacity duration-300 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:h-32 sm:w-32"
         >
           <Image
             src={brandImageSrc}
             alt={brandImageAlt}
-            width={72}
-            height={72}
+            width={128}
+            height={128}
             priority
             className="h-full w-full object-contain"
           />
