@@ -164,7 +164,7 @@ export const journalArticles: JournalArticle[] = [
     imageAlt: "Calm sea and coastal road on the Helgeland Coast at dusk",
     excerpt:
       "A slow evening drive where sea mist softens the islands and the last ferries cross silver water.",
-    seoTitle: "Blue Hour on the Helgeland Coast | Journal | Norge",
+    seoTitle: "Blue Hour on the Helgeland Coast",
     seoDescription:
       "A short visual note from Norway's Helgeland Coast during blue hour with practical timing for ferries and coastal pauses.",
     publishedLabel: "Published: May 2026",
@@ -211,7 +211,7 @@ export const journalArticles: JournalArticle[] = [
     imageAlt: "Lofoten village and mountains in shifting weather",
     excerpt:
       "Fishing villages, rain-dark rock and quieter coves discovered beyond the familiar viewpoints.",
-    seoTitle: "Lofoten Beyond the Postcards | Journal | Norge",
+    seoTitle: "Lofoten Beyond the Postcards",
     seoDescription:
       "A concise field note on finding quieter roads and villages in Lofoten while keeping a slower cinematic travel pace.",
     publishedLabel: "Published: May 2026",
@@ -258,7 +258,7 @@ export const journalArticles: JournalArticle[] = [
     imageAlt: "Northern Norway coastline under changing Arctic sky",
     excerpt:
       "Reading light, weather and distance before choosing the right season for an Arctic journey.",
-    seoTitle: "When to Visit Northern Norway | Journal | Norge",
+    seoTitle: "When to Visit Northern Norway",
     seoDescription:
       "A compact seasonal note on choosing the right time for Northern Norway based on light, weather and route goals.",
     publishedLabel: "Published: May 2026",
@@ -305,7 +305,7 @@ export const journalArticles: JournalArticle[] = [
     imageAlt: "A traveler above a Norwegian fjord at a high viewpoint",
     excerpt:
       "Landscapes where shifting weather and immense scale turn an ordinary pause into a scene.",
-    seoTitle: "Where Norway Feels Most Cinematic | Journal | Norge",
+    seoTitle: "Where Norway Feels Most Cinematic",
     seoDescription:
       "A short visual essay placeholder exploring where Norway's scale, weather and road geometry feel most cinematic.",
     publishedLabel: "Published: May 2026",
@@ -352,7 +352,7 @@ export const journalArticles: JournalArticle[] = [
     imageAlt: "A scenic Norwegian landscape suited to a road trip",
     excerpt:
       "Building a route with room for ferries, roadside pauses and unplanned coastal light.",
-    seoTitle: "How to Plan a Scenic Norway Road Trip | Journal | Norge",
+    seoTitle: "How to Plan a Scenic Norway Road Trip",
     seoDescription:
       "A concise planning note for scenic Norway road trips with route pacing, ferry strategy and seasonal buffers.",
     publishedLabel: "Published: May 2026",

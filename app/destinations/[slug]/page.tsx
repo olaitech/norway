@@ -18,6 +18,7 @@ import {
   TromsoTravelGuide,
   tromsoTravelGuideMetadata,
 } from "@/src/components/sections/destinations/TromsoTravelGuide";
+import { SITE_NAME } from "@/src/config/site";
 import { destinations, getDestination } from "@/src/data/destinations";
 
 type DestinationRouteProps = {
@@ -51,6 +52,7 @@ export async function generateMetadata({
         title: lofotenIslandsTravelGuideMetadata.title,
         description: lofotenIslandsTravelGuideMetadata.description,
         url: "/destinations/lofoten-islands",
+        siteName: SITE_NAME,
         type: "article",
         images: [
           {
@@ -79,6 +81,7 @@ export async function generateMetadata({
         title: helgelandCoastGuideMetadata.title,
         description: helgelandCoastGuideMetadata.description,
         url: "/destinations/helgeland-coast",
+        siteName: SITE_NAME,
         type: "article",
         images: [
           {
@@ -107,6 +110,7 @@ export async function generateMetadata({
         title: senjaTravelGuideMetadata.title,
         description: senjaTravelGuideMetadata.description,
         url: "/destinations/senja",
+        siteName: SITE_NAME,
         type: "article",
         images: [
           {
@@ -135,6 +139,7 @@ export async function generateMetadata({
         title: tromsoTravelGuideMetadata.title,
         description: tromsoTravelGuideMetadata.description,
         url: "/destinations/tromso",
+        siteName: SITE_NAME,
         type: "article",
         images: [
           {
@@ -162,6 +167,7 @@ export async function generateMetadata({
       title: destination.metaTitle,
       description: destination.metaDescription,
       url: `/destinations/${slug}`,
+      siteName: SITE_NAME,
       type: "article",
       images: [
         {

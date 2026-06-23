@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { Footer } from "@/src/components/layout/Footer";
-import { SITE_URL } from "@/src/config/site";
+import { SITE_NAME, SITE_URL } from "@/src/config/site";
 
 import "./globals.css";
 
-const siteName = "Norway Travel Knowledge Portal";
+const siteName = SITE_NAME;
 const siteDescription =
   "A cinematic travel knowledge portal for Norway and Northern Norway, built around slow travel, dramatic landscapes, scenic routes, fjords, northern light skies and responsible destination guidance.";
 const socialImage = {

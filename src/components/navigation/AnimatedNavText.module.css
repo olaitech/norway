@@ -1,0 +1,9 @@
+.letterGlyph {
+  display: inline-block;
+  line-height: 1;
+}
+
+.letterGlyph::before {
+  content: attr(data-letter);
+  display: inline-block;
+}

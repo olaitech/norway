@@ -5,7 +5,7 @@ import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 export const metadata: Metadata = {
   title: "Privacy policy",
   description:
-    "Read the privacy policy for the Norway Travel Knowledge Portal, including plain-English notes on analytics, contact messages, personal data and future third-party services.",
+    "Read the privacy policy for Trips Norway, including plain-English notes on analytics, contact messages, personal data and future third-party services.",
   alternates: {
     canonical: "/privacy",
   },

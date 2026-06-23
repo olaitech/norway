@@ -10,7 +10,7 @@ import { MapExplorer } from "@/src/components/sections/map/MapExplorer";
 import { featuredRoutes, mapFilters, mapPlaces } from "@/src/data/map";
 
 export const metadata: Metadata = {
-  title: "Explore Norway by Map | Norge",
+  title: "Explore Norway by Map",
   description:
     "Trace featured Norwegian islands, fjords and scenic routes on an interactive travel map.",
   alternates: {

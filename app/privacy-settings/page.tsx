@@ -5,7 +5,7 @@ import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 export const metadata: Metadata = {
   title: "Privacy settings",
   description:
-    "Review the current privacy settings placeholder for the Norway Travel Knowledge Portal, including necessary cookies, analytics, embedded media and marketing status.",
+    "Review the current privacy settings placeholder for Trips Norway, including necessary cookies, analytics, embedded media and marketing status.",
   alternates: {
     canonical: "/privacy-settings",
   },

@@ -86,6 +86,7 @@ export function NavBar({
                 whileFocus={interactive ? "hover" : undefined}
                 className={linkClassName}
               >
+                <span className="sr-only">{item.label}</span>
                 <AnimatedNavText text={item.label} />
               </MotionLink>
             ))}

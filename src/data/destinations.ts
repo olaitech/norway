@@ -68,7 +68,7 @@ export const destinations: Destination[] = [
     imageAlt:
       "Mountain peaks rising above a small coastal village in the Lofoten Islands",
     imagePosition: "center center",
-    metaTitle: "Lofoten Islands | Norge Destinations",
+    metaTitle: "Lofoten Islands",
     metaDescription:
       "Explore a cinematic placeholder guide to the Lofoten Islands, with seasonal notes, quiet experiences and a suggested coastal route.",
     facts: [
@@ -162,7 +162,7 @@ export const destinations: Destination[] = [
     imageSrc: "/images/cards/senja.png",
     imageAlt: "Steep coastal mountains and water on the island of Senja",
     imagePosition: "center center",
-    metaTitle: "Senja | Norge Destinations",
+    metaTitle: "Senja",
     metaDescription:
       "Discover a calm placeholder travel guide to Senja, including seasonal advice, island experiences and a suggested scenic route.",
     facts: [
@@ -256,7 +256,7 @@ export const destinations: Destination[] = [
     imageSrc: "/images/cards/helgeland.png",
     imageAlt: "An open road following the rugged shoreline of the Helgeland Coast",
     imagePosition: "center center",
-    metaTitle: "Helgeland Coast | Norge Destinations",
+    metaTitle: "Helgeland Coast",
     metaDescription:
       "Plan a slow placeholder journey along the Helgeland Coast with seasonal guidance, island stops and a suggested ferry-linked route.",
     facts: [
@@ -350,7 +350,7 @@ export const destinations: Destination[] = [
     imageSrc: "/images/cards/tromsø.png",
     imageAlt: "Tromso waterfront beneath an Arctic evening sky",
     imagePosition: "center center",
-    metaTitle: "Tromsø | Norge Destinations",
+    metaTitle: "Tromsø",
     metaDescription:
       "Explore a refined placeholder guide to Tromso, including northern seasons, city experiences and quiet Arctic excursions.",
     facts: [

@@ -4,6 +4,7 @@ import {
   GUIDE_LAST_UPDATED,
   guideSourceSets,
 } from "@/src/data/guide-meta-sources";
+import { SITE_NAME } from "@/src/config/site";
 
 export type SeoCard = {
   title: string;
@@ -65,6 +66,7 @@ export function toMetadata(page: SeoPageData, canonicalPath: string): Metadata {
       title: openGraphTitle,
       description: openGraphDescription,
       url: canonicalPath,
+      siteName: SITE_NAME,
       type: "website",
       images: [
         {
@@ -85,7 +87,7 @@ export function toMetadata(page: SeoPageData, canonicalPath: string): Metadata {
 export const seoPages = {
   routesHub: {
     meta: {
-      title: "Norway Road Trip Routes | Norge",
+      title: "Norway Road Trip Routes",
       description:
         "A cinematic route hub for Norway road trips across Lofoten, Helgeland, Arctic coastlines, fjords and quiet scenic roads.",
     },
@@ -202,7 +204,7 @@ export const seoPages = {
   },
   lofotenRoadTrip: {
     meta: {
-      title: "Lofoten Road Trip (5-7 Days) | Norge",
+      title: "Lofoten Road Trip (5-7 Days)",
       description:
         "A premium placeholder guide for a 5-7 day Lofoten road trip across Arctic villages, beaches and mountain roads.",
     },
@@ -312,7 +314,7 @@ export const seoPages = {
   },
   helgelandCoastRoadTrip: {
     meta: {
-      title: "Helgeland Coast Road Trip | Norge",
+      title: "Helgeland Coast Road Trip",
       description:
         "A cinematic placeholder guide for a slow Helgeland Coast road trip with island ferries, quiet roads and coastal landscapes.",
     },
@@ -423,7 +425,7 @@ export const seoPages = {
   },
   northernLightsNorway: {
     meta: {
-      title: "Northern Lights in Norway | Norge",
+      title: "Northern Lights in Norway",
       description:
         "A cinematic placeholder guide to seeing northern lights in Norway across Tromso, Lofoten, Senja, Alta and Bodo.",
     },
@@ -531,7 +533,7 @@ export const seoPages = {
   },
   fjordsOfNorway: {
     meta: {
-      title: "Fjords of Norway | Norge",
+      title: "Fjords of Norway",
       description:
         "A cinematic introductory guide to the fjords of Norway, with practical planning notes for routes, seasons, ferries and slow travel.",
     },
@@ -640,7 +642,7 @@ export const seoPages = {
   },
   bestTimeToVisitNorway: {
     meta: {
-      title: "Best Time to Visit Norway | Norge",
+      title: "Best Time to Visit Norway",
       description:
         "A month-by-month seasonal placeholder guide for Norway covering winter, spring, summer, autumn, fjords, road trips and Arctic light.",
     },
@@ -762,7 +764,7 @@ export const seoPages = {
   },
   lofotenHub: {
     meta: {
-      title: "Lofoten Travel Guide | Norge",
+      title: "Lofoten Travel Guide",
       description:
         "A premium destination hub for Lofoten with villages, road trips, seasons, beaches, northern lights and photography notes.",
     },

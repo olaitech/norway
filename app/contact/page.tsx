@@ -6,7 +6,7 @@ import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact the Norway Travel Knowledge Portal about corrections, local knowledge, story ideas, partnerships, photography, writing or future collaboration.",
+    "Contact Trips Norway about corrections, local knowledge, story ideas, partnerships, photography, writing or future collaboration.",
   alternates: {
     canonical: "/contact",
   },

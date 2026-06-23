@@ -1,1 +1,2 @@
-export const SITE_URL = "https://norway-umber.vercel.app";
+export const SITE_NAME = "Trips Norway";
+export const SITE_URL = "https://tripsnorway.com";

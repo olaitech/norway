@@ -5,7 +5,7 @@ import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 export const metadata: Metadata = {
   title: "About this portal",
   description:
-    "Learn about the independent Norway Travel Knowledge Portal, built around cinematic storytelling, practical guidance, slow travel, scenic roads and responsible tourism in Norway and Northern Norway.",
+    "Learn about Trips Norway, built around cinematic storytelling, practical guidance, slow travel, scenic roads and responsible tourism in Norway and Northern Norway.",
   alternates: {
     canonical: "/about",
   },

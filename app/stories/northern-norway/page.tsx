@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { NorthernNorwayStory } from "@/src/components/stories/NorthernNorwayStory";
+import { SITE_NAME } from "@/src/config/site";
 
 const title = "Northern Norway: A Slow Journey Through Light";
 const description =
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
+    siteName: SITE_NAME,
     type: "article",
     url: "/stories/northern-norway",
     images: [

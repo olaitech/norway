@@ -113,7 +113,7 @@ const guideGroups = [
 ] as const satisfies readonly GuideGroup[];
 
 export const metadata: Metadata = {
-  title: "Practical Guides for Norway | Norway Travel Knowledge Portal",
+  title: "Practical Guides",
   description:
     "Practical Norway travel guides covering costs, ferries, transport, driving, camping, packing, northern lights and the best time to visit Northern Norway.",
   alternates: {

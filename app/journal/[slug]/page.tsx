@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { JournalArticlePage } from "@/src/components/sections/journal/JournalArticlePage";
+import { SITE_NAME } from "@/src/config/site";
 import {
   getJournalArticle,
   getRelatedJournalArticles,
@@ -38,6 +39,7 @@ export async function generateMetadata({
       title: article.seoTitle,
       description: article.seoDescription,
       url: `/journal/${slug}`,
+      siteName: SITE_NAME,
       type: "article",
       images: [
         {
