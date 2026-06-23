@@ -11,6 +11,10 @@ export const metadata = createPageMetadata({
   description:
     "Explore curated Norway and Northern Norway destinations, from Lofoten and Senja to Helgeland, Tromsø, fjords, islands and quiet coastal communities.",
   canonical: "/destinations",
+  image: {
+    url: destinationArchiveCards[0].image,
+    alt: destinationArchiveCards[0].imageAlt,
+  },
 });
 
 export default function DestinationsPage() {

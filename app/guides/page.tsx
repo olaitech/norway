@@ -117,6 +117,10 @@ export const metadata = createPageMetadata({
   description:
     "Practical Norway travel guides for seasons, ferries, driving, camping, northern lights, budgets and planning a calmer journey.",
   canonical: "/guides",
+  image: {
+    url: "/images/hero/preikestolen.png",
+    alt: "A cinematic Norwegian fjord landscape seen from Preikestolen",
+  },
 });
 
 export default function GuidesPage() {

@@ -7,6 +7,10 @@ export const metadata = createPageMetadata({
   description:
     "Plan slower Norway road trips through scenic routes, ferry crossings, fjords, coastal roads and Northern Norway landscapes.",
   canonical: "/routes",
+  image: {
+    url: seoPages.routesHub.hero.imageSrc,
+    alt: seoPages.routesHub.hero.imageAlt,
+  },
 });
 
 export default function RoutesPage() {

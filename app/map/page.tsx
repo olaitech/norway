@@ -14,6 +14,10 @@ export const metadata = createPageMetadata({
   description:
     "Use the Trips Norway map to understand where destinations, road trips, ferries and regions connect across Norway and Northern Norway.",
   canonical: "/map",
+  image: {
+    url: "/images/map/map-norway.jpg",
+    alt: "A map of Norway highlighting routes, destinations and northern regions",
+  },
 });
 
 export default function MapPage() {

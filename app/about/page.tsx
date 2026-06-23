@@ -6,6 +6,10 @@ export const metadata = createPageMetadata({
   description:
     "Trips Norway is an independent travel knowledge portal built from Northern Norway, combining cinematic storytelling, practical guidance and responsible tourism.",
   canonical: "/about",
+  image: {
+    url: "/images/hero/preikestolen.png",
+    alt: "A cinematic Norwegian fjord landscape seen from Preikestolen",
+  },
 });
 
 const sections = [
