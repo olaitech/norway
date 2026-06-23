@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
@@ -29,6 +28,32 @@ export default function WhatToPackForNorwayPage() {
           href: "https://www.dnt.no/",
         },
         { label: "Varsom", href: "https://www.varsom.no/" },
+      ]}
+      relatedLinks={[
+        {
+          label: "Season",
+          title: "Best Time to Visit Northern Norway",
+          href: "/guides/best-time-to-visit-northern-norway",
+          description: "Pack for the season and daylight window you actually choose.",
+        },
+        {
+          label: "Planning",
+          title: "How to See the Northern Lights in Norway",
+          href: "/guides/how-to-see-the-northern-lights-in-norway",
+          description: "Add warmer layers and a flexible evening kit for aurora nights.",
+        },
+        {
+          label: "Route",
+          title: "Lofoten Road Trip",
+          href: "/routes/lofoten-road-trip",
+          description: "Tailor the packing list to a compact scenic road trip.",
+        },
+        {
+          label: "Transport",
+          title: "Norway Ferry Guide for Tourists",
+          href: "/guides/norway-ferry-guide-for-tourists",
+          description: "Plan for ferry decks, wind and quick weather changes on crossing days.",
+        },
       ]}
     >
       <h2>Intro</h2>
@@ -123,35 +148,6 @@ export default function WhatToPackForNorwayPage() {
         <li>Skipping waterproof layers for short itineraries.</li>
         <li>Underestimating wind chill on coasts and ferries.</li>
         <li>Bringing too many clothes and too few practical layers.</li>
-      </ul>
-
-      <h2>Continue planning your Norway trip</h2>
-      <ul>
-        <li>
-          <Link href="/guides/best-time-to-visit-northern-norway">
-            Best Time to Visit Northern Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-to-see-the-northern-lights-in-norway">
-            How to See the Northern Lights in Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/camping-rules-in-norway">
-            Camping Rules in Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/driving-in-norway-what-visitors-should-know">
-            Driving in Norway: What Visitors Should Know
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-expensive-is-norway-for-tourists">
-            How Expensive Is Norway for Tourists?
-          </Link>
-        </li>
       </ul>
     </GuideArticleLayout>
   );

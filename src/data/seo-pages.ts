@@ -195,10 +195,10 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Lofoten Guide", href: "/destinations/lofoten-islands" },
-      { label: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
-      { label: "Northern Lights in Norway", href: "/northern-lights-norway" },
-      { label: "Interactive Norway Map", href: "/map" },
+      { label: "Plan the Lofoten destination guide", href: "/destinations/lofoten-islands" },
+      { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "See the northern lights guide", href: "/northern-lights-norway" },
+      { label: "Open the Norway map", href: "/map" },
     ],
     cta: {
       label: "Continue planning",
@@ -313,10 +313,10 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Routes Hub", href: "/routes" },
-      { label: "Lofoten Destination Hub", href: "/destinations/lofoten-islands" },
-      { label: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
-      { label: "Northern Lights in Norway", href: "/northern-lights-norway" },
+      { label: "Browse the route hub", href: "/routes" },
+      { label: "Read the Lofoten destination guide", href: "/destinations/lofoten-islands" },
+      { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "See the northern lights guide", href: "/northern-lights-norway" },
     ],
     cta: {
       label: "Next step",
@@ -435,10 +435,10 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Routes Hub", href: "/routes" },
-      { label: "Lofoten Road Trip", href: "/routes/lofoten-road-trip" },
-      { label: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
-      { label: "Explore Norway by Map", href: "/map" },
+      { label: "Browse the route hub", href: "/routes" },
+      { label: "See the Lofoten road trip", href: "/routes/lofoten-road-trip" },
+      { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "Open the Norway map", href: "/map" },
     ],
     cta: {
       label: "Continue planning",
@@ -551,10 +551,10 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
-      { label: "Routes Hub", href: "/routes" },
-      { label: "Lofoten Destination Hub", href: "/destinations/lofoten-islands" },
-      { label: "Explore Norway by Map", href: "/map" },
+      { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "Browse the route hub", href: "/routes" },
+      { label: "Read the Lofoten destination guide", href: "/destinations/lofoten-islands" },
+      { label: "Open the Norway map", href: "/map" },
     ],
     cta: {
       label: "Continue planning",
@@ -668,10 +668,10 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Norway road trip routes", href: "/norway-road-trip-routes" },
-      { label: "Best time to visit Norway", href: "/best-time-to-visit-norway" },
-      { label: "Responsible travel", href: "/responsible-travel" },
-      { label: "Explore Norway by Map", href: "/map" },
+      { label: "Browse Norway road trip routes", href: "/norway-road-trip-routes" },
+      { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "See responsible travel advice", href: "/responsible-travel" },
+      { label: "Open the Norway map", href: "/map" },
     ],
     cta: {
       label: "Continue planning",
@@ -798,10 +798,10 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Northern Lights in Norway", href: "/northern-lights-norway" },
-      { label: "Routes Hub", href: "/routes" },
-      { label: "Lofoten Hub", href: "/destinations/lofoten-islands" },
-      { label: "Interactive Map", href: "/map" },
+      { label: "See the northern lights guide", href: "/northern-lights-norway" },
+      { label: "Browse the route hub", href: "/routes" },
+      { label: "Read the Lofoten destination guide", href: "/destinations/lofoten-islands" },
+      { label: "Open the Norway map", href: "/map" },
     ],
     cta: {
       label: "Continue planning",
@@ -906,10 +906,10 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Lofoten Road Trip", href: "/routes/lofoten-road-trip" },
-      { label: "Routes Hub", href: "/routes" },
-      { label: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
-      { label: "Destinations", href: "/#destinations" },
+      { label: "Plan the Lofoten road trip", href: "/routes/lofoten-road-trip" },
+      { label: "Browse the route hub", href: "/routes" },
+      { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "Return to destinations", href: "/#destinations" },
     ],
     cta: {
       label: "Continue planning",

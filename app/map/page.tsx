@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 
 import { GatewaysToNorthernNorway } from "@/src/components/sections/map/GatewaysToNorthernNorway";
 import { MapExplorer } from "@/src/components/sections/map/MapExplorer";
+import { RelatedLinkCards } from "@/src/components/shared/RelatedLinkCards";
 import { featuredRoutes, mapFilters, mapPlaces } from "@/src/data/map";
 import { createPageMetadata } from "@/src/lib/metadata";
 import {
@@ -108,6 +109,42 @@ export default function MapPage() {
         routes={featuredRoutes}
       />
       <GatewaysToNorthernNorway />
+
+      <section className="border-t border-white/8 px-5 py-16 sm:px-8 sm:py-20 md:px-12">
+        <div className="mx-auto max-w-7xl">
+          <RelatedLinkCards
+            eyebrow="Continue planning"
+            title="Use the map as a planning bridge"
+            intro="Move from the map into the routes, destinations and practical guides that shape the trip."
+            links={[
+              {
+                label: "Destinations",
+                title: "Browse Norway destinations",
+                href: "/destinations",
+                description: "Trace the islands, coast and Arctic cities before you settle on a base.",
+              },
+              {
+                label: "Routes",
+                title: "Compare Norway road trip routes",
+                href: "/routes",
+                description: "See how the coastal and island routes connect across the country.",
+              },
+              {
+                label: "Guide",
+                title: "Norway Ferry Guide for Tourists",
+                href: "/guides/norway-ferry-guide-for-tourists",
+                description: "Use the ferry guide to understand the crossings shown on the map.",
+              },
+              {
+                label: "Story",
+                title: "Northern Norway: A Slow Journey Through Light",
+                href: "/stories/northern-norway",
+                description: "Follow the map into the cinematic story and its linked planning paths.",
+              },
+            ]}
+          />
+        </div>
+      </section>
       </main>
     </>
   );

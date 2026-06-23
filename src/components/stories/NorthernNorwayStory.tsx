@@ -12,6 +12,7 @@ import {
   useTransform,
 } from "framer-motion";
 
+import { RelatedLinkCards } from "@/src/components/shared/RelatedLinkCards";
 import { useMounted } from "@/src/hooks/useMounted";
 
 type StoryAsset = {
@@ -181,38 +182,44 @@ const storyChapters: readonly StoryChapter[] = [
   },
 ];
 
-const practicalLinks: readonly StoryLink[] = [
+const practicalLinks = [
   {
     label: "Routes",
+    title: "Explore the route hub",
     href: "/routes",
-    description: "Use the route hub to compare the northern arcs.",
-  },
-  {
-    label: "Seasons",
-    href: "/best-time-to-visit-norway",
-    description: "Match the journey to light, snow and daylight.",
+    description: "Compare the northern arcs and choose the right road-trip shape.",
   },
   {
     label: "Ferries",
+    title: "Understand ferry travel in Norway",
     href: "/guides/norway-ferry-guide-for-tourists",
-    description: "Build crossings into the rhythm of the trip.",
+    description: "Put crossings into the rhythm of the trip before finalizing the route.",
   },
   {
     label: "Northern lights",
+    title: "See where northern lights travel fits best",
     href: "/guides/how-to-see-the-northern-lights-in-norway",
-    description: "Plan for the dark hours and the clear-sky window.",
+    description: "Match the story's darker chapters to a real aurora plan.",
   },
   {
-    label: "Responsible travel",
+    label: "Seasons",
+    title: "Choose the best season for the north",
+    href: "/guides/best-time-to-visit-northern-norway",
+    description: "Align roads, light and weather before you book.",
+  },
+  {
+    label: "Responsibility",
+    title: "Keep the trip calm and low-impact",
     href: "/responsible-travel",
-    description: "Keep the journey quiet, careful and local.",
+    description: "Move carefully through communities and fragile coastal places.",
   },
   {
     label: "Map",
+    title: "Open the Norway travel map",
     href: "/map",
-    description: "Trace the coast before locking in the route.",
+    description: "Trace the coast before locking in where to stop and sleep.",
   },
-];
+] as const;
 
 function StoryImageFrame({
   asset,
@@ -693,25 +700,12 @@ export function NorthernNorwayStory() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-[linear-gradient(180deg,rgba(244,239,226,0.02),rgba(244,239,226,0))]" />
 
         <div className="relative mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="text-[0.62rem] font-medium uppercase tracking-[0.38em] text-[#d8c9a7]/74">
-              Quiet travel notes
-            </p>
-            <h2 className="mt-5 font-serif text-[clamp(2.6rem,6vw,5rem)] font-normal leading-[0.92] tracking-[-0.05em] text-[#f4efe2]">
-              Plan the route around light, ferries and weather
-            </h2>
-            <p className="mt-5 max-w-2xl text-sm font-light leading-[1.95] text-[#f4efe2]/68 sm:text-base md:text-lg">
-              The page ends with practical links instead of a hard stop. Use the
-              route hub, season guide and ferry notes to keep the trip calm and
-              realistic.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {practicalLinks.map((link) => (
-              <StoryLinkPill key={link.href} link={link} />
-            ))}
-          </div>
+          <RelatedLinkCards
+            eyebrow="Continue planning"
+            title="Plan the journey behind the story"
+            intro="Turn the atmosphere into a real route with guides to ferries, seasons, northern lights and slower coastal travel."
+            links={practicalLinks}
+          />
         </div>
       </section>
     </main>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
@@ -107,6 +106,32 @@ export default function DrivingInNorwayGuidePage() {
         {
           label: "Varsom",
           href: "https://www.varsom.no/",
+        },
+      ]}
+      relatedLinks={[
+        {
+          label: "Route",
+          title: "Lofoten Road Trip",
+          href: "/routes/lofoten-road-trip",
+          description: "See how the driving rules play out on a compact scenic island route.",
+        },
+        {
+          label: "Route",
+          title: "Helgeland Coast Road Trip",
+          href: "/routes/helgeland-coast-road-trip",
+          description: "Plan for ferries, bridges and the slower pace of the coastal route.",
+        },
+        {
+          label: "Guide",
+          title: "Norway Ferry Guide for Tourists",
+          href: "/guides/norway-ferry-guide-for-tourists",
+          description: "Put the road rules together with ferry timing and ticketing.",
+        },
+        {
+          label: "Map",
+          title: "Norway Travel Map",
+          href: "/map",
+          description: "Trace roads, ferries and destinations before booking the trip.",
         },
       ]}
     >
@@ -681,57 +706,6 @@ export default function DrivingInNorwayGuidePage() {
           >
             Varsom
           </a>
-        </li>
-      </ul>
-
-      <h2>Continue planning your Norway trip</h2>
-      <ul>
-        <li>
-          <Link href="/guides/norway-ferry-guide-for-tourists">
-            Norway Ferry Guide for Tourists
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-expensive-is-norway-for-tourists">
-            How Expensive Is Norway for Tourists?
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/50-local-money-saving-tips-for-norway">
-            50 Local Money-Saving Tips for Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/what-to-pack-for-norway">
-            What to Pack for Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/camping-rules-in-norway">
-            Camping Rules in Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/best-time-to-visit-northern-norway">
-            Best Time to Visit Northern Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-to-travel-northern-norway-without-a-car">
-            How to Travel Northern Norway Without a Car
-          </Link>
-        </li>
-        <li>
-          <Link href="/destinations/lofoten-islands">Lofoten Islands</Link>
-        </li>
-        <li>
-          <Link href="/destinations/senja">Senja</Link>
-        </li>
-        <li>
-          <Link href="/destinations/helgeland-coast">Helgeland Coast</Link>
-        </li>
-        <li>
-          <Link href="/destinations/tromso">Tromso</Link>
         </li>
       </ul>
     </GuideArticleLayout>

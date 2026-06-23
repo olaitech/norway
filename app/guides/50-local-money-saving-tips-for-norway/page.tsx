@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
@@ -524,6 +523,26 @@ export default function LocalMoneySavingTipsForNorwayPage() {
           href: "https://www.toogoodtogo.com/",
         },
       ]}
+      relatedLinks={[
+        {
+          label: "Budget",
+          title: "How Expensive Is Norway for Tourists?",
+          href: "/guides/how-expensive-is-norway-for-tourists",
+          description: "Compare the costs before you decide where to save and where to spend.",
+        },
+        {
+          label: "Transport",
+          title: "How to Travel Northern Norway Without a Car",
+          href: "/guides/how-to-travel-northern-norway-without-a-car",
+          description: "Cut transport costs by leaning on buses, ferries and city bases.",
+        },
+        {
+          label: "Planning",
+          title: "Norway Ferry Guide for Tourists",
+          href: "/guides/norway-ferry-guide-for-tourists",
+          description: "Build ferry crossings into the budget before the route is fixed.",
+        },
+      ]}
     >
       <h2>Intro</h2>
       <p>
@@ -682,45 +701,6 @@ export default function LocalMoneySavingTipsForNorwayPage() {
           >
             Too Good To Go
           </a>
-        </li>
-      </ul>
-
-      <h2>Continue planning your Norway trip</h2>
-      <ul>
-        <li>
-          <Link href="/guides/how-expensive-is-norway-for-tourists">
-            How Expensive Is Norway for Tourists?
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/norway-ferry-guide-for-tourists">
-            Norway Ferry Guide for Tourists
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-to-travel-northern-norway-without-a-car">
-            How to Travel Northern Norway Without a Car
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/driving-in-norway-what-visitors-should-know">
-            Driving in Norway: What Visitors Should Know
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/what-to-pack-for-norway">
-            What to Pack for Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/camping-rules-in-norway">
-            Camping Rules in Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/best-time-to-visit-northern-norway">
-            Best Time to Visit Northern Norway
-          </Link>
         </li>
       </ul>
     </GuideArticleLayout>

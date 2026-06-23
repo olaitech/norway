@@ -3,6 +3,10 @@ import type { ReactNode } from "react";
 
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import {
+  RelatedLinkCards,
+  type RelatedLinkCard,
+} from "@/src/components/shared/RelatedLinkCards";
+import {
   JsonLd,
   createArticleJsonLd,
   createBreadcrumbListJsonLd,
@@ -21,6 +25,10 @@ type GuideArticleLayoutProps = {
   lastUpdated: string;
   canonicalPath: string;
   sources?: GuideSource[];
+  relatedLinks?: readonly RelatedLinkCard[];
+  relatedEyebrow?: string;
+  relatedTitle?: string;
+  relatedIntro?: string;
   children: ReactNode;
 };
 
@@ -32,9 +40,14 @@ export function GuideArticleLayout({
   lastUpdated,
   canonicalPath,
   sources,
+  relatedLinks,
+  relatedEyebrow,
+  relatedTitle = "Related planning paths",
+  relatedIntro = "Keep the trip moving with a few calm next steps.",
   children,
 }: GuideArticleLayoutProps) {
   const hasSources = Boolean(sources && sources.length > 0);
+  const hasRelatedLinks = Boolean(relatedLinks && relatedLinks.length > 0);
   const guideBreadcrumbs = [
     { name: "Home", href: "/" },
     { name: "Guides", href: "/guides" },
@@ -95,6 +108,16 @@ export function GuideArticleLayout({
               {children}
             </div>
           </div>
+
+          {hasRelatedLinks ? (
+            <RelatedLinkCards
+              className="mt-10"
+              eyebrow={relatedEyebrow}
+              title={relatedTitle}
+              intro={relatedIntro}
+              links={relatedLinks ?? []}
+            />
+          ) : null}
 
           {hasSources ? (
             <GuideMetaFooter

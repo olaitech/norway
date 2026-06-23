@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
@@ -32,6 +31,32 @@ export default function NorwayFerryGuideForTouristsPage() {
         {
           label: "Reis Nordland",
           href: "https://www.reisnordland.no/",
+        },
+      ]}
+      relatedLinks={[
+        {
+          label: "Route",
+          title: "Helgeland Coast Road Trip",
+          href: "/routes/helgeland-coast-road-trip",
+          description: "See how ferries shape a slower coastal route from stop to stop.",
+        },
+        {
+          label: "Destination",
+          title: "Helgeland Coast",
+          href: "/destinations/helgeland-coast",
+          description: "Match the ferry guide with one of the coast's most ferry-driven destinations.",
+        },
+        {
+          label: "Planning",
+          title: "Driving in Norway: What Visitors Should Know",
+          href: "/guides/driving-in-norway-what-visitors-should-know",
+          description: "Put ferry timing together with the wider driving rules and road conditions.",
+        },
+        {
+          label: "Map",
+          title: "Norway Travel Map",
+          href: "/map",
+          description: "Trace the crossings before you fix the overnight stops.",
         },
       ]}
     >
@@ -70,25 +95,6 @@ export default function NorwayFerryGuideForTouristsPage() {
         Senja and along fjord-heavy routes where direct road alternatives are
         limited or much slower.
       </p>
-
-      <h2>Continue planning your Norway trip</h2>
-      <ul>
-        <li>
-          <Link href="/guides/driving-in-norway-what-visitors-should-know">
-            Driving in Norway: What Visitors Should Know
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-to-travel-northern-norway-without-a-car">
-            How to Travel Northern Norway Without a Car
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-expensive-is-norway-for-tourists">
-            How Expensive Is Norway for Tourists?
-          </Link>
-        </li>
-      </ul>
     </GuideArticleLayout>
   );
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
@@ -27,6 +26,32 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
         { label: "Visit Tromso", href: "https://www.visittromso.no/" },
         { label: "Yr", href: "https://www.yr.no/" },
         { label: "Varsom", href: "https://www.varsom.no/" },
+      ]}
+      relatedLinks={[
+        {
+          label: "Destination",
+          title: "Tromso",
+          href: "/destinations/tromso",
+          description: "Use Tromso as a base for winter aurora travel and short evening departures.",
+        },
+        {
+          label: "Destination",
+          title: "Senja",
+          href: "/destinations/senja",
+          description: "Compare a quieter island base with darker coastlines and shifting weather.",
+        },
+        {
+          label: "Planning",
+          title: "Best Time to Visit Northern Norway",
+          href: "/guides/best-time-to-visit-northern-norway",
+          description: "Match aurora attempts with the season, daylight and road conditions.",
+        },
+        {
+          label: "Story",
+          title: "Northern Norway: A Slow Journey Through Light",
+          href: "/stories/northern-norway",
+          description: "See how the light, roads and coastlines connect inside the story.",
+        },
       ]}
     >
       <h2>Quick answer</h2>
@@ -64,23 +89,6 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
         <li>Hat, gloves and insulated footwear</li>
         <li>Headlamp and spare power bank</li>
         <li>Tripod and camera-ready accessories if photographing</li>
-      </ul>
-
-      <h2>Continue planning your Norway trip</h2>
-      <ul>
-        <li>
-          <Link href="/guides/best-time-to-visit-northern-norway">
-            Best Time to Visit Northern Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/what-to-pack-for-norway">
-            What to Pack for Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/destinations/tromso">Tromso destination guide</Link>
-        </li>
       </ul>
     </GuideArticleLayout>
   );

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
@@ -36,6 +35,32 @@ export default function HowToTravelNorthernNorwayWithoutCarPage() {
         },
         { label: "Havila", href: "https://www.havilavoyages.com/" },
         { label: "Avinor", href: "https://avinor.no/" },
+      ]}
+      relatedLinks={[
+        {
+          label: "Transport",
+          title: "Norway Ferry Guide for Tourists",
+          href: "/guides/norway-ferry-guide-for-tourists",
+          description: "Use ferries and buses together without making the trip feel fragmented.",
+        },
+        {
+          label: "Budget",
+          title: "How Expensive Is Norway for Tourists?",
+          href: "/guides/how-expensive-is-norway-for-tourists",
+          description: "See where transport savings can offset the rest of the trip.",
+        },
+        {
+          label: "Budget",
+          title: "50 Local Money-Saving Tips for Norway",
+          href: "/guides/50-local-money-saving-tips-for-norway",
+          description: "Keep the wider travel budget calm while you rely on public connections.",
+        },
+        {
+          label: "Season",
+          title: "Best Time to Visit Northern Norway",
+          href: "/guides/best-time-to-visit-northern-norway",
+          description: "Match public transport planning to the season and daylight you want.",
+        },
       ]}
     >
       <h2>Quick answer</h2>
@@ -129,42 +154,6 @@ export default function HowToTravelNorthernNorwayWithoutCarPage() {
         <li>Tromso + one connected coastal/island base</li>
         <li>Bodo + Lofoten transport chain</li>
         <li>One northern city + curated local excursions</li>
-      </ul>
-
-      <h2>Continue planning your Norway trip</h2>
-      <ul>
-        <li>
-          <Link href="/guides/norway-ferry-guide-for-tourists">
-            Norway Ferry Guide for Tourists
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-expensive-is-norway-for-tourists">
-            How Expensive Is Norway for Tourists?
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/50-local-money-saving-tips-for-norway">
-            50 Local Money-Saving Tips for Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/best-time-to-visit-northern-norway">
-            Best Time to Visit Northern Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/destinations/tromso">Tromso</Link>
-        </li>
-        <li>
-          <Link href="/destinations/lofoten-islands">Lofoten Islands</Link>
-        </li>
-        <li>
-          <Link href="/destinations/senja">Senja</Link>
-        </li>
-        <li>
-          <Link href="/destinations/helgeland-coast">Helgeland Coast</Link>
-        </li>
       </ul>
     </GuideArticleLayout>
   );

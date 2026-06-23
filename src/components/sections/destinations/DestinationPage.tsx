@@ -3,7 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import type { Destination } from "@/src/data/destinations";
-import { getRelatedDestinations } from "@/src/data/destinations";
+import { getRelatedDestinations, type DestinationSlug } from "@/src/data/destinations";
+import {
+  RelatedLinkCards,
+  type RelatedLinkCard,
+} from "@/src/components/shared/RelatedLinkCards";
 import {
   JsonLd,
   createArticleJsonLd,
@@ -34,9 +38,117 @@ function SectionIntro({ label, title }: SectionIntroProps) {
   );
 }
 
+const destinationPlanningLinks: Record<DestinationSlug, readonly RelatedLinkCard[]> = {
+  "lofoten-islands": [
+    {
+      label: "Route",
+      title: "Plan a Lofoten road trip",
+      href: "/routes/lofoten-road-trip",
+      description: "Shape the islands around shorter daily drives, ferries and village bases.",
+    },
+    {
+      label: "Guide",
+      title: "See how northern lights travel fits Lofoten",
+      href: "/guides/how-to-see-the-northern-lights-in-norway",
+      description: "Use the islands as part of a wider aurora plan when the season fits.",
+    },
+    {
+      label: "Season",
+      title: "Choose the best time for Northern Norway",
+      href: "/guides/best-time-to-visit-northern-norway",
+      description: "Match the trip to the daylight, weather and crowd window you want.",
+    },
+    {
+      label: "Story",
+      title: "Continue with the Northern Norway story",
+      href: "/stories/northern-norway",
+      description: "See how Lofoten sits inside the larger slow journey through the north.",
+    },
+  ],
+  senja: [
+    {
+      label: "Season",
+      title: "Choose the best time for Northern Norway",
+      href: "/guides/best-time-to-visit-northern-norway",
+      description: "Pick a season that fits the island's weather, light and road rhythm.",
+    },
+    {
+      label: "Guide",
+      title: "See how northern lights travel fits Senja",
+      href: "/guides/how-to-see-the-northern-lights-in-norway",
+      description: "Use Senja as a darker coastal base when aurora is part of the plan.",
+    },
+    {
+      label: "Map",
+      title: "Open the Norway travel map",
+      href: "/map",
+      description: "Trace the ferries and roads before deciding on the overnight route.",
+    },
+    {
+      label: "Story",
+      title: "Continue with the Northern Norway story",
+      href: "/stories/northern-norway",
+      description: "See Senja in the context of the wider journey through the north.",
+    },
+  ],
+  "helgeland-coast": [
+    {
+      label: "Route",
+      title: "Plan the Helgeland Coast road trip",
+      href: "/routes/helgeland-coast-road-trip",
+      description: "Use ferries and slow shoreline roads as part of the route itself.",
+    },
+    {
+      label: "Guide",
+      title: "Understand ferry travel in Norway",
+      href: "/guides/norway-ferry-guide-for-tourists",
+      description: "Build crossings into the route before fixing where to sleep.",
+    },
+    {
+      label: "Guide",
+      title: "Read driving advice for Norway",
+      href: "/guides/driving-in-norway-what-visitors-should-know",
+      description: "Keep the road days calm and realistic on the coast.",
+    },
+    {
+      label: "Story",
+      title: "Continue with the Northern Norway story",
+      href: "/stories/northern-norway",
+      description: "See how Helgeland threads through the story's coastal chapters.",
+    },
+  ],
+  tromso: [
+    {
+      label: "Guide",
+      title: "See how northern lights travel fits Tromso",
+      href: "/guides/how-to-see-the-northern-lights-in-norway",
+      description: "Base the winter trip around darkness, cloud forecasts and flexibility.",
+    },
+    {
+      label: "Season",
+      title: "Choose the best time for Northern Norway",
+      href: "/guides/best-time-to-visit-northern-norway",
+      description: "Match Tromso with the brighter shoulder seasons or the darker winter window.",
+    },
+    {
+      label: "Guide",
+      title: "Travel Northern Norway without a car",
+      href: "/guides/how-to-travel-northern-norway-without-a-car",
+      description: "Plan a city-based trip that still reaches the coast and viewpoints.",
+    },
+    {
+      label: "Story",
+      title: "Continue with the Northern Norway story",
+      href: "/stories/northern-norway",
+      description: "See how Tromso closes the journey with the northern-night chapter.",
+    },
+  ],
+};
+
 export function DestinationPage({ destination }: DestinationPageProps) {
   const relatedDestinations = getRelatedDestinations(destination.slug);
   const canonicalPath = `/destinations/${destination.slug}`;
+  const planningLinks = destinationPlanningLinks[destination.slug];
 
   return (
     <>
@@ -247,6 +359,16 @@ export function DestinationPage({ destination }: DestinationPageProps) {
               ))}
             </DestinationReveal>
           </section>
+
+          <DestinationReveal>
+            <RelatedLinkCards
+              className="border-t border-white/8 pt-16 sm:pt-20"
+              eyebrow="Continue planning"
+              title="A few natural next steps"
+              intro="Move from the destination into the route, the season and the practical guides that keep the trip calm."
+              links={planningLinks}
+            />
+          </DestinationReveal>
         </div>
       </div>
 

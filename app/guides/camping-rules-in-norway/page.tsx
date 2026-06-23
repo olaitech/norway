@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
@@ -32,6 +31,32 @@ export default function CampingRulesInNorwayPage() {
           href: "https://www.dnt.no/",
         },
         { label: "Varsom", href: "https://www.varsom.no/" },
+      ]}
+      relatedLinks={[
+        {
+          label: "Packing",
+          title: "What to Pack for Norway",
+          href: "/guides/what-to-pack-for-norway",
+          description: "Choose layers and wet-weather gear that suit outdoor nights.",
+        },
+        {
+          label: "Transport",
+          title: "Driving in Norway: What Visitors Should Know",
+          href: "/guides/driving-in-norway-what-visitors-should-know",
+          description: "Know the road rules before you settle on a campsite.",
+        },
+        {
+          label: "Planning",
+          title: "Norway Ferry Guide for Tourists",
+          href: "/guides/norway-ferry-guide-for-tourists",
+          description: "Factor ferries into the route before choosing overnight stops.",
+        },
+        {
+          label: "Values",
+          title: "Responsible Travel",
+          href: "/responsible-travel",
+          description: "Keep camping low-impact, local and considerate.",
+        },
       ]}
     >
       <h2>Intro</h2>
@@ -101,33 +126,6 @@ export default function CampingRulesInNorwayPage() {
         <li>Confirm local restrictions for your exact area.</li>
         <li>Review access and parking rules.</li>
         <li>Plan an alternative location in case of crowding or closure.</li>
-      </ul>
-
-      <h2>Continue planning your Norway trip</h2>
-      <ul>
-        <li>
-          <Link href="/guides/what-to-pack-for-norway">
-            What to Pack for Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/driving-in-norway-what-visitors-should-know">
-            Driving in Norway: What Visitors Should Know
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/norway-ferry-guide-for-tourists">
-            Norway Ferry Guide for Tourists
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/50-local-money-saving-tips-for-norway">
-            50 Local Money-Saving Tips for Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/responsible-travel">Responsible travel in Norway</Link>
-        </li>
       </ul>
     </GuideArticleLayout>
   );

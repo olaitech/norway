@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
@@ -31,6 +30,32 @@ export default function BestTimeToVisitNorthernNorwayPage() {
         { label: "Yr", href: "https://www.yr.no/" },
         { label: "Norway Lights", href: "https://www.norway-lights.com/" },
         { label: "Avinor", href: "https://avinor.no/" },
+      ]}
+      relatedLinks={[
+        {
+          label: "Planning",
+          title: "How to See the Northern Lights in Norway",
+          href: "/guides/how-to-see-the-northern-lights-in-norway",
+          description: "Move from the seasonal overview into a focused aurora plan.",
+        },
+        {
+          label: "Packing",
+          title: "What to Pack for Norway",
+          href: "/guides/what-to-pack-for-norway",
+          description: "Pack for the weather window you choose instead of the one you hope for.",
+        },
+        {
+          label: "Transport",
+          title: "Norway Ferry Guide for Tourists",
+          href: "/guides/norway-ferry-guide-for-tourists",
+          description: "Factor ferry timing into the season before you lock the route.",
+        },
+        {
+          label: "Destination",
+          title: "Tromso",
+          href: "/destinations/tromso",
+          description: "Use Tromso as a practical winter base when darkness matters most.",
+        },
       ]}
     >
       <h2>Intro</h2>
@@ -126,39 +151,6 @@ export default function BestTimeToVisitNorthernNorwayPage() {
         That keeps decisions clear and avoids trying to force opposite travel
         styles into one short trip.
       </p>
-
-      <h2>Continue planning your Norway trip</h2>
-      <ul>
-        <li>
-          <Link href="/guides/how-to-see-the-northern-lights-in-norway">
-            How to See the Northern Lights in Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/what-to-pack-for-norway">
-            What to Pack for Norway
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/norway-ferry-guide-for-tourists">
-            Norway Ferry Guide for Tourists
-          </Link>
-        </li>
-        <li>
-          <Link href="/guides/how-to-travel-northern-norway-without-a-car">
-            How to Travel Northern Norway Without a Car
-          </Link>
-        </li>
-        <li>
-          <Link href="/destinations/tromso">Tromso</Link>
-        </li>
-        <li>
-          <Link href="/destinations/lofoten-islands">Lofoten Islands</Link>
-        </li>
-        <li>
-          <Link href="/destinations/senja">Senja</Link>
-        </li>
-      </ul>
     </GuideArticleLayout>
   );
 }
