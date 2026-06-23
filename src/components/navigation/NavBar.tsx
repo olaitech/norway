@@ -80,13 +80,13 @@ export function NavBar({
               <MotionLink
                 key={item.href}
                 href={item.href}
+                aria-label={item.label}
                 initial="rest"
                 animate="rest"
                 whileHover={interactive ? "hover" : undefined}
                 whileFocus={interactive ? "hover" : undefined}
                 className={linkClassName}
               >
-                <span className="sr-only">{item.label}</span>
                 <AnimatedNavText text={item.label} />
               </MotionLink>
             ))}
