@@ -598,7 +598,7 @@ const relatedGuides = [
   {
     label: "Route hub",
     title: "Norway Road Trip Routes",
-    href: "/norway-road-trip-routes",
+    href: "/routes",
   },
   {
     label: "Guidance",

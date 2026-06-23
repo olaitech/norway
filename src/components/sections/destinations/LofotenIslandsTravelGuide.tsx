@@ -436,7 +436,7 @@ const relatedGuides = [
   },
   { href: "/destinations/tromso", title: "Tromso", label: "Destination" },
   {
-    href: "/norway-road-trip-routes",
+    href: "/routes",
     title: "Norway Road Trip Routes",
     label: "Route hub",
   },

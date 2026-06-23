@@ -375,7 +375,7 @@ const relatedGuides = [
   { label: "Lofoten Islands", href: "/destinations/lofoten-islands" },
   { label: "Senja", href: "/destinations/senja" },
   { label: "Best time to visit Norway", href: "/best-time-to-visit-norway" },
-  { label: "Norway road trip routes", href: "/norway-road-trip-routes" },
+  { label: "Norway road trip routes", href: "/routes" },
   { label: "Responsible travel", href: "/responsible-travel" },
   { label: "Map", href: "/map" },
 ] as const;

@@ -493,7 +493,7 @@ const relatedGuides = [
   { label: "Destination", title: "Tromso", href: "/destinations/tromso" },
   { label: "Destination", title: "Helgeland Coast", href: "/destinations/helgeland-coast" },
   { label: "Planning", title: "Northern Lights in Norway", href: "/northern-lights-norway" },
-  { label: "Route hub", title: "Norway Road Trip Routes", href: "/norway-road-trip-routes" },
+  { label: "Route hub", title: "Norway Road Trip Routes", href: "/routes" },
   { label: "Planning", title: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
   { label: "Guidance", title: "Responsible Travel", href: "/responsible-travel" },
   { label: "Route hub", title: "All Routes", href: "/routes" },

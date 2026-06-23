@@ -168,8 +168,8 @@ export const homeSearchIndex: HomeSearchEntry[] = [
     ],
   },
   {
-    href: "/norway-road-trip-routes",
-    route: "/norway-road-trip-routes",
+    href: "/routes",
+    route: "/routes",
     title: "Norway Road Trip Routes Hub",
     description:
       "Start from route overviews and connect destinations, ferries and seasonal timing into a practical travel plan.",

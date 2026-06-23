@@ -140,7 +140,7 @@ const storyChapters: readonly StoryChapter[] = [
       },
       {
         label: "Norway road trip routes",
-        href: "/norway-road-trip-routes",
+        href: "/routes",
         description: "Use the landscape to shape your route rhythm.",
       },
     ],

@@ -652,7 +652,7 @@ export const seoPages = {
             title: "Road trips",
             description:
               "Fjord drives are best planned with conservative daily distances and frequent stops.",
-            href: "/norway-road-trip-routes",
+            href: "/routes",
           },
           {
             title: "Photography",
@@ -668,7 +668,7 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
-      { label: "Browse Norway road trip routes", href: "/norway-road-trip-routes" },
+      { label: "Browse Norway road trip routes", href: "/routes" },
       { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
       { label: "See responsible travel advice", href: "/responsible-travel" },
       { label: "Open the Norway map", href: "/map" },
@@ -676,7 +676,7 @@ export const seoPages = {
     cta: {
       label: "Continue planning",
       text: "Place the fjords inside a realistic route, then adjust the journey around season, ferry timing and weather.",
-      primaryHref: "/norway-road-trip-routes",
+      primaryHref: "/routes",
       primaryLabel: "Browse road trip routes",
       secondaryHref: "/map",
       secondaryLabel: "Open map",

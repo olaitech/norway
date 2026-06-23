@@ -50,7 +50,7 @@ export const startHereItems: StartHereItem[] = [
       "lofoten route",
       "senja route",
     ],
-    relatedHrefs: ["/norway-road-trip-routes", "/map", "/destinations"],
+    relatedHrefs: ["/routes", "/map", "/destinations"],
     priority: 100,
     icon: "Route",
   },
@@ -204,7 +204,7 @@ export const startHereItems: StartHereItem[] = [
       "driving distance",
       "google maps",
     ],
-    relatedHrefs: ["/routes", "/destinations", "/norway-road-trip-routes"],
+    relatedHrefs: ["/routes", "/destinations", "/routes"],
     priority: 80,
     icon: "Map",
   },
@@ -407,4 +407,3 @@ export function searchStartHereItems(query: string, limit = 5) {
 
   return scoredItems.slice(0, normalizedLimit).map((entry) => entry.item);
 }
-

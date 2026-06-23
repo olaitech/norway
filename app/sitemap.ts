@@ -55,11 +55,6 @@ const supportingPages: SitemapEntry[] = [
     priority: 0.7,
   },
   {
-    path: "/norway-road-trip-routes",
-    changeFrequency: "monthly",
-    priority: 0.7,
-  },
-  {
     path: "/responsible-travel",
     changeFrequency: "monthly",
     priority: 0.5,
