@@ -136,9 +136,30 @@ export function StartHereSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const startHereCards = getStartHereItems();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDesktopRail, setIsDesktopRail] = useState(false);
 
   useEffect(() => {
-    if (shouldReduceMotion || !startHereCards.length) {
+    if (shouldReduceMotion) {
+      setIsDesktopRail(false);
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+    const updateIsDesktopRail = () => {
+      setIsDesktopRail(mediaQuery.matches);
+    };
+
+    updateIsDesktopRail();
+    mediaQuery.addEventListener("change", updateIsDesktopRail);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateIsDesktopRail);
+    };
+  }, [shouldReduceMotion]);
+
+  useEffect(() => {
+    if (shouldReduceMotion || !isDesktopRail || !startHereCards.length) {
       return;
     }
 
@@ -151,72 +172,64 @@ export function StartHereSection() {
       return;
     }
 
-    const mm = gsap.matchMedia();
+    const slides = gsap.utils.toArray<HTMLElement>("[data-start-here-slide]", track);
 
-    mm.add("(min-width: 1024px)", () => {
-      const slides = gsap.utils.toArray<HTMLElement>("[data-start-here-slide]", track);
+    if (!slides.length) {
+      return;
+    }
 
-      if (!slides.length) {
-        return;
-      }
-
-      const updateActiveIndex = (progress: number) => {
-        const lastIndex = slides.length - 1;
-        const segmentSize = DESKTOP_REVEAL_PROGRESS / slides.length;
-        const revealProgress = Math.min(progress, DESKTOP_REVEAL_PROGRESS);
-        const nextIndex = Math.min(
-          lastIndex,
-          Math.max(0, Math.floor(revealProgress / segmentSize + 0.25)),
-        );
-
-        setActiveIndex((current) => (current === nextIndex ? current : nextIndex));
-      };
-
-      const getTravel = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-      const getEndDistance = () => {
-        const travel = getTravel();
-        const minimum = Math.round(window.innerHeight * 2.75);
-        return Math.max(travel, minimum);
-      };
-
-      gsap.set(track, { x: 0, willChange: "transform" });
-      updateActiveIndex(0);
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${getEndDistance()}`,
-          pin,
-          scrub: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => updateActiveIndex(self.progress),
-          onRefresh: (self) => updateActiveIndex(self.progress),
-        },
-      });
-
-      tl.to(
-        track,
-        {
-          x: () => -getTravel(),
-          ease: "none",
-          duration: DESKTOP_REVEAL_PROGRESS,
-        },
-        0,
+    const updateActiveIndex = (progress: number) => {
+      const lastIndex = slides.length - 1;
+      const segmentSize = DESKTOP_REVEAL_PROGRESS / slides.length;
+      const revealProgress = Math.min(progress, DESKTOP_REVEAL_PROGRESS);
+      const nextIndex = Math.min(
+        lastIndex,
+        Math.max(0, Math.floor(revealProgress / segmentSize + 0.25)),
       );
-      tl.to({}, { duration: 1 - DESKTOP_REVEAL_PROGRESS }, DESKTOP_REVEAL_PROGRESS);
 
-      return () => {
-        tl.scrollTrigger?.kill();
-        tl.kill();
-      };
+      setActiveIndex((current) => (current === nextIndex ? current : nextIndex));
+    };
+
+    const getTravel = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
+    const getEndDistance = () => {
+      const travel = getTravel();
+      const minimum = Math.round(window.innerHeight * 2.75);
+      return Math.max(travel, minimum);
+    };
+
+    gsap.set(track, { x: 0, willChange: "transform" });
+    updateActiveIndex(0);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${getEndDistance()}`,
+        pin,
+        scrub: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => updateActiveIndex(self.progress),
+        onRefresh: (self) => updateActiveIndex(self.progress),
+      },
     });
 
+    tl.to(
+      track,
+      {
+        x: () => -getTravel(),
+        ease: "none",
+        duration: DESKTOP_REVEAL_PROGRESS,
+      },
+      0,
+    );
+    tl.to({}, { duration: 1 - DESKTOP_REVEAL_PROGRESS }, DESKTOP_REVEAL_PROGRESS);
+
     return () => {
-      mm.revert();
+      tl.scrollTrigger?.kill();
+      tl.kill();
     };
-  }, [shouldReduceMotion, startHereCards.length]);
+  }, [shouldReduceMotion, isDesktopRail, startHereCards.length]);
 
   if (!startHereCards.length) {
     return null;
@@ -235,78 +248,66 @@ export function StartHereSection() {
       <div className={`pointer-events-none absolute inset-0 ${sectionGlowClassName}`} />
       <div className="home-transition-dark-to-warm pointer-events-none absolute inset-x-0 top-0 h-20 sm:h-24 lg:h-28" />
 
-      <div className="block lg:hidden motion-reduce:!block">
-        <div className="relative mx-auto max-w-7xl">
-          {headingBlock}
+      <div ref={pinRef} className="w-full">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 md:px-12 lg:min-h-[100svh] lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-center lg:gap-12 xl:gap-16">
+          <div className="max-w-xl">
+            {headingBlock}
 
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4 xl:gap-6">
-            {startHereCards.map((card, index) => (
-              <div key={card.id}>
-                <StartHereCard card={card} index={index} className="w-full" />
-              </div>
-            ))}
+            <div className="mt-8 hidden items-center gap-4 lg:flex">
+              <div className="h-px flex-1 bg-[#6c5643]/18" />
+              <p className="whitespace-nowrap text-[0.52rem] font-medium uppercase tracking-[0.34em] text-[#6c5643]/70">
+                {String(activeIndex + 1).padStart(2, "0")} /{" "}
+                {String(startHereCards.length).padStart(2, "0")}
+              </p>
+              <div className="h-px flex-1 bg-[#6c5643]/18" />
+            </div>
+            <p className="mt-3 hidden text-[0.58rem] font-medium uppercase tracking-[0.3em] text-[#6c5643]/56 lg:block">
+              {activeCard.eyebrow}
+            </p>
           </div>
-        </div>
-      </div>
 
-      <div className="hidden lg:block motion-reduce:!hidden">
-        <div ref={pinRef} className="mx-auto flex min-h-[100svh] w-full max-w-7xl items-center px-5 sm:px-8 md:px-12">
-          <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-center lg:gap-12 xl:gap-16">
-            <div className="max-w-xl">
-              {headingBlock}
+          <div className="w-full lg:flex lg:items-center">
+            <div
+              ref={viewportRef}
+              className="relative w-full lg:h-[clamp(29rem,58vh,40rem)] lg:overflow-hidden lg:rounded-[2rem] lg:border lg:border-white/10 lg:bg-[linear-gradient(180deg,rgba(11,15,18,0.84),rgba(5,8,11,0.95))] lg:p-3 lg:shadow-[0_22px_80px_rgba(0,0,0,0.32),0_0_32px_rgba(126,176,192,0.04)]"
+            >
+              <div className="pointer-events-none hidden lg:block lg:absolute lg:inset-0 lg:bg-[radial-gradient(circle_at_22%_18%,rgba(244,236,228,0.06),transparent_36%),radial-gradient(circle_at_82%_28%,rgba(151,182,190,0.06),transparent_34%)]" />
 
-              <div className="mt-8 flex items-center gap-4">
-                <div className="h-px flex-1 bg-[#6c5643]/18" />
-                <p className="whitespace-nowrap text-[0.52rem] font-medium uppercase tracking-[0.34em] text-[#6c5643]/70">
+              <div className="relative lg:h-full">
+                <div
+                  ref={trackRef}
+                  className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4 lg:flex lg:h-full lg:gap-5"
+                >
+                  {startHereCards.map((card, index) => {
+                    const isActive = index === activeIndex;
+                    const interactive = !isDesktopRail || isActive;
+
+                    return (
+                      <div
+                        key={card.id}
+                        data-start-here-slide
+                        className="flex h-full w-full lg:w-[clamp(25rem,28vw,28rem)] lg:flex-none"
+                      >
+                        <StartHereCard
+                          card={card}
+                          index={index}
+                          className={`w-full ${interactive ? "" : "opacity-85"}`}
+                          interactive={interactive}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="pointer-events-none absolute inset-x-5 bottom-4 hidden items-center justify-between gap-3 lg:flex lg:inset-x-6 lg:bottom-5">
+                <p className="text-[0.52rem] font-medium uppercase tracking-[0.34em] text-[#d8c9a7]/58">
                   {String(activeIndex + 1).padStart(2, "0")} /{" "}
                   {String(startHereCards.length).padStart(2, "0")}
                 </p>
-                <div className="h-px flex-1 bg-[#6c5643]/18" />
-              </div>
-              <p className="mt-3 text-[0.58rem] font-medium uppercase tracking-[0.3em] text-[#6c5643]/56">
-                {activeCard.eyebrow}
-              </p>
-            </div>
-
-            <div className="relative">
-              <div
-                ref={viewportRef}
-                className="relative h-[clamp(29rem,58vh,40rem)] overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(11,15,18,0.84),rgba(5,8,11,0.95))] p-3 shadow-[0_22px_80px_rgba(0,0,0,0.32),0_0_32px_rgba(126,176,192,0.04)] sm:p-4"
-              >
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(244,236,228,0.06),transparent_36%),radial-gradient(circle_at_82%_28%,rgba(151,182,190,0.06),transparent_34%)]" />
-
-                <div className="relative h-full">
-                  <div ref={trackRef} className="flex h-full gap-5 will-change-transform sm:gap-6">
-                    {startHereCards.map((card, index) => {
-                      const isActive = index === activeIndex;
-
-                      return (
-                        <div
-                          key={card.id}
-                          data-start-here-slide
-                          className="flex h-full w-[clamp(25rem,28vw,28rem)] flex-none"
-                        >
-                          <StartHereCard
-                            card={card}
-                            index={index}
-                            className={`w-full ${isActive ? "" : "opacity-85"}`}
-                            interactive={isActive}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="pointer-events-none absolute inset-x-5 bottom-4 flex items-center justify-between gap-3 sm:inset-x-6 sm:bottom-5">
-                  <p className="text-[0.52rem] font-medium uppercase tracking-[0.34em] text-[#d8c9a7]/58">
-                    {String(activeIndex + 1).padStart(2, "0")} /{" "}
-                    {String(startHereCards.length).padStart(2, "0")}
-                  </p>
-                  <p className="text-[0.52rem] font-medium uppercase tracking-[0.34em] text-[#d8c9a7]/42">
-                    {activeCard.eyebrow}
-                  </p>
-                </div>
+                <p className="text-[0.52rem] font-medium uppercase tracking-[0.34em] text-[#d8c9a7]/42">
+                  {activeCard.eyebrow}
+                </p>
               </div>
             </div>
           </div>
