@@ -2,19 +2,18 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { Footer } from "@/src/components/layout/Footer";
-import { SITE_NAME, SITE_URL } from "@/src/config/site";
+import {
+  DEFAULT_SOCIAL_IMAGE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/src/config/site";
 
 import "./globals.css";
 
 const siteName = SITE_NAME;
-const siteDescription =
-  "A cinematic travel knowledge portal for Norway and Northern Norway, built around slow travel, dramatic landscapes, scenic routes, fjords, northern light skies and responsible destination guidance.";
-const socialImage = {
-  url: "/images/hero/preikestolen.png",
-  width: 1672,
-  height: 941,
-  alt: "A cinematic Norwegian fjord landscape seen from Preikestolen",
-};
+const siteDescription = SITE_DESCRIPTION;
+const socialImage = DEFAULT_SOCIAL_IMAGE;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -1,38 +1,17 @@
-import type { Metadata } from "next";
-
 import { NorthernNorwayStory } from "@/src/components/stories/NorthernNorwayStory";
-import { SITE_NAME } from "@/src/config/site";
+import { createPageMetadata } from "@/src/lib/metadata";
 
-const title = "Northern Norway: A Slow Journey Through Light";
-const description =
-  "A cinematic scroll story through Lofoten, Helgeland, Senja and Tromso, shaped by sea light, ferry crossings, weather and the long northern night.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: "/stories/northern-norway",
+export const metadata = createPageMetadata({
+  title: "Northern Norway: A Slow Journey Through Light | Trips Norway",
+  description:
+    "A cinematic scroll story through Lofoten, Helgeland, Senja and Tromsø, shaped by Arctic light, ferry roads, sea weather and northern skies.",
+  canonical: "/stories/northern-norway",
+  type: "article",
+  image: {
+    url: "/images/stories/northern-norway/lofoten1.jpg",
+    alt: "A quiet Lofoten fishing village with blue water and steep mountains",
   },
-  openGraph: {
-    title,
-    description,
-    siteName: SITE_NAME,
-    type: "article",
-    url: "/stories/northern-norway",
-    images: [
-      {
-        url: "/images/stories/northern-norway/lofoten1.jpg",
-        alt: "A quiet Lofoten fishing village with blue water and steep mountains",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: ["/images/stories/northern-norway/lofoten1.jpg"],
-  },
-};
+});
 
 export default function NorthernNorwayStoryPage() {
   return <NorthernNorwayStory />;

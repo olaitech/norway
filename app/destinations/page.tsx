@@ -1,19 +1,17 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 import { destinationArchiveCards } from "@/src/data/destinations";
+import { createPageMetadata } from "@/src/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Destinations",
+export const metadata = createPageMetadata({
+  title: "Destinations in Norway | Lofoten, Senja, Helgeland and Tromsø",
   description:
-    "Explore cinematic destination guides for Northern Norway, including Lofoten, Senja, the Helgeland Coast and Tromso.",
-  alternates: {
-    canonical: "/destinations",
-  },
-};
+    "Explore curated Norway and Northern Norway destinations, from Lofoten and Senja to Helgeland, Tromsø, fjords, islands and quiet coastal communities.",
+  canonical: "/destinations",
+});
 
 export default function DestinationsPage() {
   const destinationSources = [

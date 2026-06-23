@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -8,15 +7,14 @@ import "leaflet/dist/leaflet.css";
 import { GatewaysToNorthernNorway } from "@/src/components/sections/map/GatewaysToNorthernNorway";
 import { MapExplorer } from "@/src/components/sections/map/MapExplorer";
 import { featuredRoutes, mapFilters, mapPlaces } from "@/src/data/map";
+import { createPageMetadata } from "@/src/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Explore Norway by Map",
+export const metadata = createPageMetadata({
+  title: "Norway Travel Map | Routes, Destinations and Northern Norway Planning",
   description:
-    "Trace featured Norwegian islands, fjords and scenic routes on an interactive travel map.",
-  alternates: {
-    canonical: "/map",
-  },
-};
+    "Use the Trips Norway map to understand where destinations, road trips, ferries and regions connect across Norway and Northern Norway.",
+  canonical: "/map",
+});
 
 export default function MapPage() {
   return (

@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
+import { createPageMetadata } from "@/src/lib/metadata";
 
 type GuideCard = {
   title: string;
@@ -112,14 +112,12 @@ const guideGroups = [
   },
 ] as const satisfies readonly GuideGroup[];
 
-export const metadata: Metadata = {
-  title: "Practical Guides",
+export const metadata = createPageMetadata({
+  title: "Norway Travel Guides | Seasons, Ferries, Budget and Northern Lights",
   description:
-    "Practical Norway travel guides covering costs, ferries, transport, driving, camping, packing, northern lights and the best time to visit Northern Norway.",
-  alternates: {
-    canonical: "/guides",
-  },
-};
+    "Practical Norway travel guides for seasons, ferries, driving, camping, northern lights, budgets and planning a calmer journey.",
+  canonical: "/guides",
+});
 
 export default function GuidesPage() {
   return (

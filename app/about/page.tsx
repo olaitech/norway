@@ -1,15 +1,12 @@
-import type { Metadata } from "next";
-
 import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
+import { createPageMetadata } from "@/src/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "About this portal",
+export const metadata = createPageMetadata({
+  title: "About Trips Norway | Independent Cinematic Travel Portal",
   description:
-    "Learn about Trips Norway, built around cinematic storytelling, practical guidance, slow travel, scenic roads and responsible tourism in Norway and Northern Norway.",
-  alternates: {
-    canonical: "/about",
-  },
-};
+    "Trips Norway is an independent travel knowledge portal built from Northern Norway, combining cinematic storytelling, practical guidance and responsible tourism.",
+  canonical: "/about",
+});
 
 const sections = [
   {

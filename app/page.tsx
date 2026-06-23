@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-
 import { PrismaHero } from "@/components/prisma-hero";
 import { SectionProgressNav } from "@/src/components/navigation/SectionProgressNav";
 import { AuroraSectionDivider } from "@/src/components/layout/AuroraSectionDivider";
@@ -8,12 +6,14 @@ import { FeaturedDestinations } from "@/src/components/sections/destinations/Fea
 import { SearchTheNorth } from "@/src/components/sections/home/SearchTheNorth";
 import { StartHereSection } from "@/src/components/sections/home/StartHereSection";
 import { WaysIntoNorway } from "@/src/components/sections/home/WaysIntoNorway";
+import { createPageMetadata } from "@/src/lib/metadata";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "Trips Norway | Cinematic Travel Guide to Norway and Northern Norway",
+  description:
+    "A cinematic travel knowledge portal for Norway’s quiet roads, dramatic fjords, northern lights, coastal routes and remote places worth slowing down for.",
+  canonical: "/",
+});
 
 export default function Home() {
   return (
