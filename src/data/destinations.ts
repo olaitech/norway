@@ -65,8 +65,7 @@ export const destinations: Destination[] = [
     intro:
       "A chain of steep mountains, sheltered harbours and long coastal light, made for an unhurried drive between small fishing villages.",
     imageSrc: "/images/cards/lofoten.png",
-    imageAlt:
-      "Mountain peaks rising above a small coastal village in the Lofoten Islands",
+    imageAlt: "Fishing villages and steep mountains along the coast of Lofoten",
     imagePosition: "center center",
     metaTitle: "Lofoten Islands",
     metaDescription:
@@ -160,7 +159,7 @@ export const destinations: Destination[] = [
     intro:
       "A quieter northern island where steep coastal ridges, narrow fjords and small communities meet along one of Norway's most atmospheric roads.",
     imageSrc: "/images/cards/senja.png",
-    imageAlt: "Steep coastal mountains and water on the island of Senja",
+    imageAlt: "Aurora above Senja mountains and calm coastal water",
     imagePosition: "center center",
     metaTitle: "Senja",
     metaDescription:
@@ -254,7 +253,7 @@ export const destinations: Destination[] = [
     intro:
       "A composed journey of ferry crossings, low island silhouettes and open coastal roads along a less hurried stretch of northern Norway.",
     imageSrc: "/images/cards/helgeland.png",
-    imageAlt: "An open road following the rugged shoreline of the Helgeland Coast",
+    imageAlt: "An open coastal road tracing the Helgeland shoreline",
     imagePosition: "center center",
     metaTitle: "Helgeland Coast",
     metaDescription:
@@ -348,7 +347,7 @@ export const destinations: Destination[] = [
     intro:
       "A compact northern city framed by mountains and water, balancing warm interiors, Arctic culture and easy departures into darker skies.",
     imageSrc: "/images/cards/tromsø.png",
-    imageAlt: "Tromso waterfront beneath an Arctic evening sky",
+    imageAlt: "Northern lights above Tromso and snowy mountains at night",
     imagePosition: "center center",
     metaTitle: "Tromsø",
     metaDescription:
@@ -453,8 +452,7 @@ export const destinationArchiveCards: DestinationArchiveCard[] = [
     href: "/destinations/lofoten-islands",
     text: "Sharp peaks, fishing villages, Arctic beaches and road-trip days shaped by weather and light.",
     image: "/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg",
-    imageAlt:
-      "Rorbuer and steep mountains above the sea in Lofoten under soft Arctic light",
+    imageAlt: "Red rorbuer and steep mountains above blue water in Lofoten",
     imagePosition: "center 56%",
   },
   {
@@ -463,7 +461,7 @@ export const destinationArchiveCards: DestinationArchiveCard[] = [
     href: "/destinations/senja",
     text: "A quieter northern island of ridges, fjords, outer-coast roads and cinematic viewpoints.",
     image: "/images/destinations/senja/senja-hero.jpg",
-    imageAlt: "Dramatic mountain-and-fjord landscape on Senja",
+    imageAlt: "Dramatic Senja mountains under northern lights and still water",
     imagePosition: "center 56%",
   },
   {
@@ -472,7 +470,7 @@ export const destinationArchiveCards: DestinationArchiveCard[] = [
     href: "/destinations/helgeland-coast",
     text: "Island ferries, open shoreline, slow roads and one of Norway's most understated coastal journeys.",
     image: "/images/destinations/helgeland/helgeland.jpg",
-    imageAlt: "Quiet coastal road and sea landscape on the Helgeland Coast",
+    imageAlt: "A quiet coastal road along the Helgeland shoreline",
     imagePosition: "center 50%",
   },
   {
@@ -481,7 +479,7 @@ export const destinationArchiveCards: DestinationArchiveCard[] = [
     href: "/destinations/tromso",
     text: "A compact northern city for Arctic culture, winter light, fjord trips and northern lights planning.",
     image: "/images/destinations/tromso/tromso-header.jpg",
-    imageAlt: "Tromso city lights below Arctic mountains at night",
+    imageAlt: "Tromso city lights beneath Arctic mountains at night",
     imagePosition: "center 50%",
   },
 ] as const;

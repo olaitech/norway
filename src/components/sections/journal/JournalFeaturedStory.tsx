@@ -12,7 +12,7 @@ export function JournalFeaturedStory() {
         <div className="relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[520px]">
           <Image
             src="/images/stories/northern-norway/lofoten1.jpg"
-            alt="Northern Norwegian landscape in changing Arctic light"
+            alt="A Lofoten fishing village with blue water and steep mountains behind it"
             fill
             sizes="(min-width: 1024px) 54vw, 100vw"
             className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.035]"

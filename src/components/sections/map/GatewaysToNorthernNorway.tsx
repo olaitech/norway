@@ -95,7 +95,7 @@ export function GatewaysToNorthernNorway() {
           <div className="relative aspect-video w-full bg-[#080e15]">
             <Image
               src="/images/map/map-norway.jpg"
-              alt="Map of Norway showing the northern regions reached through Arctic arrival gateways"
+              alt="Illustrated map-style overview of Norway travel regions and Arctic arrival gateways"
               fill
               sizes="(min-width: 1392px) 1280px, 92vw"
               className="object-contain"

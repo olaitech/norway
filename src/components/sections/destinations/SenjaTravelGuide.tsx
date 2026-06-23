@@ -543,7 +543,7 @@ export function SenjaTravelGuide() {
       <section className="relative flex min-h-[92svh] flex-col overflow-hidden">
         <Image
           src="/images/destinations/senja/senja-hero.jpg"
-          alt="Dramatic mountains and fjord landscape on Senja in moody northern light"
+          alt="Dramatic Senja mountains rising above a quiet fjord in moody northern light"
           fill
           priority
           sizes="100vw"

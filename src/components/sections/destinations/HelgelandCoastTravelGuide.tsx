@@ -451,7 +451,7 @@ export function HelgelandCoastTravelGuide() {
       <section className="relative flex min-h-screen flex-col overflow-hidden">
         <Image
           src="/images/destinations/helgeland/helgeland.jpg"
-          alt="Island landscape along the Helgeland Coast in Northern Norway"
+          alt="Island coastline along the Helgeland Coast in Northern Norway"
           fill
           priority
           sizes="100vw"

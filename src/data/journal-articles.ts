@@ -38,8 +38,7 @@ export const journalArticles: JournalArticle[] = [
     region: "Senja, Northern Norway",
     readTime: "6 min read",
     image: "/images/cards/senja.png",
-    imageAlt:
-      "A moody coastal road on Senja with mountains, fjords and low Arctic cloud",
+    imageAlt: "A moody coastal road on Senja with mountains and low Arctic cloud",
     excerpt:
       "A quiet route through Arctic coastlines, mountain shadows and roads that seem to disappear into the sea.",
     seoTitle:
@@ -161,7 +160,7 @@ export const journalArticles: JournalArticle[] = [
     region: "Helgeland Coast",
     readTime: "4 min read",
     image: "/images/cards/helgeland.png",
-    imageAlt: "Calm sea and coastal road on the Helgeland Coast at dusk",
+    imageAlt: "A calm coastal road and sea at blue hour on the Helgeland Coast",
     excerpt:
       "A slow evening drive where sea mist softens the islands and the last ferries cross silver water.",
     seoTitle: "Blue Hour on the Helgeland Coast",
@@ -208,7 +207,7 @@ export const journalArticles: JournalArticle[] = [
     region: "Lofoten Islands",
     readTime: "7 min read",
     image: "/images/cards/lofoten.png",
-    imageAlt: "Lofoten village and mountains in shifting weather",
+    imageAlt: "A quiet Lofoten fishing village beneath steep mountains and changing weather",
     excerpt:
       "Fishing villages, rain-dark rock and quieter coves discovered beyond the familiar viewpoints.",
     seoTitle: "Lofoten Beyond the Postcards",
@@ -302,7 +301,7 @@ export const journalArticles: JournalArticle[] = [
     region: "Norway",
     readTime: "8 min read",
     image: "/images/hero/preikestolen.png",
-    imageAlt: "A traveler above a Norwegian fjord at a high viewpoint",
+    imageAlt: "A traveler sitting on Preikestolen above a Norwegian fjord at dusk",
     excerpt:
       "Landscapes where shifting weather and immense scale turn an ordinary pause into a scene.",
     seoTitle: "Where Norway Feels Most Cinematic",
@@ -349,7 +348,7 @@ export const journalArticles: JournalArticle[] = [
     region: "Coastal Norway",
     readTime: "6 min read",
     image: "/images/hero/hero (2).jpg",
-    imageAlt: "A scenic Norwegian landscape suited to a road trip",
+    imageAlt: "Aurora above a fjord village and mountain coast in northern Norway",
     excerpt:
       "Building a route with room for ferries, roadside pauses and unplanned coastal light.",
     seoTitle: "How to Plan a Scenic Norway Road Trip",

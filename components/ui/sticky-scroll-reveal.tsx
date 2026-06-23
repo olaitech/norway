@@ -14,6 +14,7 @@ export type StickyScrollItem = {
   meta: string;
   href: string;
   image: string;
+  imageAlt: string;
 };
 
 type StickyScrollRevealProps = {
@@ -122,7 +123,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
                 >
                   <Image
                     src={active.image}
-                    alt={active.title}
+                    alt={active.imageAlt}
                     fill
                     sizes="(min-width: 1024px) 45vw, 100vw"
                     className="object-cover"
@@ -143,7 +144,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
               <div className="absolute inset-0">
                 <Image
                   src={active.image}
-                  alt={active.title}
+                  alt={active.imageAlt}
                   fill
                   sizes="(min-width: 1024px) 45vw, 100vw"
                   className="object-cover"
@@ -176,7 +177,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
               <div className="relative h-60">
                 <Image
                   src={item.image}
-                  alt={item.title}
+                  alt={item.imageAlt}
                   fill
                   sizes="(min-width: 768px) calc(100vw - 6rem), (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
                   className="object-cover"

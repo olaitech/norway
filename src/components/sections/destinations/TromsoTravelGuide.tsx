@@ -1029,7 +1029,7 @@ export function TromsoTravelGuide() {
                 <article className="relative min-h-[340px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[420px]">
                   <Image
                     src="/images/destinations/tromso/tromso-nordlys.jpg"
-                    alt="Northern lights above the Tromso region in winter"
+                    alt="Aurora above Tromso and snowy mountains in winter"
                     fill
                     sizes="(min-width: 1024px) 48vw, 100vw"
                     className="object-cover"
@@ -1126,7 +1126,7 @@ export function TromsoTravelGuide() {
                 <article className="relative min-h-[360px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[430px]">
                   <Image
                     src="/images/destinations/tromso/tromso-winter-landscape.jpg"
-                    alt="Majestic winter landscape near Tromso in Northern Norway"
+                    alt="Snowy mountains around Tromso under a pale winter sky"
                     fill
                     sizes="(min-width: 1024px) 48vw, 100vw"
                     className="object-cover"

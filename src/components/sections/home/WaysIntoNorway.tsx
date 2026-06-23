@@ -13,6 +13,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     meta: "ROUTES / SCENIC DRIVES",
     href: "/routes",
     image: "/images/cards/helgeland.png",
+    imageAlt: "A ferry-linked coastal road along the Helgeland shoreline",
   },
   {
     title: "Best Time to Visit Norway",
@@ -21,6 +22,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     meta: "SEASONS / FIELD GUIDE",
     href: "/best-time-to-visit-norway",
     image: "/images/hero/preikestolen.png",
+    imageAlt: "A traveler on Preikestolen above a Norwegian fjord at dusk",
   },
   {
     title: "Lofoten Travel Guide",
@@ -29,6 +31,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     meta: "DESTINATION / NORTHERN NORWAY",
     href: "/destinations/lofoten-islands",
     image: "/images/cards/lofoten.png",
+    imageAlt: "Fishing villages and steep mountains along the coast of Lofoten",
   },
   {
     title: "Northern Lights in Norway",
@@ -36,7 +39,8 @@ const norwayPlanningContent: StickyScrollItem[] = [
       "Where to go, when to travel and how to give yourself the best chance beneath the polar sky.",
     meta: "ARCTIC LIGHT / WINTER GUIDE",
     href: "/northern-lights-norway",
-    image: "/images/cards/tromsø.png",
+    image: "/images/cards/tromsÃ¸.png",
+    imageAlt: "Aurora above a quiet Arctic coastline near Tromso",
   },
   {
     title: "Fjords of Norway",
@@ -45,6 +49,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     meta: "LANDSCAPE / WESTERN NORWAY",
     href: "/routes",
     image: "/images/cards/lofoten.png",
+    imageAlt: "Red fishing cabins beneath steep mountains and calm water in Lofoten",
   },
   {
     title: "Norway Itinerary: 7 Days",
@@ -53,6 +58,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     meta: "ITINERARY / FIRST JOURNEY",
     href: "/routes/lofoten-road-trip",
     image: "/images/cards/senja.png",
+    imageAlt: "Dramatic Senja mountains above calm Arctic water",
   },
   {
     title: "Norway Itinerary: 10 Days",
@@ -61,6 +67,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     meta: "ITINERARY / SLOWER ROUTE",
     href: "/routes/helgeland-coast-road-trip",
     image: "/images/cards/helgeland.png",
+    imageAlt: "Island coastline and soft northern light along the Helgeland coast",
   },
 ];
 

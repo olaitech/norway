@@ -140,7 +140,7 @@ const PrismaHero = () => {
           >
             <Image
               src="/images/hero/preikestolen.png"
-              alt="A traveler standing on Preikestolen above a Norwegian fjord"
+              alt="A traveler sitting on Preikestolen above a Norwegian fjord at dusk"
               fill
               priority
               sizes="100vw"
@@ -151,7 +151,7 @@ const PrismaHero = () => {
           <div className="absolute inset-0">
             <Image
               src="/images/hero/preikestolen.png"
-              alt="A traveler standing on Preikestolen above a Norwegian fjord"
+              alt="A traveler sitting on Preikestolen above a Norwegian fjord at dusk"
               fill
               priority
               sizes="100vw"

@@ -108,7 +108,7 @@ export const seoPages = {
       intro:
         "A route hub for travelers who prefer slower roads, coastal ferries and landscape-first itineraries.",
       imageSrc: "/images/cards/helgeland.png",
-      imageAlt: "A cinematic coastal road along Northern Norway",
+      imageAlt: "A coastal road threading through sea and mountain scenery in Northern Norway",
       imagePosition: "center 45%",
     },
     sections: [
@@ -233,7 +233,7 @@ export const seoPages = {
       intro:
         "A cinematic 5-7 day route through fishing villages, Arctic beaches and roads framed by sharp granite peaks.",
       imageSrc: "/images/cards/lofoten.png",
-      imageAlt: "Lofoten mountains rising behind a fishing village",
+      imageAlt: "Fishing villages and steep mountains in Lofoten at dusk",
     },
     sections: [
       {
@@ -354,7 +354,7 @@ export const seoPages = {
       intro:
         "A slower route for island ferries, coastal roads and long northern horizons shaped by wind and sea.",
       imageSrc: "/images/cards/helgeland.png",
-      imageAlt: "Road and sea views along the Helgeland Coast",
+      imageAlt: "Island coastline and a quiet road along the Helgeland Coast",
       imagePosition: "center 42%",
     },
     sections: [
@@ -589,7 +589,7 @@ export const seoPages = {
       intro:
         "A calm planning guide to deep water, steep mountains, ferry routes and the slower rhythm of fjord travel.",
       imageSrc: "/images/hero/preikestolen.png",
-      imageAlt: "A wide Norwegian fjord landscape framed by steep mountain walls",
+      imageAlt: "Steep fjord walls rising above calm water",
       imagePosition: "center 45%",
     },
     sections: [
@@ -706,7 +706,7 @@ export const seoPages = {
       intro:
         "A month-by-month framework for matching weather, daylight and route goals across Norway.",
       imageSrc: "/images/hero/preikestolen.png",
-      imageAlt: "Norwegian fjord landscape during clear weather",
+      imageAlt: "A traveler on Preikestolen above a fjord in clear light",
       imagePosition: "center 45%",
     },
     sections: [

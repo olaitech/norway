@@ -47,7 +47,7 @@ export function createOrganizationEntity() {
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: normalizeUrl("/images/branding/logo-norge-removebg-preview.png"),
+      url: normalizeUrl("/images/branding/logo2.png"),
     },
   };
 }
