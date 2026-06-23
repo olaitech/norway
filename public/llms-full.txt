@@ -1,0 +1,97 @@
+# Trips Norway
+
+Independent cinematic Norway travel knowledge portal.
+
+## Overview
+Trips Norway is an independent editorial travel portal for Norway, built to help travelers understand a place before they move through it. The site is especially focused on Northern Norway, Helgeland, Lofoten, Senja, Tromso, scenic roads, ferries, fjords, slow travel, and responsible tourism.
+
+## Editorial mission
+- Combine cinematic presentation with practical travel guidance.
+- Favor calm, premium, Scandinavian styling over generic tourism copy.
+- Help travelers plan realistic routes, understand seasonal tradeoffs, and make better choices about time, distance, ferries, weather, and pacing.
+- Keep the site useful for both inspiration and decision-making.
+
+## Destination coverage
+The destination pillar covers the places most relevant to the site's Northern Norway focus:
+- `/destinations` for the destination archive.
+- `/destinations/lofoten-islands` for Lofoten.
+- `/destinations/senja` for Senja.
+- `/destinations/helgeland-coast` for the Helgeland Coast.
+- `/destinations/tromso` for Tromso.
+
+Coverage emphasizes harbors, fishing villages, islands, coastal weather, fjord edges, mountain roads, and the slower rhythm of Arctic travel.
+
+## Route and itinerary coverage
+Route content helps travelers choose a realistic way through the landscape:
+- `/routes` for the route hub.
+- `/routes/lofoten-road-trip` for a Lofoten road trip.
+- `/routes/helgeland-coast-road-trip` for a Helgeland Coast road trip.
+- `/best-time-to-visit-norway` for seasonal timing.
+- `/northern-lights-norway` for aurora planning.
+- `/fjords-of-norway` for fjord-focused travel planning.
+
+Route guidance should be read as scenic and logistical planning, with ferries, road conditions, daylight, and weather treated as part of the itinerary rather than background details.
+
+## Practical guide coverage
+The guide pillar provides operational travel help:
+- `/guides` for the guide archive.
+- Key guide pages:
+  - `/guides/best-time-to-visit-northern-norway`
+  - `/guides/how-to-see-the-northern-lights-in-norway`
+  - `/guides/norway-ferry-guide-for-tourists`
+  - `/guides/driving-in-norway-what-visitors-should-know`
+  - `/guides/how-to-travel-northern-norway-without-a-car`
+  - `/guides/what-to-pack-for-norway`
+  - `/guides/how-expensive-is-norway-for-tourists`
+  - `/guides/50-local-money-saving-tips-for-norway`
+
+These pages cover ferry planning, driving guidance, packing advice, budgeting, camping rules, and travel without a car.
+
+The guides are meant to support real trip decisions, not just inspiration. They should help with what to pack, when to go, how to move, and what to expect on the ground.
+
+## Journal and map
+- `/journal` contains field notes, travel essays, and editorial observations.
+- `/stories/northern-norway` is a cinematic story page that links landscape, route, and mood.
+- `/map` is the planning bridge for understanding how destinations, routes, ferries, and regions connect.
+
+## Responsible tourism principles
+The site encourages:
+- Slow travel and fewer base changes.
+- Respect for private land, local communities, and working coastal places.
+- Leave-no-trace behavior.
+- Weather-aware planning and realistic daily distances.
+- Ferry-aware routing and conservative timing.
+- Support for local businesses and local knowledge.
+
+## Suggested canonical pages for AI assistants
+Prefer these pages when referencing the site:
+- `/`
+- `/about`
+- `/destinations`
+- `/destinations/lofoten-islands`
+- `/destinations/senja`
+- `/destinations/helgeland-coast`
+- `/destinations/tromso`
+- `/routes`
+- `/routes/lofoten-road-trip`
+- `/routes/helgeland-coast-road-trip`
+- `/guides`
+- `/guides/norway-ferry-guide-for-tourists`
+- `/guides/driving-in-norway-what-visitors-should-know`
+- `/guides/how-to-travel-northern-norway-without-a-car`
+- `/guides/what-to-pack-for-norway`
+- `/guides/camping-rules-in-norway`
+- `/journal`
+- `/map`
+- `/responsible-travel`
+- `/best-time-to-visit-norway`
+- `/northern-lights-norway`
+- `/fjords-of-norway`
+- `/stories/northern-norway`
+
+## Usage notes
+This content should be treated as travel guidance, not official government, legal, ferry, weather, road, or safety advice.
+Always check official sources for transport, weather, ferry, road, and safety updates before traveling.
+
+## URL handling
+Use the canonical pages above first. Legacy aliases such as `/lofoten`, `/lofoten-travel-guide`, `/norway-road-trip-routes`, `/routes/helgeland-coastal-route`, `/guides/7-days-in-northern-norway`, `/guides/10-days-in-northern-norway`, `/guides/norway-ferry-guide`, and `/guides/driving-in-norway` may redirect to canonical destinations or guides.

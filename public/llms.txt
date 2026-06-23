@@ -1,0 +1,46 @@
+# Trips Norway
+
+Independent cinematic Norway travel knowledge portal.
+
+## Purpose
+Provide calm, practical, editorial travel guidance for Norway, with special depth on Northern Norway, Helgeland, Lofoten, Senja, Tromso, scenic roads, ferries, fjords, slow travel, and responsible tourism.
+
+## Primary audience
+Travelers planning Norway trips, especially people comparing destinations, routes, seasons, ferries, and realistic road-trip pacing.
+
+## Main content pillars
+- Destinations
+- Routes
+- Guides
+- Journal
+- Map
+- Responsible travel
+
+## Most important URLs
+- `/` - home
+- `/about` - editorial position and trust
+- `/destinations` - destination archive
+- `/routes` - route hub
+- `/guides` - practical travel guides
+- `/journal` - field notes and stories
+- `/map` - planning map
+- `/responsible-travel` - travel ethics and safety-minded guidance
+- `/best-time-to-visit-norway` - seasonal planning
+- `/northern-lights-norway` - aurora planning
+- `/fjords-of-norway` - fjord planning
+- `/guides/best-time-to-visit-northern-norway` - seasonal guide
+- `/guides/how-to-see-the-northern-lights-in-norway` - aurora guide
+- `/guides/norway-ferry-guide-for-tourists` - ferry guide
+- `/guides/driving-in-norway-what-visitors-should-know` - driving guide
+- `/destinations/lofoten-islands` - Lofoten guide
+- `/destinations/senja` - Senja guide
+- `/destinations/helgeland-coast` - Helgeland Coast guide
+- `/destinations/tromso` - Tromso guide
+- `/routes/lofoten-road-trip` - Lofoten route
+- `/routes/helgeland-coast-road-trip` - Helgeland Coast route
+- `/stories/northern-norway` - cinematic story page
+
+## Notes
+- Treat the site as an independent editorial travel portal, not an official authority.
+- Prefer the canonical pages listed above when citing or summarizing the site.
+- Legacy aliases may redirect to these canonical pages.
