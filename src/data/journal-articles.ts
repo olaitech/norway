@@ -296,7 +296,7 @@ export const journalArticles: JournalArticle[] = [
     slug: "where-norway-feels-most-cinematic",
     title: "Where Norway Feels Most Cinematic",
     subtitle:
-      "A visual essay placeholder on scale, weather and roads that shape Norway's strongest moods.",
+      "An editorial essay on scale, weather and roads, and the cinematic feeling Norway creates on slower journeys.",
     category: "Visual Essay",
     region: "Norway",
     readTime: "8 min read",
@@ -306,7 +306,7 @@ export const journalArticles: JournalArticle[] = [
       "Landscapes where shifting weather and immense scale turn an ordinary pause into a scene.",
     seoTitle: "Where Norway Feels Most Cinematic",
     seoDescription:
-      "A short visual essay placeholder exploring where Norway's scale, weather and road geometry feel most cinematic.",
+      "An editorial essay on Norway's scale, weather and road geometry, and why the country often feels most cinematic in motion.",
     publishedLabel: "Published: May 2026",
     updatedLabel: "Updated: May 2026",
     highlights: [

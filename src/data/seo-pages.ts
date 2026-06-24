@@ -217,7 +217,7 @@ export const seoPages = {
     meta: {
       title: "Lofoten Road Trip (5-7 Days)",
       description:
-        "A premium placeholder guide for a 5-7 day Lofoten road trip across Arctic villages, beaches and mountain roads.",
+        "A 5-7 day Lofoten road trip guide focused on island roads, ferries, weather windows and realistic pacing between fishing villages.",
     },
     jsonLd: {
       breadcrumbs: [
@@ -335,7 +335,7 @@ export const seoPages = {
     meta: {
       title: "Helgeland Coast Road Trip",
       description:
-        "A cinematic placeholder guide for a slow Helgeland Coast road trip with island ferries, quiet roads and coastal landscapes.",
+        "A slower Helgeland Coast road trip guide built around ferry crossings, island stops, coastal roads and realistic pacing between small communities.",
     },
     jsonLd: {
       breadcrumbs: [
@@ -457,7 +457,7 @@ export const seoPages = {
     meta: {
       title: "Northern Lights in Norway",
       description:
-        "A cinematic placeholder guide to seeing northern lights in Norway across Tromso, Lofoten, Senja, Alta and Bodo.",
+        "A Northern Norway aurora guide focused on darkness, cloud cover, patience and realistic planning from Tromso, Lofoten, Senja and beyond.",
     },
     jsonLd: {
       breadcrumbs: [
@@ -690,7 +690,7 @@ export const seoPages = {
     meta: {
       title: "Best Time to Visit Norway",
       description:
-        "A month-by-month seasonal placeholder guide for Norway covering winter, spring, summer, autumn, fjords, road trips and Arctic light.",
+        "Month-by-month guidance for choosing Norway's best travel season by daylight, weather, road conditions, northern lights and midnight sun.",
     },
     jsonLd: {
       breadcrumbs: [
