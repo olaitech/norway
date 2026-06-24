@@ -1,5 +1,11 @@
 const BASE_ORIGIN = process.env.CHECK_ROUTES_ORIGIN ?? "http://localhost:3000";
-const SITE_URL = "https://norway-umber.vercel.app";
+// Must stay aligned with src/config/site.ts.
+const SITE_URL = "https://tripsnorway.com";
+const CANONICAL_HOST = new URL(SITE_URL).hostname.toLowerCase();
+const LEGACY_DEPLOYMENT_DOMAINS = [
+  "norway-umber.vercel.app",
+  "norway-git-main-olaitechs-projects.vercel.app",
+];
 
 const expectedPublicRoutes = [
   "/",
@@ -28,6 +34,7 @@ const expectedPublicRoutes = [
 ];
 
 const expectedRedirects = new Map([
+  ["/norway-road-trip-routes", "/routes"],
   ["/norway-itinerary-7-days", "/routes/lofoten-road-trip"],
   ["/norway-itinerary-10-days", "/routes/helgeland-coast-road-trip"],
 ]);
@@ -57,9 +64,6 @@ const requiredSitemapRoutes = [
   "/terms",
   "/best-time-to-visit-norway",
   "/northern-lights-norway",
-  "/norway-road-trip-routes",
-  "/norway-itinerary-7-days",
-  "/norway-itinerary-10-days",
   "/fjords-of-norway",
 ];
 
@@ -133,7 +137,7 @@ function validateSitemapDomains(sitemapXml) {
   const vercelUrlMatches = sitemapXml.match(/https:\/\/[a-z0-9-]+\.vercel\.app/gi) ?? [];
 
   for (const match of vercelUrlMatches) {
-    if (match.toLowerCase() !== SITE_URL.toLowerCase()) {
+    if (new URL(match).hostname.toLowerCase() !== CANONICAL_HOST) {
       fail(`Sitemap contains non-canonical Vercel domain: ${match}`);
     }
   }
@@ -144,10 +148,12 @@ function validateSitemapDomains(sitemapXml) {
     ok(`Sitemap contains canonical base URL: ${SITE_URL}`);
   }
 
-  if (sitemapXml.includes("norway-git-main-olaitechs-projects.vercel.app")) {
-    fail("Sitemap still contains old domain norway-git-main-olaitechs-projects.vercel.app");
-  } else {
-    ok("Sitemap does not contain old production domain");
+  for (const legacyDomain of LEGACY_DEPLOYMENT_DOMAINS) {
+    if (sitemapXml.includes(legacyDomain)) {
+      fail(`Sitemap still contains legacy deployment domain ${legacyDomain}`);
+    } else {
+      ok(`Sitemap does not contain legacy deployment domain ${legacyDomain}`);
+    }
   }
 }
 
