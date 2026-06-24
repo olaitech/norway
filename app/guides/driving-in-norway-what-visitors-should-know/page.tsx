@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 
 type Mistake = {
   title: string;
@@ -74,6 +75,17 @@ export default function DrivingInNorwayGuidePage() {
       readTime="12 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/driving-in-norway-what-visitors-should-know"
+      answerBlock={
+        <AnswerBlock
+          title="Driving in Norway is safe, but it asks for time."
+          summary="The roads are usually straightforward, yet ferries, tunnels, weather and narrow stretches make slower planning the right default."
+          bullets={[
+            "Allow more time than Google Maps suggests.",
+            "Treat ferries and weather as route variables.",
+            "Keep daily distances modest.",
+          ]}
+        />
+      }
       sources={[
         {
           label: "Visit Norway",
@@ -144,20 +156,19 @@ export default function DrivingInNorwayGuidePage() {
         changing weather and strict traffic rules.
       </p>
 
-      <h2>1. Quick answer</h2>
+      <h2>1. Why driving in Norway feels slower than the map suggests</h2>
       <p>
-        Driving in Norway is safe and rewarding, but visitors should drive
-        slower than expected, plan routes carefully and allow more time than
-        Google Maps suggests.
+        Driving in Norway is safe and rewarding, but the route usually needs
+        more time than the map suggests. Narrow roads, ferries, tunnels,
+        weather and scenic stops all add real time to the day.
       </p>
       <ul>
-        <li>Many roads are narrow.</li>
-        <li>Mountain passes can close in bad weather.</li>
-        <li>Ferries may affect schedules.</li>
-        <li>Speed limits are strictly enforced.</li>
+        <li>Many roads are narrow and often shared with local traffic.</li>
+        <li>Ferry crossings can shape the rhythm of the route.</li>
+        <li>Speed limits are strict and often lower than visitors expect.</li>
         <li>
-          The best driving experience is often choosing a smaller region and
-          exploring it properly.
+          A smaller region usually makes for a better trip than a rushed
+          cross-country loop.
         </li>
       </ul>
 

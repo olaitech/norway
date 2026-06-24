@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
@@ -22,6 +23,17 @@ export default function HowToTravelNorthernNorwayWithoutCarPage() {
       readTime="13 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/how-to-travel-northern-norway-without-a-car"
+      answerBlock={
+        <AnswerBlock
+          title="Northern Norway works best by hub, not scatter."
+          summary="You can travel without a car, but the trip works best when trains, buses, ferries and boats shape the route instead of fighting it."
+          bullets={[
+            "Plan transfers in Entur first.",
+            "Let ferry and boat schedules decide the day.",
+            "Anchor each region with one main base.",
+          ]}
+        />
+      }
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         { label: "Entur", href: "https://entur.no/" },
@@ -91,18 +103,6 @@ export default function HowToTravelNorthernNorwayWithoutCarPage() {
         />
       }
     >
-      <h2>Quick answer</h2>
-      <p>
-        You can travel Northern Norway without a car, but it works best when
-        you plan around transport schedules instead of trying to fit too many
-        regions into one short trip.
-      </p>
-      <ul>
-        <li>Use Entur first for route planning and transfer logic.</li>
-        <li>Use regional operators for final local timetables and tickets.</li>
-        <li>Build your trip around hubs, then add focused side trips.</li>
-      </ul>
-
       <h2>How the transport network works</h2>
       <p>
         Northern Norway is connected by a mix of buses, ferries, express boats,

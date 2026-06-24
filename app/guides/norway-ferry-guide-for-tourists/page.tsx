@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
@@ -21,6 +22,17 @@ export default function NorwayFerryGuideForTouristsPage() {
       readTime="14 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/norway-ferry-guide-for-tourists"
+      answerBlock={
+        <AnswerBlock
+          title="Ferries are part of the route, not a detour."
+          summary="Once crossings are part of the plan, the trip feels calmer. Check the timetable early, then build overnight stops around the real rhythm of the water."
+          bullets={[
+            "Check ferry times before fixing overnight stops.",
+            "Expect summer queues on busy crossings.",
+            "Leave buffer time for wind, weather and loading.",
+          ]}
+        />
+      }
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         { label: "Entur", href: "https://entur.no/" },
@@ -90,12 +102,6 @@ export default function NorwayFerryGuideForTouristsPage() {
         />
       }
     >
-      <h2>Quick answer</h2>
-      <p>
-        Ferries are part of normal transport in Norway. Treat them like regular
-        road or public transport links, not only as tourist activities.
-      </p>
-
       <h2>How ferries work for tourists</h2>
       <ul>
         <li>Many routes are frequent, but remote routes may run only a few times per day.</li>

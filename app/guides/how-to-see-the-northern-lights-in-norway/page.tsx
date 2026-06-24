@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
@@ -22,6 +23,17 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
       readTime="10 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/how-to-see-the-northern-lights-in-norway"
+      answerBlock={
+        <AnswerBlock
+          title="Aurora trips reward patience more than precision."
+          summary="Stay several nights in northern Norway, watch cloud and wind forecasts closely and keep the evenings flexible enough to move when conditions improve."
+          bullets={[
+            "Plan for at least three nights in the north.",
+            "Check cloud and wind forecasts every day.",
+            "Move away from city lights when the sky clears.",
+          ]}
+        />
+      }
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         { label: "Visit Tromso", href: "https://www.visittromso.no/" },
@@ -77,13 +89,6 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
         />
       }
     >
-      <h2>Quick answer</h2>
-      <p>
-        The best chance to see northern lights in Norway is to stay several
-        nights in the north, monitor cloud forecasts and stay flexible with
-        location and timing.
-      </p>
-
       <h2>Where to base your trip</h2>
       <ul>
         <li>Tromso for easy access and many tour options.</li>

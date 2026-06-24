@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
@@ -21,6 +22,17 @@ export default function CampingRulesInNorwayPage() {
       readTime="10 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/camping-rules-in-norway"
+      answerBlock={
+        <AnswerBlock
+          title="Camping freedom comes with clear boundaries."
+          summary="The right to roam is generous, but the best trips still respect distance, access, fire rules and the places people actually live."
+          bullets={[
+            "Stay 150 metres from inhabited houses and cabins.",
+            "Use official campsites when local rules require it.",
+            "Check fire restrictions before you light anything.",
+          ]}
+        />
+      }
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         {
@@ -94,14 +106,6 @@ export default function CampingRulesInNorwayPage() {
         unlimited. The right to roam gives broad opportunities for nature
         travel, and it also comes with clear responsibilities.
       </p>
-
-      <h2>Quick answer</h2>
-      <ul>
-        <li>You can often camp on uncultivated land under right-to-roam rules.</li>
-        <li>Keep distance from homes and cabins.</li>
-        <li>Respect local restrictions and nature pressure areas.</li>
-        <li>Use official campsites when conditions or local rules require it.</li>
-      </ul>
 
       <h2>The right to roam and the 150-metre rule</h2>
       <p>
