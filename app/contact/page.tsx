@@ -6,7 +6,7 @@ import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Trips Norway about corrections, local knowledge, story ideas, partnerships, photography, writing or future collaboration.",
+    "Contact Trips Norway about corrections, local knowledge, story ideas, partnerships, photography or writing.",
   alternates: {
     canonical: "/contact",
   },
@@ -24,7 +24,7 @@ export default function ContactPage() {
     <InfoPageShell
       eyebrow="Contact"
       title="Contact"
-      intro="Visitors, local tourism operators, photographers, writers, municipalities, travel businesses and collaborators can get in touch about corrections, ideas, partnerships, local knowledge or future collaboration."
+      intro="Visitors, local operators, photographers, writers, municipalities and collaborators can get in touch about corrections, local knowledge, editorial ideas or responsible partnership enquiries."
       actions={[
         { label: "About the portal", href: "/about" },
         { label: "Responsible travel", href: "/responsible-travel" },
@@ -39,14 +39,15 @@ export default function ContactPage() {
             Share useful knowledge.
           </h2>
           <p className="mt-6 text-sm font-light leading-[1.85] text-[#f4efe2]/66 sm:text-base">
-            For now, use this placeholder address. It is intentionally easy to
-            replace later when the project has a permanent editorial inbox.
+            Use the email below for corrections, local knowledge, story ideas
+            and partnership enquiries. Messages are read directly by the
+            project team.
           </p>
           <Link
-            href="mailto:hello@example.com"
+            href="mailto:hello@tripsnorway.com"
             className="mt-8 inline-flex rounded-full border border-[#d8c9a7]/35 bg-[#d8c9a7]/10 px-5 py-3 text-sm font-medium text-[#f4efe2] transition-colors hover:bg-[#d8c9a7]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
           >
-            hello@example.com
+            hello@tripsnorway.com
           </Link>
         </section>
 

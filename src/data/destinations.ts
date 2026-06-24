@@ -69,7 +69,7 @@ export const destinations: Destination[] = [
     imagePosition: "center center",
     metaTitle: "Lofoten Islands",
     metaDescription:
-      "Explore a cinematic placeholder guide to the Lofoten Islands, with seasonal notes, quiet experiences and a suggested coastal route.",
+      "Plan a slower Lofoten trip with practical notes on island roads, ferry links, weather and the best seasons for light and coastal stops.",
     facts: [
       { label: "Best season", value: "May - September" },
       { label: "Region", value: "Nordland" },
@@ -163,7 +163,7 @@ export const destinations: Destination[] = [
     imagePosition: "center center",
     metaTitle: "Senja",
     metaDescription:
-      "Discover a calm placeholder travel guide to Senja, including seasonal advice, island experiences and a suggested scenic route.",
+      "Plan a calm Senja road trip with scenic viewpoints, weather-aware pacing, quiet coastlines and the right season for long daylight or northern skies.",
     facts: [
       { label: "Best season", value: "June - October" },
       { label: "Region", value: "Troms" },
@@ -257,7 +257,7 @@ export const destinations: Destination[] = [
     imagePosition: "center center",
     metaTitle: "Helgeland Coast",
     metaDescription:
-      "Plan a slow placeholder journey along the Helgeland Coast with seasonal guidance, island stops and a suggested ferry-linked route.",
+      "Plan a slower Helgeland Coast journey with ferry crossings, island detours, seasonal timing and realistic distances between shoreline stops.",
     facts: [
       { label: "Best season", value: "May - September" },
       { label: "Region", value: "Nordland" },
@@ -351,7 +351,7 @@ export const destinations: Destination[] = [
     imagePosition: "center center",
     metaTitle: "Tromsø",
     metaDescription:
-      "Explore a refined placeholder guide to Tromso, including northern seasons, city experiences and quiet Arctic excursions.",
+      "Use Tromsø as a northern base for aurora trips, winter light, harbour walks and day trips shaped by weather and darkness.",
     facts: [
       { label: "Best season", value: "September - March" },
       { label: "Region", value: "Troms" },
