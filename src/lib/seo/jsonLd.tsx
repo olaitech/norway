@@ -9,6 +9,11 @@ export type BreadcrumbItem = {
   href: string;
 };
 
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
 type ArticleJsonLdOptions = {
   headline: string;
   description: string;
@@ -86,6 +91,21 @@ export function createBreadcrumbListJsonLd(items: readonly BreadcrumbItem[]) {
       position: index + 1,
       name: item.name,
       item: normalizeUrl(item.href),
+    })),
+  };
+}
+
+export function createFaqJsonLd(items: readonly FaqItem[]) {
+  return {
+    "@context": SCHEMA_CONTEXT,
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
     })),
   };
 }

@@ -14,6 +14,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faqItems = [
+  {
+    question: "When is the best time to see the northern lights in Norway?",
+    answer:
+      "The northern lights season is generally strongest during the dark months, from autumn to early spring. Clear skies, darkness and patience matter more than choosing one perfect date.",
+  },
+  {
+    question: "Can I see the northern lights from Tromso or Lofoten?",
+    answer:
+      "Yes, both Tromso and Lofoten can work well, but cloud cover and light pollution matter. It often helps to move away from bright streets and keep the plan flexible.",
+  },
+  {
+    question: "How many nights should I stay to improve my chances?",
+    answer:
+      "A longer stay gives better odds because weather changes quickly in Northern Norway. Three to five nights is usually calmer than trying to force the experience into one evening.",
+  },
+  {
+    question: "Do I need a guided northern lights tour?",
+    answer:
+      "Not always. A tour can help with local knowledge, road conditions and photography, but independent travellers can also plan carefully with weather forecasts, dark locations and safe transport.",
+  },
+] as const;
+
 export default function HowToSeeNorthernLightsInNorwayPage() {
   return (
     <GuideArticleLayout
@@ -23,6 +46,7 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
       readTime="10 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/how-to-see-the-northern-lights-in-norway"
+      faqItems={faqItems}
       answerBlock={
         <AnswerBlock
           title="Aurora trips reward patience more than precision."

@@ -13,6 +13,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faqItems = [
+  {
+    question: "Do I need to book ferries in Norway in advance?",
+    answer:
+      "Most ordinary road ferries do not need advance booking, but busy summer crossings can have queues. Check the timetable before the day starts and leave buffer time around important connections.",
+  },
+  {
+    question: "How do tourists pay for ferries in Norway?",
+    answer:
+      "Many ferry payments are handled automatically through number plate recognition, AutoPASS agreements or later invoicing. Some routes may still use app, card or local ticketing, so check the operator information before travelling.",
+  },
+  {
+    question: "Should I plan my route around ferry times?",
+    answer:
+      "Yes. In coastal Norway, ferries are part of the route. Treat crossing times as fixed points, then build driving distances and overnight stops around them.",
+  },
+  {
+    question: "Can weather affect Norwegian ferries?",
+    answer:
+      "Yes. Wind, rough sea and winter conditions can delay or cancel exposed crossings. Always check live updates before remote or important ferry legs.",
+  },
+] as const;
+
 export default function NorwayFerryGuideForTouristsPage() {
   return (
     <GuideArticleLayout
@@ -22,6 +45,7 @@ export default function NorwayFerryGuideForTouristsPage() {
       readTime="14 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/norway-ferry-guide-for-tourists"
+      faqItems={faqItems}
       answerBlock={
         <AnswerBlock
           title="Ferries are part of the route, not a detour."

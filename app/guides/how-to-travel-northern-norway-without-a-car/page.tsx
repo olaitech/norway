@@ -14,6 +14,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faqItems = [
+  {
+    question: "Can I travel Northern Norway without renting a car?",
+    answer:
+      "Yes, but the trip needs more planning. Buses, ferries, express boats and flights can connect many places, while remote areas may require fewer stops and more flexible timing.",
+  },
+  {
+    question: "Which places are easiest without a car?",
+    answer:
+      "Tromso, Bodo, Narvik and some coastal towns are easier starting points without a car. Places with frequent buses, ferries or airport connections usually work better than remote road-only areas.",
+  },
+  {
+    question: "Are ferries useful without a car?",
+    answer:
+      "Yes. Passenger boats and ferries can be part of a car-free route, especially along the coast. Always check schedules carefully because some routes are seasonal or infrequent.",
+  },
+  {
+    question: "Is travelling without a car slower?",
+    answer:
+      "Usually, yes. But a slower plan can work well in Northern Norway if you choose fewer bases, leave room for delays and treat the journey as part of the experience.",
+  },
+] as const;
+
 export default function HowToTravelNorthernNorwayWithoutCarPage() {
   return (
     <GuideArticleLayout
@@ -23,6 +46,7 @@ export default function HowToTravelNorthernNorwayWithoutCarPage() {
       readTime="13 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/how-to-travel-northern-norway-without-a-car"
+      faqItems={faqItems}
       answerBlock={
         <AnswerBlock
           title="Northern Norway works best by hub, not scatter."
