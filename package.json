@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "check:aeo": "node scripts/check-aeo-foundation.mjs",
     "check:seo": "node scripts/check-seo-foundation.mjs",
     "check:routes": "node scripts/check-public-routes.mjs"
   },
