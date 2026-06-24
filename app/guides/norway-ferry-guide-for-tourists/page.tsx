@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
   title: "Norway Ferry Guide for Tourists | Practical Norway Travel Guide",
@@ -59,6 +60,35 @@ export default function NorwayFerryGuideForTouristsPage() {
           description: "Trace the crossings before you fix the overnight stops.",
         },
       ]}
+      trustBox={
+        <TrustBox
+          label="Planning note"
+          title="Ferries are part of the route, not a detour."
+          summary="Once crossings are part of the itinerary, the trip feels calmer. Check the timetable early, then build the overnight stops around the real rhythm of the water."
+          bullets={[
+            "Check ferry times before fixing overnight stops",
+            "Expect summer queues on busy crossings",
+            "Leave buffer for wind and weather",
+          ]}
+          lastUpdated="May 2026"
+          reviewedFor="2026 route planning"
+          editorialNote="Independent planning guidance, not operator booking support."
+          safetyNote="Verify live timetables and weather updates before each crossing."
+          sources={[
+            { label: "Visit Norway", href: "https://www.visitnorway.com/" },
+            { label: "Entur", href: "https://entur.no/" },
+            { label: "AutoPASS", href: "https://www.autopass.no/en/" },
+            {
+              label: "AutoPASS for ferry",
+              href: "https://autopassferje.no/en/",
+            },
+            {
+              label: "Reis Nordland",
+              href: "https://www.reisnordland.no/",
+            },
+          ]}
+        />
+      }
     >
       <h2>Quick answer</h2>
       <p>

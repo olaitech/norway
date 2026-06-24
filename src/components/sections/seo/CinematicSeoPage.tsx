@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import type { SeoCard, SeoPageData, SeoSection } from "@/src/data/seo-pages";
@@ -13,6 +14,7 @@ import {
 type CinematicSeoPageProps = {
   page: SeoPageData;
   canonicalPath: string;
+  trustBox?: ReactNode;
 };
 
 function SectionHeader({ section }: { section: SeoSection }) {
@@ -71,6 +73,7 @@ function ContentCard({ card }: { card: SeoCard }) {
 export function CinematicSeoPage({
   page,
   canonicalPath,
+  trustBox,
 }: CinematicSeoPageProps) {
   const jsonLdSchemas = page.jsonLd
     ? [
@@ -229,7 +232,11 @@ export function CinematicSeoPage({
             </article>
           </section>
 
-          {page.guideMeta ? (
+          {trustBox ? (
+            <section className="border-t border-white/8 pt-14 sm:pt-16">
+              <div className="mx-auto max-w-4xl">{trustBox}</div>
+            </section>
+          ) : page.guideMeta ? (
             <section className="border-t border-white/8 pt-14 sm:pt-16">
               <GuideMetaFooter
                 lastUpdated={page.guideMeta.lastUpdated}

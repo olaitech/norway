@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
   title: "Camping Rules in Norway | Practical Norway Travel Guide",
@@ -58,6 +59,34 @@ export default function CampingRulesInNorwayPage() {
           description: "Keep camping low-impact, local and considerate.",
         },
       ]}
+      trustBox={
+        <TrustBox
+          label="Editorial note"
+          title="Camping freedom comes with clear boundaries."
+          summary="The right to roam is generous, but the best trips still respect distance, access, fire rules and the places people actually live."
+          bullets={[
+            "Stay 150 metres from inhabited houses and cabins",
+            "Use official campsites when local rules require it",
+            "Check fire restrictions and leave no trace",
+          ]}
+          lastUpdated="May 2026"
+          reviewedFor="Summer 2026"
+          editorialNote="Editorial guidance, not a legal ruling."
+          safetyNote="Verify local restrictions and hazard conditions before each night."
+          sources={[
+            { label: "Visit Norway", href: "https://www.visitnorway.com/" },
+            {
+              label: "Norwegian Environment Agency",
+              href: "https://www.environmentagency.no/",
+            },
+            {
+              label: "The Norwegian Trekking Association",
+              href: "https://www.dnt.no/",
+            },
+            { label: "Varsom", href: "https://www.varsom.no/" },
+          ]}
+        />
+      }
     >
       <h2>Intro</h2>
       <p>

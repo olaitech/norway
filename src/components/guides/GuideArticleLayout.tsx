@@ -24,6 +24,7 @@ type GuideArticleLayoutProps = {
   readTime: string;
   lastUpdated: string;
   canonicalPath: string;
+  trustBox?: ReactNode;
   sources?: GuideSource[];
   relatedLinks?: readonly RelatedLinkCard[];
   relatedEyebrow?: string;
@@ -39,6 +40,7 @@ export function GuideArticleLayout({
   readTime,
   lastUpdated,
   canonicalPath,
+  trustBox,
   sources,
   relatedLinks,
   relatedEyebrow,
@@ -119,7 +121,9 @@ export function GuideArticleLayout({
             />
           ) : null}
 
-          {hasSources ? (
+          {trustBox ? (
+            <div className="mt-8">{trustBox}</div>
+          ) : hasSources ? (
             <GuideMetaFooter
               className="mt-8"
               lastUpdated={lastUpdated}

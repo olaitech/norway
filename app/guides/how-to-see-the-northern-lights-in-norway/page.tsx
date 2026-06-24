@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
   title:
@@ -53,6 +54,28 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
           description: "See how the light, roads and coastlines connect inside the story.",
         },
       ]}
+      trustBox={
+        <TrustBox
+          label="Editorial note"
+          title="Aurora travel is won by time, not luck."
+          summary="The strongest plan is usually the simplest: stay several nights in the north, keep your evenings open and let cloud and wind decide where you should be."
+          bullets={[
+            "Plan for at least 3 nights in the north",
+            "Check cloud and wind forecasts daily",
+            "Move away from city lights when the sky clears",
+          ]}
+          lastUpdated="May 2026"
+          reviewedFor="2026 aurora season"
+          editorialNote="Planning guidance, not a live aurora service."
+          safetyNote="Check weather, road and local conditions before night driving."
+          sources={[
+            { label: "Visit Norway", href: "https://www.visitnorway.com/" },
+            { label: "Visit Tromso", href: "https://www.visittromso.no/" },
+            { label: "Yr", href: "https://www.yr.no/" },
+            { label: "Varsom", href: "https://www.varsom.no/" },
+          ]}
+        />
+      }
     >
       <h2>Quick answer</h2>
       <p>

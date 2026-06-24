@@ -193,10 +193,12 @@ export default function ResponsibleTravelPage() {
         </div>
 
         <div className="mx-auto mt-10 max-w-7xl">
-          <GuideMetaFooter
-            lastUpdated={GUIDE_LAST_UPDATED}
-            sources={guideSourceSets.campingResponsibleTravel}
-          />
+          <div className="border-t border-white/8 pt-14 sm:pt-16">
+            <GuideMetaFooter
+              lastUpdated={GUIDE_LAST_UPDATED}
+              sources={guideSourceSets.campingResponsibleTravel}
+            />
+          </div>
         </div>
       </section>
     </main>

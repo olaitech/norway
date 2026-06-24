@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
   title:
@@ -62,6 +63,33 @@ export default function HowToTravelNorthernNorwayWithoutCarPage() {
           description: "Match public transport planning to the season and daylight you want.",
         },
       ]}
+      trustBox={
+        <TrustBox
+          label="Planning note"
+          title="Northern Norway works better by hub than by scatter."
+          summary="Public transport can carry a lot of the journey, but only if you let transfer days and ferry schedules shape the route."
+          bullets={[
+            "Use Entur first for route planning and transfers",
+            "Let ferry and boat timetables shape the day",
+            "Keep one anchor base and one secondary base",
+          ]}
+          lastUpdated="May 2026"
+          reviewedFor="Summer 2026"
+          editorialNote="Practical guidance, not a booking service."
+          safetyNote="Double-check departures and holiday schedules before each transfer day."
+          sources={[
+            { label: "Entur", href: "https://entur.no/" },
+            {
+              label: "Reis Nordland",
+              href: "https://www.reisnordland.no/",
+            },
+            { label: "Svipper", href: "https://svipper.no/" },
+            { label: "Vy", href: "https://www.vy.no/en" },
+            { label: "SJ Nord", href: "https://www.sj.no/" },
+            { label: "Avinor", href: "https://avinor.no/" },
+          ]}
+        />
+      }
     >
       <h2>Quick answer</h2>
       <p>
