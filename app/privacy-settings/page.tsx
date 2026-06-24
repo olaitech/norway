@@ -5,7 +5,7 @@ import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 export const metadata: Metadata = {
   title: "Privacy settings",
   description:
-    "Review the current privacy settings placeholder for Trips Norway, including necessary cookies, analytics, embedded media and marketing status.",
+    "Review the current privacy settings page for Trips Norway, including Vercel Analytics, direct email, map tiles, outbound social links and what a fuller consent center would cover later.",
   alternates: {
     canonical: "/privacy-settings",
   },
@@ -13,24 +13,29 @@ export const metadata: Metadata = {
 
 const settings = [
   {
-    title: "Necessary cookies",
-    status: "Required",
-    text: "Basic technical functionality may be required for the site to load, route and operate safely. These are not optional preference controls.",
-  },
-  {
     title: "Analytics",
-    status: "Not active yet",
-    text: "No analytics script was found in the current app code. If anonymous analytics are added later, this section should explain the tool and visitor controls.",
+    status: "Active",
+    text: "Vercel Analytics is currently used to understand general site traffic and page usage. It is designed to stay lightweight and does not rely on third-party cookies.",
   },
   {
-    title: "Embedded media",
-    status: "Coming later",
-    text: "If third-party video, maps or media embeds are added later, this page should explain their privacy impact before or when they load.",
+    title: "Direct email",
+    status: "Simple",
+    text: "The contact page uses a direct mailto link. If someone emails the site, their message and address are used only to read and reply.",
   },
   {
-    title: "Marketing / partnerships",
-    status: "Not active yet",
-    text: "No advertising or partner tracking controls are implemented here. Future affiliate or partner features should be disclosed clearly where relevant.",
+    title: "Maps",
+    status: "On demand",
+    text: "The map page may load tiles from OpenStreetMap-related services when it opens. Google Maps links are outbound links that only open if a visitor chooses them.",
+  },
+  {
+    title: "Social links",
+    status: "Outbound only",
+    text: "TikTok links currently open on TikTok. The site does not embed TikTok players or load TikTok tracking scripts.",
+  },
+  {
+    title: "Future consent center",
+    status: "Not needed yet",
+    text: "This page is informational for now. It would become more important if the site later adds nonessential cookies, embedded social players, newsletter tools, ads, affiliate tracking or booking integrations.",
   },
 ] as const;
 
@@ -39,7 +44,7 @@ export default function PrivacySettingsPage() {
     <InfoPageShell
       eyebrow="Privacy center"
       title="Privacy settings"
-      intro="This page is a placeholder privacy center. It does not pretend to store consent choices yet; it explains the current state and what should be expanded if tracking, embeds or advertising are added later."
+      intro="This page is informational for now. It explains the current privacy setup rather than storing consent choices. If Trips Norway later adds nonessential cookies, embedded social players, newsletter tools, ads or partner tracking, it can grow into a fuller preference center."
       actions={[
         { label: "Privacy policy", href: "/privacy" },
         { label: "Contact", href: "/contact" },
@@ -54,9 +59,10 @@ export default function PrivacySettingsPage() {
             Minimal by design.
           </h2>
           <p className="mt-6 text-sm font-light leading-[1.85] text-[#f4efe2]/66 sm:text-base">
-            At the moment, the current app code does not include an analytics
-            script, advertising system or custom consent storage. If that
-            changes, this page should become a functional preference center.
+            The site currently uses Vercel Analytics and map tile requests only
+            when visitors open the map. There is no full consent store yet,
+            because the site does not currently use the heavier tracking
+            features that would need one.
           </p>
         </aside>
 

@@ -5,7 +5,7 @@ import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 export const metadata: Metadata = {
   title: "Privacy policy",
   description:
-    "Read the privacy policy for Trips Norway, including plain-English notes on analytics, contact messages, personal data and future third-party services.",
+    "Read the privacy policy for Trips Norway, including notes on Vercel Analytics, direct email, map tiles, outbound links and future third-party services.",
   alternates: {
     canonical: "/privacy",
   },
@@ -13,24 +13,24 @@ export const metadata: Metadata = {
 
 const privacySections = [
   {
-    title: "Simple, limited data use",
-    text: "This early-stage portal is designed to work as a public travel knowledge site. It does not sell personal data. If anonymous analytics are added in the future, they should be used only to understand broad site usage and improve the experience.",
+    title: "Analytics",
+    text: "Trips Norway uses Vercel Analytics to understand general traffic and page usage. The setup is lightweight and intended to stay cookie-free, so it can support the site without adding a heavy tracking layer.",
   },
   {
-    title: "Contact messages",
-    text: "If you contact the portal directly, the information you share may be used to read, manage and respond to your message. It should not be used for unrelated marketing unless that is clearly explained and agreed to later.",
+    title: "Direct email",
+    text: "If you contact Trips Norway by email, your message and email address are processed only to read, manage and reply to that message. They are not used for unrelated marketing unless that is clearly explained later.",
   },
   {
-    title: "Third-party services",
-    text: "The site may use embedded maps, media, analytics or other third-party services in the future. Those services can have their own privacy practices, and this policy should be updated when they are added.",
+    title: "Maps and external links",
+    text: "When you open the map, the page may load tiles from OpenStreetMap-related services. Google Maps links and TikTok links are outbound links only; they do not load embedded players on the page.",
   },
   {
     title: "Deletion requests",
-    text: "If you have shared personal information directly, you can request deletion of that information. Some records may need to be retained when required for security, legal or operational reasons.",
+    text: "If you have shared personal information directly, you can ask for deletion of that information. Some records may need to be kept for security, legal or operational reasons.",
   },
   {
-    title: "Policy updates",
-    text: "This is an early-stage independent portal. The privacy policy may be updated as the site grows, especially if analytics, contact forms, embedded services, advertising or partner features are introduced.",
+    title: "Future changes",
+    text: "If Trips Norway later adds newsletter tools, ads, affiliate links, booking partners or embedded social players, this policy should be updated before those features go live.",
   },
 ] as const;
 
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
     <InfoPageShell
       eyebrow="Privacy"
       title="Privacy policy"
-      intro="A plain-English privacy policy for an independent Norway travel portal. The intent is to keep data use limited, transparent and proportionate to the site's purpose."
+      intro="A plain-English privacy policy for Trips Norway. It explains the current use of Vercel Analytics, direct email, map tiles and external links in a simple, proportionate way."
       actions={[
         { label: "Privacy settings", href: "/privacy-settings" },
         { label: "Contact", href: "/contact" },
