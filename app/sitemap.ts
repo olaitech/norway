@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 
 import { SITE_URL } from "@/src/config/site";
-import { destinations } from "@/src/data/destinations";
 import { journalArticles } from "@/src/data/journal-articles";
 
 const lastModified = new Date("2026-06-23T00:00:00.000Z");
@@ -65,11 +64,28 @@ const supportingPages: SitemapEntry[] = [
   { path: "/terms", changeFrequency: "yearly", priority: 0.3 },
 ];
 
-const destinationPages: SitemapEntry[] = destinations.map((destination) => ({
-  path: `/destinations/${destination.slug}`,
-  changeFrequency: "monthly",
-  priority: 0.7,
-}));
+const destinationPages: SitemapEntry[] = [
+  {
+    path: "/destinations/lofoten-islands",
+    changeFrequency: "monthly",
+    priority: 0.7,
+  },
+  {
+    path: "/destinations/senja",
+    changeFrequency: "monthly",
+    priority: 0.7,
+  },
+  {
+    path: "/destinations/helgeland-coast",
+    changeFrequency: "monthly",
+    priority: 0.7,
+  },
+  {
+    path: "/destinations/tromso",
+    changeFrequency: "monthly",
+    priority: 0.7,
+  },
+];
 
 const routePages: SitemapEntry[] = [
   {
