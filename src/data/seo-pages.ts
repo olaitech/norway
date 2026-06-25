@@ -7,6 +7,8 @@ import {
 import { SITE_NAME } from "@/src/config/site";
 import type { BreadcrumbItem } from "@/src/lib/seo/jsonLd";
 
+const CURRENT_ARTICLE_UPDATE_DATE = "2026-06-25";
+
 export type SeoCard = {
   title: string;
   description: string;
@@ -46,6 +48,8 @@ export type SeoPageData = {
     secondaryHref: string;
     secondaryLabel: string;
   };
+  publishedDate?: string;
+  updatedDate?: string;
   guideMeta?: {
     lastUpdated: string;
     sources: ReadonlyArray<{ label: string; href: string }>;
@@ -227,6 +231,7 @@ export const seoPages = {
       ],
       article: true,
     },
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     hero: {
       label: "Route field note",
       title: "Lofoten Road Trip",
@@ -348,6 +353,7 @@ export const seoPages = {
       ],
       article: true,
     },
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     hero: {
       label: "Route field note",
       title: "Helgeland Coast Road Trip",
@@ -467,6 +473,7 @@ export const seoPages = {
       ],
       article: true,
     },
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     hero: {
       label: "Arctic light guide",
       title: "Northern Lights in Norway",
@@ -583,6 +590,7 @@ export const seoPages = {
       ],
       article: true,
     },
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     hero: {
       label: "Landscape guide",
       title: "Fjords of Norway",
@@ -700,6 +708,7 @@ export const seoPages = {
       ],
       article: true,
     },
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     hero: {
       label: "Seasonal field guide",
       title: "Best Time to Visit Norway",

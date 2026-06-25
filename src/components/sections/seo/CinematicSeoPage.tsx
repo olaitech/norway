@@ -85,6 +85,8 @@ export function CinematicSeoPage({
               url: canonicalPath,
               image: page.hero.imageSrc,
               articleSection: page.hero.label,
+              datePublished: page.publishedDate,
+              dateModified: page.updatedDate,
             })
           : null,
       ].filter(

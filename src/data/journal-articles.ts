@@ -8,6 +8,8 @@ export type JournalArticlePracticalNote = {
   value: string;
 };
 
+const CURRENT_ARTICLE_UPDATE_DATE = "2026-06-25";
+
 export type JournalArticle = {
   slug: string;
   title: string;
@@ -20,6 +22,8 @@ export type JournalArticle = {
   excerpt: string;
   seoTitle: string;
   seoDescription: string;
+  publishedDate?: string;
+  updatedDate?: string;
   publishedLabel: string;
   updatedLabel: string;
   highlights: string[];
@@ -45,6 +49,7 @@ export const journalArticles: JournalArticle[] = [
       "The Road to Senja - A Cinematic Travel Guide to Norway's Wild Arctic Island",
     seoDescription:
       "Explore Senja in Northern Norway through a cinematic route guide covering scenic roads, fjords, ferries, seasons, viewpoints and practical travel notes.",
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     publishedLabel: "Field note",
     updatedLabel: "Updated for current Norway travel planning",
     highlights: [
@@ -166,6 +171,7 @@ export const journalArticles: JournalArticle[] = [
     seoTitle: "Blue Hour on the Helgeland Coast",
     seoDescription:
       "A short visual note from Norway's Helgeland Coast during blue hour with practical timing for ferries and coastal pauses.",
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     publishedLabel: "Published: May 2026",
     updatedLabel: "Updated: May 2026",
     highlights: [
@@ -213,6 +219,7 @@ export const journalArticles: JournalArticle[] = [
     seoTitle: "Lofoten Beyond the Postcards",
     seoDescription:
       "A concise field note on finding quieter roads and villages in Lofoten while keeping a slower cinematic travel pace.",
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     publishedLabel: "Published: May 2026",
     updatedLabel: "Updated: May 2026",
     highlights: [
@@ -260,6 +267,7 @@ export const journalArticles: JournalArticle[] = [
     seoTitle: "When to Visit Northern Norway",
     seoDescription:
       "A compact seasonal note on choosing the right time for Northern Norway based on light, weather and route goals.",
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     publishedLabel: "Published: May 2026",
     updatedLabel: "Updated: May 2026",
     highlights: [
@@ -307,6 +315,7 @@ export const journalArticles: JournalArticle[] = [
     seoTitle: "Where Norway Feels Most Cinematic",
     seoDescription:
       "An editorial essay on Norway's scale, weather and road geometry, and why the country often feels most cinematic in motion.",
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     publishedLabel: "Published: May 2026",
     updatedLabel: "Updated: May 2026",
     highlights: [
@@ -354,6 +363,7 @@ export const journalArticles: JournalArticle[] = [
     seoTitle: "How to Plan a Scenic Norway Road Trip",
     seoDescription:
       "A concise planning note for scenic Norway road trips with route pacing, ferry strategy and seasonal buffers.",
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     publishedLabel: "Published: May 2026",
     updatedLabel: "Updated: May 2026",
     highlights: [

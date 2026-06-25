@@ -50,6 +50,8 @@ export function JournalArticlePage({
             url: canonicalPath,
             image: article.image,
             articleSection: article.category,
+            datePublished: article.publishedDate,
+            dateModified: article.updatedDate,
           }),
         ]}
       />
