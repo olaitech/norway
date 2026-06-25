@@ -15,6 +15,8 @@ import {
 
 import { DestinationReveal } from "./DestinationReveal";
 
+const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
+
 export const tromsoTravelGuideMetadata = {
   title:
     "Tromso Travel Guide: Northern Lights, Winter Tours, Midnight Sun & Where to Stay",
@@ -645,6 +647,7 @@ export function TromsoTravelGuide() {
             url: tromsoCanonicalPath,
             image: "/images/destinations/tromso/tromso-header.jpg",
             articleSection: "Destinations",
+            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
           }),
         ]}
       />

@@ -19,6 +19,8 @@ type GuideSource = {
   href: string;
 };
 
+const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
+
 type GuideArticleLayoutProps = {
   title: string;
   subtitle?: string;
@@ -73,6 +75,7 @@ export function GuideArticleLayout({
             description: subtitle ?? title,
             url: canonicalPath,
             articleSection: category,
+            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
           }),
           ...(hasFaqItems ? [createFaqJsonLd(faqItems ?? [])] : []),
         ]}

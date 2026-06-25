@@ -2,8 +2,10 @@ import type { MetadataRoute } from "next";
 
 import { SITE_URL } from "@/src/config/site";
 import { journalArticles } from "@/src/data/journal-articles";
+import { seoPages } from "@/src/data/seo-pages";
 
-const lastModified = new Date("2026-06-23T00:00:00.000Z");
+const DEFAULT_LAST_MODIFIED = new Date("2026-06-23T00:00:00.000Z");
+const SITE_WIDE_REFRESH_LAST_MODIFIED = new Date("2026-06-25T00:00:00.000Z");
 
 type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
 
@@ -13,6 +15,66 @@ type SitemapEntry = {
   priority: number;
 };
 
+function toUtcDate(date: string) {
+  return new Date(`${date}T00:00:00.000Z`);
+}
+
+function setPageLastModified(path: string, date?: string) {
+  pageLastModifiedByPath.set(
+    path,
+    date ? toUtcDate(date) : SITE_WIDE_REFRESH_LAST_MODIFIED,
+  );
+}
+
+const pageLastModifiedByPath = new Map<string, Date>();
+
+[
+  "/",
+  "/destinations",
+  "/guides",
+  "/journal",
+  "/map",
+  "/about",
+  "/stories/northern-norway",
+  "/responsible-travel",
+  "/contact",
+  "/destinations/lofoten-islands",
+  "/destinations/senja",
+  "/destinations/helgeland-coast",
+  "/destinations/tromso",
+  "/guides/50-local-money-saving-tips-for-norway",
+  "/guides/best-time-to-visit-northern-norway",
+  "/guides/camping-rules-in-norway",
+  "/guides/driving-in-norway-what-visitors-should-know",
+  "/guides/how-expensive-is-norway-for-tourists",
+  "/guides/how-to-see-the-northern-lights-in-norway",
+  "/guides/how-to-travel-northern-norway-without-a-car",
+  "/guides/norway-ferry-guide-for-tourists",
+  "/guides/what-to-pack-for-norway",
+].forEach((path) => {
+  pageLastModifiedByPath.set(path, SITE_WIDE_REFRESH_LAST_MODIFIED);
+});
+
+setPageLastModified("/routes", seoPages.routesHub.updatedDate);
+setPageLastModified("/routes/lofoten-road-trip", seoPages.lofotenRoadTrip.updatedDate);
+setPageLastModified(
+  "/routes/helgeland-coast-road-trip",
+  seoPages.helgelandCoastRoadTrip.updatedDate,
+);
+setPageLastModified(
+  "/best-time-to-visit-norway",
+  seoPages.bestTimeToVisitNorway.updatedDate,
+);
+setPageLastModified("/fjords-of-norway", seoPages.fjordsOfNorway.updatedDate);
+setPageLastModified(
+  "/northern-lights-norway",
+  seoPages.northernLightsNorway.updatedDate,
+);
+
+for (const article of journalArticles) {
+  setPageLastModified(`/journal/${article.slug}`, article.updatedDate);
+}
+
 function entry({
   path,
   changeFrequency,
@@ -20,7 +82,7 @@ function entry({
 }: SitemapEntry): MetadataRoute.Sitemap[number] {
   return {
     url: new URL(path, SITE_URL).toString(),
-    lastModified,
+    lastModified: pageLastModifiedByPath.get(path) ?? DEFAULT_LAST_MODIFIED,
     changeFrequency,
     priority,
   };

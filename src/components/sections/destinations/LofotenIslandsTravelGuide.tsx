@@ -15,6 +15,8 @@ import {
 
 import { DestinationReveal } from "./DestinationReveal";
 
+const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
+
 export const lofotenIslandsTravelGuideMetadata = {
   title:
     "Lofoten Islands Travel Guide: Where to Stay, Ferries, Itinerary & What Not to Do",
@@ -504,6 +506,7 @@ export function LofotenIslandsTravelGuide() {
             url: lofotenIslandsCanonicalPath,
             image: "/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg",
             articleSection: "Destinations",
+            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
           }),
         ]}
       />

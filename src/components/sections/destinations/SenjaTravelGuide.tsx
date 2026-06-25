@@ -15,6 +15,8 @@ import {
 
 import { DestinationReveal } from "./DestinationReveal";
 
+const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
+
 export const senjaTravelGuideMetadata = {
   title: "Senja Travel Guide: Best Time, Scenic Route, Hikes, Ferries & Where to Stay",
   description:
@@ -536,6 +538,7 @@ export function SenjaTravelGuide() {
             url: senjaCanonicalPath,
             image: "/images/destinations/senja/senja-hero.jpg",
             articleSection: "Destinations",
+            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
           }),
         ]}
       />

@@ -15,6 +15,8 @@ import {
 
 import { DestinationReveal } from "./DestinationReveal";
 
+const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
+
 export const helgelandCoastGuideMetadata = {
   title: "Helgeland Coast Travel Guide | Norway's Quiet Island Road Trip",
   description:
@@ -443,6 +445,7 @@ export function HelgelandCoastTravelGuide() {
             url: helgelandCoastCanonicalPath,
             image: "/images/destinations/helgeland/helgeland.jpg",
             articleSection: "Destinations",
+            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
           }),
           faqJsonLd,
         ]}

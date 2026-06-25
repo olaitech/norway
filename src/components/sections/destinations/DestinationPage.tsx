@@ -16,6 +16,8 @@ import {
 
 import { DestinationReveal } from "./DestinationReveal";
 
+const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
+
 type DestinationPageProps = {
   destination: Destination;
 };
@@ -165,6 +167,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
             url: canonicalPath,
             image: destination.imageSrc,
             articleSection: destination.label,
+            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
           }),
         ]}
       />

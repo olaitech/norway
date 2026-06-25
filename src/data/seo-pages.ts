@@ -106,6 +106,7 @@ export const seoPages = {
         { name: "Routes", href: "/routes" },
       ],
     },
+    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     hero: {
       label: "Planning archive",
       title: "Routes Across Norway",
