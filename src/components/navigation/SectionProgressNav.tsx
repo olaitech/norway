@@ -157,8 +157,8 @@ export function SectionProgressNav({
       aria-label="Homepage section progress"
       className={`pointer-events-none fixed left-5 top-1/2 z-30 hidden -translate-y-1/2 lg:block ${className}`}
     >
-      <div className="pointer-events-auto w-[11.5rem] rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,rgba(6,9,12,0.56)_0%,rgba(6,9,12,0.28)_100%)] px-4 py-4 text-[#f4efe2] shadow-[0_20px_70px_rgba(0,0,0,0.22)] backdrop-blur-xl">
-        <p className="text-[0.52rem] font-medium uppercase tracking-[0.38em] text-[#d8c9a7]/40">
+      <div className="pointer-events-auto w-[11.5rem] rounded-[1.35rem] border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.78)_0%,rgba(8,17,22,0.54)_100%)] px-4 py-4 text-[#f4efe2] shadow-[0_20px_70px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+        <p className="text-[0.52rem] font-medium uppercase tracking-[0.38em] text-[#c6a15b]/40">
           Section index
         </p>
 
@@ -190,17 +190,17 @@ export function SectionProgressNav({
                         className="relative flex h-3.5 w-3.5 items-center justify-center"
                       >
                         <span
-                          className={`h-2 w-2 rounded-full border transition-colors duration-300 motion-reduce:transition-none ${
-                            isActive
-                              ? "border-[#f4efe2] bg-[#f4efe2] shadow-[0_0_0_5px_rgba(244,239,226,0.08)]"
-                              : "border-[#d8c9a7]/25 bg-[#d8c9a7]/18"
+                        className={`h-2 w-2 rounded-full border transition-colors duration-300 motion-reduce:transition-none ${
+                          isActive
+                              ? "border-[#e7e0d3] bg-[#e7e0d3] shadow-[0_0_0_5px_rgba(231,224,211,0.08)]"
+                              : "border-[#afa796]/25 bg-[#afa796]/18"
                           }`}
                         />
                       </span>
 
                       <span
                         className={`whitespace-nowrap text-[0.57rem] font-medium uppercase tracking-[0.3em] transition-colors duration-300 motion-reduce:transition-none ${
-                          isActive ? "text-[#f4efe2]" : "text-[#d8c9a7]/52 group-hover:text-[#f4efe2]/78"
+                          isActive ? "text-[#f4efe2]" : "text-[#afa796]/52 group-hover:text-[#f4efe2]/78"
                         }`}
                       >
                         {item.label}

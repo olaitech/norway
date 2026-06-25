@@ -168,7 +168,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
           }),
         ]}
       />
-      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+      <main className="surface-fjord-shell min-h-screen text-[#f4efe2]">
       <section className="relative flex min-h-screen flex-col overflow-hidden">
         <Image
           src={destination.imageSrc}
@@ -194,7 +194,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
             </Link>
             <Link
               href="/#destinations"
-              className="rounded-full border border-white/12 bg-black/20 px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 backdrop-blur-md transition-colors hover:border-white/22 hover:text-[#f4efe2]"
+              className="rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.52))] px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 backdrop-blur-md transition-colors hover:border-white/22 hover:text-[#f4efe2]"
             >
               All destinations
             </Link>
@@ -218,7 +218,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
         </div>
       </section>
 
-      <DestinationReveal className="border-y border-white/8 bg-white/[0.015] px-5 sm:px-8 md:px-12">
+      <DestinationReveal className="surface-fjord border-y border-[#8fafa8]/12 px-5 sm:px-8 md:px-12">
         <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-y-8 py-9 md:grid-cols-4 md:py-11">
           {destination.facts.map((fact) => (
             <div
@@ -259,7 +259,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
             <div className="mt-12 grid gap-5 md:grid-cols-2">
               {destination.bestTime.map((season, index) => (
                 <DestinationReveal key={season.title} delay={index * 0.06}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
+                  <article className="surface-fjord h-full rounded-[1.2rem] p-7 sm:p-8">
                     <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
                       {season.title}
                     </h3>
@@ -279,7 +279,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
             <div className="mt-12 grid gap-4 md:grid-cols-3">
               {destination.thingsToDo.map((activity, index) => (
                 <DestinationReveal key={activity.title} delay={index * 0.05}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] p-7">
+                  <article className="surface-fjord h-full rounded-[1.2rem] p-7">
                     <p className="text-[0.62rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/62">
                       0{index + 1}
                     </p>
@@ -322,7 +322,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
 
           <section className="grid gap-5 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-2">
             <DestinationReveal>
-              <article className="h-full rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-8 sm:p-10">
+              <article className="surface-fjord h-full rounded-[1.35rem] p-8 sm:p-10">
                 <SectionIntro label="05 / Stillness" title="Quiet moments" />
                 <p className="mt-8 text-base font-light leading-[1.85] text-[#f4efe2]/66 sm:text-lg">
                   {destination.quietMoments}
@@ -330,7 +330,7 @@ export function DestinationPage({ destination }: DestinationPageProps) {
               </article>
             </DestinationReveal>
             <DestinationReveal delay={0.08}>
-              <article className="h-full rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-8 sm:p-10">
+              <article className="surface-fjord h-full rounded-[1.35rem] p-8 sm:p-10">
                 <SectionIntro label="06 / Light" title="Photography notes" />
                 <p className="mt-8 text-base font-light leading-[1.85] text-[#f4efe2]/66 sm:text-lg">
                   {destination.photographyNotes}

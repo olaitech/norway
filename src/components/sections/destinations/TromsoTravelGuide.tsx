@@ -648,7 +648,7 @@ export function TromsoTravelGuide() {
           }),
         ]}
       />
-      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+      <main className="surface-fjord-shell min-h-screen text-[#f4efe2]">
       <section className="relative flex min-h-[92svh] flex-col overflow-hidden">
         <Image
           src="/images/destinations/tromso/tromso-header.jpg"
@@ -674,7 +674,7 @@ export function TromsoTravelGuide() {
             </Link>
             <Link
               href="/destinations"
-              className="rounded-full border border-white/12 bg-black/24 px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 backdrop-blur-md transition-colors hover:border-white/22 hover:text-[#f4efe2]"
+              className="rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.52))] px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 backdrop-blur-md transition-colors hover:border-white/22 hover:text-[#f4efe2]"
             >
               Destinations
             </Link>
@@ -1026,7 +1026,7 @@ export function TromsoTravelGuide() {
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_1fr]">
               <DestinationReveal>
-                <article className="relative min-h-[340px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[420px]">
+                <article className="surface-fjord-media relative min-h-[340px] overflow-hidden rounded-[1.35rem] sm:min-h-[420px]">
                   <Image
                     src="/images/destinations/tromso/tromso-nordlys.jpg"
                     alt="Aurora above Tromso and snowy mountains in winter"
@@ -1047,7 +1047,7 @@ export function TromsoTravelGuide() {
                 </article>
               </DestinationReveal>
               <DestinationReveal delay={0.08}>
-                <article className="relative min-h-[340px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[420px]">
+                <article className="surface-fjord-media relative min-h-[340px] overflow-hidden rounded-[1.35rem] sm:min-h-[420px]">
                   <Image
                     src="/images/destinations/tromso/tromso-aurora-view.jpg"
                     alt="Aurora over snowy mountains near Tromso"
@@ -1123,7 +1123,7 @@ export function TromsoTravelGuide() {
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[0.98fr_1.02fr]">
               <DestinationReveal>
-                <article className="relative min-h-[360px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[430px]">
+                <article className="surface-fjord-media relative min-h-[360px] overflow-hidden rounded-[1.35rem] sm:min-h-[430px]">
                   <Image
                     src="/images/destinations/tromso/tromso-winter-landscape.jpg"
                     alt="Snowy mountains around Tromso under a pale winter sky"
@@ -1228,7 +1228,7 @@ export function TromsoTravelGuide() {
                 </DestinationReveal>
               </div>
               <DestinationReveal delay={0.08}>
-                <article className="relative min-h-[360px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[430px]">
+                <article className="surface-fjord-media relative min-h-[360px] overflow-hidden rounded-[1.35rem] sm:min-h-[430px]">
                   <Image
                     src="/images/destinations/tromso/tromso-summer-night.jpg"
                     alt="Bright summer night over the coast near Tromso"
@@ -1323,7 +1323,7 @@ export function TromsoTravelGuide() {
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[0.98fr_1.02fr]">
               <DestinationReveal>
-                <article className="relative min-h-[340px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[420px]">
+                <article className="surface-fjord-media relative min-h-[340px] overflow-hidden rounded-[1.35rem] sm:min-h-[420px]">
                   <Image
                     src="/images/destinations/tromso/tromso-ishavskatedralen.jpg"
                     alt="The Arctic Cathedral in Tromso during winter"

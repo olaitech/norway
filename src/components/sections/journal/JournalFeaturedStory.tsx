@@ -8,7 +8,7 @@ export function JournalFeaturedStory() {
       href="/stories/northern-norway"
       className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
     >
-      <article className="grid overflow-hidden rounded-[1.35rem] border border-white/10 bg-white/[0.025] shadow-[0_32px_100px_rgba(0,0,0,0.36)] transition-[border-color,background-color] duration-500 hover:border-white/16 hover:bg-white/[0.03] lg:grid-cols-[1.08fr_0.92fr]">
+      <article className="surface-fjord grid overflow-hidden rounded-[1.35rem] transition-[border-color,background-color] duration-500 hover:border-[#c6a15b]/24 hover:bg-[linear-gradient(165deg,rgba(23,35,38,0.88),rgba(8,17,22,0.96))] lg:grid-cols-[1.08fr_0.92fr]">
         <div className="relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[520px]">
           <Image
             src="/images/stories/northern-norway/lofoten1.jpg"

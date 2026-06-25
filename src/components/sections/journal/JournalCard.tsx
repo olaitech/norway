@@ -31,7 +31,7 @@ export function JournalCard({
         href={`/journal/${entry.slug}`}
         className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
       >
-        <article className="grid overflow-hidden rounded-[1.35rem] border border-white/10 bg-white/[0.025] shadow-[0_32px_100px_rgba(0,0,0,0.36)] lg:grid-cols-[1.1fr_0.9fr]">
+        <article className="surface-fjord grid overflow-hidden rounded-[1.35rem] lg:grid-cols-[1.1fr_0.9fr]">
           <div className="relative min-h-[350px] overflow-hidden sm:min-h-[450px] lg:min-h-[570px]">
             <Image
               src={entry.imageSrc}
@@ -69,7 +69,7 @@ export function JournalCard({
       href={`/journal/${entry.slug}`}
       className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
     >
-      <article className="flex h-full flex-col overflow-hidden rounded-[1.2rem] border border-white/9 bg-white/[0.02] transition-[border-color,background-color] duration-500 hover:border-white/16 hover:bg-white/[0.03]">
+      <article className="surface-fjord flex h-full flex-col overflow-hidden rounded-[1.2rem] transition-[border-color,background-color] duration-500 hover:border-[#c6a15b]/24 hover:bg-[linear-gradient(165deg,rgba(23,35,38,0.88),rgba(8,17,22,0.96))]">
         <div
           className={`relative overflow-hidden ${
             wide ? "aspect-[1.7/1] md:aspect-[2.15/1]" : "aspect-[1.3/1]"

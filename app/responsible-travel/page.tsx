@@ -64,10 +64,10 @@ const checklist = [
 
 export default function ResponsibleTravelPage() {
   return (
-    <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+    <main className="min-h-screen bg-[linear-gradient(180deg,var(--deep-fjord)_0%,var(--polar-night)_100%)] text-[#f4efe2]">
       <section className="relative overflow-hidden px-5 pb-20 pt-6 sm:px-8 sm:pb-24 md:px-12 lg:pb-28">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(216,201,167,0.07),transparent_30%),radial-gradient(circle_at_78%_18%,rgba(126,176,192,0.1),transparent_34%)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[30rem] bg-[linear-gradient(180deg,rgba(12,23,25,0.46),transparent)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(198,161,91,0.07),transparent_30%),radial-gradient(circle_at_78%_18%,rgba(143,175,168,0.1),transparent_34%),linear-gradient(180deg,rgba(16,26,30,0.22),rgba(5,8,10,0))]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[30rem] bg-[linear-gradient(180deg,rgba(8,17,22,0.52),transparent)]" />
 
         <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between gap-6">
           <Link
@@ -77,7 +77,7 @@ export default function ResponsibleTravelPage() {
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
             Norge
           </Link>
-          <nav className="flex items-center gap-4 rounded-full border border-white/10 bg-white/[0.025] px-4 py-2.5 backdrop-blur-sm sm:gap-7 sm:px-6">
+          <nav className="flex items-center gap-4 rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.5))] px-4 py-2.5 backdrop-blur-sm sm:gap-7 sm:px-6">
             <Link
               href="/about"
               className="text-[0.61rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/56 transition-colors hover:text-[#f4efe2]"
@@ -110,12 +110,12 @@ export default function ResponsibleTravelPage() {
 
       <section
         id="winter-driving"
-        className="relative border-t border-white/8 px-5 py-20 scroll-mt-24 sm:px-8 sm:py-24 md:px-12 lg:py-28"
+        className="relative border-t border-white/8 bg-[linear-gradient(180deg,rgba(8,17,22,0.22),rgba(5,8,10,0.08))] px-5 py-20 scroll-mt-24 sm:px-8 sm:py-24 md:px-12 lg:py-28"
       >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_24%,rgba(126,176,192,0.07),transparent_34%),radial-gradient(circle_at_12%_88%,rgba(216,201,167,0.05),transparent_32%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_24%,rgba(143,175,168,0.07),transparent_34%),radial-gradient(circle_at_12%_88%,rgba(198,161,91,0.05),transparent_32%)]" />
         <div className="relative mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <p className="text-[0.62rem] font-medium uppercase tracking-[0.33em] text-[#d8c9a7]/72">
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.33em] text-[#c6a15b]/72">
               Core principles
             </p>
             <h2 className="mt-5 font-serif text-[clamp(2.35rem,5vw,4.4rem)] font-normal leading-[0.94] tracking-[-0.048em]">
@@ -127,9 +127,9 @@ export default function ResponsibleTravelPage() {
             {principles.map((principle, index) => (
               <article
                 key={principle.title}
-                className="rounded-[1.2rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.032)_0%,rgba(255,255,255,0.014)_100%)] p-7"
+                className="rounded-[1.2rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.82)_0%,rgba(8,17,22,0.94)_100%)] p-7 shadow-[0_20px_64px_rgba(0,0,0,0.18)]"
               >
-                <p className="text-[0.58rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/70">
+                <p className="text-[0.58rem] font-medium uppercase tracking-[0.29em] text-[#c6a15b]/70">
                   {String(index + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-5 font-serif text-[1.9rem] font-normal leading-[0.98] tracking-[-0.035em]">
@@ -146,11 +146,11 @@ export default function ResponsibleTravelPage() {
 
       <section
         id="camping"
-        className="border-t border-white/8 px-5 py-20 scroll-mt-24 sm:px-8 sm:py-24 md:px-12"
+        className="border-t border-white/8 bg-[linear-gradient(180deg,rgba(8,17,22,0.18),rgba(5,8,10,0.08))] px-5 py-20 scroll-mt-24 sm:px-8 sm:py-24 md:px-12"
       >
-        <div className="mx-auto grid max-w-7xl gap-10 rounded-[1.35rem] border border-white/10 bg-white/[0.025] p-8 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div className="mx-auto grid max-w-7xl gap-10 rounded-[1.35rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.84),rgba(8,17,22,0.94))] p-8 shadow-[0_22px_70px_rgba(0,0,0,0.22)] sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
-            <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/76">
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#c6a15b]/76">
               Before you go
             </p>
             <h2 className="mt-5 font-serif text-[clamp(2.2rem,4.4vw,4rem)] font-normal leading-[0.96] tracking-[-0.045em]">
@@ -167,7 +167,7 @@ export default function ResponsibleTravelPage() {
             {checklist.map((item) => (
               <li
                 key={item}
-                className="rounded-[1rem] border border-white/8 bg-black/15 px-5 py-4 text-sm font-light leading-[1.75] text-[#f4efe2]/68 sm:text-base"
+                className="rounded-[1rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(8,17,22,0.86),rgba(23,35,38,0.74))] px-5 py-4 text-sm font-light leading-[1.75] text-[#f4efe2]/68 shadow-[0_16px_52px_rgba(0,0,0,0.16)] sm:text-base"
               >
                 {item}
               </li>
@@ -178,14 +178,14 @@ export default function ResponsibleTravelPage() {
         <div className="mx-auto mt-8 flex max-w-7xl flex-wrap gap-3">
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.23em] text-[#f4efe2]/78 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+            className="inline-flex items-center gap-2 rounded-full border border-[#c6a15b]/20 bg-[linear-gradient(165deg,rgba(198,161,91,0.08),rgba(143,175,168,0.04))] px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.23em] text-[#f4efe2]/78 transition-colors hover:border-[#c6a15b]/34 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/55"
           >
             About the portal
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
           <Link
             href="/map"
-            className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.23em] text-[#f4efe2]/78 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+            className="inline-flex items-center gap-2 rounded-full border border-[#c6a15b]/20 bg-[linear-gradient(165deg,rgba(198,161,91,0.08),rgba(143,175,168,0.04))] px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.23em] text-[#f4efe2]/78 transition-colors hover:border-[#c6a15b]/34 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/55"
           >
             Explore the map
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />

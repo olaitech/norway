@@ -77,14 +77,14 @@ export function GuideArticleLayout({
           ...(hasFaqItems ? [createFaqJsonLd(faqItems ?? [])] : []),
         ]}
       />
-      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+      <main className="min-h-screen bg-[linear-gradient(180deg,var(--deep-fjord)_0%,var(--polar-night)_100%)] text-[#f4efe2]">
       <section className="relative overflow-hidden px-5 pb-12 pt-8 sm:px-8 sm:pb-14 sm:pt-10 md:px-12">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(216,201,167,0.08),transparent_30%),radial-gradient(circle_at_82%_16%,rgba(126,176,192,0.1),transparent_34%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(143,175,168,0.08),transparent_30%),radial-gradient(circle_at_82%_16%,rgba(198,161,91,0.1),transparent_34%),linear-gradient(180deg,rgba(16,26,30,0.24),rgba(5,8,10,0))]" />
 
         <div className="relative mx-auto max-w-4xl">
           <Link
             href="/guides"
-            className="inline-flex items-center rounded-full border border-white/12 bg-white/[0.02] px-4 py-2 text-[0.61rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/74 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+            className="inline-flex items-center rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.5))] px-4 py-2 text-[0.61rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/74 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/55"
           >
             Back to Practical Guides
           </Link>
@@ -111,11 +111,11 @@ export function GuideArticleLayout({
         </div>
       </section>
 
-      <section className="border-t border-white/8 px-5 py-12 sm:px-8 sm:py-14 md:px-12 lg:py-16">
+      <section className="border-t border-white/8 bg-[linear-gradient(180deg,rgba(8,17,22,0.2),rgba(5,8,10,0.1))] px-5 py-12 sm:px-8 sm:py-14 md:px-12 lg:py-16">
         <article className="mx-auto max-w-4xl">
           {answerBlock ? <div className="mb-8">{answerBlock}</div> : null}
-          <div className="rounded-[1.25rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.012))] p-6 sm:p-8 md:p-10">
-          <div className="[&_a]:text-[#d8c9a7]/86 [&_a]:underline [&_a]:decoration-[#d8c9a7]/35 [&_a]:underline-offset-4 [&_a]:transition-colors [&_a:hover]:text-[#f4efe2] [&_blockquote]:mt-7 [&_blockquote]:border-l [&_blockquote]:border-[#d8c9a7]/35 [&_blockquote]:pl-4 [&_blockquote]:text-[#f4efe2]/72 [&_h2]:mt-12 [&_h2]:font-serif [&_h2]:text-[clamp(2rem,4vw,3.1rem)] [&_h2]:font-normal [&_h2]:leading-[0.95] [&_h2]:tracking-[-0.04em] [&_h2]:text-[#f4efe2] [&_h3]:mt-9 [&_h3]:font-serif [&_h3]:text-[clamp(1.5rem,3.2vw,2.2rem)] [&_h3]:font-normal [&_h3]:leading-[1.02] [&_h3]:tracking-[-0.03em] [&_h3]:text-[#f4efe2] [&_li]:mt-2 [&_li]:text-base [&_li]:font-light [&_li]:leading-[1.8] [&_li]:text-[#f4efe2]/68 [&_ol]:mt-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mt-5 [&_p]:text-base [&_p]:font-light [&_p]:leading-[1.85] [&_p]:text-[#f4efe2]/70 [&_table]:mt-7 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:rounded-[0.9rem] [&_table]:border [&_table]:border-white/10 [&_tbody_tr]:border-t [&_tbody_tr]:border-white/10 [&_td]:px-3 [&_td]:py-3 [&_td]:text-sm [&_td]:font-light [&_td]:text-[#f4efe2]/68 [&_th]:bg-white/[0.03] [&_th]:px-3 [&_th]:py-3 [&_th]:text-left [&_th]:text-xs [&_th]:font-medium [&_th]:uppercase [&_th]:tracking-[0.2em] [&_th]:text-[#d8c9a7]/76 [&_ul]:mt-5 [&_ul]:list-disc [&_ul]:pl-5">
+          <div className="rounded-[1.25rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.84),rgba(8,17,22,0.94))] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)] sm:p-8 md:p-10">
+          <div className="[&_a]:text-[#c6a15b]/86 [&_a]:underline [&_a]:decoration-[#c6a15b]/35 [&_a]:underline-offset-4 [&_a]:transition-colors [&_a:hover]:text-[#f4efe2] [&_blockquote]:mt-7 [&_blockquote]:border-l [&_blockquote]:border-[#c6a15b]/35 [&_blockquote]:pl-4 [&_blockquote]:text-[#f4efe2]/72 [&_h2]:mt-12 [&_h2]:font-serif [&_h2]:text-[clamp(2rem,4vw,3.1rem)] [&_h2]:font-normal [&_h2]:leading-[0.95] [&_h2]:tracking-[-0.04em] [&_h2]:text-[#f4efe2] [&_h3]:mt-9 [&_h3]:font-serif [&_h3]:text-[clamp(1.5rem,3.2vw,2.2rem)] [&_h3]:font-normal [&_h3]:leading-[1.02] [&_h3]:tracking-[-0.03em] [&_h3]:text-[#f4efe2] [&_li]:mt-2 [&_li]:text-base [&_li]:font-light [&_li]:leading-[1.8] [&_li]:text-[#f4efe2]/68 [&_ol]:mt-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mt-5 [&_p]:text-base [&_p]:font-light [&_p]:leading-[1.85] [&_p]:text-[#f4efe2]/70 [&_table]:mt-7 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:rounded-[0.9rem] [&_table]:border [&_table]:border-white/10 [&_tbody_tr]:border-t [&_tbody_tr]:border-white/10 [&_td]:px-3 [&_td]:py-3 [&_td]:text-sm [&_td]:font-light [&_td]:text-[#f4efe2]/68 [&_th]:bg-white/[0.03] [&_th]:px-3 [&_th]:py-3 [&_th]:text-left [&_th]:text-xs [&_th]:font-medium [&_th]:uppercase [&_th]:tracking-[0.2em] [&_th]:text-[#c6a15b]/76 [&_ul]:mt-5 [&_ul]:list-disc [&_ul]:pl-5">
               {children}
           </div>
           </div>
@@ -139,7 +139,7 @@ export function GuideArticleLayout({
                   {faqItems?.map((item) => (
                     <article
                       key={item.question}
-                      className="rounded-[1rem] border border-white/10 bg-black/15 px-5 py-5 sm:px-6"
+                      className="rounded-[1rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.74),rgba(8,17,22,0.92))] px-5 py-5 shadow-[0_16px_52px_rgba(0,0,0,0.18)] sm:px-6"
                     >
                       <h3 className="font-serif text-[1.25rem] font-normal leading-[1.1] tracking-[-0.03em] text-[#f4efe2] sm:text-[1.4rem]">
                         {item.question}

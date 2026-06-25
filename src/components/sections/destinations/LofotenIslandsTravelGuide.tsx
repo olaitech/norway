@@ -507,7 +507,7 @@ export function LofotenIslandsTravelGuide() {
           }),
         ]}
       />
-      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+      <main className="surface-fjord-shell min-h-screen text-[#f4efe2]">
       <section className="relative flex min-h-[92svh] flex-col overflow-hidden">
         <Image
           src="/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg"
@@ -534,7 +534,7 @@ export function LofotenIslandsTravelGuide() {
             </Link>
             <Link
               href="/destinations"
-              className="rounded-full border border-white/12 bg-black/24 px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 backdrop-blur-md transition-colors hover:border-white/22 hover:text-[#f4efe2]"
+              className="rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.52))] px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 backdrop-blur-md transition-colors hover:border-white/22 hover:text-[#f4efe2]"
             >
               Destinations
             </Link>
@@ -788,7 +788,7 @@ export function LofotenIslandsTravelGuide() {
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[0.96fr_1.04fr] lg:items-start">
               <DestinationReveal>
-                <article className="relative min-h-[340px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[420px]">
+                <article className="surface-fjord-media relative min-h-[340px] overflow-hidden rounded-[1.35rem] sm:min-h-[420px]">
                   <Image
                     src="/images/destinations/lofoten/lofoten-ferry-bodo-moskenes.jpg"
                     alt="Ferry connection between Bodø and Moskenes in Lofoten"
@@ -860,7 +860,7 @@ export function LofotenIslandsTravelGuide() {
                 </article>
               </DestinationReveal>
               <DestinationReveal delay={0.08}>
-                <article className="relative min-h-[340px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[420px]">
+                <article className="surface-fjord-media relative min-h-[340px] overflow-hidden rounded-[1.35rem] sm:min-h-[420px]">
                   <Image
                     src="/images/destinations/lofoten/lofoten-e10-road-trip.jpg"
                     alt="Scenic road through mountains and coastline in Lofoten"
@@ -929,7 +929,7 @@ export function LofotenIslandsTravelGuide() {
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
               <DestinationReveal>
-                <article className="relative min-h-[360px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[460px]">
+                <article className="surface-fjord-media relative min-h-[360px] overflow-hidden rounded-[1.35rem] sm:min-h-[460px]">
                   <Image
                     src="/images/destinations/lofoten/lofoten-henningsvaer-harbour.jpg"
                     alt="Harbour and village life in Henningsvær, Lofoten"
@@ -1020,7 +1020,7 @@ export function LofotenIslandsTravelGuide() {
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[1.04fr_0.96fr] lg:items-start">
               <DestinationReveal>
-                <article className="relative min-h-[360px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[460px]">
+                <article className="surface-fjord-media relative min-h-[360px] overflow-hidden rounded-[1.35rem] sm:min-h-[460px]">
                   <Image
                     src="/images/destinations/lofoten/lofoten-rorbuer-hamnoy.jpg"
                     alt="Traditional red fishermen cabins in Hamnøy, Lofoten"
@@ -1082,7 +1082,7 @@ export function LofotenIslandsTravelGuide() {
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[0.98fr_1.02fr] lg:items-start">
               <DestinationReveal>
-                <article className="relative min-h-[360px] overflow-hidden rounded-[1.35rem] border border-white/8 bg-[#0a0b0c] sm:min-h-[460px]">
+                <article className="surface-fjord-media relative min-h-[360px] overflow-hidden rounded-[1.35rem] sm:min-h-[460px]">
                   <Image
                     src="/images/destinations/lofoten/lofoten-midnight-sun-beach.jpg"
                     alt="Midnight sun over a beach in Lofoten during summer"

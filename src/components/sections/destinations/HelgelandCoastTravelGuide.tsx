@@ -447,7 +447,7 @@ export function HelgelandCoastTravelGuide() {
           faqJsonLd,
         ]}
       />
-      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+      <main className="surface-fjord-shell min-h-screen text-[#f4efe2]">
       <section className="relative flex min-h-screen flex-col overflow-hidden">
         <Image
           src="/images/destinations/helgeland/helgeland.jpg"
@@ -472,7 +472,7 @@ export function HelgelandCoastTravelGuide() {
             </Link>
             <Link
               href="/map"
-              className="rounded-full border border-white/12 bg-black/20 px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 backdrop-blur-md transition-colors hover:border-white/22 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+              className="rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.52))] px-5 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/78 backdrop-blur-md transition-colors hover:border-white/22 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
             >
               Map
             </Link>
@@ -507,7 +507,7 @@ export function HelgelandCoastTravelGuide() {
               {heroStats.map((stat) => (
                 <div
                   key={stat}
-                  className="rounded-[1rem] border border-white/10 bg-black/24 px-4 py-4 backdrop-blur-sm"
+                  className="rounded-[1rem] border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.5))] px-4 py-4 backdrop-blur-sm"
                 >
                   <p className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-[#d8c9a7]/72">
                     {stat}
@@ -578,7 +578,7 @@ export function HelgelandCoastTravelGuide() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="inline-flex items-center rounded-full border border-white/10 bg-black/20 px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                    className="inline-flex items-center rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.5))] px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
                   >
                     {item.label}
                   </Link>
@@ -589,7 +589,7 @@ export function HelgelandCoastTravelGuide() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="inline-flex items-center rounded-full border border-white/10 bg-black/20 px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                    className="inline-flex items-center rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.5))] px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
                   >
                     {item.label}
                   </Link>
@@ -993,7 +993,7 @@ export function HelgelandCoastTravelGuide() {
                 {responsibleTravel.map((item) => (
                   <li
                     key={item}
-                    className="rounded-[1rem] border border-white/8 bg-black/15 px-5 py-4 text-sm font-light leading-[1.78] text-[#f4efe2]/68 sm:text-base"
+                    className="rounded-[1rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.78),rgba(8,17,22,0.92))] px-5 py-4 text-sm font-light leading-[1.78] text-[#f4efe2]/68 sm:text-base"
                   >
                     {item}
                   </li>

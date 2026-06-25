@@ -73,7 +73,7 @@ export function JournalHero() {
             />
             Norge
           </Link>
-          <nav className="flex max-w-[calc(100vw-7.5rem)] items-center gap-4 overflow-x-auto rounded-full border border-white/10 bg-black/20 px-4 py-2.5 backdrop-blur-sm sm:gap-7 sm:px-6">
+          <nav className="flex max-w-[calc(100vw-7.5rem)] items-center gap-4 overflow-x-auto rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.52))] px-4 py-2.5 backdrop-blur-sm sm:gap-7 sm:px-6">
             <Link
               href="/"
               className="hidden shrink-0 text-[0.61rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/56 transition-colors hover:text-[#f4efe2] sm:block"

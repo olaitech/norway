@@ -31,8 +31,8 @@ export default function ContactPage() {
       ]}
     >
       <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-        <section className="rounded-[1.35rem] border border-white/10 bg-white/[0.025] p-7 sm:p-9">
-          <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/76">
+        <section className="rounded-[1.35rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.84),rgba(8,17,22,0.94))] p-7 shadow-[0_22px_70px_rgba(0,0,0,0.18)] sm:p-9">
+          <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#c6a15b]/76">
             Email
           </p>
           <h2 className="mt-5 font-serif text-[clamp(2.1rem,4.3vw,4rem)] font-normal leading-[0.96] tracking-[-0.045em]">
@@ -45,21 +45,21 @@ export default function ContactPage() {
           </p>
           <Link
             href="mailto:hello@tripsnorway.com"
-            className="mt-8 inline-flex rounded-full border border-[#d8c9a7]/35 bg-[#d8c9a7]/10 px-5 py-3 text-sm font-medium text-[#f4efe2] transition-colors hover:bg-[#d8c9a7]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+            className="mt-8 inline-flex rounded-full border border-[#c6a15b]/20 bg-[linear-gradient(165deg,rgba(198,161,91,0.08),rgba(143,175,168,0.04))] px-5 py-3 text-sm font-medium text-[#f4efe2] transition-colors hover:border-[#c6a15b]/34 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/55"
           >
             hello@tripsnorway.com
           </Link>
         </section>
 
-        <section className="rounded-[1.35rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.035),rgba(255,255,255,0.014))] p-7 sm:p-9">
-          <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/76">
+        <section className="rounded-[1.35rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.82),rgba(8,17,22,0.94))] p-7 shadow-[0_22px_70px_rgba(0,0,0,0.16)] sm:p-9">
+          <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#c6a15b]/76">
             What to send
           </p>
           <ul className="mt-7 space-y-4">
             {contactTopics.map((topic) => (
               <li
                 key={topic}
-                className="rounded-[1rem] border border-white/8 bg-black/15 px-5 py-4 text-sm font-light leading-[1.75] text-[#f4efe2]/68 sm:text-base"
+                className="rounded-[1rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(8,17,22,0.86),rgba(23,35,38,0.74))] px-5 py-4 text-sm font-light leading-[1.75] text-[#f4efe2]/68 shadow-[0_16px_52px_rgba(0,0,0,0.16)] sm:text-base"
               >
                 {topic}
               </li>

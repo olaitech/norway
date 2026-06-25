@@ -21,7 +21,7 @@ export function JournalPage() {
           { name: "Journal", href: "/journal" },
         ])}
       />
-      <main className="relative min-h-screen overflow-hidden bg-[#050607] text-[#f4efe2]">
+      <main className="surface-fjord-shell relative min-h-screen overflow-hidden text-[#f4efe2]">
         <JournalHero />
 
       <section className="relative z-10 px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-32">

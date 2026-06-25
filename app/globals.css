@@ -1,28 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #040d10;
+  --foreground: #f4efe2;
+  --polar-night: #040d10;
+  --deep-fjord: #071418;
+  --arctic-slate: #11242a;
+  --wet-stone: #183037;
+  --nordic-paper: #e7e0d3;
+  --mist-beige: #cfc6b6;
+  --weathered-stone: #afa796;
+  --cabin-brass: #c6a15b;
+  --fjord-green: #8fafa8;
+  --warm-timber: #b88a5a;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-polar-night: var(--polar-night);
+  --color-deep-fjord: var(--deep-fjord);
+  --color-arctic-slate: var(--arctic-slate);
+  --color-wet-stone: var(--wet-stone);
+  --color-nordic-paper: var(--nordic-paper);
+  --color-mist-beige: var(--mist-beige);
+  --color-weathered-stone: var(--weathered-stone);
+  --color-cabin-brass: var(--cabin-brass);
+  --color-fjord-green: var(--fjord-green);
+  --color-warm-timber: var(--warm-timber);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(143, 175, 168, 0.09), transparent 28%),
+    radial-gradient(circle at 82% 10%, rgba(198, 161, 91, 0.05), transparent 30%),
+    linear-gradient(180deg, var(--deep-fjord) 0%, var(--polar-night) 56%, #020405 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.024) 0.6px, transparent 0.8px);
+  background-size: auto, auto, auto, 3px 3px;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.surface-fjord-shell {
+  background: linear-gradient(180deg, var(--deep-fjord) 0%, var(--polar-night) 100%);
+}
+
+.surface-fjord {
+  border: 1px solid rgba(143, 175, 168, 0.12);
+  background: linear-gradient(165deg, rgba(23, 35, 38, 0.82), rgba(8, 17, 22, 0.94));
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.18);
+}
+
+.surface-fjord-media {
+  border: 1px solid rgba(143, 175, 168, 0.12);
+  background: linear-gradient(165deg, rgba(16, 26, 30, 0.98), rgba(7, 20, 24, 0.98));
+  box-shadow: 0 24px 76px rgba(0, 0, 0, 0.26);
 }
 
 .hero-mist {

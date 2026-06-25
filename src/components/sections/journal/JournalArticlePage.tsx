@@ -55,7 +55,7 @@ export function JournalArticlePage({
           }),
         ]}
       />
-      <main className="min-h-screen bg-[#050607] text-[#f4efe2]">
+      <main className="surface-fjord-shell min-h-screen text-[#f4efe2]">
       <section className="relative flex min-h-[78vh] flex-col overflow-hidden">
         <Image
           src={article.image}
@@ -77,7 +77,7 @@ export function JournalArticlePage({
               <ArrowLeft className="h-4 w-4" />
               Back to journal
             </Link>
-            <nav className="flex max-w-[calc(100vw-8rem)] items-center gap-4 overflow-x-auto rounded-full border border-white/10 bg-black/20 px-4 py-2.5 backdrop-blur-sm sm:gap-7 sm:px-6">
+            <nav className="flex max-w-[calc(100vw-8rem)] items-center gap-4 overflow-x-auto rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.52))] px-4 py-2.5 backdrop-blur-sm sm:gap-7 sm:px-6">
               <Link
                 href="/"
                 className="shrink-0 text-[0.61rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/56 transition-colors hover:text-[#f4efe2]"
@@ -129,7 +129,7 @@ export function JournalArticlePage({
         <div className="relative mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <aside className="space-y-10">
             <JournalReveal>
-              <article className="rounded-[1.2rem] border border-white/9 bg-white/[0.02] p-7 sm:p-8">
+              <article className="surface-fjord rounded-[1.2rem] p-7 sm:p-8">
                 <p className="text-[0.61rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/72">
                   Intro
                 </p>
@@ -140,7 +140,7 @@ export function JournalArticlePage({
             </JournalReveal>
 
             <JournalReveal delay={0.05}>
-              <article className="rounded-[1.2rem] border border-white/9 bg-white/[0.02] p-7 sm:p-8">
+              <article className="surface-fjord rounded-[1.2rem] p-7 sm:p-8">
                 <p className="text-[0.61rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/72">
                   Highlights
                 </p>
@@ -158,7 +158,7 @@ export function JournalArticlePage({
             </JournalReveal>
 
             <JournalReveal delay={0.1}>
-              <article className="rounded-[1.2rem] border border-white/9 bg-white/[0.02] p-7 sm:p-8">
+              <article className="surface-fjord rounded-[1.2rem] p-7 sm:p-8">
                 <p className="text-[0.61rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/72">
                   Practical notes
                 </p>
@@ -214,7 +214,7 @@ export function JournalArticlePage({
               <JournalReveal key={related.slug} delay={index * 0.045}>
                 <Link
                   href={`/journal/${related.slug}`}
-                  className="group block h-full rounded-[1.1rem] border border-white/9 bg-white/[0.02] p-6 transition-colors hover:border-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  className="surface-fjord group block h-full rounded-[1.1rem] p-6 transition-colors hover:border-[#c6a15b]/24 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
                 >
                   <p className="text-[0.57rem] font-medium uppercase tracking-[0.25em] text-[#d8c9a7]/68">
                     {related.category}
@@ -247,7 +247,7 @@ export function JournalArticlePage({
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-full border border-white/12 bg-white/[0.02] px-5 py-3 text-[0.61rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/76 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  className="rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.52))] px-5 py-3 text-[0.61rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/76 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
                 >
                   {link.label}
                 </Link>
@@ -261,14 +261,14 @@ export function JournalArticlePage({
         <JournalReveal className="mx-auto flex max-w-7xl flex-wrap gap-3">
           <Link
             href="/journal"
-            className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-6 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/82 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+            className="inline-flex items-center gap-2 rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.76),rgba(8,17,22,0.52))] px-6 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/82 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
           >
             Back to journal
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
           <Link
             href="/routes"
-            className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-transparent px-6 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/72 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+            className="inline-flex items-center gap-2 rounded-full border border-[#8fafa8]/12 bg-transparent px-6 py-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/72 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
           >
             Explore routes
             <ArrowUpRight className="h-3.5 w-3.5" />
