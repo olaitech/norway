@@ -1,14 +1,18 @@
+import Link from "next/link";
+
 import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 import { createPageMetadata } from "@/src/lib/metadata";
 import {
   JsonLd,
   createBreadcrumbListJsonLd,
+  createOrganizationEntity,
+  toAbsoluteUrl,
 } from "@/src/lib/seo/jsonLd";
 
 export const metadata = createPageMetadata({
-  title: "About Trips Norway | Independent Cinematic Travel Portal",
+  title: "About Trips Norway | Independent Editorial Travel Portal",
   description:
-    "Trips Norway is an independent travel knowledge portal built from Northern Norway, combining cinematic storytelling, practical guidance and responsible tourism.",
+    "Trips Norway is an independent editorial travel knowledge portal for Norway and Northern Norway, focused on route-first planning, ferries, weather and slow travel.",
   canonical: "/about",
   image: {
     url: "/images/hero/preikestolen.png",
@@ -16,92 +20,186 @@ export const metadata = createPageMetadata({
   },
 });
 
-const sections = [
+type NarrativeSection = {
+  title: string;
+  paragraphs: readonly string[];
+  chips?: readonly string[];
+};
+
+const narrativeSections: readonly NarrativeSection[] = [
   {
-    title: "An independent travel knowledge portal",
-    text: "This site is built as an independent editorial guide to Norway and Northern Norway. It combines atmospheric storytelling with practical route, season and destination guidance for travellers who want to understand a place before moving through it.",
+    title: "What Trips Norway is",
+    paragraphs: [
+      "Trips Norway is an independent editorial travel knowledge portal for Norway and Northern Norway.",
+      "It combines cinematic storytelling with practical route and planning guidance so travellers can understand a place before they commit to the journey.",
+    ],
   },
   {
-    title: "Cinematic, but useful",
-    text: "The visual direction is inspired by travel documentary, quiet photography and Scandinavian editorial design. The content should still be useful: fjords, scenic roads, ferries, weather, distance, light and local rhythm all shape a better journey.",
+    title: "Editorial point of view",
+    paragraphs: [
+      "The editorial point of view is simple: route-first, ferry-aware, weather-aware and slow-travel focused.",
+      "Northern lights coverage stays practical rather than hype-driven, because the best trip planning starts with conditions, distance and daylight rather than headlines.",
+    ],
+    chips: [
+      "Route-first",
+      "Ferry-aware",
+      "Weather-aware",
+      "Northern lights without hype",
+      "Slow travel",
+    ],
   },
   {
-    title: "Norway, seen with respect",
-    text: "The portal gives special attention to Northern Norway, remote coastal communities, fjord landscapes, culture and nature respect. It encourages slow travel, realistic planning and awareness of the people and places that make the landscape more than a backdrop.",
+    title: "Geography and coverage",
+    paragraphs: [
+      "Northern Norway is the main lens, with focus on Lofoten, Senja, Helgeland, Tromso, fjords, coastal roads and the ferries that connect them.",
+      "The broader Norway coverage supports travellers who want a calm, route-based view of how to move between regions without losing the rhythm of the trip.",
+    ],
   },
   {
-    title: "Not an official tourism authority",
-    text: "This is not an official tourism office or public authority. It is an early-stage independent knowledge project designed to grow through careful research, local awareness, responsible tourism principles and future collaboration.",
+    title: "Who the site helps",
+    paragraphs: [
+      "Trips Norway is written for slow travellers, self-drivers, ferry planners, aurora seekers and people who want practical planning clarity before they leave home.",
+    ],
   },
+  {
+    title: "How it differs",
+    paragraphs: [
+      "It is not official tourism copy, not influencer content and not generic SEO filler.",
+      "The aim is quieter and more editorial: useful context, realistic expectations and a stronger sense of what the route will actually feel like.",
+    ],
+  },
+  {
+    title: "Trust and responsibility",
+    paragraphs: [
+      "The work is grounded in independent research and local awareness, with respect for weather, roads, communities and the pace of travel.",
+      "That makes the site less about shouting destinations and more about helping people travel well.",
+    ],
+  },
+];
+
+const exploreLinks = [
+  { label: "Browse destinations", href: "/destinations" },
+  { label: "Read practical guides", href: "/guides" },
+  { label: "Plan around the seasons", href: "/best-time-to-visit-norway" },
+  { label: "Understand northern lights travel", href: "/northern-lights-norway" },
+  { label: "Responsible travel", href: "/responsible-travel" },
+  { label: "Read the journal", href: "/journal" },
 ] as const;
 
-const founderContext = [
-  "I have lived in Mosjøen for most of my life, with Northern Norway not as a destination, but as home.",
-  "The islands, ferries, weather, long summer light, winter darkness, coastal roads and small communities are not just travel subjects to me. They are part of the landscape I have grown up with, visited, returned to and learned from over many years.",
-  "This website is my attempt to combine that lived experience with my background in IT and web development. I wanted to build something that feels calmer, more cinematic and more useful than a typical travel page, a place where visitors can understand Northern Norway before they try to plan it.",
-  "The project is independent and currently built without external funding. It is not an official tourism portal, but a personal contribution to the public knowledge around this region.",
-  "The long term dream is that this can grow into something that supports better travel, stronger local storytelling and perhaps future collaboration with people and businesses across the Northern Norwegian tourism community.",
-] as const;
+const aboutPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "Trips Norway",
+  url: toAbsoluteUrl("/about"),
+  description:
+    "Trips Norway is an independent editorial travel knowledge portal for Norway and Northern Norway, focused on route-first planning, ferries, weather and slow travel.",
+  about: createOrganizationEntity(),
+};
 
 export default function AboutPage() {
   return (
     <>
       <JsonLd
-        value={createBreadcrumbListJsonLd([
-          { name: "Home", href: "/" },
-          { name: "About", href: "/about" },
-        ])}
+        value={[
+          createBreadcrumbListJsonLd([
+            { name: "Home", href: "/" },
+            { name: "About", href: "/about" },
+          ]),
+          aboutPageJsonLd,
+        ]}
       />
       <InfoPageShell
-        eyebrow="Independent guide"
-        title="About this portal"
-        intro="A cinematic travel knowledge portal for Norway and Northern Norway, built to combine atmospheric storytelling, practical travel guidance and responsible tourism principles."
+        eyebrow="Independent editorial portal"
+        title="Trips Norway"
+        intro="Trips Norway is an independent editorial travel knowledge portal for Norway and Northern Norway, built around route-first planning, ferries, weather and slow travel."
         actions={[
-          { label: "Explore the map", href: "/map" },
-          { label: "Responsible travel", href: "/responsible-travel" },
+          { label: "Explore routes", href: "/routes" },
+          { label: "Open the map", href: "/map" },
         ]}
+        bottomContent={
+          <div className="rounded-[1.35rem] border border-white/10 bg-white/[0.025] p-7 sm:p-9">
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/76">
+              Continue exploring
+            </p>
+            <p className="mt-4 max-w-3xl text-sm font-light leading-[1.85] text-[#f4efe2]/66 sm:text-base">
+              Use Trips Norway as a starting point, then move into routes,
+              destinations and practical planning pages based on the trip you
+              want to make.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {exploreLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.23em] text-[#f4efe2]/78 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        }
       >
         <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
           <aside className="lg:sticky lg:top-14 lg:self-start">
             <p className="text-[0.62rem] font-medium uppercase tracking-[0.33em] text-[#d8c9a7]/72">
-              Editorial position
+              Editorial focus
             </p>
             <p className="mt-6 max-w-sm text-sm font-light leading-[1.9] text-[#f4efe2]/58 sm:text-base">
-              The aim is to help visitors slow down, plan with care and see
-              Norway as a living landscape of weather, culture, roads, fjords and
-              coastal communities.
+              Trips Norway is built to help travellers read the route before
+              they book it. Ferries, weather, distance and daylight are treated
+              as planning inputs, not afterthoughts.
             </p>
           </aside>
 
           <div className="space-y-8">
             <section className="rounded-[1.45rem] border border-[#d8c9a7]/18 bg-[linear-gradient(135deg,rgba(216,201,167,0.075),rgba(255,255,255,0.018))] p-7 shadow-[0_28px_90px_rgba(0,0,0,0.22)] sm:p-9 lg:p-10">
               <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/76">
-                Local context
+                Brand profile
               </p>
               <h2 className="mt-5 font-serif text-[clamp(2.3rem,4.7vw,4.7rem)] font-normal leading-[0.92] tracking-[-0.055em] text-[#f4efe2]">
-                Built from Northern Norway
+                {narrativeSections[0].title}
               </h2>
               <div className="mt-8 max-w-4xl space-y-5 text-sm font-light leading-[1.9] text-[#f4efe2]/70 sm:text-base md:text-lg">
-                {founderContext.map((paragraph) => (
+                {narrativeSections[0].paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
             </section>
 
-            {sections.map((section, index) => (
+            {narrativeSections.slice(1).map((section, index) => (
               <article
                 key={section.title}
                 className="rounded-[1.25rem] border border-white/10 bg-white/[0.025] p-7 sm:p-8"
               >
                 <p className="text-[0.6rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/70">
-                  {String(index + 1).padStart(2, "0")}
+                  {String(index + 2).padStart(2, "0")}
                 </p>
                 <h2 className="mt-5 font-serif text-[clamp(1.9rem,3.5vw,3.15rem)] font-normal leading-[0.98] tracking-[-0.04em]">
                   {section.title}
                 </h2>
-                <p className="mt-5 max-w-3xl text-sm font-light leading-[1.85] text-[#f4efe2]/66 sm:text-base">
-                  {section.text}
-                </p>
+                <div className="mt-5 space-y-4">
+                  {section.paragraphs.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="max-w-3xl text-sm font-light leading-[1.85] text-[#f4efe2]/66 sm:text-base"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                {section.chips ? (
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {section.chips.map((chip) => (
+                      <span
+                        key={chip}
+                        className="rounded-full border border-white/12 bg-white/[0.03] px-3 py-2 text-[0.58rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/68"
+                      >
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             ))}
           </div>
