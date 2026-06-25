@@ -93,11 +93,12 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-5 border-t border-white/[0.08] pt-7 text-xs font-light text-[#a8a095] sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-2 sm:space-y-0">
             <p>
-              &copy; {currentYear} Norway Travel Knowledge Portal. All rights
-              reserved.
+              &copy; {currentYear} Trips Norway. All rights reserved.
             </p>
-            <p className="text-[#a8a095]/75">
-              Independent travel knowledge portal.
+            <p className="max-w-2xl text-[#a8a095]/75">
+              Independently built on Helgeland by a tech-minded local who has
+              spent years exploring Northern Norway - a personal contribution
+              to better, slower and more responsible travel.
             </p>
           </div>
 
