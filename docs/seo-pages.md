@@ -5,6 +5,10 @@
 This document defines the editorial SEO page set and prevents future work from
 confusing target URLs with routes already implemented in the application.
 
+Treat canonical live URLs as the source of truth. Redirect stubs may exist for
+legacy or SEO-friendly slugs, but they should not be documented as separate
+content pages.
+
 Before creating pages, confirm:
 
 - The preferred canonical slug.
@@ -12,57 +16,73 @@ Before creating pages, confirm:
   alias.
 - Metadata, internal linking and content depth requirements.
 
-## Current Status
+## Canonical Live Pages
 
-| Target URL | Topic | Current implementation status |
+| Canonical URL | Topic | Current implementation status |
 | --- | --- | --- |
-| `/best-time-to-visit-norway` | Seasonal planning | Route exists |
-| `/norway-road-trip-routes` | Road trip route hub | Route exists; currently reuses `/routes` content; canonical decision still needed |
-| `/lofoten-travel-guide` | Lofoten planning guide | Route exists; currently reuses `/lofoten` content; canonical decision still needed |
-| `/northern-lights-norway` | Aurora planning | Route exists |
-| `/responsible-travel` | Responsible tourism pillar | Route exists |
-| `/about` | Project trust and editorial positioning | Route exists |
-| `/contact` | Contact and collaboration information | Route exists |
-| `/privacy` | Privacy policy | Route exists |
-| `/privacy-settings` | Privacy preference placeholder | Route exists; not a real consent system yet |
-| `/terms` | Terms of use | Route exists |
-| `/destinations` | Destination index | Route exists |
-| `/fjords-of-norway` | Fjord travel planning | Route exists with introductory guide content |
-| `/norway-itinerary-7-days` | One-week itinerary | Planned; no exact route confirmed |
-| `/norway-itinerary-10-days` | Ten-day itinerary | Planned; no exact route confirmed |
+| `/best-time-to-visit-norway` | Seasonal planning | Primary live page |
+| `/northern-lights-norway` | Aurora planning | Primary live page |
+| `/responsible-travel` | Responsible tourism pillar | Primary live page |
+| `/about` | Project trust and editorial positioning | Primary live page |
+| `/contact` | Contact and collaboration information | Primary live page |
+| `/privacy` | Privacy policy | Primary live page |
+| `/privacy-settings` | Privacy preference placeholder | Primary live placeholder; not a real consent system yet |
+| `/terms` | Terms of use | Primary live page |
+| `/destinations` | Destination index | Primary live page |
+| `/destinations/lofoten-islands` | Lofoten destination page | Primary live page |
+| `/fjords-of-norway` | Fjord travel planning | Primary live page with introductory guide content |
+| `/routes` | Road trip route hub | Primary live page |
+| `/routes/lofoten-road-trip` | Lofoten road trip detail | Primary live route detail |
+| `/routes/helgeland-coast-road-trip` | Helgeland Coast road trip detail | Primary live route detail |
+| `/guides` | Practical guide archive | Primary live page |
+| `/guides/best-time-to-visit-northern-norway` | Seasonal guide | Primary live guide page |
+| `/guides/driving-in-norway-what-visitors-should-know` | Driving guide | Primary live guide page |
+| `/guides/how-to-see-the-northern-lights-in-norway` | Aurora guide | Primary live guide page |
+| `/guides/norway-ferry-guide-for-tourists` | Ferry guide | Primary live guide page |
+| `/guides/how-to-travel-northern-norway-without-a-car` | Transport guide | Primary live guide page |
+| `/guides/how-expensive-is-norway-for-tourists` | Budget guide | Primary live guide page |
+| `/guides/50-local-money-saving-tips-for-norway` | Budget guide | Primary live guide page |
+| `/guides/camping-rules-in-norway` | Outdoor travel guide | Primary live guide page |
+| `/guides/what-to-pack-for-norway` | Packing guide | Primary live guide page |
 
-Existing route detail pages also support SEO and planning:
+## Redirect Stubs And Alias Routes
 
-- `/routes/lofoten-road-trip`
-- `/routes/helgeland-coast-road-trip`
-- `/destinations/[slug]`
+| Alias URL | Primary URL | Current implementation status | Notes |
+| --- | --- | --- | --- |
+| `/norway-road-trip-routes` | `/routes` | Redirect stub | Legacy SEO alias; do not treat as a separate content page |
+| `/lofoten-travel-guide` | `/destinations/lofoten-islands` | Redirect stub | Legacy SEO alias; do not treat as a separate content page |
+| `/lofoten` | `/destinations/lofoten-islands` | Redirect stub | Legacy redirect for the canonical Lofoten destination page |
+| `/guides/driving-in-norway` | `/guides/driving-in-norway-what-visitors-should-know` | Redirect stub | Legacy guide alias; do not treat as a separate content page |
+| `/guides/norway-ferry-guide` | `/guides/norway-ferry-guide-for-tourists` | Redirect stub | Legacy guide alias; do not treat as a separate content page |
+| `/guides/7-days-in-northern-norway` | `/routes/lofoten-road-trip` | Redirect stub | Legacy itinerary alias; not a content page |
+| `/guides/10-days-in-northern-norway` | `/routes/helgeland-coast-road-trip` | Redirect stub | Legacy itinerary alias; not a content page |
+| `/norway-itinerary-7-days` | `/routes/lofoten-road-trip` | Redirect stub | Legacy itinerary alias; not a content page |
+| `/norway-itinerary-10-days` | `/routes/helgeland-coast-road-trip` | Redirect stub | Legacy itinerary alias; not a content page |
+| `/routes/helgeland-coastal-route` | `/destinations/helgeland-coast#scenic-route` | Redirect stub | Anchor alias; not a standalone page |
 
 ## Sitemap Status And TODOs
 
-Current implemented footer and guide routes are represented in `app/sitemap.ts`,
-including `/destinations`, `/norway-road-trip-routes`,
-`/lofoten-travel-guide`, `/fjords-of-norway`, `/contact`, `/privacy`,
-`/privacy-settings` and `/terms`.
+The sitemap should follow the canonical live URLs above. Redirect stubs are
+intentionally not treated as standalone content pages.
 
 Remaining SEO TODOs:
 
-- TODO: Decide whether `/norway-road-trip-routes` should become canonical or
-  redirect/canonicalize to `/routes`.
-- TODO: Decide whether `/lofoten-travel-guide` should become canonical or
-  redirect/canonicalize to `/lofoten`.
 - TODO: Expand `/fjords-of-norway` beyond introductory content before treating
   it as complete.
-- TODO: Create or route `/norway-itinerary-7-days` before adding it to the
-  sitemap.
-- TODO: Create or route `/norway-itinerary-10-days` before adding it to the
-  sitemap.
 
 ## Page Briefs
+
+These briefs cover the top-level editorial pages below. Live guide articles are
+listed in the canonical table above and should keep their primary URLs, but
+they do not need separate briefs in this document. Redirect aliases are
+documented in the table and do not need separate briefs.
 
 ### Best Time To Visit Norway
 
 **Search intent:** understand months, daylight, weather and the right season
 for a desired trip.
+
+Primary URL: `/best-time-to-visit-norway`
 
 Core sections:
 
@@ -79,6 +99,8 @@ Internal links: northern lights, route hub, Lofoten, map.
 **Search intent:** compare possible driving routes and choose a realistic
 itinerary.
 
+Primary URL: `/routes`
+
 Core sections:
 
 - Route-selection framework by days and season.
@@ -87,13 +109,14 @@ Core sections:
 - Driving pace and weather buffers.
 - Link to interactive/arrival map.
 
-URL decision required: retain `/routes` as canonical or introduce
-`/norway-road-trip-routes` with an appropriate redirect/canonical strategy.
+Redirect stub: `/norway-road-trip-routes`
 
 ### Lofoten Travel Guide
 
 **Search intent:** plan a Lofoten trip with bases, season, route and standout
 experiences.
+
+Primary URL: `/destinations/lofoten-islands`
 
 Core sections:
 
@@ -103,18 +126,19 @@ Core sections:
 - Arrival and driving strategy.
 - Suggested short itinerary.
 
-URL decision required: retain `/lofoten` as canonical or introduce the longer
-SEO slug deliberately.
+Redirect stubs: `/lofoten`, `/lofoten-travel-guide`
 
 ### Northern Lights In Norway
 
 **Search intent:** choose where and when to see aurora with realistic
 expectations.
 
+Primary URL: `/northern-lights-norway`
+
 Core sections:
 
 - Viewing season and darkness windows.
-- Tromsø, Lofoten, Senja and Alta as bases.
+- Tromso, Lofoten, Senja and Alta as bases.
 - Cloud/weather flexibility.
 - Multi-night planning.
 - Winter transport and comfort considerations.
@@ -127,6 +151,8 @@ Internal links: seasonal guide, map, relevant destinations and routes.
 realistically and safely.
 
 Status: route created at `/responsible-travel`.
+
+Primary URL: `/responsible-travel`
 
 Core sections:
 
@@ -147,6 +173,8 @@ Internal links: about, map, routes and future responsible-travel articles.
 
 Status: route created at `/about`.
 
+Primary URL: `/about`
+
 Content role:
 
 - Establish independent editorial positioning.
@@ -158,6 +186,8 @@ Content role:
 
 **Search intent:** compare fjord regions and plan a scenic trip.
 
+Primary URL: `/fjords-of-norway`
+
 Core sections:
 
 - Region overview without attempting to cover all Norway superficially.
@@ -165,28 +195,6 @@ Core sections:
 - Coastal versus inland experiences.
 - Practical transport/pace guidance.
 - Link routes and map concepts where relevant.
-
-### Norway Itinerary: 7 Days
-
-**Search intent:** find a feasible first-trip plan.
-
-Content direction:
-
-- Choose one geographic focus rather than promising all of Norway.
-- Explain arrival/departure logic and daily transfer limits.
-- Provide variations by season or northern focus.
-- Link deeper guides for each major stop.
-
-### Norway Itinerary: 10 Days
-
-**Search intent:** create a slower, broader Norway route with enough margin.
-
-Content direction:
-
-- Extend a coherent region pairing, such as Northern Norway arrival gateways
-  with Lofoten/Helgeland or Tromsø/Senja.
-- Include rest/weather-buffer days.
-- Explain ferry and transport assumptions clearly.
 
 ## Metadata Checklist
 
