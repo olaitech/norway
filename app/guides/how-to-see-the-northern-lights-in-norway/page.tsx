@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
@@ -6,9 +7,9 @@ import { TrustBox } from "@/src/components/shared/TrustBox";
 
 export const metadata: Metadata = {
   title:
-    "How to See the Northern Lights in Norway | Practical Norway Travel Guide",
+    "How to See the Northern Lights in Norway | Practical Guide",
   description:
-    "A practical aurora guide for tourists in Norway covering where to go, when to travel, how long to stay, what to wear and how to improve northern lights chances.",
+    "How to see the Northern Lights in Norway with step-by-step advice on where to go, when to travel, how long to stay and what to pack.",
   alternates: {
     canonical: "/guides/how-to-see-the-northern-lights-in-norway",
   },
@@ -113,6 +114,10 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
         />
       }
     >
+      <p>
+        For the broader overview, see the{" "}
+        <Link href="/northern-lights-norway">Northern Lights in Norway</Link>.
+      </p>
       <h2>Where to base your trip</h2>
       <ul>
         <li>Tromso for easy access and many tour options.</li>

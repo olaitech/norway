@@ -464,7 +464,7 @@ export const seoPages = {
     meta: {
       title: "Northern Lights in Norway",
       description:
-        "A Northern Norway aurora guide focused on darkness, cloud cover, patience and realistic planning from Tromso, Lofoten, Senja and beyond.",
+        "Where to see the northern lights in Norway, when to go and how to plan around darkness, cloud cover and the best aurora bases in Tromso, Lofoten, Senja and beyond.",
     },
     jsonLd: {
       breadcrumbs: [
@@ -479,7 +479,7 @@ export const seoPages = {
       label: "Arctic light guide",
       title: "Northern Lights in Norway",
       intro:
-        "A practical guide to Arctic locations, seasonal timing and calm planning for aurora-focused journeys.",
+        "A broad overview of Norway's aurora season, with calm planning notes on locations, timing and the trade-offs between weather, darkness and road access.",
       imageSrc: "/images/cards/tromso.png",
       imageAlt: "Arctic coastline in Northern Norway under winter light",
       imagePosition: "center 44%",
@@ -559,6 +559,7 @@ export const seoPages = {
       },
     ],
     relatedLinks: [
+      { label: "Read the practical step-by-step guide", href: "/guides/how-to-see-the-northern-lights-in-norway" },
       { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
       { label: "Browse the route hub", href: "/routes" },
       { label: "Read the Lofoten destination guide", href: "/destinations/lofoten-islands" },
