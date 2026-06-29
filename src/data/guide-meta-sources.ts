@@ -27,6 +27,22 @@ const guideSources = {
     label: "Norwegian Scenic Routes",
     href: "https://www.nasjonaleturistveger.no/en/",
   },
+  fjordNorway: {
+    label: "Fjord Norway",
+    href: "https://www.fjordnorway.com/en",
+  },
+  visitNorwayFjords: {
+    label: "Visit Norway - Fjords",
+    href: "https://www.visitnorway.com/things-to-do/nature-attractions/fjords/",
+  },
+  visitNorwayMonthByMonth: {
+    label: "Visit Norway - Month by month",
+    href: "https://www.visitnorway.com/plan-your-trip/seasons-climate/norway-month-by-month/",
+  },
+  unescoWestNorwegianFjords: {
+    label: "UNESCO - West Norwegian Fjords",
+    href: "https://whc.unesco.org/en/list/1195/",
+  },
   statensVegvesen: {
     label: "Statens vegvesen",
     href: "https://www.vegvesen.no/",
@@ -61,6 +77,13 @@ export const guideSourceSets = {
     guideSources.statensVegvesen,
     guideSources.visitNorway,
     guideSources.entur,
+  ],
+  fjordsNorway: [
+    guideSources.visitNorwayFjords,
+    guideSources.visitNorwayMonthByMonth,
+    guideSources.fjordNorway,
+    guideSources.unescoWestNorwegianFjords,
+    guideSources.norwegianScenicRoutes,
   ],
   northernLightsWeatherSafety: [
     guideSources.visitNorway,

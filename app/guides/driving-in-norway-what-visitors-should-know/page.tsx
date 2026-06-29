@@ -140,6 +140,12 @@ export default function DrivingInNorwayGuidePage() {
           description: "Put the road rules together with ferry timing and ticketing.",
         },
         {
+          label: "Destination",
+          title: "Fjords of Norway",
+          href: "/fjords-of-norway",
+          description: "Use the fjord overview to shape a realistic road trip before you choose your bases.",
+        },
+        {
           label: "Map",
           title: "Norway Travel Map",
           href: "/map",

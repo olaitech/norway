@@ -21,6 +21,14 @@ export type SeoSection = {
   title: string;
   intro: string;
   cards: SeoCard[];
+  layout?: "cards" | "list" | "split";
+  media?: {
+    imageSrc: string;
+    imageAlt: string;
+    imagePosition?: string;
+    captionLabel?: string;
+    caption?: string;
+  };
 };
 
 export type SeoPageData = {
@@ -37,9 +45,16 @@ export type SeoPageData = {
     imageSrc: string;
     imageAlt: string;
     imagePosition?: string;
+    overlayOpacity?: number;
   };
   sections: SeoSection[];
   relatedLinks: Array<{ label: string; href: string }>;
+  answerBlock?: {
+    label?: string;
+    title: string;
+    summary: string;
+    bullets?: readonly string[];
+  };
   cta: {
     label: string;
     text: string;
@@ -202,6 +217,7 @@ export const seoPages = {
     relatedLinks: [
       { label: "Plan the Lofoten destination guide", href: "/destinations/lofoten-islands" },
       { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "Read the Fjords of Norway guide", href: "/fjords-of-norway" },
       { label: "See the northern lights guide", href: "/northern-lights-norway" },
       { label: "Open the Norway map", href: "/map" },
     ],
@@ -580,9 +596,9 @@ export const seoPages = {
   },
   fjordsOfNorway: {
     meta: {
-      title: "Fjords of Norway",
+      title: "Fjords of Norway | Regions, routes and seasons",
       description:
-        "A cinematic introductory guide to the fjords of Norway, with practical planning notes for routes, seasons, ferries and slow travel.",
+        "A calm overview of Norway's fjords, covering where they are, the main regions, Northern Norway, the best time to visit, ferry and road-trip planning, and responsible travel.",
     },
     jsonLd: {
       breadcrumbs: [
@@ -594,92 +610,279 @@ export const seoPages = {
     },
     updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
     hero: {
-      label: "Landscape guide",
+      label: "Destination guide",
       title: "Fjords of Norway",
       intro:
-        "A calm planning guide to deep water, steep mountains, ferry routes and the slower rhythm of fjord travel.",
-      imageSrc: "/images/hero/preikestolen.png",
-      imageAlt: "Steep fjord walls rising above calm water",
-      imagePosition: "center 45%",
+        "A calm guide to Norway's fjords: where they are, when to go and how to shape a trip around roads, ferries and slower pauses.",
+      imageSrc: "/images/destinations/fjords/norway-fjord1.jpg",
+      imageAlt: "A wide fjord basin with steep mountains and low cloud",
+      imagePosition: "center 60%",
+      overlayOpacity: 0.66,
+    },
+    answerBlock: {
+      title: "Fjords are route landscapes, not short scenic stops.",
+      summary:
+        "Water, tunnels, ferries and mountain roads make distances feel longer than the map suggests. The calmest fjord trips use fewer bases, more buffer and a slower pace.",
+      bullets: [
+        "Most famous fjords sit in Western Norway, but the north adds a quieter Arctic version.",
+        "Plan ferry crossings and overnight stops together.",
+        "Late spring through early autumn is usually the easiest first-trip window.",
+      ],
     },
     sections: [
       {
-        label: "01 / Landscape character",
-        title: "Where water shapes the route",
+        label: "01 / Overview",
+        title: "What a fjord is",
         intro:
-          "Norway's fjords are not one destination. They are a way of moving through the country: by road, ferry, viewpoint, village and weather window.",
+          "Fjords are not just scenery. They are the spaces that shape how Norway feels, how far a day really goes and where the trip pauses to breathe.",
+        layout: "list",
         cards: [
           {
-            title: "Western fjords",
+            title: "Glacier-carved valleys",
             description:
-              "Classic steep-sided fjord landscapes, long viewpoints and road journeys shaped by tunnels, ferries and mountain passes.",
+              "Fjords are valleys cut by ice and later filled by seawater, which is why the landscape narrows, steepens and slows the journey.",
           },
           {
-            title: "Northern fjords",
+            title: "Routes take longer than they look",
             description:
-              "Quieter Arctic fjords with broader light, smaller communities and routes that often connect coast, islands and inland valleys.",
+              "Crossings, tunnels, viewpoints and short detours matter as much as distance once you start planning a fjord route.",
           },
           {
-            title: "Ferry rhythm",
+            title: "Not one landscape",
             description:
-              "Fjord travel often depends on crossing schedules. Treat ferries as part of the experience, not an interruption.",
+              "Each fjord region has its own scale, weather and access pattern, so the experience changes from one coast to another.",
           },
         ],
       },
       {
-        label: "02 / Planning notes",
-        title: "Build time into every fjord day",
+        label: "02 / Regions",
+        title: "Where the main fjord landscapes sit",
         intro:
-          "A strong fjord itinerary leaves room for slow roads, weather changes, viewpoints and short pauses that rarely fit into a rushed schedule.",
+          "The broad shape is simple: the classic fjord belt is in the west, but there are quieter fjord landscapes further north and smaller systems elsewhere along the coast.",
         cards: [
           {
-            title: "Choose fewer bases",
+            title: "Western Norway",
             description:
-              "Staying longer in fewer places usually works better than changing accommodation every night.",
-            href: "/responsible-travel",
+              "The classic fjord belt, with the best-known scenery and the densest network of visitor stops.",
           },
           {
-            title: "Plan by season",
+            title: "Southern and central fjords",
             description:
-              "Late spring through early autumn is usually easiest for roads, ferries and high mountain access.",
+              "A quieter mix of coast, valley and water that often suits slower road trips and fewer overnight changes.",
+          },
+          {
+            title: "Northern Norway",
+            description:
+              "Broader sky, more space and longer light, with fjords that feel more open and less crowded.",
+          },
+        ],
+      },
+      {
+        label: "03 / Famous names",
+        title: "The fjords most travelers plan around",
+        intro:
+          "If you only know a few names, start with the ones that most often anchor a first fjord itinerary.",
+        layout: "list",
+        cards: [
+          {
+            title: "Geirangerfjord and Nærøyfjord",
+            description:
+              "The UNESCO-listed names that often define a first fjord itinerary.",
+          },
+          {
+            title: "Sognefjord",
+            description:
+              "A long, layered fjord system that gives a strong sense of scale and depth.",
+          },
+          {
+            title: "Hardangerfjord and Lysefjord",
+            description:
+              "Useful reference points for orchards, viewpoints and classic west-coast scenery.",
+          },
+        ],
+      },
+      {
+        label: "04 / Northern Norway",
+        title: "Fjords in the north",
+        intro:
+          "Northern Norway adds fjords to a wider Arctic landscape of islands, sea and mountain roads, so the trip feels broader and more exposed to weather and light.",
+        layout: "split",
+        media: {
+          imageSrc: "/images/destinations/fjords/norway-fjord2.jpg",
+          imageAlt: "A red cabin on the fjord edge beneath a steep northern mountain",
+          imagePosition: "center 42%",
+          captionLabel: "Northern fjords",
+          caption:
+            "A more open Arctic mood, where sea, mountain and weather sit closer together.",
+        },
+        cards: [
+          {
+            title: "Arctic fjord routes",
+            description:
+              "In the north, fjords often sit beside coast roads and island crossings, which changes the rhythm of the day.",
+          },
+          {
+            title: "Midnight sun windows",
+            description:
+              "June and July give long evenings, so short fjord distances can feel slower and more open.",
+          },
+          {
+            title: "Northern lights season",
+            description:
+              "From late autumn to early spring, the fjords can sit inside a wider aurora route through the north.",
+          },
+        ],
+      },
+      {
+        label: "05 / Timing",
+        title: "When fjord trips feel easiest",
+        intro:
+          "Season matters because roads, ferries, daylight and weather windows all shape how the fjords feel in practice.",
+        cards: [
+          {
+            title: "Late spring to early autumn",
+            description:
+              "Usually the easiest window for road-based fjord travel, ferry rhythm and viewpoint stops.",
             href: "/best-time-to-visit-norway",
           },
           {
-            title: "Use the map early",
+            title: "Winter",
             description:
-              "Distances can look short across water but become longer once roads, ferries and detours are included.",
-            href: "/map",
+              "Quieter and more atmospheric, but best for travelers who are comfortable with slower conditions.",
+          },
+          {
+            title: "Shoulder season",
+            description:
+              "Often the best balance of light, access and space if you want room to move without full summer pressure.",
           },
         ],
       },
       {
-        label: "03 / Travel style",
-        title: "Fjords reward slower movement",
+        label: "06 / Movement",
+        title: "How to travel through fjord country",
         intro:
-          "The most memorable fjord days are often simple: one road, one ferry, one village, one weather break.",
+          "The cleanest fjord trip is rarely the shortest one. It is the one where the road, ferry and overnight stop are planned together.",
         cards: [
           {
-            title: "Road trips",
+            title: "By car",
             description:
-              "Fjord drives are best planned with conservative daily distances and frequent stops.",
+              "The most flexible way to combine viewpoints, ferries and overnight bases.",
+            href: "/guides/driving-in-norway-what-visitors-should-know",
+          },
+          {
+            title: "By ferry and boat",
+            description:
+              "Crossings are often part of the route itself rather than a separate excursion.",
+            href: "/guides/norway-ferry-guide-for-tourists",
+          },
+          {
+            title: "By route planning",
+            description:
+              "Start with crossings and distances, then build each day around the real rhythm of the water.",
+            href: "/routes",
+          },
+        ],
+      },
+      {
+        label: "07 / Planning mistakes",
+        title: "Leave room for the real route",
+        intro:
+          "The most common problem is trying to fit too much into a region where distance, ferry timing and weather all matter.",
+        cards: [
+          {
+            title: "Too many stops",
+            description:
+              "A fjord trip usually works better when you stay longer in fewer places.",
+          },
+          {
+            title: "No ferry buffer",
+            description:
+              "Treat crossings as fixed points and leave room for queues, loading and weather.",
+          },
+          {
+            title: "Driving too far",
+            description:
+              "The map can be deceptive when water, tunnels and scenic detours are part of the route.",
+          },
+        ],
+      },
+      {
+        label: "08 / Responsible travel",
+        title: "Move lightly through the landscape",
+        intro:
+          "The fjords reward careful travel. Small choices make the experience calmer for both visitors and local communities.",
+        cards: [
+          {
+            title: "Stay on marked viewpoints",
+            description:
+              "Protect the landscape and avoid unsafe roadside stopping.",
+            href: "/responsible-travel",
+          },
+          {
+            title: "Park with care",
+            description:
+              "Some of the best views sit on roads that leave almost no spare shoulder.",
+          },
+          {
+            title: "Support local places",
+            description:
+              "Cafes, cabins and small shops help the trip feel grounded in the communities you pass through.",
+          },
+        ],
+      },
+      {
+        label: "09 / Trip styles",
+        title: "The rhythms that work best",
+        intro:
+          "Fjords work for different travel styles, but the trip is best when you choose one clear pace and keep it consistent.",
+        cards: [
+          {
+            title: "Road trip loop",
+            description:
+              "Best if you want movement, ferries and several scenery shifts in one itinerary.",
             href: "/routes",
           },
           {
-            title: "Photography",
+            title: "Slow base stay",
             description:
-              "Low cloud, rain and shifting light can make fjord landscapes more atmospheric than clear midday sun.",
+              "Good when you want time to watch weather and return to the same view in different light.",
           },
           {
-            title: "Local awareness",
+            title: "Photo-first trip",
             description:
-              "Small fjord communities are lived-in places. Park carefully, respect private land and support local businesses.",
+              "Works well when you build the day around sunrise, late afternoon and changing cloud.",
+          },
+        ],
+      },
+      {
+        label: "10 / FAQ",
+        title: "Common planning questions",
+        intro:
+          "A few quick answers help turn the overview into a usable plan for first-time fjord travel.",
+        cards: [
+          {
+            title: "Where are the fjords in Norway?",
+            description:
+              "Most of the famous fjords sit in Western Norway, but the north has dramatic fjord landscapes too.",
+          },
+          {
+            title: "What is the best time to visit?",
+            description:
+              "Late spring through early autumn is usually the easiest window for a first fjord trip.",
+          },
+          {
+            title: "How many days do you need?",
+            description:
+              "Three to five days gives a short sample; a week or more leaves room for ferries and slower pacing.",
           },
         ],
       },
     ],
     relatedLinks: [
       { label: "Browse Norway road trip routes", href: "/routes" },
-      { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "Open the seasonal planning guide", href: "/best-time-to-visit-norway" },
+      { label: "Read the ferry guide", href: "/guides/norway-ferry-guide-for-tourists" },
+      { label: "Read the driving guide", href: "/guides/driving-in-norway-what-visitors-should-know" },
       { label: "See responsible travel advice", href: "/responsible-travel" },
       { label: "Open the Norway map", href: "/map" },
     ],
@@ -693,7 +896,7 @@ export const seoPages = {
     },
     guideMeta: {
       lastUpdated: GUIDE_LAST_UPDATED,
-      sources: guideSourceSets.roadTripScenic,
+      sources: guideSourceSets.fjordsNorway,
     },
   },
   bestTimeToVisitNorway: {
@@ -780,7 +983,7 @@ export const seoPages = {
             title: "Road trips and fjords",
             description:
               "Late spring to early autumn for easier roads and broader ferry frequency.",
-            href: "/routes",
+            href: "/fjords-of-norway",
           },
         ],
       },

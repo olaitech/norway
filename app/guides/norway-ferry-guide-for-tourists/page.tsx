@@ -90,6 +90,12 @@ export default function NorwayFerryGuideForTouristsPage() {
           description: "Put ferry timing together with the wider driving rules and road conditions.",
         },
         {
+          label: "Destination",
+          title: "Fjords of Norway",
+          href: "/fjords-of-norway",
+          description: "See how ferry planning fits into a wider fjord trip.",
+        },
+        {
           label: "Map",
           title: "Norway Travel Map",
           href: "/map",
