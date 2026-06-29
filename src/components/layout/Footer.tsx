@@ -19,8 +19,9 @@ const guideLinks = [
 const informationLinks = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Privacy policy", href: "/privacy" },
-  { label: "Cookie settings", href: "/privacy-settings" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Cookies", href: "/cookies" },
+  { label: "Accessibility", href: "/accessibility" },
   { label: "Terms", href: "/terms" },
 ] as const;
 

@@ -3,14 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 import { JournalReveal } from "./JournalReveal";
 
 export function JournalHero() {
   const [videoFailed, setVideoFailed] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const shouldReduceMotion = useReducedMotion() === true;
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
     const video = videoRef.current;
 
     if (!video) {
@@ -22,23 +28,22 @@ export function JournalHero() {
     video.playsInline = true;
 
     void video.play().catch(() => setVideoFailed(true));
-  }, []);
+  }, [shouldReduceMotion]);
 
   return (
     <section className="relative isolate flex min-h-screen flex-col overflow-hidden bg-black">
       <div className="absolute inset-0 z-0 bg-black">
-        {videoFailed && (
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(circle_at_62%_34%,rgba(137,121,93,0.18),transparent_30%),linear-gradient(145deg,#07100f_0%,#030607_58%,#000_100%)]"
-          />
-        )}
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 bg-[radial-gradient(circle_at_62%_34%,rgba(137,121,93,0.18),transparent_30%),linear-gradient(145deg,#07100f_0%,#030607_58%,#000_100%)] transition-opacity duration-500 ${
+            videoFailed ? "opacity-100" : "opacity-0 motion-reduce:opacity-100"
+          }`}
+        />
 
-        {!videoFailed && (
+        {!videoFailed ? (
           <video
             ref={videoRef}
-            className="absolute inset-0 z-0 h-full w-full object-cover"
-            autoPlay
+            className="absolute inset-0 z-0 h-full w-full object-cover motion-reduce:hidden"
             muted
             playsInline
             preload="auto"
@@ -49,7 +54,7 @@ export function JournalHero() {
           >
             <source src="/video/journal/lofoten.mp4" type="video/mp4" />
           </video>
-        )}
+        ) : null}
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(3,7,9,0.66)_0%,rgba(3,7,9,0.43)_42%,rgba(3,7,9,0.18)_74%,rgba(3,7,9,0.28)_100%)]" />
@@ -60,7 +65,7 @@ export function JournalHero() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
           <Link
             href="/"
-            aria-label="Norge home"
+            aria-label="Trips Norway home"
             className="flex items-center gap-4 text-[0.64rem] font-medium uppercase tracking-[0.27em] text-[#f4efe2]/72 transition-colors hover:text-[#f4efe2]"
           >
             <Image

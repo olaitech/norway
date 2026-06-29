@@ -39,7 +39,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
       "Where to go, when to travel and how to give yourself the best chance beneath the polar sky.",
     meta: "ARCTIC LIGHT / WINTER GUIDE",
     href: "/northern-lights-norway",
-    image: "/images/cards/tromsÃ¸.png",
+    image: "/images/cards/tromso.png",
     imageAlt: "Aurora above a quiet Arctic coastline near Tromso",
   },
   {
@@ -47,25 +47,25 @@ const norwayPlanningContent: StickyScrollItem[] = [
     description:
       "Deep water, vertical mountains and quiet villages shaped by ice, weather and time.",
     meta: "LANDSCAPE / WESTERN NORWAY",
-    href: "/routes",
+    href: "/fjords-of-norway",
     image: "/images/cards/lofoten.png",
     imageAlt: "Red fishing cabins beneath steep mountains and calm water in Lofoten",
   },
   {
-    title: "Norway Itinerary: 7 Days",
+    title: "Norway Itinerary 7 Days",
     description:
       "A focused route for seeing Norway's landscapes without rushing through every moment.",
     meta: "ITINERARY / FIRST JOURNEY",
-    href: "/routes/lofoten-road-trip",
+    href: "/norway-itinerary-7-days",
     image: "/images/cards/senja.png",
     imageAlt: "Dramatic Senja mountains above calm Arctic water",
   },
   {
-    title: "Norway Itinerary: 10 Days",
+    title: "Norway Itinerary 10 Days",
     description:
       "More space, longer drives and enough time to let the road become part of the journey.",
     meta: "ITINERARY / SLOWER ROUTE",
-    href: "/routes/helgeland-coast-road-trip",
+    href: "/norway-itinerary-10-days",
     image: "/images/cards/helgeland.png",
     imageAlt: "Island coastline and soft northern light along the Helgeland coast",
   },

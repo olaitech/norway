@@ -260,7 +260,7 @@ export const journalArticles: JournalArticle[] = [
     category: "Seasonal Note",
     region: "Northern Norway",
     readTime: "5 min read",
-    image: "/images/cards/tromsø.png",
+    image: "/images/cards/tromso.png",
     imageAlt: "Northern Norway coastline under changing Arctic sky",
     excerpt:
       "Reading light, weather and distance before choosing the right season for an Arctic journey.",

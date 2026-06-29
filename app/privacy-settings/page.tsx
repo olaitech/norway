@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 
+import { CookieSettingsPanel } from "@/src/components/compliance/CookieSettingsPanel";
 import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 
 export const metadata: Metadata = {
   title: "Privacy settings",
   description:
-    "Review the current privacy settings page for Trips Norway, including Vercel Analytics, direct email, map tiles, outbound social links and what a fuller consent center would cover later.",
+    "Local privacy settings for Trips Norway, including the optional analytics choice remembered in your browser.",
   alternates: {
     canonical: "/privacy-settings",
   },
@@ -13,29 +14,19 @@ export const metadata: Metadata = {
 
 const settings = [
   {
-    title: "Analytics",
-    status: "Active",
-    text: "Vercel Analytics is currently used to understand general site traffic and page usage. It is designed to stay lightweight and does not rely on third-party cookies.",
+    title: "Necessary storage",
+    status: "Always on",
+    text: "Trips Norway stores the minimum needed to remember your choice and keep the site usable. This does not include a full account or profile system.",
   },
   {
-    title: "Direct email",
-    status: "Simple",
-    text: "The contact page uses a direct mailto link. If someone emails the site, their message and address are used only to read and reply.",
+    title: "Optional analytics",
+    status: "Choice-based",
+    text: "Vercel Analytics stays off until you allow it. If you change your mind later, you can update that choice here without changing the rest of the site.",
   },
   {
-    title: "Maps",
-    status: "On demand",
-    text: "The map page may load tiles from OpenStreetMap-related services when it opens. Google Maps links are outbound links that only open if a visitor chooses them.",
-  },
-  {
-    title: "Social links",
-    status: "Outbound only",
-    text: "TikTok links currently open on TikTok. The site does not embed TikTok players or load TikTok tracking scripts.",
-  },
-  {
-    title: "Future consent center",
-    status: "Not needed yet",
-    text: "This page is informational for now. It would become more important if the site later adds nonessential cookies, embedded social players, newsletter tools, ads, affiliate tracking or booking integrations.",
+    title: "Change later",
+    status: "Local only",
+    text: "The preference is stored in your browser, not in a user account. If you clear the saved choice, the banner will appear again on the next visit.",
   },
 ] as const;
 
@@ -44,13 +35,14 @@ export default function PrivacySettingsPage() {
     <InfoPageShell
       eyebrow="Privacy center"
       title="Privacy settings"
-      intro="This page is informational for now. It explains the current privacy setup rather than storing consent choices. If Trips Norway later adds nonessential cookies, embedded social players, newsletter tools, ads or partner tracking, it can grow into a fuller preference center."
+      intro="Use this small local settings page to allow or reject optional analytics. It keeps the choice in your browser and leaves the editorial site itself untouched."
       actions={[
         { label: "Privacy policy", href: "/privacy" },
-        { label: "Contact", href: "/contact" },
+        { label: "Cookies", href: "/cookies" },
       ]}
+      bottomContent={<CookieSettingsPanel />}
     >
-      <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
+      <div className="grid gap-5 md:grid-cols-2">
         <aside className="rounded-[1.35rem] border border-[#d8c9a7]/18 bg-[#d8c9a7]/[0.045] p-7 sm:p-8 lg:self-start">
           <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/78">
             Current state
@@ -59,10 +51,9 @@ export default function PrivacySettingsPage() {
             Minimal by design.
           </h2>
           <p className="mt-6 text-sm font-light leading-[1.85] text-[#f4efe2]/66 sm:text-base">
-            The site currently uses Vercel Analytics and map tile requests only
-            when visitors open the map. There is no full consent store yet,
-            because the site does not currently use the heavier tracking
-            features that would need one.
+            The site is built to stay light. Optional analytics can be switched
+            on or off here, and nothing else in the editorial layout depends on
+            that choice.
           </p>
         </aside>
 

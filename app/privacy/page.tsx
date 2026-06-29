@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { InfoPageShell } from "@/src/components/pages/InfoPageShell";
 
 export const metadata: Metadata = {
   title: "Privacy policy",
   description:
-    "Read the privacy policy for Trips Norway, including notes on Vercel Analytics, direct email, map tiles, outbound links and future third-party services.",
+    "Plain-English privacy policy for Trips Norway, covering contact messages, optional analytics, hosting logs, map requests and user choices.",
   alternates: {
     canonical: "/privacy",
   },
@@ -13,24 +14,28 @@ export const metadata: Metadata = {
 
 const privacySections = [
   {
-    title: "Analytics",
-    text: "Trips Norway uses Vercel Analytics to understand general traffic and page usage. The setup is lightweight and intended to stay cookie-free, so it can support the site without adding a heavy tracking layer.",
+    title: "What Trips Norway is",
+    text: "Trips Norway is an independent travel knowledge portal. It publishes editorial guides, route notes and destination pages, not a booking service or official tourism authority.",
   },
   {
-    title: "Direct email",
-    text: "If you contact Trips Norway by email, your message and email address are processed only to read, manage and reply to that message. They are not used for unrelated marketing unless that is clearly explained later.",
+    title: "Information you send directly",
+    text: "If you use the contact page or email hello@tripsnorway.com, the details you choose to share are used only to read and reply. There is no contact form or newsletter on the site right now.",
   },
   {
-    title: "Maps and external links",
-    text: "When you open the map, the page may load tiles from OpenStreetMap-related services. Google Maps links and TikTok links are outbound links only; they do not load embedded players on the page.",
+    title: "Optional analytics",
+    text: "Trips Norway uses Vercel Analytics for general page-usage measurement when optional analytics are allowed. It helps the site understand broad reading patterns without changing the travel content itself.",
   },
   {
-    title: "Deletion requests",
-    text: "If you have shared personal information directly, you can ask for deletion of that information. Some records may need to be kept for security, legal or operational reasons.",
+    title: "Hosting and logs",
+    text: "The platform serving the site may record standard request logs such as page requests, timestamps, browser type and device details for security and reliability.",
   },
   {
-    title: "Future changes",
-    text: "If Trips Norway later adds newsletter tools, ads, affiliate links, booking partners or embedded social players, this policy should be updated before those features go live.",
+    title: "Maps and external services",
+    text: "The map page can request tiles from OpenStreetMap-style services when you open it. Outbound links to Google Maps, TikTok and similar services open on those sites instead of embedding their players here. There are no third-party embeds on the site right now.",
+  },
+  {
+    title: "Your choices",
+    text: "You can reject optional analytics, change that choice later in privacy settings, or ask for the information you have sent directly to be corrected or deleted where that is practical.",
   },
 ] as const;
 
@@ -39,9 +44,9 @@ export default function PrivacyPage() {
     <InfoPageShell
       eyebrow="Privacy"
       title="Privacy policy"
-      intro="A plain-English privacy policy for Trips Norway. It explains the current use of Vercel Analytics, direct email, map tiles and external links in a simple, proportionate way."
+      intro="Trips Norway keeps things small and transparent. This policy explains the current data handling setup in plain English and leaves out the legal padding."
       actions={[
-        { label: "Privacy settings", href: "/privacy-settings" },
+        { label: "Cookies", href: "/cookies" },
         { label: "Contact", href: "/contact" },
       ]}
     >
@@ -59,6 +64,26 @@ export default function PrivacyPage() {
             </p>
           </article>
         ))}
+
+        <article className="rounded-[1.25rem] border border-[#c6a15b]/18 bg-[linear-gradient(165deg,rgba(198,161,91,0.07),rgba(143,175,168,0.03))] p-7 sm:p-8 md:col-span-2">
+          <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#c6a15b]/76">
+            Contact
+          </p>
+          <h2 className="mt-5 font-serif text-[clamp(1.85rem,3.4vw,3rem)] font-normal leading-[0.98] tracking-[-0.04em]">
+            Questions about privacy.
+          </h2>
+          <p className="mt-5 max-w-3xl text-sm font-light leading-[1.85] text-[#f4efe2]/66 sm:text-base">
+            If you want to ask about the way this site handles direct messages,
+            optional analytics or browser storage, use the contact page or email
+            hello@tripsnorway.com.
+          </p>
+          <Link
+            href="mailto:hello@tripsnorway.com"
+            className="mt-7 inline-flex rounded-full border border-[#c6a15b]/20 bg-[linear-gradient(165deg,rgba(198,161,91,0.08),rgba(143,175,168,0.04))] px-5 py-3 text-sm font-medium text-[#f4efe2] transition-colors hover:border-[#c6a15b]/34 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/55"
+          >
+            hello@tripsnorway.com
+          </Link>
+        </article>
       </div>
     </InfoPageShell>
   );

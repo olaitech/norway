@@ -480,7 +480,7 @@ export const seoPages = {
       title: "Northern Lights in Norway",
       intro:
         "A practical guide to Arctic locations, seasonal timing and calm planning for aurora-focused journeys.",
-      imageSrc: "/images/cards/tromsø.png",
+      imageSrc: "/images/cards/tromso.png",
       imageAlt: "Arctic coastline in Northern Norway under winter light",
       imagePosition: "center 44%",
     },

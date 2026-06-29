@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { CookieConsentGate } from "@/src/components/compliance/CookieConsentGate";
 import { Footer } from "@/src/components/layout/Footer";
 import {
   DEFAULT_SOCIAL_IMAGE,
@@ -76,7 +76,7 @@ export default function RootLayout({
     >
       <body id="top" className="min-h-full flex flex-col">
         {children}
-        <Analytics />
+        <CookieConsentGate />
         <Footer />
       </body>
     </html>

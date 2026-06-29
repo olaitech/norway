@@ -20,6 +20,8 @@ const expectedRoutes = [
   "/map",
   "/contact",
   "/privacy",
+  "/cookies",
+  "/accessibility",
   "/privacy-settings",
   "/terms",
   "/best-time-to-visit-norway",

@@ -346,7 +346,7 @@ export const destinations: Destination[] = [
     label: "Arctic city | Troms",
     intro:
       "A compact northern city framed by mountains and water, balancing warm interiors, Arctic culture and easy departures into darker skies.",
-    imageSrc: "/images/cards/tromsø.png",
+    imageSrc: "/images/cards/tromso.png",
     imageAlt: "Northern lights above Tromso and snowy mountains at night",
     imagePosition: "center center",
     metaTitle: "Tromsø",

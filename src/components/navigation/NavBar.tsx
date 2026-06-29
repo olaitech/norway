@@ -34,7 +34,7 @@ const linkClassName =
 export function NavBar({
   items = primaryNavItems,
   brandHref = "/",
-  brandAriaLabel = "Norge home",
+  brandAriaLabel = "Trips Norway home",
   brandImageSrc = "/images/branding/logo2.png",
   brandImageAlt = "",
   className = "",
