@@ -19,9 +19,9 @@ const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
 
 export const lofotenIslandsTravelGuideMetadata = {
   title:
-    "Lofoten Islands Travel Guide: Where to Stay, Ferries, Itinerary & What Not to Do",
+    "Lofoten Islands, Norway | Destination Guide",
   description:
-    "Plan a slower, smarter trip to the Lofoten Islands with this source-backed guide to seasons, ferries, road trips, rorbuer, camping, villages and responsible travel.",
+    "A calm destination guide to Lofoten, Norway, with practical notes on road trips, ferries, the best time to visit and seasonal light from northern lights to midnight sun.",
 } as const;
 
 const lofotenIslandsCanonicalPath = "/destinations/lofoten-islands";
@@ -353,19 +353,19 @@ const responsibleTravel = [
 
 const faqItems = [
   {
-    question: "Is Lofoten worth visiting?",
+    question: "Where are the Lofoten Islands?",
     answer:
-      "Yes, especially for travellers who enjoy dramatic coastal landscapes and can plan with realistic pace and weather flexibility.",
+      "Lofoten is an archipelago in Nordland, Northern Norway, above the Arctic Circle. Most trips use the E10, ferry links and a few practical village bases to move between the islands.",
+  },
+  {
+    question: "What is the best time to visit Lofoten?",
+    answer:
+      "June to August is easiest for long daylight and hiking, while September and October are calmer and still good for road trips. Winter can work too if you are planning around darker skies and northern lights.",
   },
   {
     question: "How many days do you need in Lofoten?",
     answer:
-      "Four to five days works for a first trip, while seven days gives a better balance for weather buffers and slower travel.",
-  },
-  {
-    question: "What is the best month to visit Lofoten?",
-    answer:
-      "There is no single best month. June to August is easiest for logistics, while September and October often feel calmer.",
+      "Four to five days works for a first visit. A week gives more room for ferries, weather, slower village stops and a road trip that does not feel rushed.",
   },
   {
     question: "Can you visit Lofoten without a car?",
@@ -437,6 +437,13 @@ const relatedGuides = [
     label: "Destination",
   },
   { href: "/destinations/tromso", title: "Tromso", label: "Destination" },
+  {
+    href: "/routes/lofoten-road-trip",
+    title: "Lofoten Road Trip",
+    label: "Route",
+    description:
+      "Use the islands as a slower driving route with ferries, village bases and weather buffers.",
+  },
   {
     href: "/routes",
     title: "Norway Road Trip Routes",

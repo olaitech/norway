@@ -67,9 +67,9 @@ export const destinations: Destination[] = [
     imageSrc: "/images/cards/lofoten.png",
     imageAlt: "Fishing villages and steep mountains along the coast of Lofoten",
     imagePosition: "center center",
-    metaTitle: "Lofoten Islands",
+    metaTitle: "Lofoten Islands, Norway",
     metaDescription:
-      "Plan a slower Lofoten trip with practical notes on island roads, ferry links, weather and the best seasons for light and coastal stops.",
+      "Plan a slower trip to Lofoten, Norway with practical notes on island roads, ferry links, weather and the best seasons for light and coastal stops.",
     facts: [
       { label: "Best season", value: "May - September" },
       { label: "Region", value: "Nordland" },

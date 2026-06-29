@@ -320,7 +320,7 @@ export const seoPages = {
     ],
     relatedLinks: [
       { label: "Browse the route hub", href: "/routes" },
-      { label: "Read the Lofoten destination guide", href: "/destinations/lofoten-islands" },
+      { label: "Read the Lofoten Islands destination guide", href: "/destinations/lofoten-islands" },
       { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
       { label: "See the northern lights guide", href: "/northern-lights-norway" },
     ],
