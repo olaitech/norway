@@ -678,26 +678,65 @@ export const seoPages = {
         ],
       },
       {
-        label: "03 / Famous names",
-        title: "The fjords most travelers plan around",
+        label: "03 / Famous fjords",
+        title: "The famous fjords most travelers hear about first",
         intro:
-          "If you only know a few names, start with the ones that most often anchor a first fjord itinerary.",
+          "These are the classic western and southern fjords that shape the first image many visitors have of Norway. Each one asks for slower pacing, realistic road time and thoughtful ferry planning.",
         layout: "list",
         cards: [
           {
-            title: "Geirangerfjord and Nærøyfjord",
+            label: "Møre og Romsdal / Sunnmøre",
+            title: "Geirangerfjord",
             description:
-              "The UNESCO-listed names that often define a first fjord itinerary.",
+              "One of the classic western fjords, known for steep walls and iconic viewpoints; plan it as part of a slower road day rather than a quick stop.",
           },
           {
+            label: "Vestland / Sogn",
+            title: "Nærøyfjord",
+            description:
+              "A narrow UNESCO fjord that many travelers pair with Aurlandsfjord and Flåm; it works best inside a longer west-coast loop.",
+          },
+          {
+            label: "Vestland / Sogn",
             title: "Sognefjord",
             description:
-              "A long, layered fjord system that gives a strong sense of scale and depth.",
+              "Norway's longest and broadest fjord system; it is a strong anchor if you want scale, room to move and time for detours.",
           },
           {
-            title: "Hardangerfjord and Lysefjord",
+            label: "Vestland / Hardanger",
+            title: "Hardangerfjord",
             description:
-              "Useful reference points for orchards, viewpoints and classic west-coast scenery.",
+              "Known for orchards, waterfalls and side trips; a good classic fjord choice when spring light or shoulder-season conditions matter.",
+          },
+          {
+            label: "Rogaland / Stavanger area",
+            title: "Lysefjord",
+            description:
+              "Famous for Preikestolen and Kjerag; treat it as an access-and-weather route, not just a quick scenic stop.",
+          },
+          {
+            label: "Vestland / Sogn",
+            title: "Aurlandsfjord",
+            description:
+              "A scenic side arm of the Sognefjord near Flåm, useful for combining fjord water, mountain roads and easy access.",
+          },
+          {
+            label: "Vestland / Nordfjord",
+            title: "Nordfjord",
+            description:
+              "A classic western fjord between coast and glacier country, good when you want a broader route beyond the headline names.",
+          },
+          {
+            label: "Møre og Romsdal / Sunnmøre",
+            title: "Hjørundfjord",
+            description:
+              "A quieter western fjord framed by steep peaks, best for travelers who want atmosphere and less traffic than the famous icons.",
+          },
+          {
+            label: "Nordland / Lofoten-Vesterålen",
+            title: "Trollfjord",
+            description:
+              "A short but iconic northern fjord; it works best as part of an Arctic coast route, boat trip or Lofoten extension.",
           },
         ],
       },
@@ -705,7 +744,7 @@ export const seoPages = {
         label: "04 / Northern Norway",
         title: "Fjords in the north",
         intro:
-          "Northern Norway adds fjords to a wider Arctic landscape of islands, sea and mountain roads, so the trip feels broader and more exposed to weather and light.",
+          "Those classic fjords are only one part of the Norway story. Northern Norway shifts the pace: broader light, quieter roads, islands, ferries, fishing communities and weather-shaped travel.",
         layout: "split",
         media: {
           imageSrc: "/images/destinations/fjords/norway-fjord2.jpg",
