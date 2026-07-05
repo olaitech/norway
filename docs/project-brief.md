@@ -1,4 +1,4 @@
-﻿# Norway Travel Website: Project Brief
+# Norway Travel Website: Project Brief
 
 ## Purpose
 
@@ -105,8 +105,8 @@ and [seo-pages.md](./seo-pages.md) for SEO expansion targets.
   awareness, weather flexibility and appropriate bases.
 - Treat visual atmosphere as the entry point and practical guidance as the
   reason to stay.
-- Use proper Norwegian characters in visible copy: `BodÃ¸`, `TromsÃ¸`,
-  `VesterÃ¥len`.
+- Use proper Norwegian characters in visible copy: `Bodø`, `Tromsø`,
+  `Vesterålen`.
 
 ## Working Rules For Future Changes
 

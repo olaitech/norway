@@ -1,4 +1,4 @@
-﻿# Next Steps
+# Next Steps
 
 ## Required Reading For Major Tasks
 
@@ -65,14 +65,14 @@ Checklist:
   Next.js image API for the installed project version.
 - Replace visible encoded Norwegian text such as `Bod\u00f8` and
   `Troms\u00f8` with real characters.
-- Check related visible names such as `VesterÃ¥len` for correct display.
+- Check related visible names such as `Vesterålen` for correct display.
 - Run lint/build and inspect the affected views in the browser after fixes.
 
 Required visible spellings:
 
-- `BodÃ¸`
-- `TromsÃ¸`
-- `VesterÃ¥len`
+- `Bodø`
+- `Tromsø`
+- `Vesterålen`
 
 Completion criteria:
 

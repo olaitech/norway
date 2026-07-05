@@ -1,4 +1,4 @@
-﻿# Content Roadmap
+# Content Roadmap
 
 ## Editorial Goal
 
@@ -55,9 +55,9 @@ Expand current destination pages with practical depth:
 | Destination | Content opportunities |
 | --- | --- |
 | Lofoten | Bases, route pacing, ferry/drive options, seasonal light, village etiquette |
-| Senja | Scenic route strategy, access from TromsÃ¸, hiking/weather alternatives |
+| Senja | Scenic route strategy, access from Tromsø, hiking/weather alternatives |
 | Helgeland Coast | Ferry rhythm, island stays, slow-road itineraries |
-| TromsÃ¸ | Aurora base planning, city/wilderness balance, winter logistics |
+| Tromsø | Aurora base planning, city/wilderness balance, winter logistics |
 
 Future candidates can be added only when their content is substantial enough to
 match the existing brand standard.
@@ -125,7 +125,7 @@ Use this outline as a starting point, adapted to the subject:
 - Is the content genuinely useful without relying on visuals?
 - Does it include a realistic trip pace?
 - Are seasonal or logistical claims accurate and updateable?
-- Are visible names correctly spelled (`BodÃ¸`, `TromsÃ¸`, `VesterÃ¥len`)?
+- Are visible names correctly spelled (`Bodø`, `Tromsø`, `Vesterålen`)?
 - Are internal links relevant rather than excessive?
 - Does the voice feel calm and informed, not promotional?
 - Are facts requiring current verification clearly identified before
