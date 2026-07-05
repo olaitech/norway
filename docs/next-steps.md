@@ -1,4 +1,4 @@
-# Next Steps
+﻿# Next Steps
 
 ## Required Reading For Major Tasks
 
@@ -65,14 +65,14 @@ Checklist:
   Next.js image API for the installed project version.
 - Replace visible encoded Norwegian text such as `Bod\u00f8` and
   `Troms\u00f8` with real characters.
-- Check related visible names such as `Vesterålen` for correct display.
+- Check related visible names such as `VesterÃ¥len` for correct display.
 - Run lint/build and inspect the affected views in the browser after fixes.
 
 Required visible spellings:
 
-- `Bodø`
-- `Tromsø`
-- `Vesterålen`
+- `BodÃ¸`
+- `TromsÃ¸`
+- `VesterÃ¥len`
 
 Completion criteria:
 
@@ -196,3 +196,18 @@ After the current work plan is complete:
   GDPR-friendly, transparent and aligned with the premium Scandinavian design.
 - Prepare the platform for future travel collaborations without compromising
   editorial trust.
+
+<!-- BEGIN:recent-seo-aeo-foundation -->
+## Recently completed SEO/AEO foundation
+
+Completed foundation work:
+- Googlebot/browser crawlability was verified with `npm run check:crawlability:live`.
+- The tested live routes returned exact matching HTML for Googlebot and normal browser user agents.
+- `robots.txt` now lives at `app/robots.txt` so it can include custom Content-Signal directives.
+- `Content-Signal: search=yes, ai-input=yes, ai-train=yes` is intentional.
+- `llms.txt` and `llms-full.txt` are served publicly from `public/`.
+- PageSpeed desktop was observed at Performance 99, Accessibility 93, Best Practices 100, SEO 100 and Agentic Browsing 2/3.
+
+Do not redo this foundation unless explicitly requested. Future SEO/AEO work should focus on content depth, internal linking, Search Console follow-up, structured data validation and page-specific improvements.
+<!-- END:recent-seo-aeo-foundation -->
+

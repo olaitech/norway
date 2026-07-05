@@ -1,4 +1,4 @@
-# Content Roadmap
+﻿# Content Roadmap
 
 ## Editorial Goal
 
@@ -55,9 +55,9 @@ Expand current destination pages with practical depth:
 | Destination | Content opportunities |
 | --- | --- |
 | Lofoten | Bases, route pacing, ferry/drive options, seasonal light, village etiquette |
-| Senja | Scenic route strategy, access from Tromsø, hiking/weather alternatives |
+| Senja | Scenic route strategy, access from TromsÃ¸, hiking/weather alternatives |
 | Helgeland Coast | Ferry rhythm, island stays, slow-road itineraries |
-| Tromsø | Aurora base planning, city/wilderness balance, winter logistics |
+| TromsÃ¸ | Aurora base planning, city/wilderness balance, winter logistics |
 
 Future candidates can be added only when their content is substantial enough to
 match the existing brand standard.
@@ -125,8 +125,28 @@ Use this outline as a starting point, adapted to the subject:
 - Is the content genuinely useful without relying on visuals?
 - Does it include a realistic trip pace?
 - Are seasonal or logistical claims accurate and updateable?
-- Are visible names correctly spelled (`Bodø`, `Tromsø`, `Vesterålen`)?
+- Are visible names correctly spelled (`BodÃ¸`, `TromsÃ¸`, `VesterÃ¥len`)?
 - Are internal links relevant rather than excessive?
 - Does the voice feel calm and informed, not promotional?
 - Are facts requiring current verification clearly identified before
   publication?
+
+<!-- BEGIN:current-seo-content-status -->
+## Current SEO content status
+
+Several earlier planned SEO URLs now have a clearer canonical/redirect role.
+
+Current interpretation:
+- `/routes` is the canonical road-trip route hub.
+- `/norway-road-trip-routes` is a redirect/legacy alias, not a separate content page unless explicitly changed later.
+- `/destinations/lofoten-islands` is the canonical Lofoten destination page.
+- `/lofoten` and `/lofoten-travel-guide` are redirect/legacy aliases.
+- `/norway-itinerary-7-days` and `/norway-itinerary-10-days` are redirect stubs, not completed standalone itinerary pages.
+
+Next content value should come from:
+- deeper practical guide content,
+- better internal links between routes, destinations, map and guides,
+- realistic pacing, ferry/logistics and seasonal guidance,
+- human editorial writing that avoids generic tourism filler.
+<!-- END:current-seo-content-status -->
+

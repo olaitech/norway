@@ -1,4 +1,4 @@
-# SEO Pages
+﻿# SEO Pages
 
 ## Purpose
 
@@ -213,3 +213,52 @@ Each published SEO page should have:
 Do not publish a page that is only a cinematic shell. A page is ready when it
 contains enough practical guidance for a traveller to make at least one real
 planning decision.
+
+<!-- BEGIN:current-seo-aeo-status -->
+## Current SEO/AEO foundation
+
+The SEO/AEO foundation is already implemented. Future work should improve content depth, internal linking, validation and page quality rather than rebuilding the foundation.
+
+Current foundation:
+- This is a Next.js App Router project, not Vite.
+- Do not implement Vite prerendering.
+- Do not add react-helmet-async.
+- Do not replace Next.js metadata handling.
+- Metadata, canonical URLs, Open Graph/Twitter metadata and JSON-LD are implemented across core pages.
+- `sitemap.xml` is generated from `app/sitemap.ts`.
+- `app/robots.txt` is intentional and must not be reverted to `app/robots.ts`.
+- `robots.txt` includes `Content-Signal: search=yes, ai-input=yes, ai-train=yes`.
+- `public/llms.txt` and `public/llms-full.txt` should remain publicly available at `/llms.txt` and `/llms-full.txt`.
+- `public/llms.txt` has been improved with Markdown headings and canonical links for agent readability.
+- A live crawlability check exists: `npm run check:crawlability:live`.
+
+Recent validation:
+- `npm run check:seo` passed.
+- `npm run check:aeo` passed.
+- `npm run check:crawlability:live` passed exact.
+- Live Googlebot/browser crawlability comparison passed exact on tested routes.
+
+Observed PageSpeed desktop result:
+- Performance: 99
+- Accessibility: 93
+- Best Practices: 100
+- SEO: 100
+- Agentic Browsing: 2/3.
+
+Known notes:
+- `/norway-road-trip-routes`, `/norway-itinerary-7-days` and `/norway-itinerary-10-days` are redirect stubs, not standalone canonical sitemap content pages unless the canonical strategy changes.
+- Internal AEO checks may warn that `llms.txt` and `llms-full.txt` are only present in `public/`. That is intentional because they must be served from the site root.
+
+## Current route and canonical guidance
+
+Use canonical URLs in copy, metadata, sitemap planning and internal linking.
+
+Current guidance:
+- `/routes` is the canonical route hub.
+- `/norway-road-trip-routes` is a redirect/legacy alias unless explicitly changed later.
+- `/destinations/lofoten-islands` is the canonical Lofoten destination page.
+- `/lofoten` and `/lofoten-travel-guide` are redirect/legacy aliases unless explicitly changed later.
+- `/norway-itinerary-7-days` and `/norway-itinerary-10-days` are redirect stubs, not completed standalone itinerary pages.
+- Redirect stubs should not be treated as independent content pages or added as standalone sitemap entries unless the canonical strategy changes.
+<!-- END:current-seo-aeo-status -->
+

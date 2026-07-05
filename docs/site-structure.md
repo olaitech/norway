@@ -1,4 +1,4 @@
-# Site Structure
+﻿# Site Structure
 
 Primary URLs below are the canonical live content pages.
 Redirect stubs are listed separately so future AI/Codex sessions do not treat
@@ -110,7 +110,7 @@ The shared footer is rendered from `app/layout.tsx` through
 | Content records | `src/data/destinations.ts` |
 
 Current destination set includes Lofoten Islands, Senja, Helgeland Coast and
-Tromsø.
+TromsÃ¸.
 
 ### Journal
 
@@ -206,3 +206,18 @@ See [seo-pages.md](./seo-pages.md) before implementing new pages or aliases.
 - Prefer canonical URLs in copy and links; redirect stubs should never be
   described as independent content pages.
 - Establish canonical URLs before broadening cross-linking.
+
+<!-- BEGIN:current-route-canonical-guidance -->
+## Current route and canonical guidance
+
+Use canonical URLs in copy, metadata, sitemap planning and internal linking.
+
+Current guidance:
+- `/routes` is the canonical route hub.
+- `/norway-road-trip-routes` is a redirect/legacy alias unless explicitly changed later.
+- `/destinations/lofoten-islands` is the canonical Lofoten destination page.
+- `/lofoten` and `/lofoten-travel-guide` are redirect/legacy aliases unless explicitly changed later.
+- `/norway-itinerary-7-days` and `/norway-itinerary-10-days` are redirect stubs, not completed standalone itinerary pages.
+- Redirect stubs should not be treated as independent content pages or added as standalone sitemap entries unless the canonical strategy changes.
+<!-- END:current-route-canonical-guidance -->
+

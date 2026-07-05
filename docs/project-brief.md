@@ -1,4 +1,4 @@
-# Norway Travel Website: Project Brief
+﻿# Norway Travel Website: Project Brief
 
 ## Purpose
 
@@ -105,8 +105,8 @@ and [seo-pages.md](./seo-pages.md) for SEO expansion targets.
   awareness, weather flexibility and appropriate bases.
 - Treat visual atmosphere as the entry point and practical guidance as the
   reason to stay.
-- Use proper Norwegian characters in visible copy: `Bodø`, `Tromsø`,
-  `Vesterålen`.
+- Use proper Norwegian characters in visible copy: `BodÃ¸`, `TromsÃ¸`,
+  `VesterÃ¥len`.
 
 ## Working Rules For Future Changes
 
@@ -119,3 +119,40 @@ and [seo-pages.md](./seo-pages.md) for SEO expansion targets.
 - Record known issues in [bugs-and-cleanup.md](./bugs-and-cleanup.md).
 - Update [next-steps.md](./next-steps.md) when a substantial milestone is
   completed.
+
+<!-- BEGIN:current-seo-aeo-status -->
+## Current SEO/AEO foundation
+
+The SEO/AEO foundation is already implemented. Future work should improve content depth, internal linking, validation and page quality rather than rebuilding the foundation.
+
+Current foundation:
+- This is a Next.js App Router project, not Vite.
+- Do not implement Vite prerendering.
+- Do not add react-helmet-async.
+- Do not replace Next.js metadata handling.
+- Metadata, canonical URLs, Open Graph/Twitter metadata and JSON-LD are implemented across core pages.
+- `sitemap.xml` is generated from `app/sitemap.ts`.
+- `app/robots.txt` is intentional and must not be reverted to `app/robots.ts`.
+- `robots.txt` includes `Content-Signal: search=yes, ai-input=yes, ai-train=yes`.
+- `public/llms.txt` and `public/llms-full.txt` should remain publicly available at `/llms.txt` and `/llms-full.txt`.
+- `public/llms.txt` has been improved with Markdown headings and canonical links for agent readability.
+- A live crawlability check exists: `npm run check:crawlability:live`.
+
+Recent validation:
+- `npm run check:seo` passed.
+- `npm run check:aeo` passed.
+- `npm run check:crawlability:live` passed exact.
+- Live Googlebot/browser crawlability comparison passed exact on tested routes.
+
+Observed PageSpeed desktop result:
+- Performance: 99
+- Accessibility: 93
+- Best Practices: 100
+- SEO: 100
+- Agentic Browsing: 2/3.
+
+Known notes:
+- `/norway-road-trip-routes`, `/norway-itinerary-7-days` and `/norway-itinerary-10-days` are redirect stubs, not standalone canonical sitemap content pages unless the canonical strategy changes.
+- Internal AEO checks may warn that `llms.txt` and `llms-full.txt` are only present in `public/`. That is intentional because they must be served from the site root.
+<!-- END:current-seo-aeo-status -->
+
