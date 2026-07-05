@@ -3,7 +3,8 @@ import path from "node:path";
 
 const appDir = path.join(process.cwd(), "app");
 const layoutPath = path.join(appDir, "layout.tsx");
-const robotsPath = path.join(appDir, "robots.ts");
+const robotsTsPath = path.join(appDir, "robots.ts");
+const robotsTxtPath = path.join(appDir, "robots.txt");
 const sitemapPath = path.join(appDir, "sitemap.ts");
 
 const expectedRoutes = [
@@ -156,10 +157,13 @@ if (fs.existsSync(layoutPath)) {
   error("app/layout.tsx is missing");
 }
 
-if (fs.existsSync(robotsPath)) {
-  ok("app/robots.ts exists");
+const robotsExists = fs.existsSync(robotsTsPath) || fs.existsSync(robotsTxtPath);
+const robotsPath = fs.existsSync(robotsTxtPath) ? robotsTxtPath : robotsTsPath;
+
+if (robotsExists) {
+  ok("app/robots.ts or app/robots.txt exists");
 } else {
-  error("app/robots.ts is missing");
+  error("app/robots.ts or app/robots.txt is missing");
 }
 
 if (fs.existsSync(sitemapPath)) {
@@ -184,7 +188,23 @@ if (layoutSource && defaultMetadataPatterns.every((pattern) => !layoutSource.inc
 }
 
 if (robotsSource) {
-  if (/sitemap/i.test(robotsSource)) {
+  if (robotsPath.endsWith(".txt")) {
+    const requiredRobotsDirectives = [
+      "User-Agent: *",
+      "Allow: /",
+      "Host: https://tripsnorway.com",
+      "Sitemap: https://tripsnorway.com/sitemap.xml",
+      "Content-Signal: search=yes, ai-input=yes, ai-train=yes",
+    ];
+
+    for (const directive of requiredRobotsDirectives) {
+      if (robotsSource.includes(directive)) {
+        ok(`app/robots.txt contains ${directive}`);
+      } else {
+        error(`app/robots.txt is missing ${directive}`);
+      }
+    }
+  } else if (/sitemap/i.test(robotsSource)) {
     ok("app/robots.ts references the sitemap");
   } else {
     error("app/robots.ts does not reference the sitemap");

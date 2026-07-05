@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+Host: https://tripsnorway.com
+Sitemap: https://tripsnorway.com/sitemap.xml
