@@ -854,6 +854,20 @@ export function HelgelandCoastTravelGuide() {
                 </DestinationReveal>
               ))}
             </div>
+            <DestinationReveal
+              delay={0.08}
+              className="surface-fjord-media mt-10 overflow-hidden rounded-[1.35rem]"
+            >
+              <figure className="relative aspect-video">
+                <Image
+                  src="/images/destinations/helgeland/helgeland-sunset.jpg"
+                  alt="Seabirds flying above the sea in warm sunset light"
+                  fill
+                  sizes="(min-width: 1280px) 1280px, (min-width: 768px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                  className="object-cover object-[center_58%]"
+                />
+              </figure>
+            </DestinationReveal>
           </section>
 
           <section id="how-many-days" className="border-t border-white/8 pt-16 sm:pt-20">
