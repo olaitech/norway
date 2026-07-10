@@ -14,6 +14,7 @@ import {
 } from "@/src/lib/seo/jsonLd";
 
 import { DestinationReveal } from "./DestinationReveal";
+import { LofotenLocationCompass } from "./LofotenLocationCompass";
 
 const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
 
@@ -237,12 +238,12 @@ const placesWorthSlowingDown = [
     text: "A heritage fishing village where architecture and pace matter as much as viewpoints.",
   },
   {
-    title: "Reine and Hamnøy",
-    text: "Iconic mountain-water composition that is best experienced early or late, outside peak rush hours.",
-  },
-  {
     title: "Flakstad and Ramberg coast",
     text: "Wide beaches, softer horizons and good conditions for slower scenic drives.",
+  },
+  {
+    title: "Reine and Hamnøy",
+    text: "Iconic mountain-water composition that is best experienced early or late, outside peak rush hours.",
   },
   {
     title: "Å and Sørvågen",
@@ -1171,20 +1172,7 @@ export function LofotenIslandsTravelGuide() {
                 title="Places worth slowing down for"
               />
             </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {placesWorthSlowingDown.map((place, index) => (
-                <DestinationReveal key={place.title} delay={index * 0.05}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7">
-                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
-                      {place.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
-                      {place.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
+            <LofotenLocationCompass places={placesWorthSlowingDown} />
           </section>
 
           <section

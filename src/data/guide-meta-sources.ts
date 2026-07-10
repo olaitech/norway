@@ -7,6 +7,10 @@ const guideSources = {
     label: "Visit Norway",
     href: "https://www.visitnorway.com/",
   },
+  visitHelgeland: {
+    label: "Visit Helgeland",
+    href: "https://visithelgeland.com/en/destinations/",
+  },
   visitTromso: {
     label: "Visit Tromsø",
     href: "https://www.visittromso.no/",
@@ -42,6 +46,10 @@ const guideSources = {
   unescoWestNorwegianFjords: {
     label: "UNESCO - West Norwegian Fjords",
     href: "https://whc.unesco.org/en/list/1195/",
+  },
+  unescoVegaArchipelago: {
+    label: "UNESCO - Vega Archipelago",
+    href: "https://whc.unesco.org/en/list/1143/",
   },
   statensVegvesen: {
     label: "Statens vegvesen",
@@ -111,10 +119,12 @@ export const guideSourceSets = {
     guideSources.yr,
   ],
   destinationHelgeland: [
+    guideSources.visitHelgeland,
+    guideSources.norwegianScenicRoutes,
+    guideSources.unescoVegaArchipelago,
     guideSources.visitNorway,
     guideSources.reisNordland,
     guideSources.entur,
-    guideSources.norwegianScenicRoutes,
   ],
   destinationTromso: [
     guideSources.visitTromso,

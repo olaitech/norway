@@ -3,24 +3,24 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
-import {
-  GUIDE_LAST_UPDATED,
-  guideSourceSets,
-} from "@/src/data/guide-meta-sources";
+import { guideSourceSets } from "@/src/data/guide-meta-sources";
 import {
   JsonLd,
   createArticleJsonLd,
   createBreadcrumbListJsonLd,
+  createFaqJsonLd,
 } from "@/src/lib/seo/jsonLd";
 
 import { DestinationReveal } from "./DestinationReveal";
+import { HelgelandStackedPlaces } from "./HelgelandStackedPlaces";
 
-const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
+const HELGELAND_GUIDE_REFRESH_DATE = "2026-07-10";
+const HELGELAND_GUIDE_LAST_UPDATED = "July 2026";
 
 export const helgelandCoastGuideMetadata = {
-  title: "Helgeland Coast Travel Guide | Norway's Quiet Island Road Trip",
+  title: "Helgeland Coast Travel Guide: Islands, Ferries and Fv17",
   description:
-    "A cinematic slow travel guide to the Helgeland Coast in Northern Norway, with scenic roads, ferries, islands, UNESCO Vega, Torghatten, the Seven Sisters and practical route advice.",
+    "Plan a slower journey along Norway's Helgeland Coast, with practical guidance on Fv17, ferries, islands, mountain walks and coastal communities.",
 };
 
 const helgelandCoastCanonicalPath = "/destinations/helgeland-coast";
@@ -33,149 +33,204 @@ const helgelandCoastJsonLdBreadcrumbs = [
 const heroStats = [
   "433 km scenic route",
   "6 ferry crossings",
-  "5-7 days recommended",
-  "UNESCO Vega",
+  "4–14 days by scope",
+  "Vega World Heritage",
 ] as const;
 
 const quickFacts = [
-  { label: "Region", value: "Northern Norway, Nordland" },
-  { label: "Best for", value: "Road trips, ferries, islands, hiking, slow travel" },
+  { label: "Region", value: "The southern part of Northern Norway, in Nordland" },
+  {
+    label: "Best for",
+    value: "Slow road trips, island stays, cycling, kayaking and hiking",
+  },
   {
     label: "Main route",
     value: "Coastal Route Fv17 / Norwegian Scenic Route Helgelandskysten",
   },
-  { label: "Recommended time", value: "5-7 days" },
-  { label: "Short version", value: "2-3 days" },
-  { label: "Ferries", value: "Several, including six on the scenic route" },
-  { label: "Best season", value: "June to September" },
+  { label: "Selected section", value: "Allow about 4-5 days" },
+  { label: "Broader journey", value: "Allow about 10-14 days" },
+  { label: "Ferries", value: "Six on the scenic route, plus island links" },
+  { label: "Easiest season", value: "Summer, with shoulder-season trade-offs" },
   {
     label: "Known for",
-    value: "Torghatten, Vega, Seven Sisters, island communities, coastal light",
+    value: "Torghatten, Vega, the Seven Sisters, island communities and coastal light",
   },
 ] as const;
 
-const whyVisit = [
+const whyHelgelandFeelsDifferent = [
   {
-    title: "A quieter alternative",
-    text: "Helgeland is one of Northern Norway's most beautiful coastal regions, but it asks for less performance from the traveller. The reward is not a single famous viewpoint. It is the feeling of space between crossings, harbours, islands and weather.",
+    title: "A journey through several landscapes",
+    text: "Helgeland is more geographically spread out than Lofoten or Senja. Low archipelagos, working farmland, coastal peaks, fjords, forests and inland valleys appear as distinct chapters rather than one compact attraction.",
   },
   {
-    title: "One of Norway's great road trips",
-    text: "This is a road journey where the pauses matter as much as the driving. Fv17 moves through beaches, fjords, small ports, low islands and mountain walls that keep changing with the sea light.",
+    title: "Transport shapes the experience",
+    text: "Roads, ferries and express boats set the rhythm. The map can make places look close, but every crossing, quay and island detour adds time that is better treated as part of the journey.",
   },
   {
-    title: "Ferries are part of the story",
-    text: "The ferries are not interruptions. They are the rhythm of the coast: a chance to step outside, read the weather, watch silhouettes pass and let the route slow itself down.",
+    title: "Slow travel feels natural here",
+    text: "Helgeland suits travellers who prefer fewer bases, flexible days and local coastal culture over collecting viewpoints. The region rewards time for weather changes, small communities and unplanned stops.",
+  },
+] as const;
+
+const travelZones = [
+  {
+    label: "South Helgeland",
+    title: "Brønnøysund, Torghatten and Vega",
+    text: "A practical southern beginning with a coastal town, Helgeland's best-known pierced mountain and the cultural landscape of the Vega Archipelago.",
+  },
+  {
+    label: "Central archipelago",
+    title: "Sandnessjøen, Herøy and Dønna",
+    text: "A ferry- and express-boat hub beneath the Seven Sisters, with low island roads, paddling water and farming communities spread across the coast.",
+  },
+  {
+    label: "Northern coast",
+    title: "Nesna, Lurøy, Lovund, Træna and Rødøy",
+    text: "A more dispersed island world where choosing one or two places usually creates a calmer and more realistic journey than trying to combine them all.",
+  },
+  {
+    label: "Inland gateways",
+    title: "Mosjøen and Mo i Rana",
+    text: "Useful rail, road and air gateways for connecting the coast with the E6, the Nordland Line and Helgeland's inland landscapes.",
   },
 ] as const;
 
 const seasonNotes = [
   {
     title: "Summer",
-    label: "June to August",
-    text: "Long light, frequent services and the easiest conditions for ferries, hiking, kayaking and island travel. In the northern parts of the region, summer can bring true midnight-sun atmosphere; farther south, the nights still stay remarkably bright.",
+    label: "Easiest for a first journey",
+    text: "The most straightforward season for island hopping, kayaking, cycling and mountain walks, with long light and the widest choice of open food, accommodation and activity businesses. Northern Helgeland can have midnight sun; farther south, expect very bright summer nights rather than the same guarantee.",
   },
   {
-    title: "Early autumn",
-    label: "September",
-    text: "Quieter roads, beautiful low light and fewer visitors. Weather can be more unstable, so keep ferry timing and accommodation plans flexible.",
+    title: "Shoulder season",
+    label: "Quieter, with more trade-offs",
+    text: "Spring and autumn can bring quieter roads, dramatic light and fewer visitors. They can also mean fewer departures, shorter opening hours and greater dependence on wind and weather, so build the route around current services rather than a summer plan.",
   },
   {
     title: "Winter",
-    label: "November to March",
-    text: "Atmospheric and demanding. Daylight is short, weather can close in quickly, and travellers should check roads, ferries and opening hours carefully before each stage.",
-  },
-  {
-    title: "Spring",
-    label: "April to May",
-    text: "A changing season with snow still present in the mountains, fresh coastal colour and less predictable services. Beautiful, but not as straightforward as summer.",
+    label: "For focused, flexible stays",
+    text: "Winter can suit quiet coastal or town-based stays, selected year-round operators and northern-lights evenings when skies are dark and clear. Do not plan as if the full summer island-hopping offer is available; daylight, weather and seasonal closures change the journey substantially.",
   },
 ] as const;
 
 const dayGuidance = [
   {
-    label: "2-3 days",
-    title: "Possible, but rushed",
-    text: "Enough for a focused taste around Brønnøysund, Torghatten, Vega or a central section, but not enough for the full coastal rhythm.",
+    label: "4-5 days",
+    title: "Choose one section",
+    text: "Enough for a focused southern or central journey, such as Brønnøysund with Vega or Sandnessjøen with Herøy and Dønna. It is not enough for the whole coast.",
   },
   {
-    label: "5-7 days",
-    title: "Recommended",
-    text: "The right range for a proper slow-travel experience: ferries, one or two island detours, weather buffers and time to avoid driving through every place.",
+    label: "Around one week",
+    title: "Travel one area slowly",
+    text: "A realistic range for a slower southern or central journey with ferry buffers, two-night stays and one carefully chosen island detour.",
   },
   {
-    label: "10+ days",
-    title: "Ideal for depth",
-    text: "Best if you want island hopping, hiking, kayaking, Lovund or Træna, and a northern extension toward Meløy, Svartisen or Bodø.",
+    label: "10-14 days",
+    title: "Build a broader coastal route",
+    text: "Better for combining Fv17 with southern, central and northern sections. Ferries and island stays use more time than the distance on the map suggests.",
   },
 ] as const;
 
-const arrivalOptions = [
-  "Drive north from Trøndelag or south from Bodø, using Fv17 where the coastal route is the focus.",
-  "Use the E6 as the faster inland spine, then connect west to Fv17 through towns such as Mosjøen, Mo i Rana or Sandnessjøen.",
-  "Arrive by train to nearby towns such as Mosjøen, Mo i Rana or Bodø, then continue by car, bus or boat depending on the route.",
-  "Use coastal ships, Hurtigruten or Havila-style travel as part of a wider coastal journey where the itinerary fits.",
-  "Fly via Bodø, Brønnøysund, Sandnessjøen or Mo i Rana depending on where the route begins or ends.",
+const travelModes = [
+  {
+    title: "Car and ferry",
+    text: "Use Fv17 for the coastal journey or the E6 as a faster inland spine, then connect west through towns such as Mosjøen, Mo i Rana and Sandnessjøen. Build ferry margins into every driving day.",
+  },
+  {
+    title: "Express boat",
+    text: "Passenger boats connect mainland hubs and many islands, making no-car island stays possible. Routes, demand stops and seasonal connections vary, so plan the return journey before choosing a base.",
+  },
+  {
+    title: "Bicycle",
+    text: "Cycle selected coastal or island stages rather than assuming the full scenic route is easy. Tunnels, wind, luggage and boat capacity matter, and a ferry or express boat can help link manageable sections.",
+  },
+  {
+    title: "Train",
+    text: "The Nordland Line serves Mosjøen and Mo i Rana, providing useful inland gateways. Continue to the coast by bus, rental vehicle or a planned boat connection.",
+  },
+  {
+    title: "Regional air",
+    text: "Regional airports can shorten the approach to Brønnøysund, Sandnessjøen, Mosjøen or Mo i Rana. Choose the arrival point only after deciding which part of Helgeland you want to explore.",
+  },
+  {
+    title: "Public transport and bicycle",
+    text: "A combination of train, bus, express boat and bicycle can work well for selected islands and towns. Keep the itinerary simple and confirm whether bicycles need space reserved on each service.",
+  },
 ] as const;
 
 const drivingChecklist = [
-  "Check ferry schedules the evening before.",
+  "Check official ferry and express-boat information before each stage.",
+  "Confirm booking or capacity rules for the service you plan to use.",
   "Keep food and water in the car.",
-  "Do not rely on late arrivals.",
-  "Book key accommodation in summer.",
-  "Leave time for unexpected stops.",
+  "Avoid building the day around the final possible connection.",
+  "Leave time for weather, queues and island detours.",
 ] as const;
 
 const places = [
   {
     title: "Brønnøysund",
     label: "Gateway town",
-    text: "A practical coastal base with harbour life, services and good access to Torghatten and the southern Helgeland rhythm.",
+    text: "A practical southern base with harbour life, regional transport and access to Torghatten and Vega. It suits travellers who want services without losing the coastal rhythm.",
   },
   {
     title: "Torghatten",
-    label: "Iconic mountain",
-    text: "The mountain with the hole through it. A short hike, a strong visual identity and one of the most memorable landmarks on the coast.",
+    label: "Signature landscape",
+    priority: true,
+    text: "The pierced mountain near Brønnøysund is a clear southern landmark and a focused walk for travellers who want one memorable landscape experience without committing to a summit day.",
   },
   {
     title: "Vega",
-    label: "UNESCO island culture",
-    text: "A World Heritage landscape connected to coastal culture, eider ducks, island roads and traditional life shaped by the sea.",
+    label: "Signature cultural landscape",
+    priority: true,
+    text: "The Vega Archipelago World Heritage landscape tells a long story of fishing, farming and eider-down traditions. It suits slow island stays, cycling and cultural context rather than a rushed detour.",
   },
   {
     title: "Sandnessjøen",
     label: "Central base",
-    text: "A useful middle point for the Seven Sisters, ferries and the central Helgeland coast.",
+    text: "A central coastal town and useful boat hub for the Seven Sisters, Herøy, Dønna and onward journeys. It works well for travellers building several short excursions from one base.",
   },
   {
     title: "The Seven Sisters",
-    label: "Mountain range",
-    text: "An iconic wall of peaks above the coast. Hikes are weather-dependent and best approached with realistic experience and conditions.",
+    label: "Signature mountain range",
+    priority: true,
+    text: "The seven peaks form the defining skyline above Sandnessjøen. Individual summit walks are substantial mountain days, while lower viewpoints suit travellers who want the landscape without the full ascent.",
   },
   {
     title: "Herøy and Dønna",
-    label: "Island roads",
-    text: "Open sea feeling, coastal villages, quiet roads and a slower alternative to Norway's more famous icons.",
-  },
-  {
-    title: "Lovund",
-    label: "Outer island",
-    text: "Known for puffins, island life and a stronger sense of distance from the mainland.",
-  },
-  {
-    title: "Træna",
-    label: "Far out at sea",
-    text: "A remote island feeling for travellers who want something unusual and have the time to let ferry logistics shape the day.",
+    label: "Signature island roads",
+    priority: true,
+    text: "Low islands, bridges, farmland and open sea create one of the coast's best slow-travel combinations. They particularly suit cycling, kayaking and travellers comfortable letting boat connections shape the day.",
   },
   {
     title: "Nesna",
-    label: "Small coastal stop",
-    text: "A quiet Helgeland stop and useful ferry connection, with the understated atmosphere that defines much of the route.",
+    label: "Coastal junction",
+    text: "A small mainland stop with important links towards the northern islands. It is most useful as a calm staging point rather than a place to overfill with attractions.",
   },
   {
-    title: "Svartisen and Meløy",
-    label: "Northern extension",
-    text: "A dramatic contrast to the island coast, adding glacier landscape and a stronger northern finish if time allows.",
+    title: "Lurøy",
+    label: "Island municipality",
+    text: "A dispersed mix of mainland coast and islands where the journey matters as much as the arrival. It suits travellers choosing one local base and planning carefully around boats.",
+  },
+  {
+    title: "Lovund and Træna",
+    label: "Signature outer islands",
+    priority: true,
+    text: "Two distinct outer-island communities with strong sea horizons and limited-road travel. Choose one unless you have generous time, and treat wildlife, weather and connections as conditions rather than promises.",
+  },
+  {
+    title: "Rødøy",
+    label: "Northern island stop",
+    text: "An island and coastal area known for the profile of Rødøyløva and a quieter northern pace. It suits travellers who can stay flexible and avoid turning the visit into a tight transfer day.",
+  },
+  {
+    title: "Mosjøen",
+    label: "Rail and inland gateway",
+    text: "A historic town on the Nordland Line and E6, useful for moving between the coast and inland Helgeland. It suits rail arrivals and travellers adding town culture to a coastal route.",
+  },
+  {
+    title: "Mo i Rana",
+    label: "Northern inland gateway",
+    text: "A larger service centre with road, rail and regional air connections. It is a practical entry or exit point for northern Helgeland and inland landscape journeys.",
   },
 ] as const;
 
@@ -207,13 +262,13 @@ const itinerary = [
   },
   {
     day: "Day 6",
-    title: "Lovund or Træna detour",
-    text: "Use the extra day for a true island extension if schedules and weather support it.",
+    title: "Choose one northern island",
+    text: "Use the extra day for Lovund, Træna, Lurøy or Rødøy only when the connection and an overnight stay create a calm route.",
   },
   {
     day: "Day 7",
-    title: "Toward Bodø, Meløy or Svartisen",
-    text: "Finish north with a glacier contrast, a slower coastal close or onward travel toward Bodø.",
+    title: "Return or continue deliberately",
+    text: "Use an inland gateway, retrace a coastal connection or continue north only if the final travel day still has a realistic weather and ferry buffer.",
   },
 ] as const;
 
@@ -252,7 +307,7 @@ const itineraryNotes = [
     drivingTime: "Long",
     pace: "Weather-dependent",
     planningNote:
-      "Book ferry and overnight logistics early if you choose the detour, especially in the main summer season.",
+      "Choose the island only after checking both arrival and departure connections, accommodation and current capacity guidance.",
   },
   {
     drivingTime: "Long",
@@ -263,78 +318,98 @@ const itineraryNotes = [
 ] as const;
 
 const thingsToDo = [
-  "Drive Fv17 slowly.",
-  "Hike Torghatten.",
-  "Visit the Vega World Heritage area.",
-  "Explore island roads.",
-  "Hike near the Seven Sisters when conditions are right.",
-  "Kayak or join local boat trips where available.",
-  "Photograph midnight sun and coastal light.",
-  "Visit small cafes, museums and local food producers.",
-  "Take ferries as scenic breaks.",
-  "Slow down instead of chasing every attraction.",
+  "Drive selected stages of Fv17 and treat each ferry as part of the route.",
+  "Walk through Torghatten when trail and weather conditions are suitable.",
+  "Spend time with the cultural landscape of the Vega World Heritage area.",
+  "Island-hop by ferry or express boat without trying to combine every island.",
+  "Hike near the Seven Sisters at a level matched to your experience.",
+  "Kayak with appropriate cold-water equipment or a qualified local guide.",
+  "Cycle quiet island roads and selected sections of the coast.",
+  "Meet coastal culture through museums, small-scale food and local stays.",
+  "Experience long summer light without promising midnight sun everywhere.",
+  "Look for northern lights only in dark seasons and when skies are clear.",
+] as const;
+
+const slowTravelPrinciples = [
+  "Leave room for ferry queues, weather changes and cancelled connections.",
+  "Choose one or two islands instead of treating the archipelago as a checklist.",
+  "Stay two nights when arrival and departure consume much of each day.",
+  "Check food shops and restaurant opening hours before reaching a small community.",
+  "Consider leaving the car on the mainland for islands with few or narrow roads.",
+  "Treat the crossing as part of the experience rather than lost travel time.",
 ] as const;
 
 const responsibleTravel = [
   "Respect private land, working farms, homes and small harbour communities.",
-  "Use marked paths and check weather before hikes.",
-  "Do not disturb birdlife, especially around nesting areas and island habitats.",
-  "Support local businesses, guides, cafes, museums and food producers.",
-  "Avoid camping where it harms local life, fragile ground or nature.",
-  "Be patient with ferries and small communities; the route works on coastal time.",
-  "Leave beaches, trails, viewpoints and ferry decks cleaner than you found them.",
+  "Use established campsites and motorhome facilities where possible; do not assume an attractive pull-off is a suitable overnight place.",
+  "Use marked paths, check mountain weather and choose hikes that match your experience.",
+  "Keep clear of nesting birds and check local drone restrictions before flying.",
+  "Treat kayaking as cold-water travel and use appropriate safety equipment or a qualified guide.",
+  "Support local businesses, guides, cafés, museums and food producers.",
+  "Park only where it is safe and permitted, and never block ferry queues, roads or private access.",
+  "Take all waste with you and leave beaches, trails, viewpoints and ferry areas clean.",
 ] as const;
 
 const faqs = [
   {
-    question: "How many days do you need on the Helgeland Coast?",
+    question: "Where is Helgeland in Norway?",
     answer:
-      "Two or three days can work for a short section, but five to seven days is much better for the full slow-travel experience. Ten or more days allows island detours, hiking and weather buffers.",
+      "Helgeland is the southern part of Northern Norway, in Nordland. It stretches from inland mountains and towns to a long coast of fjords, islands, skerries and communities between Trøndelag and the Bodø region.",
   },
   {
-    question: "Is the Helgeland Coast better than Lofoten?",
+    question: "How many days do you need for the Helgeland Coast?",
     answer:
-      "Not better, but different. Lofoten is sharper and more famous; Helgeland is quieter, more spacious and more shaped by ferries, islands and understated coastal rhythm.",
+      "Allow about four or five days for one selected section, around one week for a slower southern or central journey, and roughly 10 to 14 days for a broader route with island detours.",
   },
   {
-    question: "When is the best time to drive the Helgeland Coast?",
+    question: "Is the Helgeland Coast the same as Kystriksveien?",
     answer:
-      "June to September is the easiest window, with long light, more open services and better conditions for ferries, hiking and island travel.",
+      "Not exactly. Kystriksveien is the wider coastal road connection between Steinkjer and Bodø. Norwegian Scenic Route Helgelandskysten is a 433-kilometre section between Holm and Godøystraumen, following much of Fv17 with a detour to Torghatten.",
   },
   {
-    question: "How many ferries are on the Helgeland scenic route?",
+    question: "Can you drive the Helgeland Coast without taking ferries?",
     answer:
-      "The official Norwegian Scenic Route Helgelandskysten includes six ferry crossings. Travellers should check current timetables before planning each day.",
+      "You can use the E6 and connecting roads to avoid some coastal crossings, but the official scenic route includes six ferries. Avoiding them changes the character and geography of the journey.",
   },
   {
-    question: "Can you visit Vega without a car?",
+    question: "Do you need to book the ferries?",
     answer:
-      "It can be possible with ferry connections and local transport or cycling, especially in season, but a car or bike gives much more flexibility. Always check current local schedules.",
+      "Booking and capacity rules vary between ferries, express boats, vehicles and seasons. Check the specific journey with Reis Nordland or the relevant official operator before departure rather than relying on one rule for the whole coast.",
   },
   {
-    question: "Is the Helgeland Coast good for families?",
+    question: "Can you visit Helgeland without a car?",
     answer:
-      "Yes, if the itinerary is realistic. Short drive days, ferry breaks, beaches and island stops can work well, but avoid overloading the route with long transfers.",
+      "Yes, for a carefully selected route. The Nordland Line, regional buses, express boats, ferries and bicycles can link towns and islands, but connections may be limited or seasonal and the itinerary should stay simple.",
   },
   {
-    question: "Is Fv17 difficult to drive?",
+    question: "Which Helgeland islands are easiest to combine?",
     answer:
-      "It is not a technical mountain road in the same way as some high passes, but it requires patience, ferry planning and attention to weather, local traffic and narrow coastal sections.",
+      "Herøy and Dønna form a natural central pairing. Farther north, it is usually calmer to choose one main island such as Lovund, Træna or Rødøy and build around current boat connections instead of trying to combine all three.",
   },
   {
-    question: "Do you need to book accommodation in advance?",
+    question: "Is Helgeland quieter than Lofoten?",
     answer:
-      "In summer, booking key nights in advance is wise, especially on islands and in smaller communities where capacity can be limited.",
+      "Helgeland often feels less concentrated because attractions and communities are spread across a much larger area. Individual places can still be busy in summer, so the difference is geographic rhythm rather than a guarantee of solitude.",
   },
   {
-    question: "Can you see the midnight sun on the Helgeland Coast?",
+    question: "When is the best time to visit Helgeland?",
     answer:
-      "In the northern parts and around the Arctic Circle period, yes; across the wider coast, summer still brings very long, pale nights even where the sun briefly dips.",
+      "Summer is the easiest season for ferries, island stays, cycling, kayaking and hiking. Spring and autumn can be quieter but have fewer services, while winter is better suited to focused, flexible stays than a full summer-style island route.",
   },
   {
-    question: "What is the most beautiful part of the Helgeland Coast?",
+    question: "Can you see the northern lights on Helgeland?",
     answer:
-      "There is no single answer. Many travellers remember Torghatten, Vega, the Seven Sisters skyline, island roads around Herøy and Dønna, or the ferry sections north toward Nesna and Meløy.",
+      "Yes, during dark parts of the year when the sky is clear and aurora activity reaches the region. It is never guaranteed, and cloud, coastal weather and limited winter services should shape the plan.",
+  },
+  {
+    question: "Is the Helgeland Coast suitable for campervans?",
+    answer:
+      "It can work well for campervans if you allow ferry margins and use established camping or motorhome facilities. Never block ferry queues, narrow roads, viewpoints or private access, and check vehicle rules for each crossing.",
+  },
+  {
+    question: "Are the Seven Sisters suitable for beginners?",
+    answer:
+      "The individual summits are substantial mountain walks and are not automatically beginner routes. Less experienced walkers should consider lower viewpoints or guided options and always match the route to current weather, terrain and personal ability.",
   },
 ] as const;
 
@@ -345,39 +420,29 @@ const breadcrumbItems = [
 ] as const;
 
 const guideIndexItems = [
-  { label: "First impression", href: "#first-impression" },
-  { label: "Why visit", href: "#why-visit" },
-  { label: "Where it is", href: "#where-it-is" },
+  { label: "What it is", href: "#first-impression" },
+  { label: "Why it feels different", href: "#why-visit" },
+  { label: "Understand the coast", href: "#understand-coast" },
   { label: "Travel essentials", href: "#travel-essentials" },
   { label: "Best time to visit", href: "#best-time" },
   { label: "How many days", href: "#how-many-days" },
-  { label: "How to get there", href: "#how-to-get-there" },
+  { label: "How to travel", href: "#how-to-get-there" },
   { label: "Coastal Route Fv17", href: "#route" },
-  { label: "Places worth slowing down for", href: "#places" },
-  { label: "7-day itinerary", href: "#itinerary" },
+  { label: "Places", href: "#places" },
+  { label: "Travel slowly", href: "#travel-slowly" },
   { label: "Responsible travel", href: "#responsible-travel" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
+const faqJsonLd = createFaqJsonLd(faqs);
 
 const relatedGuides = [
-  { label: "Routes", href: "/routes" },
-  { label: "Lofoten Islands", href: "/destinations/lofoten-islands" },
-  { label: "Senja", href: "/destinations/senja" },
-  { label: "Best time to visit Norway", href: "/best-time-to-visit-norway" },
-  { label: "Norway road trip routes", href: "/routes" },
+  { label: "Helgeland Coast road trip", href: "/routes/helgeland-coast-road-trip" },
+  { label: "Norway ferry guide", href: "/guides/norway-ferry-guide-for-tourists" },
+  { label: "Driving in Norway", href: "/guides/driving-in-norway-what-visitors-should-know" },
+  { label: "Camping rules", href: "/guides/camping-rules-in-norway" },
+  { label: "Best time for Northern Norway", href: "/guides/best-time-to-visit-northern-norway" },
+  { label: "Northern Norway without a car", href: "/guides/how-to-travel-northern-norway-without-a-car" },
   { label: "Responsible travel", href: "/responsible-travel" },
   { label: "Map", href: "/map" },
 ] as const;
@@ -386,13 +451,15 @@ function SectionHeader({
   eyebrow,
   title,
   intro,
+  wideOnDesktop = false,
 }: {
   eyebrow: string;
   title: string;
   intro?: string;
+  wideOnDesktop?: boolean;
 }) {
   return (
-    <div className="max-w-3xl">
+    <div className={wideOnDesktop ? "max-w-3xl xl:max-w-4xl" : "max-w-3xl"}>
       <p className="text-[0.63rem] font-medium uppercase tracking-[0.33em] text-[#d8c9a7]/72">
         {eyebrow}
       </p>
@@ -443,9 +510,9 @@ export function HelgelandCoastTravelGuide() {
             headline: helgelandCoastGuideMetadata.title,
             description: helgelandCoastGuideMetadata.description,
             url: helgelandCoastCanonicalPath,
-            image: "/images/destinations/helgeland/helgeland.jpg",
+            image: "/images/cards/helgeland.png",
             articleSection: "Destinations",
-            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
+            dateModified: HELGELAND_GUIDE_REFRESH_DATE,
           }),
           faqJsonLd,
         ]}
@@ -453,8 +520,8 @@ export function HelgelandCoastTravelGuide() {
       <main className="surface-fjord-shell min-h-screen text-[#f4efe2]">
       <section className="relative flex min-h-screen flex-col overflow-hidden">
         <Image
-          src="/images/destinations/helgeland/helgeland.jpg"
-          alt="Island coastline along the Helgeland Coast in Northern Norway"
+          src="/images/cards/helgeland.png"
+          alt="Islands, sea and mountain silhouettes along the Helgeland Coast"
           fill
           priority
           sizes="100vw"
@@ -486,19 +553,21 @@ export function HelgelandCoastTravelGuide() {
           <div className="mx-auto max-w-7xl">
             <DestinationReveal className="max-w-6xl">
               <p className="mb-5 text-[0.68rem] font-medium uppercase tracking-[0.36em] text-[#d8c9a7]/84">
-                Northern Norway / Slow Travel / Coastal Route Fv17
+                Helgeland / Southern Northern Norway / Coastal Route Fv17
               </p>
               <h1 className="max-w-6xl font-serif text-[clamp(3.2rem,9vw,8.7rem)] font-normal leading-[0.88] tracking-[-0.06em] text-[#f4efe2]">
                 Helgeland Coast Travel Guide
               </h1>
               <p className="mt-7 max-w-3xl text-base font-light leading-[1.75] text-[#f4efe2]/76 sm:text-lg md:text-xl">
-                A slow travel guide to Norway&apos;s island coast of ferries,
-                sea light, mountain silhouettes and quiet roads.
+                A practical introduction to a wide coastal region of ferries,
+                islands, mountain walks and communities best understood slowly.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <AnchorButton href="#route">Explore the route</AnchorButton>
-                <AnchorButton href="#best-time" variant="secondary">
-                  Best time to visit
+                <AnchorButton href="/routes/helgeland-coast-road-trip">
+                  Plan the road trip
+                </AnchorButton>
+                <AnchorButton href="#understand-coast" variant="secondary">
+                  Understand the coast
                 </AnchorButton>
               </div>
             </DestinationReveal>
@@ -608,8 +677,8 @@ export function HelgelandCoastTravelGuide() {
           <section id="first-impression" className="grid gap-10 lg:grid-cols-[0.74fr_1.26fr] lg:gap-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="01 / First impression"
-                title="Lofoten gets the attention. Helgeland gives you space."
+                eyebrow="01 / Direct answer"
+                title="What is the Helgeland Coast?"
               />
             </DestinationReveal>
             <DestinationReveal
@@ -617,18 +686,16 @@ export function HelgelandCoastTravelGuide() {
               className="space-y-6 text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg"
             >
               <p>
-                Along this coast, Norway slows down into ferry crossings,
-                island roads, pale beaches, fishing villages and mountains that
-                rise straight from the sea. The Helgeland Coast is not a place
-                to rush through. It is a route to settle into, one weather
-                window, one crossing, one quiet harbour at a time.
+                Helgeland is the southern part of Northern Norway, in Nordland.
+                The region reaches from fjords, forests and inland mountains to
+                a long coast of islands, skerries, farming landscapes and small
+                communities, with Brønnøysund, Sandnessjøen, Mosjøen and Mo i
+                Rana as its four regional cities.
               </p>
               <p>
-                This guide is for travellers who want the north without turning
-                it into a checklist. It is for road trips, ferry days, island
-                detours, long summer light, sudden weather and places that feel
-                stronger when you give them time. If you want a sharper coastal
-                contrast, compare it with <Link href="/destinations/lofoten-islands" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Lofoten</Link> or <Link href="/destinations/senja" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Senja</Link>, then return here for a quieter pace.
+                Visit for a journey shaped by ferries, Fv17, island stays,
+                mountain walks and coastal culture rather than one compact set
+                of sights. Compared with <Link href="/destinations/lofoten-islands" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Lofoten</Link> or <Link href="/destinations/senja" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Senja</Link>, Helgeland is more dispersed and asks for more transport planning, which is exactly why it works so well for slow travel.
               </p>
             </DestinationReveal>
           </section>
@@ -639,10 +706,10 @@ export function HelgelandCoastTravelGuide() {
           >
             <div className="relative aspect-[16/9] min-h-[260px] sm:min-h-[360px] lg:min-h-[520px]">
               <Image
-                src="/images/destinations/helgeland/helgeland2.jpg"
-                alt="Coastal mountains and sea light on the Helgeland Coast"
+                src="/images/cards/helgeland.png"
+                alt="A broad island landscape under low evening light on the Helgeland Coast"
                 fill
-                sizes="(min-width: 1280px) 1180px, 92vw"
+                          sizes="(min-width: 1280px) 380px, 92vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,5,8,0.08)_0%,rgba(2,5,8,0.2)_54%,rgba(2,5,8,0.62)_100%)]" />
@@ -653,13 +720,13 @@ export function HelgelandCoastTravelGuide() {
           <section id="why-visit" className="border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="02 / Why go"
-                title="Why visit the Helgeland Coast"
-                intro="This is one of Norway's best road trip regions for travellers who prefer atmosphere over rushing."
+                eyebrow="02 / Character"
+                title="Why Helgeland feels different"
+                intro="The coast is less one concentrated attraction than a sequence of landscapes, crossings and communities."
               />
             </DestinationReveal>
             <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {whyVisit.map((item, index) => (
+              {whyHelgelandFeelsDifferent.map((item, index) => (
                 <DestinationReveal key={item.title} delay={index * 0.06}>
                   <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] p-7 sm:p-8">
                     <p className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/62">
@@ -677,31 +744,31 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </section>
 
-          <section id="where-it-is" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <section id="understand-coast" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
                 eyebrow="03 / Geography"
-                title="Where the Helgeland Coast is"
+                title="Understand the coast"
+                intro="A practical way to read Helgeland is as four travel zones. These are planning shortcuts, not formal administrative regions."
               />
             </DestinationReveal>
-            <DestinationReveal
-              delay={0.08}
-              className="rounded-[1.25rem] border border-white/10 bg-white/[0.025] p-7 sm:p-9"
-            >
-              <p className="text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg">
-                The Helgeland Coast lies in Nordland, in Northern Norway, south
-                of Bodø and north of Trøndelag. It stretches through a long
-                coastal landscape of islands, fjords, villages and ferry
-                crossings.
-              </p>
-              <p className="mt-6 text-sm font-light leading-[1.85] text-[#f4efe2]/62 sm:text-base">
-                Many travellers connect it with Bodø, Brønnøysund, Mo i Rana,
-                Sandnessjøen, the E6 inland route and the Coastal Route Fv17.
-                That flexibility is part of its appeal: you can treat Helgeland
-                as a full journey or as the coastal alternative to a faster
-                north-south transfer. For rail, bus and ferry combinations, use <Link href="https://entur.no" target="_blank" rel="noreferrer" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Entur</Link> and, for local ferry planning, <Link href="https://www.reisnordland.no/hjem" target="_blank" rel="noreferrer" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Reis Nordland</Link>.
-              </p>
-            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {travelZones.map((zone, index) => (
+                <DestinationReveal key={zone.title} delay={index * 0.05}>
+                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
+                    <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/68">
+                      {zone.label}
+                    </p>
+                    <h3 className="mt-5 font-serif text-3xl leading-[1.02] tracking-[-0.035em] text-[#f4efe2]">
+                      {zone.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
+                      {zone.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
           </section>
 
           <section id="travel-essentials" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
@@ -755,7 +822,9 @@ export function HelgelandCoastTravelGuide() {
                 ))}
               </dl>
               <p className="mt-5 text-sm font-light leading-[1.85] text-[#f4efe2]/58 sm:text-base">
-                For live route planning, check the official scenic-route map and ferry links, then confirm timing in Entur or Reis Nordland on the day of travel.
+                Timetables, vessel capacity and seasonal connections can
+                change. Always verify the final journey with official transport
+                providers before departure, using tools such as <Link href="https://entur.no" target="_blank" rel="noreferrer" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Entur</Link> and <Link href="https://www.reisnordland.no" target="_blank" rel="noreferrer" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Reis Nordland</Link>.
               </p>
             </DestinationReveal>
           </section>
@@ -768,7 +837,7 @@ export function HelgelandCoastTravelGuide() {
                 intro="The route changes with light, ferry frequency and weather. Summer is easiest, but the shoulder seasons can be deeply atmospheric."
               />
             </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
               {seasonNotes.map((season, index) => (
                 <DestinationReveal key={season.title} delay={index * 0.05}>
                   <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
@@ -814,24 +883,30 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </section>
 
-          <section id="how-to-get-there" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <section id="how-to-get-there" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="07 / Arrival"
-                title="How to get there"
+                eyebrow="07 / Transport"
+                title="How to travel through Helgeland"
+                intro="Choose the transport around the part of the region you want to understand, not the other way around."
               />
             </DestinationReveal>
             <DestinationReveal delay={0.08}>
-              <ul className="space-y-4">
-                {arrivalOptions.map((option) => (
-                  <li
-                    key={option}
-                    className="rounded-[1rem] border border-white/8 bg-white/[0.025] px-5 py-4 text-sm font-light leading-[1.78] text-[#f4efe2]/68 sm:text-base"
+              <dl className="grid gap-4 sm:grid-cols-2">
+                {travelModes.map((mode) => (
+                  <div
+                    key={mode.title}
+                    className="rounded-[1rem] border border-white/8 bg-white/[0.025] p-5"
                   >
-                    {option}
-                  </li>
+                    <dt className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
+                      {mode.title}
+                    </dt>
+                    <dd className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/66 sm:text-base">
+                      {mode.text}
+                    </dd>
+                  </div>
                 ))}
-              </ul>
+              </dl>
             </DestinationReveal>
           </section>
 
@@ -856,18 +931,17 @@ export function HelgelandCoastTravelGuide() {
                   Norwegian Scenic Route Helgelandskysten runs between Holm and
                   Godøystraumen, with important coastal detours including
                   Torghatten. The official scenic route is approximately 433 km
-                  and includes six ferry crossings: Holm–Vennesund,
-                  Horn–Anddalsvågen, Forvik–Tjøtta, Levang–Nesna,
-                  Kilboghavn–Jektvik and Ågskardet–Forøy.
+                  and includes six ferry crossings. It follows much of Fv17 and
+                  works as a slower, more experience-led alternative to the E6.
                 </p>
-              <p className="mt-6 text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg">
-                The ferries slow the trip down in the best way. They also
-                make planning real: check timetables, avoid overfilled days
-                and use <Link href="/routes" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Routes</Link> planning to let weather decide what kind of route each stage becomes.
-              </p>
-              <p className="mt-6 text-sm font-light leading-[1.85] text-[#f4efe2]/60 sm:text-base">
-                If your plan includes late crossings or a busy summer day, confirm the evening before and again in the morning before you drive to the quay.
-              </p>
+                <p className="mt-6 text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg">
+                  The ferries slow the trip down in the best way. They also make
+                  planning real: use the <Link href="/routes/helgeland-coast-road-trip" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Helgeland Coast road-trip guide</Link> for route rhythm and the <Link href="/guides/norway-ferry-guide-for-tourists" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Norway ferry guide</Link> for wider planning context.
+                </p>
+                <p className="mt-6 text-sm font-light leading-[1.85] text-[#f4efe2]/60 sm:text-base">
+                  Confirm current timetables, capacity and seasonal connections
+                  with official operators before driving to the quay.
+                </p>
               </DestinationReveal>
               <DestinationReveal delay={0.08}>
                 <div className="overflow-hidden rounded-[1.35rem] border border-[#d8c9a7]/18 bg-[#d8c9a7]/[0.045]">
@@ -907,35 +981,23 @@ export function HelgelandCoastTravelGuide() {
                 eyebrow="09 / Places"
                 title="Places worth slowing down for"
                 intro="Treat these as anchors, not a checklist. The route is better when weather and ferry timing have room to breathe."
+                wideOnDesktop
               />
             </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {places.map((place, index) => (
-                <DestinationReveal key={place.title} delay={(index % 3) * 0.04}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7">
-                    <p className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/66">
-                      {place.label}
-                    </p>
-                    <h3 className="mt-5 font-serif text-[2rem] leading-[0.96] tracking-[-0.04em] text-[#f4efe2]">
-                      {place.title}
-                    </h3>
-                    <p className="mt-5 text-sm font-light leading-[1.82] text-[#f4efe2]/64">
-                      {place.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
+            <HelgelandStackedPlaces places={places} />
           </section>
 
-          <section id="itinerary" className="border-t border-white/8 pt-16 sm:pt-20">
+          <section id="travel-slowly" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="10 / Itinerary"
-                title="Suggested 7-day itinerary"
-                intro="Use this as a flexible framework, not a strict schedule. Ferries, weather and personal pace should decide the final route."
+                eyebrow="10 / Slow travel"
+                title="Travel slowly through Helgeland"
+                intro="Leave room for crossings, weather and communities. This one-week framework is a starting point, not a schedule to complete at any cost."
               />
             </DestinationReveal>
+            <p className="mt-10 text-[0.62rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/72">
+              A flexible one-week framework
+            </p>
             <div className="mt-12 divide-y divide-white/8 border-y border-white/8">
               {itinerary.map((stop, index) => (
                 <DestinationReveal
@@ -960,13 +1022,34 @@ export function HelgelandCoastTravelGuide() {
                 </DestinationReveal>
               ))}
             </div>
+            <DestinationReveal className="mt-10 rounded-[1.25rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.72),rgba(8,17,22,0.88))] p-7 sm:p-9">
+              <h3 className="font-serif text-3xl tracking-[-0.035em] text-[#f4efe2]">
+                Keep the route breathable
+              </h3>
+              <ul className="mt-7 grid gap-4 sm:grid-cols-2">
+                {slowTravelPrinciples.map((item) => (
+                  <li
+                    key={item}
+                    className="border-l border-[#d8c9a7]/30 pl-4 text-sm font-light leading-[1.8] text-[#f4efe2]/66 sm:text-base"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                <AnchorButton href="/routes/helgeland-coast-road-trip">
+                  Open the road-trip guide
+                </AnchorButton>
+              </div>
+            </DestinationReveal>
           </section>
 
           <section className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
                 eyebrow="11 / Experiences"
-                title="Things to do"
+                title="Signature experiences"
+                intro="Choose a small number and leave enough time for the journey between them."
               />
             </DestinationReveal>
             <DestinationReveal delay={0.08}>
@@ -1002,6 +1085,9 @@ export function HelgelandCoastTravelGuide() {
                   </li>
                 ))}
               </ul>
+              <p className="mt-6 text-sm font-light leading-[1.85] text-[#f4efe2]/60 sm:text-base">
+                Read the <Link href="/guides/camping-rules-in-norway" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">camping rules for Norway</Link> and the wider <Link href="/responsible-travel" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">responsible travel guide</Link> before choosing overnight stops or outdoor activities.
+              </p>
             </DestinationReveal>
           </section>
 
@@ -1014,7 +1100,7 @@ export function HelgelandCoastTravelGuide() {
                 <details key={item.question} className="group py-6 first:pt-0">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-xl tracking-[-0.025em] text-[#f4efe2] marker:hidden sm:text-2xl">
                     {item.question}
-                    <span className="text-lg font-light text-[#d8c9a7]/72 transition-transform group-open:rotate-45">
+                    <span aria-hidden="true" className="text-lg font-light text-[#d8c9a7]/72 transition-transform group-open:rotate-45">
                       +
                     </span>
                   </summary>
@@ -1032,7 +1118,7 @@ export function HelgelandCoastTravelGuide() {
                 <SectionHeader
                   eyebrow="14 / Related guides"
                   title="Continue planning"
-                  intro="Connect Helgeland with the wider Norway planning system: seasons, nearby destinations, responsible travel and the map."
+                  intro="Move from regional understanding into route, ferry, driving, camping, seasonal and no-car planning."
                 />
                 <div className="mt-9 flex flex-wrap gap-3">
                   {relatedGuides.map((guide) => (
@@ -1056,7 +1142,7 @@ export function HelgelandCoastTravelGuide() {
           <section className="border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <GuideMetaFooter
-                lastUpdated={GUIDE_LAST_UPDATED}
+                lastUpdated={HELGELAND_GUIDE_LAST_UPDATED}
                 sources={guideSourceSets.destinationHelgeland}
               />
             </DestinationReveal>
