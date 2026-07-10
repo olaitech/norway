@@ -1,4 +1,4 @@
-code docs\project-vision.mdgit status --short# Norway Travel Knowledge Portal — Project Vision
+# Norway Travel Knowledge Portal — Project Vision
 
 ## 1\. Purpose
 
