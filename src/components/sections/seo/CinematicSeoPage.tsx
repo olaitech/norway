@@ -5,6 +5,8 @@ import type { ReactNode } from "react";
 
 import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
+import { FjordConstellation } from "@/src/components/sections/seo/FjordConstellation";
+import { FjordJourneyCardStack } from "@/src/components/sections/seo/FjordJourneyCardStack";
 import type { SeoCard, SeoPageData, SeoSection } from "@/src/data/seo-pages";
 import {
   JsonLd,
@@ -272,7 +274,12 @@ export function CinematicSeoPage({
           {page.sections.map((section) => (
             <section key={section.title} className="border-t border-white/8 pt-14 sm:pt-16">
               <SectionHeader section={section} />
-              {section.layout === "list" ? (
+              {section.layout === "constellation" ? (
+                <>
+                  <FjordConstellation cards={section.cards} />
+                  <FjordJourneyCardStack />
+                </>
+              ) : section.layout === "list" ? (
                 <div className="mt-10 rounded-[1.35rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.76),rgba(8,17,22,0.94))] shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
                   <div className="divide-y divide-white/8">
                     {section.cards.map((card) => (

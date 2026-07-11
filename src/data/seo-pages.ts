@@ -14,6 +14,8 @@ export type SeoCard = {
   description: string;
   label?: string;
   href?: string;
+  externalUrl?: string;
+  secondaryExternalUrl?: string;
 };
 
 export type SeoSection = {
@@ -21,7 +23,7 @@ export type SeoSection = {
   title: string;
   intro: string;
   cards: SeoCard[];
-  layout?: "cards" | "list" | "split";
+  layout?: "cards" | "list" | "split" | "constellation";
   media?: {
     imageSrc: string;
     imageAlt: string;
@@ -678,65 +680,79 @@ export const seoPages = {
         ],
       },
       {
-        label: "03 / Famous fjords",
-        title: "The famous fjords most travelers hear about first",
+        label: "Explore the landscape",
+        title: "Norway’s Fjord Constellation",
         intro:
-          "These are the classic western and southern fjords that shape the first image many visitors have of Norway. Each one asks for slower pacing, realistic road time and thoughtful ferry planning.",
-        layout: "list",
+          "Move through Norway’s best-known fjord landscapes. Select a point to see where it sits, what shapes it and how it connects to a slower journey.",
+        layout: "constellation",
         cards: [
           {
             label: "Møre og Romsdal / Sunnmøre",
             title: "Geirangerfjord",
             description:
               "One of the classic western fjords, known for steep walls and iconic viewpoints; plan it as part of a slower road day rather than a quick stop.",
+            externalUrl: "https://www.geirangerfjord.no/",
           },
           {
             label: "Vestland / Sogn",
             title: "Nærøyfjord",
             description:
               "A narrow UNESCO fjord that many travelers pair with Aurlandsfjord and Flåm; it works best inside a longer west-coast loop.",
+            externalUrl:
+              "https://www.fjordnorway.com/en/attractions/the-naeroyfjord",
           },
           {
             label: "Vestland / Sogn",
             title: "Sognefjord",
             description:
-              "Norway's longest and broadest fjord system; it is a strong anchor if you want scale, room to move and time for detours.",
+              "Norway’s longest and broadest fjord system; a strong anchor for scale, detours and slower travel.",
+            externalUrl: "https://www.sognefjord.no/",
+            secondaryExternalUrl:
+              "https://www.fjordnorway.com/no/destinasjoner/sognefjord",
           },
           {
             label: "Vestland / Hardanger",
             title: "Hardangerfjord",
             description:
-              "Known for orchards, waterfalls and side trips; a good classic fjord choice when spring light or shoulder-season conditions matter.",
+              "Known for orchards, waterfalls and side trips; a strong choice for spring light and shoulder-season travel.",
+            externalUrl: "https://hardangerfjord.com/",
           },
           {
             label: "Rogaland / Stavanger area",
             title: "Lysefjord",
             description:
-              "Famous for Preikestolen and Kjerag; treat it as an access-and-weather route, not just a quick scenic stop.",
+              "Famous for Preikestolen and Kjerag; treat it as an access-and-weather route rather than a quick scenic stop.",
+            externalUrl: "https://lysefjorden365.com/no/",
           },
           {
             label: "Vestland / Sogn",
             title: "Aurlandsfjord",
             description:
-              "A scenic side arm of the Sognefjord near Flåm, useful for combining fjord water, mountain roads and easy access.",
+              "A scenic arm of Sognefjord near Flåm, combining fjord water, mountain roads and relatively easy access.",
+            externalUrl:
+              "https://www.fjordtours.com/no/norge/reisemal/fjord/aurlandsfjorden",
           },
           {
             label: "Vestland / Nordfjord",
             title: "Nordfjord",
             description:
-              "A classic western fjord between coast and glacier country, good when you want a broader route beyond the headline names.",
+              "A classic western fjord between coast and glacier country, suited to a broader route beyond the headline destinations.",
+            externalUrl: "https://www.nordfjord.no/",
           },
           {
             label: "Møre og Romsdal / Sunnmøre",
             title: "Hjørundfjord",
             description:
-              "A quieter western fjord framed by steep peaks, best for travelers who want atmosphere and less traffic than the famous icons.",
+              "A quieter western fjord framed by steep peaks, with less traffic than the best-known icons.",
+            externalUrl:
+              "https://www.fjordtours.com/no/norge/reisemal/fjord/hjorundfjorden",
           },
           {
-            label: "Nordland / Lofoten-Vesterålen",
+            label: "Nordland / Lofoten–Vesterålen",
             title: "Trollfjord",
             description:
-              "A short but iconic northern fjord; it works best as part of an Arctic coast route, boat trip or Lofoten extension.",
+              "A short but iconic northern fjord, best experienced through an Arctic coastal route, boat journey or Lofoten extension.",
+            externalUrl: "https://visitlofoten.com/reisemal/trollfjorden/",
           },
         ],
       },
