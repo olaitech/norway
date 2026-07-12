@@ -18,6 +18,7 @@ type CinematicSeoPageProps = {
   page: SeoPageData;
   canonicalPath: string;
   trustBox?: ReactNode;
+  featureSection?: ReactNode;
 };
 
 function SectionHeader({ section }: { section: SeoSection }) {
@@ -149,6 +150,7 @@ export function CinematicSeoPage({
   page,
   canonicalPath,
   trustBox,
+  featureSection,
 }: CinematicSeoPageProps) {
   const heroOverlayOpacity = page.hero.overlayOpacity ?? 1;
   const jsonLdSchemas = page.jsonLd
@@ -326,6 +328,8 @@ export function CinematicSeoPage({
               )}
             </section>
           ))}
+
+          {featureSection}
 
           <section className="border-t border-white/8 pt-14 sm:pt-16">
             <p className="text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#c6a15b]/70">

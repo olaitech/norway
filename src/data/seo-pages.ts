@@ -219,7 +219,6 @@ export const seoPages = {
     relatedLinks: [
       { label: "Plan the Lofoten destination guide", href: "/destinations/lofoten-islands" },
       { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
-      { label: "Read the Fjords of Norway guide", href: "/fjords-of-norway" },
       { label: "See the northern lights guide", href: "/northern-lights-norway" },
       { label: "Open the Norway map", href: "/map" },
     ],

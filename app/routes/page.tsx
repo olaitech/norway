@@ -1,4 +1,5 @@
 import { CinematicSeoPage } from "@/src/components/sections/seo/CinematicSeoPage";
+import { FeaturedFjordsGuide } from "@/src/components/sections/routes/FeaturedFjordsGuide";
 import { seoPages } from "@/src/data/seo-pages";
 import { createPageMetadata } from "@/src/lib/metadata";
 
@@ -14,5 +15,11 @@ export const metadata = createPageMetadata({
 });
 
 export default function RoutesPage() {
-  return <CinematicSeoPage page={seoPages.routesHub} canonicalPath="/routes" />;
+  return (
+    <CinematicSeoPage
+      page={seoPages.routesHub}
+      canonicalPath="/routes"
+      featureSection={<FeaturedFjordsGuide />}
+    />
+  );
 }
