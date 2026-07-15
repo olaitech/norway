@@ -1,5 +1,6 @@
 import { CinematicSeoPage } from "@/src/components/sections/seo/CinematicSeoPage";
 import { FeaturedFjordsGuide } from "@/src/components/sections/routes/FeaturedFjordsGuide";
+import { RouteFinder } from "@/src/components/planner/RouteFinder";
 import { seoPages } from "@/src/data/seo-pages";
 import { createPageMetadata } from "@/src/lib/metadata";
 
@@ -19,7 +20,12 @@ export default function RoutesPage() {
     <CinematicSeoPage
       page={seoPages.routesHub}
       canonicalPath="/routes"
-      featureSection={<FeaturedFjordsGuide />}
+      featureSection={
+        <>
+          <FeaturedFjordsGuide />
+          <RouteFinder />
+        </>
+      }
     />
   );
 }
