@@ -2,7 +2,10 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import type { JournalArticle } from "@/src/data/journal-articles";
+import type {
+  JournalArticle,
+  JournalArticleSection,
+} from "@/src/data/journal-articles";
 import {
   JsonLd,
   createArticleJsonLd,
@@ -15,6 +18,49 @@ type JournalArticlePageProps = {
   article: JournalArticle;
   relatedArticles: JournalArticle[];
 };
+
+function ArticleBodySection({
+  section,
+  delay,
+  isSubsection = false,
+}: {
+  section: JournalArticleSection;
+  delay: number;
+  isSubsection?: boolean;
+}) {
+  const Heading = isSubsection ? "h3" : "h2";
+
+  return (
+    <JournalReveal delay={delay}>
+      <section className="border-t border-white/8 pt-8 first:border-t-0 first:pt-0">
+        <Heading className="font-serif text-[clamp(2rem,3.7vw,3.1rem)] font-normal leading-[0.95] tracking-[-0.04em]">
+          {section.heading}
+        </Heading>
+        <div className="mt-6 space-y-5">
+          {section.body.map((paragraph) => (
+            <p
+              key={paragraph}
+              className="text-base font-light leading-[1.85] text-[#f4efe2]/66 sm:text-lg"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        {section.image ? (
+          <div className="relative mt-8 aspect-[3/4] overflow-hidden rounded-[1.1rem] border border-white/8">
+            <Image
+              src={section.image.src}
+              alt={section.image.alt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        ) : null}
+      </section>
+    </JournalReveal>
+  );
+}
 
 const planningLinks = [
   { label: "Journal", href: "/journal" },
@@ -63,10 +109,10 @@ export function JournalArticlePage({
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover brightness-[1.04]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,5,8,0.88)_0%,rgba(2,5,8,0.58)_44%,rgba(2,5,8,0.26)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,5,8,0.5)_0%,rgba(2,5,8,0.13)_38%,rgba(2,5,8,0.9)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,5,8,0.84)_0%,rgba(2,5,8,0.48)_44%,rgba(2,5,8,0.18)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,5,8,0.43)_0%,rgba(2,5,8,0.1)_38%,rgba(2,5,8,0.82)_100%)]" />
 
         <header className="relative z-10 px-5 py-6 sm:px-8 md:px-12">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
@@ -106,7 +152,7 @@ export function JournalArticlePage({
         <div className="relative z-10 mt-auto px-5 pb-14 pt-20 sm:px-8 sm:pb-16 md:px-12 lg:pb-20">
           <JournalReveal className="mx-auto max-w-7xl">
             <p className="text-[0.64rem] font-medium uppercase tracking-[0.34em] text-[#d8c9a7]/82">
-              {article.category}
+              {article.kicker ?? article.category}
             </p>
             <h1 className="mt-6 max-w-5xl font-serif text-[clamp(3.1rem,8.5vw,7.4rem)] font-normal leading-[0.9] tracking-[-0.06em]">
               {article.title}
@@ -179,28 +225,67 @@ export function JournalArticlePage({
           </aside>
 
           <div className="space-y-14">
-            {article.sections.map((section, index) => (
-              <JournalReveal key={section.heading} delay={index * 0.05}>
-                <section className="border-t border-white/8 pt-8 first:border-t-0 first:pt-0">
-                  <h2 className="font-serif text-[clamp(2rem,3.7vw,3.1rem)] font-normal leading-[0.95] tracking-[-0.04em]">
-                    {section.heading}
-                  </h2>
-                  <div className="mt-6 space-y-5">
-                    {section.body.map((paragraph) => (
-                      <p
-                        key={paragraph}
-                        className="text-base font-light leading-[1.85] text-[#f4efe2]/66 sm:text-lg"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                </section>
-              </JournalReveal>
-            ))}
+            {article.fieldNoteEntries?.length ? (
+              <div className="space-y-16">
+                {article.fieldNoteEntries.map((entry, entryIndex) => (
+                  <section
+                    key={`${entry.dateLabel}-${entry.title}`}
+                    className="border-t border-white/8 pt-12 first:border-t-0 first:pt-0"
+                  >
+                    <p className="text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#d8c9a7]/72">
+                      {entry.dateLabel}
+                    </p>
+                    <h2 className="mt-5 font-serif text-[clamp(2.5rem,4.6vw,4rem)] font-normal leading-[0.95] tracking-[-0.05em]">
+                      {entry.title}
+                    </h2>
+                    <div className="mt-10 space-y-14">
+                      {entry.sections.map((section, sectionIndex) => (
+                        <ArticleBodySection
+                          key={section.heading}
+                          section={section}
+                          delay={(entryIndex + sectionIndex) * 0.05}
+                          isSubsection
+                        />
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            ) : (
+              article.sections?.map((section, index) => (
+                <ArticleBodySection
+                  key={section.heading}
+                  section={section}
+                  delay={index * 0.05}
+                />
+              ))
+            )}
           </div>
         </div>
       </section>
+
+      {article.relatedLinks?.length ? (
+        <section className="border-t border-white/8 px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <JournalReveal>
+              <p className="text-[0.62rem] font-medium uppercase tracking-[0.33em] text-[#d8c9a7]/72">
+                Continue from Herøy
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {article.relatedLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.52))] px-5 py-3 text-[0.61rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/76 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </JournalReveal>
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-t border-white/8 px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-28">
         <div className="mx-auto max-w-7xl">

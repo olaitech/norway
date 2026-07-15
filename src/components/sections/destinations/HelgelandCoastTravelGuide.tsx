@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { FieldNoteFeature } from "@/src/components/shared/FieldNoteFeature";
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import { guideSourceSets } from "@/src/data/guide-meta-sources";
 import {
@@ -699,6 +700,25 @@ export function HelgelandCoastTravelGuide() {
               </p>
             </DestinationReveal>
           </section>
+
+          <DestinationReveal delay={0.04}>
+            <FieldNoteFeature
+              eyebrow={
+                <>
+                  Currently on Herøy ·{" "}
+                  <time dateTime="2026-07-15T10:00:00+02:00">
+                    Filed 15 July 2026, 10:00
+                  </time>
+                </>
+              }
+              title="Field Notes from the Helgeland Coast"
+              description="I’m travelling through Herøy and updating these field notes with photographs, local places, practical observations and stories from the coast."
+              href="/journal/field-notes-heroy-helgeland"
+              linkLabel="Follow the journey"
+              imageSrc="/images/journal/helgeland/heroy/heroy-red-boathouses.jpg"
+              imageAlt="Traditional red boathouses beside the sea on Herøy, Helgeland"
+            />
+          </DestinationReveal>
 
           <DestinationReveal
             delay={0.04}

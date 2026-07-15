@@ -1,11 +1,26 @@
 export type JournalArticleSection = {
   heading: string;
   body: string[];
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 
 export type JournalArticlePracticalNote = {
   label: string;
   value: string;
+};
+
+export type JournalArticleFieldNoteEntry = {
+  dateLabel: string;
+  title: string;
+  sections: JournalArticleSection[];
+};
+
+export type JournalArticleLink = {
+  label: string;
+  href: string;
 };
 
 const CURRENT_ARTICLE_UPDATE_DATE = "2026-06-25";
@@ -15,6 +30,7 @@ export type JournalArticle = {
   title: string;
   subtitle: string;
   category: string;
+  kicker?: string;
   region: string;
   readTime: string;
   image: string;
@@ -28,11 +44,128 @@ export type JournalArticle = {
   updatedLabel: string;
   highlights: string[];
   practicalNotes: JournalArticlePracticalNote[];
-  sections: JournalArticleSection[];
+  sections?: JournalArticleSection[];
+  fieldNoteEntries?: JournalArticleFieldNoteEntry[];
   relatedSlugs: string[];
+  relatedLinks?: JournalArticleLink[];
 };
 
 export const journalArticles: JournalArticle[] = [
+  {
+    slug: "field-notes-heroy-helgeland",
+    title: "Field Notes from Herøy",
+    subtitle:
+      "A growing collection of photographs, observations and local stories from a journey through Herøy on the Helgeland coast.",
+    category: "Field Notes",
+    kicker: "Field Notes · Herøy · Helgeland Coast",
+    region: "Herøy, Helgeland",
+    readTime: "4 min read",
+    image: "/images/journal/helgeland/heroy/heroy-red-boathouses.jpg",
+    imageAlt: "Traditional red boathouses beside the sea on Herøy, Helgeland",
+    excerpt:
+      "A quiet working day beside the sea, among low clouds, red boathouses and the small coastal landscapes of Helgeland.",
+    seoTitle: "Field Notes from Herøy, Helgeland",
+    seoDescription:
+      "A quiet field note from Herøy on the Helgeland coast, written beside the sea among red boathouses, low clouds and sheltered island landscapes.",
+    publishedDate: "2026-07-15",
+    updatedDate: "2026-07-15",
+    publishedLabel: "First entry: 15 July",
+    updatedLabel: "Updated during July 2026",
+    highlights: [
+      "Low clouds, red boathouses and sheltered coastal water.",
+      "A working day from a warm wooden cabin by the sea.",
+      "The first note in a continuing Helgeland Coast field series.",
+    ],
+    practicalNotes: [
+      {
+        label: "Weather observed",
+        value: "Low clouds and calm coastal conditions",
+      },
+      {
+        label: "Landscape",
+        value: "Islands, sheltered water and traditional boathouses",
+      },
+      {
+        label: "Working from",
+        value: "A wooden cabin near the sea",
+      },
+      {
+        label: "Travel mood",
+        value: "Quiet, local and unhurried",
+      },
+    ],
+    fieldNoteEntries: [
+      {
+        dateLabel: "15 July",
+        title: "A Quiet Morning on Herøy",
+        sections: [
+          {
+            heading: "Low clouds over Herøy",
+            body: [
+              "This morning, I got up with my daughter at half past eight.",
+              "While she settled into the day, I made a cup of coffee and looked out across the water, waiting for my laptop to start. Outside, the coast was quiet. There were no cars rushing through the streets and no people hurrying to work. I could hear gulls above the shoreline and the soft movement of waves against the rocks.",
+              "I had brought my family to Herøy for four days — a few days for small discoveries, fishing, watching boats and slowing down together. My daughter loves boats, and out here there is always something moving across the water, even when everything else feels still.",
+              "For me, the journey is also about finding a little peace. Leaving the noise and pace of town behind for a few days. Waking up somewhere where the morning does not immediately ask anything from you.",
+              "Sitting at the table with a warm cup of coffee in my hand, I opened the computer and began writing about the quiet life here on the Helgeland coast — while actually living inside it.",
+              "I feel privileged to be able to work this way. From a wooden cabin on an island, surrounded by my family, the sea and a landscape that moves at a different pace.",
+              "This is not a polished travel campaign or a story written months after returning home. It is a field note written in the moment, from Herøy, while the gulls are still calling outside and the coffee is still warm.",
+            ],
+            image: {
+              src: "/images/journal/helgeland/heroy/heroy-cabin-workspace.jpg",
+              alt: "Laptop and coffee on a cabin table while working from Herøy",
+            },
+          },
+          {
+            heading: "A quieter version of the coast",
+            body: [
+              "This is not the dramatic, sunlit version of Northern Norway usually shown in travel campaigns. It is something quieter and perhaps more honest: changing weather, still water, weathered timber and the feeling that life here follows the sea rather than the clock.",
+              "I have set up my laptop at the kitchen table inside a warm wooden cabin. The amber lights above the table create a small pocket of warmth against the grey coastal day outside. It is a surprisingly good place to work on Trips Norway — surrounded by the landscapes the website is trying to describe.",
+            ],
+            image: {
+              src: "/images/journal/helgeland/heroy/heroy-floating-dock.jpg",
+              alt: "Floating dock and yellow kayak in sheltered coastal water on Herøy",
+            },
+          },
+          {
+            heading: "Entering the island landscape",
+            body: [
+              "Travelling through Herøy feels less like arriving at one single attraction and more like slowly entering a coastal landscape shaped by boats, bridges, sheltered water, changing weather and small communities.",
+            ],
+            image: {
+              src: "/images/journal/helgeland/heroy/heroy-grass-path.jpg",
+              alt: "Green grass path leading towards coastal houses on Herøy",
+            },
+          },
+          {
+            heading: "More notes to come",
+            body: [
+              "Over the coming days, I will share more short notes from the Helgeland coast: places visited, roads travelled, ferry crossings, practical observations and the quieter moments that rarely appear in ordinary travel guides.",
+            ],
+            image: {
+              src: "/images/journal/helgeland/heroy/heroy-coastal-view.jpg",
+              alt: "View across grass and trees towards the shoreline and docks on Herøy",
+            },
+          },
+        ],
+      },
+    ],
+    relatedSlugs: [
+      "blue-hour-on-the-helgeland-coast",
+      "how-to-plan-a-scenic-norway-road-trip",
+      "the-road-to-senja",
+    ],
+    relatedLinks: [
+      {
+        label: "Explore the Helgeland Coast",
+        href: "/destinations/helgeland-coast",
+      },
+      {
+        label: "Plan the Helgeland Coast road trip",
+        href: "/routes/helgeland-coast-road-trip",
+      },
+      { label: "Browse the Journal", href: "/journal" },
+    ],
+  },
   {
     slug: "the-road-to-senja",
     title: "The Road to Senja",
