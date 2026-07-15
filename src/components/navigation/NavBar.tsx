@@ -36,7 +36,7 @@ export function NavBar({
   brandHref = "/",
   brandAriaLabel = "Trips Norway home",
   brandImageSrc = "/images/branding/logo2.png",
-  brandImageAlt = "",
+  brandImageAlt = "Trips Norway",
   className = "",
 }: NavBarProps) {
   return (
