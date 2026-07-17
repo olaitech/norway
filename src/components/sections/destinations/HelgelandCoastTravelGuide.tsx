@@ -720,6 +720,40 @@ export function HelgelandCoastTravelGuide() {
             />
           </DestinationReveal>
 
+          <DestinationReveal delay={0.06}>
+            <article className="rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-6 sm:p-7">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                <div className="order-2 relative aspect-[3/4] w-full max-w-[10rem] shrink-0 overflow-hidden rounded-[0.85rem] border border-white/8 bg-[#07100f] sm:order-1 sm:w-36">
+                  <Image
+                    src="/images/destinations/helgeland/coastal-history/heroy-coastal-history-red-table-room.jpg"
+                    alt="Preserved coastal sitting room with red tablecloths and historic furniture in Helgeland"
+                    fill
+                    sizes="(min-width: 640px) 9rem, 10rem"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="order-1 sm:order-2">
+                  <p className="text-[0.6rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/72">
+                    Coastal history
+                  </p>
+                  <h2 className="mt-4 font-serif text-[clamp(1.8rem,3.2vw,2.5rem)] font-normal leading-[1] tracking-[-0.04em] text-[#f4efe2]">
+                    Life on the Helgeland Coast Around 1900
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm font-light leading-[1.8] text-[#f4efe2]/64 sm:text-base">
+                    Step inside preserved homes, workrooms and classrooms from Helgeland’s island communities, where family life, practical work and travel followed the rhythm of the sea.
+                  </p>
+                  <Link
+                    href="/journal/life-on-the-helgeland-coast-around-1900"
+                    className="mt-5 inline-flex w-fit items-center gap-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#d8c9a7] transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  >
+                    Explore the story
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          </DestinationReveal>
+
           <DestinationReveal
             delay={0.04}
             className="relative overflow-hidden rounded-[1.45rem] border border-white/10 bg-white/[0.02] shadow-[0_34px_110px_rgba(0,0,0,0.34)]"

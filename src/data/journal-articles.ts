@@ -1,10 +1,22 @@
+export type JournalArticleImage = {
+  src: string;
+  alt: string;
+  label?: string;
+  caption?: string;
+};
+
+export type JournalArticleImageGroup = {
+  images: JournalArticleImage[];
+  caption?: string;
+};
+
 export type JournalArticleSection = {
   heading: string;
   body: string[];
-  image?: {
-    src: string;
-    alt: string;
-  };
+  image?: JournalArticleImage;
+  imageGroups?: JournalArticleImageGroup[];
+  sourceMarker?: string;
+  variant?: "testimony";
 };
 
 export type JournalArticlePracticalNote = {
@@ -23,6 +35,90 @@ export type JournalArticleLink = {
   href: string;
 };
 
+export type JournalArticleTimelineItem = {
+  period: string;
+  label: string;
+};
+
+export type JournalArticleSource = JournalArticleLink & {
+  marker: string;
+};
+
+export type JournalArticleSourceGroup = {
+  title: string;
+  sources: JournalArticleSource[];
+};
+
+export type HistoricalArticlePeriod = {
+  id: string;
+  years: string;
+  label: string;
+};
+
+export type HistoricalArticleImageLabel = {
+  category: string;
+  caption: string;
+  provenance?: string;
+};
+
+export type HistoricalArticleEvidenceFact = {
+  year: string;
+  fact: string;
+  sourceMarker: string;
+};
+
+export type HistoricalArticleStoryBlock =
+  | {
+      type: "intro" | "section";
+      periodId: string;
+      sectionHeading: string;
+      tone?: "dark" | "paper";
+      eyebrow?: string;
+    }
+  | {
+      type: "chapter";
+      id: string;
+      periodId: string;
+      chapterLabel: string;
+      title: string;
+      sectionHeading: string;
+      imageSrc: string;
+      supportingImageSrcs?: string[];
+      imagePosition: "left" | "right";
+      tone?: "dark" | "paper";
+      imageLabel: HistoricalArticleImageLabel;
+    }
+  | {
+      type: "transition";
+      periodId: string;
+      year: string;
+      line: string;
+    }
+  | {
+      type: "evidence";
+      periodId: string;
+      facts: HistoricalArticleEvidenceFact[];
+    }
+  | {
+      type: "humanStory";
+      periodId: string;
+      sectionHeading: string;
+      sourceMarkers: string[];
+      steps: string[];
+    }
+  | {
+      type: "closing";
+      periodId: string;
+      sectionHeading: string;
+      imageSrcs: string[];
+    };
+
+export type HistoricalArticleExperience = {
+  heroTitleLines?: string[];
+  periods: HistoricalArticlePeriod[];
+  storyBlocks: HistoricalArticleStoryBlock[];
+};
+
 const CURRENT_ARTICLE_UPDATE_DATE = "2026-06-25";
 
 export type JournalArticle = {
@@ -31,11 +127,15 @@ export type JournalArticle = {
   subtitle: string;
   category: string;
   kicker?: string;
+  schemaSection?: string;
   region: string;
   readTime: string;
   image: string;
   imageAlt: string;
+  heroImageFit?: "cover" | "contain";
+  heroOverlayOpacity?: number;
   excerpt: string;
+  cardExcerpt?: string;
   seoTitle: string;
   seoDescription: string;
   publishedDate?: string;
@@ -46,8 +146,13 @@ export type JournalArticle = {
   practicalNotes: JournalArticlePracticalNote[];
   sections?: JournalArticleSection[];
   fieldNoteEntries?: JournalArticleFieldNoteEntry[];
+  timeline?: JournalArticleTimelineItem[];
+  sourceGroups?: JournalArticleSourceGroup[];
+  sourcesNote?: string;
+  historicalExperience?: HistoricalArticleExperience;
   relatedSlugs: string[];
   relatedLinks?: JournalArticleLink[];
+  relatedLinksLabel?: string;
 };
 
 export const journalArticles: JournalArticle[] = [
@@ -59,35 +164,36 @@ export const journalArticles: JournalArticle[] = [
     category: "Field Notes",
     kicker: "Field Notes · Herøy · Helgeland Coast",
     region: "Herøy, Helgeland",
-    readTime: "4 min read",
+    readTime: "7 min read",
     image: "/images/journal/helgeland/heroy/heroy-red-boathouses.jpg",
     imageAlt: "Traditional red boathouses beside the sea on Herøy, Helgeland",
+    heroOverlayOpacity: 0.84,
     excerpt:
-      "A quiet working day beside the sea, among low clouds, red boathouses and the small coastal landscapes of Helgeland.",
+      "A growing field journal from four slow days on Herøy, following quiet roads, small harbours and the everyday coastal landscapes between planned stops.",
     seoTitle: "Field Notes from Herøy, Helgeland",
     seoDescription:
-      "A quiet field note from Herøy on the Helgeland coast, written beside the sea among red boathouses, low clouds and sheltered island landscapes.",
+      "A growing field journal from Herøy on the Helgeland coast, following quiet roads, small harbours, local life and four days of coastal photography.",
     publishedDate: "2026-07-15",
-    updatedDate: "2026-07-15",
+    updatedDate: "2026-07-17",
     publishedLabel: "First entry: 15 July",
-    updatedLabel: "Updated during July 2026",
+    updatedLabel: "Updated: 17 July 2026",
     highlights: [
-      "Low clouds, red boathouses and sheltered coastal water.",
-      "A working day from a warm wooden cabin by the sea.",
-      "The first note in a continuing Helgeland Coast field series.",
+      "A first quiet-morning note and a four-day field collection from Herøy.",
+      "Small harbours, fields, coastal water and everyday island life photographed slowly.",
+      "A café pause on Seløy, in Herøy municipality.",
     ],
     practicalNotes: [
       {
-        label: "Weather observed",
-        value: "Low clouds and calm coastal conditions",
+        label: "Field collection",
+        value: "Four days driving the roads of Herøy",
+      },
+      {
+        label: "Photographs",
+        value: "Made on Herøy, with a café stop on Seløy",
       },
       {
         label: "Landscape",
-        value: "Islands, sheltered water and traditional boathouses",
-      },
-      {
-        label: "Working from",
-        value: "A wooden cabin near the sea",
+        value: "Small harbours, fields, sheltered water and island roads",
       },
       {
         label: "Travel mood",
@@ -136,15 +242,123 @@ export const journalArticles: JournalArticle[] = [
               alt: "Green grass path leading towards coastal houses on Herøy",
             },
           },
+        ],
+      },
+      {
+        dateLabel: "Field collection · four days on Herøy",
+        title: "Four Days Along the Island Roads",
+        sections: [
           {
-            heading: "More notes to come",
+            heading: "A quieter Herøy, found between planned stops",
             body: [
-              "Over the coming days, I will share more short notes from the Helgeland coast: places visited, roads travelled, ferry crossings, practical observations and the quieter moments that rarely appear in ordinary travel guides.",
+              "Over four days on Herøy, the road rarely moved far from the water. It passed small harbours, weathered houses, green fields and places where boats remained part of ordinary life.",
+              "These photographs were made while driving without a fixed list of attractions. Together they form a record of the quieter Herøy found between planned stops.",
+            ],
+          },
+          {
+            heading: "Harbours Beside the Road",
+            body: [
+              "On Herøy, the boundary between road and harbour often feels slight. A turn can open onto a sheltered inlet, a line of small boats or a set of steps leading directly into clear coastal water.",
             ],
             image: {
-              src: "/images/journal/helgeland/heroy/heroy-coastal-view.jpg",
-              alt: "View across grass and trees towards the shoreline and docks on Herøy",
+              src: "/images/destinations/helgeland/field-notes-heroy/heroy-quiet-harbour-boats.jpg",
+              alt: "Small boats moored in a sheltered harbour on Herøy beneath low summer clouds.",
             },
+            imageGroups: [
+              {
+                images: [
+                  {
+                    src: "/images/destinations/helgeland/field-notes-heroy/heroy-sea-bathing-steps.jpg",
+                    alt: "Wooden and metal bathing steps descending into clear coastal water on Herøy.",
+                  },
+                  {
+                    src: "/images/destinations/helgeland/field-notes-heroy/heroy-ducks-coastal-pond.jpg",
+                    alt: "Ducks crossing a sheltered coastal pond beside a road on Herøy.",
+                  },
+                ],
+                caption:
+                  "Small details from the road: bathing steps and a sheltered coastal pond on Herøy.",
+              },
+            ],
+          },
+          {
+            heading: "Between Fields and Salt Water",
+            body: [
+              "Red farm buildings and weathered timber stand within a landscape where cultivated ground, exposed rock and sea are never far apart. The scale is modest, but the relationship between buildings and coastline gives the islands much of their character.",
+            ],
+            image: {
+              src: "/images/destinations/helgeland/field-notes-heroy/heroy-red-farm-buildings.jpg",
+              alt: "Traditional red farm buildings surrounded by green fields on Herøy.",
+            },
+            imageGroups: [
+              {
+                images: [
+                  {
+                    src: "/images/destinations/helgeland/field-notes-heroy/heroy-weathered-coastal-house.jpg",
+                    alt: "A weathered wooden coastal house among summer wildflowers on Herøy.",
+                  },
+                  {
+                    src: "/images/destinations/helgeland/field-notes-heroy/heroy-bygdesamling-exterior.jpg",
+                    alt: "The red timber exterior of Herøy Bygdesamling beneath an overcast sky.",
+                    label: "Documentary note",
+                    caption:
+                      "Herøy Bygdesamling photographed from the exterior during the four-day field collection.",
+                  },
+                ],
+                caption:
+                  "Weathered timber and a red collection building, photographed without assigning wider historical detail.",
+              },
+            ],
+          },
+          {
+            heading: "A Pause on Seløy",
+            body: [
+              "One of the warmer stops came indoors, at a small café on Seløy. After several hours on the road, books, baking and conversation offered a different kind of field note: a reminder that the coast is not only scenery, but also a place of everyday work and meeting.",
+            ],
+            imageGroups: [
+              {
+                images: [
+                  {
+                    src: "/images/destinations/helgeland/field-notes-heroy/heroy-seloy-local-cafe.jpg",
+                    alt: "Visitors inside a small local café on Seløy in Herøy.",
+                  },
+                ],
+                caption:
+                  "A smaller field-note photograph from a café on Seløy in Herøy municipality. People are not identified.",
+              },
+            ],
+          },
+          {
+            heading: "The Coast Is Always Present",
+            body: [
+              "Bridges make the journey possible by road, but the sea remains present in every direction. From a sunlit pier, a bridge crossing or a quiet sailboat in sheltered water, movement through Herøy still feels shaped by the coastline.",
+            ],
+            image: {
+              src: "/images/destinations/helgeland/field-notes-heroy/heroy-summer-pier.jpg",
+              alt: "Sunlight over a wooden pier and sheltered coastal water on Herøy.",
+            },
+            imageGroups: [
+              {
+                images: [
+                  {
+                    src: "/images/destinations/helgeland/field-notes-heroy/heroy-coastal-bridge.jpg",
+                    alt: "A low coastal bridge crossing sheltered water between the islands of Herøy.",
+                  },
+                  {
+                    src: "/images/destinations/helgeland/field-notes-heroy/heroy-sailboat-and-boathouse.jpg",
+                    alt: "A sailboat and red boathouse beside a sheltered inlet on Herøy.",
+                  },
+                ],
+                caption:
+                  "Road connections and sheltered water, photographed while moving through Herøy.",
+              },
+            ],
+          },
+          {
+            heading: "The road worth leaving",
+            body: [
+              "These are not photographs of a single attraction. They are fragments of four days spent moving slowly through Herøy — stopping when the light, the water or a small piece of ordinary island life made the road worth leaving.",
+            ],
           },
         ],
       },
@@ -154,6 +368,586 @@ export const journalArticles: JournalArticle[] = [
       "how-to-plan-a-scenic-norway-road-trip",
       "the-road-to-senja",
     ],
+    relatedLinks: [
+      {
+        label: "Explore the Helgeland Coast",
+        href: "/destinations/helgeland-coast",
+      },
+      {
+        label: "Plan the Helgeland Coast road trip",
+        href: "/routes/helgeland-coast-road-trip",
+      },
+      { label: "Browse the Journal", href: "/journal" },
+    ],
+  },
+  {
+    slug: "life-on-the-helgeland-coast-around-1900",
+    title: "Life on the Helgeland Coast",
+    subtitle:
+      "Across the islands of Helgeland, preserved rooms and everyday objects open a window onto a coastal society shaped by fishing, small-scale farming, family labour and the sea.",
+    category: "Coastal History",
+    kicker: "Coastal History · 1890–1955",
+    schemaSection: "Coastal History, 1890–1955",
+    region: "Helgeland Coast",
+    readTime: "13 min read",
+    image:
+      "/images/destinations/helgeland/coastal-history/heroy-coastal-history-red-table-room.jpg",
+    imageAlt:
+      "Preserved coastal sitting room with red tablecloths and historic furniture in Helgeland",
+    heroImageFit: "contain",
+    excerpt:
+      "The communities were connected by boats, trade, letters and shared institutions, but life was never identical from one island to the next. These rooms gain meaning when read alongside photographs, public records, local histories and later memories.",
+    cardExcerpt:
+      "A visual history of everyday life on the Helgeland coast, from household work and schools to wartime change.",
+    seoTitle: "Life on the Helgeland Coast, 1890–1955",
+    seoDescription:
+      "Explore everyday life on the Helgeland coast from 1890 to 1955 through preserved homes, coastal work, schools, fishing communities and carefully sourced wartime history.",
+    publishedDate: "2026-07-17",
+    updatedDate: "2026-07-17",
+    publishedLabel: "Published: 17 July 2026",
+    updatedLabel: "Updated: 17 July 2026",
+    highlights: [
+      "Preserved interiors and objects photographed across the Helgeland coast.",
+      "Everyday work, learning, travel and changing connections between 1890 and 1955.",
+      "Local evidence placed beside carefully separated national historical context.",
+    ],
+    practicalNotes: [
+      {
+        label: "Focus",
+        value: "Everyday life across Helgeland’s varied coastal communities.",
+      },
+      {
+        label: "Period",
+        value: "Approximately 1890–1955.",
+      },
+      {
+        label: "Photographs",
+        value: "Preserved interiors and objects photographed across Helgeland; individual provenance is not assumed.",
+      },
+    ],
+    timeline: [
+      {
+        period: "1890–1914",
+        label: "Fishing, farming and household production",
+      },
+      {
+        period: "1914–1918",
+        label: "Neutrality, shortages and rising prices",
+      },
+      {
+        period: "1918–1940",
+        label: "Education, motorboats and uneven modernisation",
+      },
+      {
+        period: "1940–1945",
+        label: "Occupation, rationing and resistance",
+      },
+      {
+        period: "1945–1955",
+        label: "Reconstruction and changing connections",
+      },
+    ],
+    historicalExperience: {
+      heroTitleLines: ["Life on the", "Helgeland Coast"],
+      periods: [
+        {
+          id: "home-and-work",
+          years: "1890–1914",
+          label: "Home and coastal work",
+        },
+        {
+          id: "neutrality",
+          years: "1914–1918",
+          label: "A neutral country under pressure",
+        },
+        {
+          id: "transition",
+          years: "1918–1940",
+          label: "A coast in transition",
+        },
+        {
+          id: "occupation",
+          years: "1940–1945",
+          label: "Occupation",
+        },
+        {
+          id: "connections",
+          years: "1945–1955",
+          label: "New connections",
+        },
+      ],
+      storyBlocks: [
+        {
+          type: "intro",
+          periodId: "home-and-work",
+          sectionHeading: "Rooms that remember",
+          eyebrow: "A visual record, read with care",
+        },
+        {
+          type: "chapter",
+          id: "room",
+          periodId: "home-and-work",
+          chapterLabel: "Object chapter I",
+          title: "The room",
+          sectionHeading: "The coastal home",
+          imageSrc:
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-kitchen.jpg",
+          supportingImageSrcs: [
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-piano.jpg",
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-sitting-room-portraits.jpg",
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-window-parlour.jpg",
+          ],
+          imagePosition: "right",
+          imageLabel: {
+            category: "Preserved interior",
+            caption:
+              "A coastal kitchen and living space photographed in a preserved collection on Helgeland.",
+            provenance:
+              "Exact household, island and object history have not yet been independently verified.",
+          },
+        },
+        {
+          type: "chapter",
+          id: "loom",
+          periodId: "home-and-work",
+          chapterLabel: "Object chapter II",
+          title: "The loom",
+          sectionHeading: "Work made by hand",
+          imageSrc:
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-loom.jpg",
+          supportingImageSrcs: [
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-sewing-room.jpg",
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-log-room.jpg",
+          ],
+          imagePosition: "left",
+          imageLabel: {
+            category: "Preserved workroom",
+            caption:
+              "A loom photographed among preserved interior materials and practical household equipment on Helgeland.",
+            provenance:
+              "The photograph is used as a visual entry point, not as evidence for a named household or year.",
+          },
+        },
+        {
+          type: "section",
+          periodId: "home-and-work",
+          sectionHeading: "Between sea and land",
+        },
+        {
+          type: "section",
+          periodId: "home-and-work",
+          sectionHeading: "A house could also be a workplace",
+        },
+        {
+          type: "transition",
+          periodId: "neutrality",
+          year: "1914",
+          line: "The war did not cross Norway’s border. Its consequences did.",
+        },
+        {
+          type: "section",
+          periodId: "neutrality",
+          sectionHeading: "A neutral country, but not untouched",
+        },
+        {
+          type: "transition",
+          periodId: "transition",
+          year: "1918",
+          line: "New machines reached the coast. Old routines did not disappear.",
+        },
+        {
+          type: "chapter",
+          id: "written-word",
+          periodId: "transition",
+          chapterLabel: "Object chapter III",
+          title: "The written word",
+          sectionHeading: "School, writing and connection",
+          imageSrc:
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-typewriter-desk.jpg",
+          supportingImageSrcs: [
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-schoolroom.jpg",
+          ],
+          imagePosition: "right",
+          tone: "paper",
+          imageLabel: {
+            category: "Writing and learning",
+            caption:
+              "Writing tools and teaching materials photographed in preserved coastal collections.",
+            provenance:
+              "The typewriter is not presented as an ordinary household possession without documented provenance.",
+          },
+        },
+        {
+          type: "chapter",
+          id: "sea",
+          periodId: "transition",
+          chapterLabel: "Object chapter IV",
+          title: "The sea",
+          sectionHeading: "Motors, teachers and a changing coast",
+          imageSrc:
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-model-boats.jpg",
+          supportingImageSrcs: [
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-old-photographs.jpg",
+          ],
+          imagePosition: "left",
+          tone: "paper",
+          imageLabel: {
+            category: "Maritime object",
+            caption:
+              "Model fishing boats and maritime objects photographed in a preserved Helgeland collection.",
+            provenance:
+              "The objects are not assigned here to a named island, household or date.",
+          },
+        },
+        {
+          type: "evidence",
+          periodId: "transition",
+          facts: [
+            {
+              year: "1907",
+              fact: "The oldest part of the Zahl commercial building on Nesna dates from 1907.",
+              sourceMarker: "1",
+            },
+            {
+              year: "1918",
+              fact: "Teacher education opened on Nesna with 56 students.",
+              sourceMarker: "3",
+            },
+            {
+              year: "1920–1940",
+              fact: "A Helgeland Museum photograph documents fish-processing work associated with Dønna.",
+              sourceMarker: "6",
+            },
+            {
+              year: "1942",
+              fact: "Construction of Grønsvik coastal fort began during the German occupation.",
+              sourceMarker: "8",
+            },
+          ],
+        },
+        {
+          type: "transition",
+          periodId: "occupation",
+          year: "1940",
+          line: "Occupation entered ordinary rooms.",
+        },
+        {
+          type: "section",
+          periodId: "occupation",
+          sectionHeading: "Occupation and everyday adaptation",
+        },
+        {
+          type: "humanStory",
+          periodId: "occupation",
+          sectionHeading: "Lånan: a quiet island becomes part of the war",
+          sourceMarkers: ["9", "10"],
+          steps: [
+            "A remote island became connected to clandestine communication and weapons transport.",
+            "German forces moved closer to discovering the operation.",
+            "Children and adults were evacuated towards Shetland during the night.",
+            "Some details survive through later family memory and still require archival verification.",
+          ],
+        },
+        {
+          type: "transition",
+          periodId: "connections",
+          year: "1945",
+          line: "Peace arrived before every shortage ended.",
+        },
+        {
+          type: "section",
+          periodId: "connections",
+          sectionHeading: "After 1945",
+        },
+        {
+          type: "closing",
+          periodId: "connections",
+          sectionHeading: "What the objects leave behind",
+          imageSrcs: [
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-window-parlour.jpg",
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-log-room.jpg",
+            "/images/destinations/helgeland/coastal-history/heroy-coastal-history-old-photographs.jpg",
+          ],
+        },
+      ],
+    },
+    sections: [
+      {
+        heading: "Rooms that remember",
+        body: [
+          "A merchant household on Nesna, a fishing family on Træna and a household in the outer islands of Vega could live with very different resources, routines and access to the wider world.",
+          "These rooms cannot tell every story on their own. Their objects become most meaningful when placed beside photographs, public records, local histories and the memories of people who lived along the coast.",
+          "They do, however, retain traces of daily routines, skilled work, family life and practical adaptation in a landscape closely tied to the sea.",
+        ],
+      },
+      {
+        heading: "The coastal home",
+        body: [
+          "Living rooms, kitchens and sleeping spaces formed the centre of family life. Furniture was made to last, rooms were used carefully, and useful objects could remain in a household for generations.",
+          "Around the turn of the twentieth century, many homes along the Helgeland coast were places for both living and working. Cooking, sewing, weaving, repairing equipment, writing letters and preparing for journeys could all happen beneath the same roof.",
+          "The preserved interiors show different arrangements of floorboards, furniture, portraits, books, textiles and tables prepared for work or company. They should be read as distinct rooms rather than a single model for every coastal household.",
+        ],
+        imageGroups: [
+          {
+            images: [
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-kitchen.jpg",
+                alt: "Preserved kitchen and dining room from a coastal home in Helgeland",
+              },
+            ],
+            caption: "A preserved kitchen and dining room from a coastal home in Helgeland.",
+          },
+          {
+            images: [
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-piano.jpg",
+                alt: "Black upright piano with portraits and household objects",
+              },
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-sitting-room-portraits.jpg",
+                alt: "Sitting room with framed portraits and traditional furniture",
+              },
+            ],
+            caption: "Furniture, portraits and household objects retained within preserved interiors.",
+          },
+          {
+            images: [
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-window-parlour.jpg",
+                alt: "Preserved parlour with traditional furniture beside a coastal window",
+              },
+            ],
+            caption: "A parlour arranged beside a coastal window.",
+          },
+        ],
+      },
+      {
+        heading: "Work made by hand",
+        body: [
+          "Much of everyday life depended on practical knowledge. Weaving looms, sewing machines, tools and worktables point to clothes and household items being made, repaired and reused.",
+          "These skills were part of maintaining a household in communities where distance, weather and limited access to goods mattered. The work and resources available, however, differed between households and social groups.",
+        ],
+        imageGroups: [
+          {
+            images: [
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-loom.jpg",
+                alt: "Historic weaving loom with woven textiles in a preserved Helgeland interior",
+              },
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-sewing-room.jpg",
+                alt: "Historic sewing room with sewing machine and practical equipment",
+              },
+            ],
+            caption: "Practical work that supported household life along the coast.",
+          },
+        ],
+      },
+      {
+        heading: "Between sea and land",
+        body: [
+          "For many coastal households, work did not belong to a single occupation. Fishing, livestock, small plots of cultivated land, food preservation, textile work and the repair of tools and clothing formed parts of the same household economy.",
+          "The balance differed between communities and social groups. Fishing-farming households depended on seasonal work and the labour of several family members, while merchants, officials and larger trading households could occupy very different homes and employ servants or other workers.",
+          "The sea provided food, work and transport, but it also brought risk. Boats connected the islands to churches, schools, doctors, shops and trading centres. When weather prevented travel, distance became more than a line on a map.",
+        ],
+        imageGroups: [
+          {
+            images: [
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-log-room.jpg",
+                alt: "Wooden workroom with traditional clothing, textiles and storage chests",
+              },
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-model-boats.jpg",
+                alt: "Model fishing boats and maritime objects from the Helgeland coast",
+              },
+            ],
+            caption: "A preserved workroom and maritime objects photographed across Helgeland.",
+          },
+        ],
+      },
+      {
+        heading: "A house could also be a workplace",
+        body: [
+          "Not every preserved coastal interior represents a small fishing household. On Nesna, the Zahl family’s commercial building combined trade and domestic life under the same roof. Its oldest section dates from 1907, and the building held a shop as well as living quarters for the merchant family, servants and employees.",
+          "This offers a useful contrast to smaller fishing-farming households. Coastal society included labourers, boat owners, merchants, tenant families, teachers, officials and people who moved between several forms of work.",
+        ],
+        sourceMarker: "[1]",
+      },
+      {
+        heading: "School, writing and connection",
+        body: [
+          "Education connected even small coastal communities to wider changes in Norwegian society. By the early twentieth century, permanent school buildings had replaced most travelling schools nationally, although distance and scattered settlement continued to shape local education.",
+          "Helgeland Museum preserves Klokkergården on Nesna, a school building dating from 1823. Nesna later became an important educational centre: in 1918 a new teacher-training school opened with 56 students, including 34 women taking a one-year course for small-school teachers alongside students following a three-year teacher programme.",
+          "Letters, newspapers, school records and municipal documents also connected the islands. A preserved typewriter can illustrate this expanding world of writing and administration, but it is not presented here as an ordinary household possession without documented provenance.",
+        ],
+        sourceMarker: "[2–4]",
+        imageGroups: [
+          {
+            images: [
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-typewriter-desk.jpg",
+                alt: "Typewriters, documents and writing tools on a historic worktable",
+              },
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-schoolroom.jpg",
+                alt: "Preserved classroom with wooden desks, teaching materials and a globe",
+              },
+            ],
+            caption: "Writing, records and teaching materials from preserved coastal collections.",
+          },
+        ],
+      },
+      {
+        heading: "A neutral country, but not untouched",
+        body: [
+          "Norway remained neutral throughout the First World War, but neutrality did not protect households from the economic consequences of the conflict.",
+          "Imports became more difficult, goods grew scarce and prices rose sharply. Statistics Norway estimates that Norwegian living costs increased by 156 per cent between 1914 and 1918.",
+          "For the Helgeland coast, these national conditions provide important context. The exact effects on individual islands — food supplies, fishing prices, shipping risks and local rationing — varied and require evidence from local newspapers and municipal records.",
+        ],
+        sourceMarker: "[11–12]",
+      },
+      {
+        heading: "Motors, teachers and a changing coast",
+        body: [
+          "During the early decades of the twentieth century, new technologies gradually changed work and communication along the coast.",
+          "Arkiv i Nordland preserves interviews collected in 1981 about the transition to motor-powered fishing boats in Rødøy between 1900 and 1920. These later recollections preserve memories of a change that affected travel, fishing range and working routines, but they remain recollections recorded decades afterwards.",
+          "Modernisation did not arrive everywhere at once. Motorboats, electricity, telephones and radios reached different communities at different times, while older household routines continued alongside new technology.",
+          "A Helgeland Museum catalogue entry for a fish-processing photograph estimated to date from 1920–1940 associates its use with Dønna. The catalogue treats Dønna as certain but the photographed location itself as probable; it is a separate record, not an attribution for the photograph shown here.",
+        ],
+        sourceMarker: "[5–6]",
+        imageGroups: [
+          {
+            images: [
+              {
+                src: "/images/destinations/helgeland/coastal-history/heroy-coastal-history-old-photographs.jpg",
+                alt: "Historic photographs showing boats and coastal settlements in Helgeland",
+              },
+            ],
+            caption: "Historic photographs from a preserved Helgeland collection; the individual scenes are not assigned to a specific island here.",
+          },
+        ],
+      },
+      {
+        heading: "Occupation and everyday adaptation",
+        body: [
+          "The German occupation from 1940 to 1945 changed both the visible landscape and the routines of ordinary life along the Helgeland coast.",
+          "Military installations were established at strategic points, including Grønsvik in Lurøy, Ylvingen in Vega and sites around Nesna. Grønsvik coastal fort was constructed as part of the Atlantic Wall, and Helgeland Museum records that prisoners of war were forced to take part in its construction.",
+          "For civilians, occupation also meant rationing, restrictions, shortages and uncertainty. Nationally, food, clothing, fuel and other necessities became increasingly regulated. Local experiences nevertheless differed according to access to fishing, livestock, cultivated land, shops and transport.",
+        ],
+        sourceMarker: "[7–8, 13]",
+      },
+      {
+        heading: "Lånan: a quiet island becomes part of the war",
+        body: [
+          "One of the strongest preserved stories comes from Lånan in the Vega archipelago.",
+          "Later family accounts describe how the small island community became connected to clandestine communication and the transport of weapons from Britain. As German forces moved closer to discovering the operation, the civilian population was evacuated to Shetland during the night of 31 August to 1 September 1944.",
+          "The published accounts name members of the Nilsen and Johansen families and describe children and adults leaving with little warning. Some details survive through later family memories rather than contemporary diaries, so vessel movements, passenger numbers and individual resistance roles need cautious treatment until matched with naval and archival records.",
+        ],
+        sourceMarker: "[9–10]",
+        variant: "testimony",
+      },
+      {
+        heading: "After 1945",
+        body: [
+          "Peace did not immediately restore every connection or remove every shortage. Rationing continued for some goods, while communities faced the practical work of rebuilding, adapting military structures and modernising transport, schools and homes.",
+          "During the following decade, improved boats, communications and public services gradually reduced some forms of isolation. At the same time, population movement began changing many of the smallest island communities. Detailed Helgeland evidence for 1945–1955 still requires additional local research.",
+        ],
+      },
+      {
+        heading: "What the objects leave behind",
+        body: [
+          "The preserved rooms do not offer a single picture of life on the Helgeland coast. They belong to different buildings, communities and social worlds.",
+          "Together, however, they preserve traces of the work that filled ordinary days: cooking, repairing, weaving, writing, teaching, storing food and preparing for another journey across the water.",
+          "Their value lies not in pretending that time has stood still, but in allowing the surviving objects to meet the records and memories of the people who lived here.",
+        ],
+      },
+    ],
+    sourceGroups: [
+      {
+        title: "Local museums and archives",
+        sources: [
+          {
+            marker: "1",
+            label: "Helgeland Museum: Nesna Museum and the Zahl commercial building",
+            href: "https://helgelandmuseum.no/besokssted/nesna-museum/",
+          },
+          {
+            marker: "2",
+            label: "Helgeland Museum: Old-fashioned school in old school buildings",
+            href: "https://helgelandmuseum.no/tema/gammeldags-skole-i-gamle-skolehus/",
+          },
+          {
+            marker: "3",
+            label: "Arkiv i Nordland: The twentieth century in Nesna",
+            href: "https://arkivinordland.no/fylkesleksikon/innhold/1900-tallet/1900-tallet-i-nesna.37962.aspx",
+          },
+          {
+            marker: "4",
+            label: "Nord University: The history of Høgskolen i Nesna",
+            href: "https://www.nord.no/om/var-historie/hogskolen-i-nesna",
+          },
+          {
+            marker: "5",
+            label: "Arkivportalen: Arkiv i Nordland collections on coastal change",
+            href: "https://www.arkivportalen.no/contributor/ca0a47ad-f9e7-4775-9364-12562405a6ad?ins=AIN",
+          },
+          {
+            marker: "6",
+            label: "DigitaltMuseum: Work at a fish-processing site",
+            href: "https://digitaltmuseum.no/021017513889/arbeid-pa-fiskebruk",
+          },
+          {
+            marker: "7",
+            label: "Helgeland Museum: War and occupation history",
+            href: "https://helgelandmuseum.no/tema/krig-og-okkupasjonshistorie/",
+          },
+          {
+            marker: "8",
+            label: "Helgeland Museum: Grønsvik coastal fort",
+            href: "https://helgelandmuseum.no/besokssted/gronsvik-kystfort/",
+          },
+          {
+            marker: "9",
+            label: "Lånan: Krigen på Lånan (PDF)",
+            href: "https://lanan.no/wp-content/uploads/2021/04/BA_Krigen-pa%CC%8A-Lanan.pdf",
+          },
+          {
+            marker: "10",
+            label: "Lånan: When the war came to Lånan",
+            href: "https://lanan.no/about-lanan/da-krigen-kom-til-lanan/?lang=en",
+          },
+        ],
+      },
+      {
+        title: "National historical context",
+        sources: [
+          {
+            marker: "11",
+            label: "Statistics Norway: The boom during the First World War",
+            href: "https://www.ssb.no/nasjonalregnskap-og-konjunkturer/artikler-og-publikasjoner/hoykonjunkturen-under-1-verdenskrig",
+          },
+          {
+            marker: "12",
+            label: "Store norske leksikon: Norway during the First World War",
+            href: "https://snl.no/Noreg_under_f%C3%B8rste_verdskrigen",
+          },
+          {
+            marker: "13",
+            label: "Norgeshistorie: Everyday life during the Second World War",
+            href: "https://www.norgeshistorie.no/andre-verdenskrig/1703-hverdagsliv-under-andre-verdenskrig-.html",
+          },
+        ],
+      },
+    ],
+    sourcesNote:
+      "This visual essay combines photographs of preserved interiors with material from museums, archives and edited historical sources. The photographs have not been assigned to individual households or islands unless provenance has been independently documented. Research into local First World War conditions, individual object histories and some wartime accounts remains ongoing.",
+    relatedSlugs: [
+      "field-notes-heroy-helgeland",
+      "blue-hour-on-the-helgeland-coast",
+      "the-road-to-senja",
+    ],
+    relatedLinksLabel: "Continue exploring",
     relatedLinks: [
       {
         label: "Explore the Helgeland Coast",

@@ -30,7 +30,7 @@ function toJournalEntry(slug: string): JournalEntry {
     type: article.category,
     location: article.region,
     readTime: article.readTime,
-    description: article.excerpt,
+    description: article.cardExcerpt ?? article.excerpt,
     imageSrc: article.image,
     imageAlt: article.imageAlt,
     imagePosition: imagePositionBySlug[article.slug],
