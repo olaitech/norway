@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import { CookieConsentGate } from "@/src/components/compliance/CookieConsentGate";
 import { Footer } from "@/src/components/layout/Footer";
@@ -78,6 +79,7 @@ export default function RootLayout({
         {children}
         <CookieConsentGate />
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
