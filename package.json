@@ -13,6 +13,7 @@
     "check:routes": "node scripts/check-public-routes.mjs"
   },
   "dependencies": {
+    "@paper-design/shaders-react": "^0.0.77",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",

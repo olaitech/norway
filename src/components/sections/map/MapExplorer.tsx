@@ -2,6 +2,7 @@
 
 import { useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Compass, Route } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type {
@@ -301,6 +302,52 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
             Travel times are approximate and meant for inspiration. Open routes
             in Google Maps for live directions, traffic and ferry updates.
           </p>
+
+          <section className={styles.planningCard} aria-labelledby="map-planning-card-title">
+            <Image
+              src="/images/map/norway-travel-map-phone.jpg"
+              alt="Traveller using a smartphone in front of a world map"
+              fill
+              sizes="(max-width: 639px) calc(100vw - 2.5rem), (max-width: 767px) calc(100vw - 4rem), (max-width: 1023px) calc(100vw - 6rem), 58rem"
+              className={styles.planningImage}
+            />
+            <div className={styles.planningOverlay} aria-hidden="true" />
+            <div className={styles.planningContent}>
+              <p className="text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#d8c9a7]/88">
+                Route planning
+              </p>
+              <h2
+                id="map-planning-card-title"
+                className="mt-4 max-w-md font-serif text-[clamp(2rem,4vw,3.4rem)] font-normal leading-[0.96] tracking-[-0.045em]"
+              >
+                Continue planning your journey
+              </h2>
+              <p className="mt-4 max-w-xl text-sm font-light leading-[1.8] text-[#f4efe2]/76 sm:text-base">
+                Use Trips Norway to discover destinations and scenic routes,
+                then open locations in Google Maps for live directions,
+                distances and current travel information.
+              </p>
+              <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <Link
+                  href="/destinations"
+                  className="inline-flex items-center gap-2 text-[0.63rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2] transition-colors hover:text-[#d8c9a7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/80 focus-visible:ring-offset-4 focus-visible:ring-offset-[#07100f]"
+                >
+                  Explore destinations
+                  <ArrowUpRight className={`h-3.5 w-3.5 ${styles.planningArrow}`} aria-hidden="true" />
+                </Link>
+                <a
+                  href="https://www.google.com/maps/place/Norway/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open Google Maps for Norway in a new tab"
+                  className="inline-flex items-center gap-2 text-[0.63rem] font-medium uppercase tracking-[0.22em] text-[#d8c9a7]/88 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/80 focus-visible:ring-offset-4 focus-visible:ring-offset-[#07100f]"
+                >
+                  Open Google Maps
+                  <ArrowUpRight className={`h-3.5 w-3.5 ${styles.planningArrow}`} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>

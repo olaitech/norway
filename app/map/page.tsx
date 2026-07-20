@@ -34,7 +34,7 @@ export default function MapPage() {
           { name: "Map", href: "/map" },
         ])}
       />
-      <main className="relative min-h-screen overflow-hidden bg-[#050607] text-[#f4efe2]">
+      <main className="relative min-h-screen overflow-hidden bg-[rgba(5,6,7,0.9)] text-[#f4efe2]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_68%_8%,rgba(106,151,160,0.12),transparent_31%),radial-gradient(circle_at_16%_24%,rgba(216,201,167,0.07),transparent_27%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[linear-gradient(180deg,rgba(12,23,25,0.48),transparent)]" />
 

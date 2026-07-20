@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { GlobalShaderBackground } from "@/src/components/backgrounds/GlobalShaderBackground";
 import { CookieConsentGate } from "@/src/components/compliance/CookieConsentGate";
 import { Footer } from "@/src/components/layout/Footer";
 import {
@@ -75,9 +76,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} relative h-full scroll-smooth antialiased motion-reduce:scroll-auto`}
     >
       <body id="top" className="min-h-full flex flex-col">
-        {children}
-        <CookieConsentGate />
-        <Footer />
+        <GlobalShaderBackground />
+        <div className="relative z-10 flex min-h-full flex-col">
+          {children}
+          <CookieConsentGate />
+          <Footer />
+        </div>
       </body>
     </html>
   );

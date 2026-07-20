@@ -7,6 +7,61 @@
   font-family: var(--font-geist-sans), Arial, sans-serif;
 }
 
+.planningCard {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(19rem, 31vw, 27rem);
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(244, 239, 226, 0.1);
+  border-radius: 1.35rem;
+  background: #07100f;
+  box-shadow: 0 34px 100px rgba(0, 0, 0, 0.32);
+  transform: translateY(0);
+  transition: border-color 700ms ease, transform 700ms ease;
+}
+
+.planningImage {
+  object-fit: cover;
+  transition: transform 1100ms ease;
+}
+
+.planningOverlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 9, 11, 0.82) 0%, rgba(5, 9, 11, 0.62) 38%, rgba(5, 9, 11, 0.26) 64%, rgba(5, 9, 11, 0.06) 100%),
+    linear-gradient(0deg, rgba(5, 9, 11, 0.4) 0%, transparent 62%);
+}
+
+.planningContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.planningArrow {
+  transition: transform 700ms ease;
+}
+
+.planningCard:hover {
+  border-color: rgba(244, 239, 226, 0.2);
+  transform: translateY(-2px);
+}
+
+.planningCard:hover .planningImage {
+  transform: scale(1.03);
+}
+
+.planningCard:hover .planningArrow {
+  transform: translate(2px, -2px);
+}
+
 .map :global(.leaflet-tile-pane) {
   filter: grayscale(0.74) saturate(0.52) brightness(0.47) contrast(1.16)
     sepia(0.12);
@@ -198,11 +253,35 @@
 }
 
 @media (max-width: 640px) {
+  .planningCard {
+    min-height: 22rem;
+  }
+
+  .planningOverlay {
+    background:
+      linear-gradient(0deg, rgba(5, 9, 11, 0.82) 0%, rgba(5, 9, 11, 0.58) 48%, rgba(5, 9, 11, 0.16) 82%, rgba(5, 9, 11, 0.05) 100%),
+      linear-gradient(90deg, rgba(5, 9, 11, 0.32), transparent 72%);
+  }
+
   .map {
     height: 30rem;
   }
 
   .map :global(.leaflet-popup-content) {
     width: 15.5rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planningCard,
+  .planningImage,
+  .planningArrow {
+    transition: none;
+  }
+
+  .planningCard:hover,
+  .planningCard:hover .planningImage,
+  .planningCard:hover .planningArrow {
+    transform: none;
   }
 }
