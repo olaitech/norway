@@ -36,6 +36,7 @@ export type FeaturedRoute = {
   season: string;
   description: string;
   travelNote: string;
+  href?: string;
   googleMapsUrl: string;
 };
 
@@ -142,6 +143,7 @@ export const featuredRoutes: FeaturedRoute[] = [
       "A ferry-linked coastal passage through island detours and open sea views.",
     travelNote:
       "Crossing schedules shape each day; overnight stops reduce rushing.",
+    href: "/routes/helgeland-coast-road-trip",
     googleMapsUrl: googleDirectionsUrl({
       origin: "Bronnoysund, Norway",
       destination: "Bodo, Norway",
@@ -156,6 +158,7 @@ export const featuredRoutes: FeaturedRoute[] = [
       "A slow western journey between harbours, beaches and mountain-framed roads.",
     travelNote:
       "Short driving distances leave time for changing weather and light.",
+    href: "/routes/lofoten-road-trip",
     googleMapsUrl: googleDirectionsUrl({
       origin: "Svolvaer, Norway",
       destination: "A i Lofoten, Norway",

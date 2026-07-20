@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import "leaflet/dist/leaflet.css";
 
@@ -15,9 +15,9 @@ import {
 } from "@/src/lib/seo/jsonLd";
 
 export const metadata = createPageMetadata({
-  title: "Norway Travel Map | Routes, Destinations and Northern Norway Planning",
+  title: "Norway Travel Map | Destinations, Routes & Trip Planning",
   description:
-    "Use the Trips Norway map to understand where destinations, road trips, ferries and regions connect across Norway and Northern Norway.",
+    "Explore Norway on an interactive travel map. Discover destinations, scenic routes and practical guides, or open locations in Google Maps for live directions.",
   canonical: "/map",
   image: {
     url: "/images/map/map-norway.jpg",
@@ -63,7 +63,7 @@ export default function MapPage() {
               Home
             </Link>
             <Link
-              href="/#destinations"
+              href="/destinations"
               className="text-[0.61rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/56 transition-colors hover:text-[#f4efe2]"
             >
               Destinations
@@ -84,21 +84,27 @@ export default function MapPage() {
       <section className="relative z-10 px-5 pb-14 pt-16 sm:px-8 sm:pb-16 sm:pt-20 md:px-12 lg:pb-20 lg:pt-24">
         <div className="mx-auto max-w-7xl">
           <Link
-            href="/journal"
+            href="/destinations"
             className="mb-10 inline-flex items-center gap-3 text-[0.63rem] font-medium uppercase tracking-[0.29em] text-[#f4efe2]/52 transition-colors hover:text-[#f4efe2]/86"
           >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Back to journal
+            Browse all destinations
+            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
           <p className="text-[0.67rem] font-medium uppercase tracking-[0.4em] text-[#d8c9a7]/78">
             Interactive field map
           </p>
           <h1 className="mt-6 max-w-5xl font-serif text-[clamp(3.3rem,8.4vw,7.75rem)] font-normal leading-[0.9] tracking-[-0.058em]">
-            Explore Norway by Map
+            Norway Travel Map
           </h1>
           <p className="mt-7 max-w-2xl text-base font-light leading-[1.8] text-[#f4efe2]/68 sm:text-lg md:text-xl">
-            Trace quiet roads, Arctic islands, fjords and remote places worth
-            slowing down for.
+            Explore Norway by region, discover destinations and open locations
+            directly in Google Maps for live directions, distances and route
+            planning.
+          </p>
+          <p className="mt-4 max-w-2xl text-sm font-light leading-[1.8] text-[#f4efe2]/52 sm:text-base">
+            Trips Norway connects the map with destination guides, scenic
+            routes, ferry-aware travel information and practical planning
+            advice.
           </p>
         </div>
       </section>
@@ -108,38 +114,95 @@ export default function MapPage() {
         places={mapPlaces}
         routes={featuredRoutes}
       />
+
+      <section
+        aria-labelledby="map-planning-notes"
+        className="relative z-10 px-5 pb-20 sm:px-8 sm:pb-24 md:px-12"
+      >
+        <div className="mx-auto grid max-w-7xl gap-6 rounded-[1.25rem] border border-white/8 bg-white/[0.025] p-6 sm:p-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14 lg:p-10">
+          <div>
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.34em] text-[#d8c9a7]/72">
+              Practical map notes
+            </p>
+            <h2
+              id="map-planning-notes"
+              className="mt-5 max-w-md font-serif text-[clamp(2rem,4vw,3.35rem)] font-normal leading-[0.98] tracking-[-0.045em]"
+            >
+              From map distance to travel time
+            </h2>
+          </div>
+          <div className="space-y-4 text-sm font-light leading-[1.85] text-[#f4efe2]/64 sm:text-base">
+            <p>
+              Use the map to understand where Norway&apos;s destinations are
+              located. Select a place to read its Trips Norway guide or open it
+              in Google Maps for live directions, distances and route planning.
+            </p>
+            <p>
+              Driving time in Norway may be affected by ferries, mountain roads,
+              weather and seasonal closures. Read the{" "}
+              <Link
+                href="/guides/driving-in-norway-what-visitors-should-know"
+                className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+              >
+                driving guide
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/guides/norway-ferry-guide-for-tourists"
+                className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+              >
+                ferry guide
+              </Link>{" "}
+              before fixing each day&apos;s timing.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <GatewaysToNorthernNorway />
 
       <section className="border-t border-white/8 px-5 py-16 sm:px-8 sm:py-20 md:px-12">
         <div className="mx-auto max-w-7xl">
           <RelatedLinkCards
-            eyebrow="Continue planning"
-            title="Use the map as a planning bridge"
-            intro="Move from the map into the routes, destinations and practical guides that shape the trip."
+            eyebrow="Planning paths"
+            title="Continue exploring Norway"
+            intro="Move from the map into destination guides, fjord regions and road trips with realistic planning context."
             links={[
               {
-                label: "Destinations",
-                title: "Browse Norway destinations",
-                href: "/destinations",
-                description: "Trace the islands, coast and Arctic cities before you settle on a base.",
+                label: "Coastal passage",
+                title: "Helgeland Coast",
+                href: "/destinations/helgeland-coast",
+                description: "Plan a slower journey through ferry crossings, island detours and open shoreline.",
               },
               {
-                label: "Routes",
-                title: "Compare Norway road trip routes",
+                label: "Island archipelago",
+                title: "Lofoten Islands",
+                href: "/destinations/lofoten-islands",
+                description: "Explore fishing villages, Arctic beaches and a weather-shaped drive along the E10.",
+              },
+              {
+                label: "Wild island",
+                title: "Senja",
+                href: "/destinations/senja",
+                description: "Follow a quieter northern island of fjords, ridges and scenic coastal roads.",
+              },
+              {
+                label: "Arctic city",
+                title: "Tromsø",
+                href: "/destinations/tromso",
+                description: "Use Tromsø as a base for northern lights, fjord trips and Arctic city days.",
+              },
+              {
+                label: "Regional guide",
+                title: "Fjords of Norway",
+                href: "/fjords-of-norway",
+                description: "Compare fjord regions, coastal landscapes and the pace needed for a scenic trip.",
+              },
+              {
+                label: "Route collection",
+                title: "Norway road trips",
                 href: "/routes",
-                description: "See how the coastal and island routes connect across the country.",
-              },
-              {
-                label: "Guide",
-                title: "Norway Ferry Guide for Tourists",
-                href: "/guides/norway-ferry-guide-for-tourists",
-                description: "Use the ferry guide to understand the crossings shown on the map.",
-              },
-              {
-                label: "Story",
-                title: "Northern Norway: A Slow Journey Through Light",
-                href: "/stories/northern-norway",
-                description: "Follow the map into the cinematic story and its linked planning paths.",
+                description: "Compare scenic roads, ferry-linked journeys and practical route guides.",
               },
             ]}
           />

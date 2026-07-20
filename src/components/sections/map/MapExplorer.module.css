@@ -159,12 +159,11 @@
 }
 
 .map :global(.map-popup-links) {
-  display: flex;
+  display: grid;
   gap: 0.5rem;
 }
 
 .map :global(.map-popup-link) {
-  flex: 1;
   border: 1px solid rgba(244, 239, 226, 0.14);
   border-radius: 9999px;
   color: rgba(244, 239, 226, 0.82);
@@ -191,6 +190,11 @@
 .map :global(.map-popup-link-primary:hover) {
   background: #ffffff;
   color: #07100f;
+}
+
+.map :global(.map-popup-link:focus-visible) {
+  outline: 2px solid rgba(216, 201, 167, 0.9);
+  outline-offset: 2px;
 }
 
 @media (max-width: 640px) {

@@ -2,6 +2,7 @@
 
 import { useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Compass, Route } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   LayerGroup as LeafletLayerGroup,
@@ -63,8 +64,8 @@ function popupContent(place: MapPlace) {
         </div>
       </div>
       <div class="map-popup-links">
-        <a class="map-popup-link map-popup-link-primary" href="${href}">View guide</a>
-        <a class="map-popup-link" href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <a class="map-popup-link map-popup-link-primary" href="${href}" aria-label="Explore the ${title} travel guide">Explore destination</a>
+        <a class="map-popup-link" href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open ${title} in Google Maps (opens in a new tab)">Open in Google Maps</a>
       </div>
     </article>
   `;
@@ -212,15 +213,26 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
                 <p className="mt-4 border-t border-white/8 pt-4 text-xs font-light leading-[1.7] text-[#f4efe2]/52">
                   {route.season}. {route.travelNote}
                 </p>
-                <a
-                  href={route.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center gap-2 text-[0.59rem] font-medium uppercase tracking-[0.2em] text-[#d8c9a7]/74 transition-colors hover:text-[#f4efe2]"
-                >
-                  Open route in Google Maps
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
+                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  {route.href ? (
+                    <Link
+                      href={route.href}
+                      className="inline-flex items-center gap-2 text-[0.59rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/78 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                    >
+                      Read route guide
+                    </Link>
+                  ) : null}
+                  <a
+                    href={route.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${route.title} in Google Maps (opens in a new tab)`}
+                    className="inline-flex items-center gap-2 text-[0.59rem] font-medium uppercase tracking-[0.2em] text-[#d8c9a7]/74 transition-colors hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  >
+                    Open in Google Maps
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                </div>
               </article>
             ))}
           </div>
@@ -249,7 +261,7 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setActiveFilter(filter.key)}
-                  className={`rounded-full border px-4 py-2.5 text-[0.62rem] font-medium uppercase tracking-[0.22em] transition-colors duration-300 ${
+                  className={`rounded-full border px-4 py-2.5 text-[0.62rem] font-medium uppercase tracking-[0.22em] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050607] ${
                     isActive
                       ? "border-[#d8c9a7]/46 bg-[#d8c9a7]/12 text-[#f4efe2]"
                       : "border-white/10 bg-white/[0.025] text-[#f4efe2]/56 hover:border-white/20 hover:text-[#f4efe2]/84"
