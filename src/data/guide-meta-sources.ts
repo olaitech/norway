@@ -2,14 +2,30 @@ import type { GuideMetaSource } from "@/src/components/shared/GuideMetaFooter";
 
 export const GUIDE_LAST_UPDATED = "May 2026";
 
-const guideSources = {
+export const guideSources = {
   visitNorway: {
     label: "Visit Norway",
     href: "https://www.visitnorway.com/",
   },
+  visitLofotenDriving: {
+    label: "Visit Lofoten: Driving to Lofoten",
+    href: "https://visitlofoten.com/en/topic/drive-to-lofoten-with-rental-car-or-your-own-car/",
+  },
+  visitLofotenTravelTips: {
+    label: "Visit Lofoten: Essential travel tips",
+    href: "https://visitlofoten.com/en/topic/essential-travel-tips-to-lofoten/",
+  },
+  visitLofotenWinter: {
+    label: "Visit Lofoten: Winter guidance",
+    href: "https://visitlofoten.com/en/topic/winter-in-lofoten/",
+  },
   visitHelgeland: {
     label: "Visit Helgeland",
     href: "https://visithelgeland.com/en/destinations/",
+  },
+  visitHelgelandCoastalRoute: {
+    label: "Visit Helgeland: Coastal Route",
+    href: "https://visithelgeland.com/en/coastal-route-national-tourist-route-helgeland-coast/",
   },
   visitTromso: {
     label: "Visit Tromsø",
@@ -18,6 +34,18 @@ const guideSources = {
   reisNordland: {
     label: "Reis Nordland",
     href: "https://www.reisnordland.no/",
+  },
+  reisNordlandFerryTimetables: {
+    label: "Reis Nordland: Ferry timetables",
+    href: "https://www.reisnordland.no/rutetabeller-ferge",
+  },
+  reisNordlandFerryTravel: {
+    label: "Reis Nordland: Ferry travel",
+    href: "https://www.reisnordland.no/ferge",
+  },
+  torghattenBodoVaeroyRostMoskenes: {
+    label: "Torghatten: Bodø–Værøy–Røst–Moskenes",
+    href: "https://www.torghatten.no/our-routes/18-782",
   },
   entur: {
     label: "Entur",
@@ -31,9 +59,37 @@ const guideSources = {
     label: "Norwegian Scenic Routes",
     href: "https://www.nasjonaleturistveger.no/en/",
   },
+  norwegianScenicRoutesLofoten: {
+    label: "Norwegian Scenic Routes: Lofoten",
+    href: "https://www.nasjonaleturistveger.no/en/routes/lofoten",
+  },
+  norwegianScenicRoutesHelgeland: {
+    label: "Norwegian Scenic Routes: Helgelandskysten",
+    href: "https://www.nasjonaleturistveger.no/en/routes/helgelandskysten/",
+  },
+  norwegianScenicRoutesGeirangerTrollstigen: {
+    label: "Norwegian Scenic Routes: Geiranger–Trollstigen",
+    href: "https://www.nasjonaleturistveger.no/en/routes/geiranger--trollstigen/",
+  },
+  norwegianScenicRoutesHardanger: {
+    label: "Norwegian Scenic Routes: Hardanger",
+    href: "https://www.nasjonaleturistveger.no/en/routes/hardanger",
+  },
+  norwegianScenicRoutesAurlandsfjellet: {
+    label: "Norwegian Scenic Routes: Aurlandsfjellet",
+    href: "https://www.nasjonaleturistveger.no/en/routes/aurlandsfjellet/",
+  },
   fjordNorway: {
     label: "Fjord Norway",
     href: "https://www.fjordnorway.com/en",
+  },
+  fjordNorwayGeirangerfjord: {
+    label: "Fjord Norway: Geirangerfjord",
+    href: "https://www.fjordnorway.com/en/see-and-do/the-geirangerfjord",
+  },
+  fjordNorwayNaeroyfjord: {
+    label: "Fjord Norway: Nærøyfjord",
+    href: "https://www.fjordnorway.com/en/attractions/the-naeroyfjord",
   },
   visitNorwayFjords: {
     label: "Visit Norway - Fjords",
@@ -54,6 +110,10 @@ const guideSources = {
   statensVegvesen: {
     label: "Statens vegvesen",
     href: "https://www.vegvesen.no/",
+  },
+  statensVegvesenTraffic: {
+    label: "Statens vegvesen: Traffic information",
+    href: "https://www.vegvesen.no/trafikk",
   },
   varsom: {
     label: "Varsom",
@@ -86,12 +146,32 @@ export const guideSourceSets = {
     guideSources.visitNorway,
     guideSources.entur,
   ],
+  roadTripLofoten: [
+    guideSources.norwegianScenicRoutesLofoten,
+    guideSources.visitLofotenDriving,
+    guideSources.visitLofotenTravelTips,
+    guideSources.visitLofotenWinter,
+    guideSources.statensVegvesenTraffic,
+    guideSources.torghattenBodoVaeroyRostMoskenes,
+  ],
+  roadTripHelgeland: [
+    guideSources.norwegianScenicRoutesHelgeland,
+    guideSources.visitHelgelandCoastalRoute,
+    guideSources.reisNordlandFerryTimetables,
+    guideSources.reisNordlandFerryTravel,
+    guideSources.statensVegvesen,
+  ],
   fjordsNorway: [
     guideSources.visitNorwayFjords,
     guideSources.visitNorwayMonthByMonth,
     guideSources.fjordNorway,
+    guideSources.fjordNorwayGeirangerfjord,
+    guideSources.fjordNorwayNaeroyfjord,
     guideSources.unescoWestNorwegianFjords,
     guideSources.norwegianScenicRoutes,
+    guideSources.norwegianScenicRoutesGeirangerTrollstigen,
+    guideSources.norwegianScenicRoutesHardanger,
+    guideSources.norwegianScenicRoutesAurlandsfjellet,
   ],
   northernLightsWeatherSafety: [
     guideSources.visitNorway,

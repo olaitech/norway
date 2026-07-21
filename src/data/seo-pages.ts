@@ -237,9 +237,9 @@ export const seoPages = {
   },
   lofotenRoadTrip: {
     meta: {
-      title: "Lofoten Road Trip (5-7 Days)",
+      title: "Lofoten Road Trip: 3, 5 or 7 Days",
       description:
-        "A 5-7 day Lofoten road trip guide focused on island roads, ferries, weather windows and realistic pacing between fishing villages.",
+        "A practical Lofoten road trip guide for 3, 5 or 7 days, with an arrival-aware E10 route, ferry planning, bases, parking and weather checks.",
     },
     jsonLd: {
       breadcrumbs: [
@@ -249,109 +249,231 @@ export const seoPages = {
       ],
       article: true,
     },
-    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
+    updatedDate: "2026-07-21",
     hero: {
       label: "Route field note",
       title: "Lofoten Road Trip",
       intro:
-        "A cinematic 5-7 day route through fishing villages, Arctic beaches and roads framed by sharp granite peaks.",
+        "A practical driving guide through fishing villages, Arctic beaches and roads framed by sharp granite peaks.",
       imageSrc: "/images/cards/lofoten.png",
       imageAlt: "Fishing villages and steep mountains in Lofoten at dusk",
     },
+    answerBlock: {
+      label: "At a glance",
+      title: "Drive Lofoten as a slow E10 journey",
+      summary:
+        "Five to seven days is the strongest first-trip range, but the route works in either direction. Start east to west from Evenes or Svolvær, or west to east after a Bodø–Moskenes vehicle ferry; short map distances become longer once stops, weather, traffic and parking are part of the day.",
+      bullets: [
+        "Norwegian Scenic Route Lofoten follows E10 between Å and Raftsundet, with worthwhile detours rather than a one-way official direction.",
+        "Use three days for one part of the islands, five days for eastern/central and western Lofoten, and seven days for a slower full-route journey with a flexible day.",
+        "Plan ferry crossings, accommodation, parking pressure and current road conditions together before fixing each day.",
+      ],
+    },
     sections: [
       {
-        label: "01 / Suggested rhythm",
-        title: "How 5-7 days can flow",
+        label: "01 / Route direction",
+        title: "Choose direction by arrival point",
         intro:
-          "Keep the route compact. Move westward gradually and avoid changing accommodation every night.",
+          "Norwegian Scenic Route Lofoten runs between Å and Raftsundet along E10, with detours to villages and beaches. It works equally well in either direction; let your airport, ferry or onward journey decide the order.",
+        layout: "list",
         cards: [
           {
-            label: "Day 1-2",
-            title: "Arrive and settle east",
+            label: "Evenes or Svolvær arrival",
+            title: "Drive east to west",
             description:
-              "Start around Svolvaer or Henningsvaer with short drives and evening harbor walks.",
+              "Evenes → Svolvær → Henningsvær → Haukland / Unstad → Nusfjord → Ramberg → Hamnøy → Sakrisøy → Reine → Å. Treat Henningsvær, Haukland, Unstad and Nusfjord as detours from the E10 spine, not additions to one rushed transfer day.",
           },
           {
-            label: "Day 3-4",
-            title: "Move through central islands",
+            label: "Bodø–Moskenes vehicle ferry",
+            title: "Drive west to east",
             description:
-              "Link mountain viewpoints, white-sand beaches and small villages without rushing.",
+              "Moskenes, with Å as a short terminal spur if it matters to you, → Reine → Sakrisøy → Hamnøy → Ramberg → Nusfjord → Haukland / Unstad → Henningsvær → Svolvær → onward toward Evenes or Vesterålen. This avoids driving back west after arriving at the western ferry terminal.",
           },
           {
-            label: "Day 5-7",
-            title: "End farther west",
+            label: "Scenic Route context",
+            title: "Use detours selectively",
             description:
-              "Use Reine and nearby roads for weather windows, photography and slower final days.",
+              "The official Scenic Route gives a useful framework, but it is not a checklist. Keep beach, harbour and photo detours inside the region where you are sleeping, then leave time for weather and parking.",
           },
         ],
       },
       {
-        label: "02 / Signature moments",
-        title: "What defines the route",
+        label: "02 / Timeframes",
+        title: "Match the route to your days",
         intro:
-          "This road trip works best when landscape, weather and light become the core itinerary.",
+          "The practical difference between three, five and seven days is how much of the island chain you choose, not how quickly you drive between the same named stops.",
         cards: [
           {
-            title: "Arctic villages",
+            label: "3 days",
+            title: "Choose one side",
             description:
-              "Small harbors and red cabins create quiet cultural anchors between scenic drives.",
+              "Use one base and choose either the eastern/central side around Svolvær, Henningsvær and Haukland, or the western side around Ramberg, Reine and Å. Skip the far end of the islands rather than collecting every stop.",
           },
           {
-            title: "Mountain roads",
+            label: "5 days",
+            title: "Use two bases",
             description:
-              "Short stretches can feel epic. Stop often and keep your daily drive targets low.",
+              "Combine eastern or central Lofoten with the west, changing base once. Leave one flexible period for weather, a beach, a hike or a slower village day instead of filling every afternoon.",
           },
           {
-            title: "Beaches and weather",
+            label: "7 days",
+            title: "Travel the full route slowly",
             description:
-              "White beaches under fast-moving skies change character by the hour.",
+              "Use two or three bases, include the full E10 corridor and keep a flexible day for weather, hiking, photography or a ferry change. The extra time is for margin, not longer daily mileage.",
           },
         ],
       },
       {
-        label: "03 / Light and season",
-        title: "Midnight sun to northern lights",
+        label: "03 / Bases",
+        title: "Change bases only when it saves driving",
         intro:
-          "Lofoten is cinematic year-round, but each season changes road conditions and mood.",
+          "A base change trades checkout time for fewer repeated drives. Choose it when the next area will shape more than one day, not simply to sleep nearer to one viewpoint.",
         cards: [
           {
-            label: "May-July",
-            title: "Midnight sun season",
+            label: "One base",
+            title: "Best for a short trip",
             description:
-              "Extended daylight supports flexible driving and late-night viewpoints.",
+              "Use one practical region when you have three days or less: an eastern base in Svolvær, Kabelvåg or Henningsvær, a central base around Leknes, Ballstad or Ramberg / Flakstad, or a western base around Reine, Hamnøy, Sakrisøy, Sørvågen or Å.",
           },
           {
-            label: "Late Sep-March",
-            title: "Northern lights potential",
+            label: "Two bases",
+            title: "Best first-trip balance",
             description:
-              "Dark hours return and aurora opportunities increase with clear skies.",
+              "For five days, pair an eastern or central base with a western base. This keeps the E10 route connected without changing accommodation every night or repeating long drives across the islands.",
           },
           {
-            label: "Shoulder months",
-            title: "Quieter roads",
+            label: "Three bases",
+            title: "Only with a full week",
             description:
-              "Spring and autumn usually bring fewer visitors and strong atmospheric contrasts.",
+              "A week can support eastern, central and western regions if you value different morning and evening light. Keep the third base optional when weather or ferry timing changes the plan.",
+          },
+        ],
+      },
+      {
+        label: "04 / Ferries and boats",
+        title: "Check the exact boat before planning a car route",
+        intro:
+          "Ferries are part of the route, but not every water connection moves vehicles. Check the current operator information before committing to an arrival or departure day.",
+        cards: [
+          {
+            title: "Bodø–Moskenes by vehicle ferry",
+            description:
+              "The Bodø–Moskenes service can carry vehicles. Reservations may cover part of the capacity, while ordinary quay queuing may still be possible under current operator guidance; rules, capacity and booking arrangements can change.",
+          },
+          {
+            title: "Passenger express boats are different",
+            description:
+              "A passenger express boat does not necessarily have a vehicle deck. Do not assume that every ferry or boat connection can take a car, campervan or motorhome.",
+          },
+          {
+            title: "Re-check before travel",
+            description:
+              "Use the current Torghatten route page for the Bodø–Værøy–Røst–Moskenes service, then confirm ferry changes through the official planners before the driving day begins.",
+            href: "/guides/norway-ferry-guide-for-tourists",
+          },
+        ],
+      },
+      {
+        label: "05 / Summer traffic",
+        title: "Leave room for parking and queues",
+        intro:
+          "July and other peak-summer periods can make the small roads, villages, beaches and trailheads feel much slower than the map suggests.",
+        cards: [
+          {
+            title: "Use marked parking",
+            description:
+              "Parking is limited at popular beaches, villages and trailheads. Use marked spaces only; passing places and road shoulders must remain clear for traffic and emergency access.",
+          },
+          {
+            title: "Expect pressure at the classics",
+            description:
+              "Reine, Henningsvær and popular beach areas can require extra time for traffic and parking. Arriving early or late may reduce pressure, but it is never a guarantee.",
+          },
+          {
+            title: "Keep the day flexible",
+            description:
+              "Do not schedule every hour around a viewpoint or trailhead. Keep enough margin to choose another stop when a car park, road or ferry is busier than expected.",
+          },
+        ],
+      },
+      {
+        label: "06 / Vehicle choice",
+        title: "Choose a vehicle that suits the road rhythm",
+        intro:
+          "Lofoten is accessible by car and campervan, but the vehicle changes how easily you can use narrow roads, small parking areas and busy village approaches.",
+        cards: [
+          {
+            title: "A normal-sized car is usually easiest",
+            description:
+              "For a first driving trip, a normal-sized car is usually the simplest option for village parking, narrow lanes and flexible stops. Read the wider driving guide for Norwegian road rules and seasonal preparation.",
+            href: "/guides/driving-in-norway-what-visitors-should-know",
+          },
+          {
+            title: "Campervans and motorhomes are possible",
+            description:
+              "Campervans and motorhomes are not prohibited, but larger vehicles need more care around narrow roads, busy approaches and compact parking. Use established campsites and follow the camping guidance for detailed rules.",
+            href: "/guides/camping-rules-in-norway",
+          },
+        ],
+      },
+      {
+        label: "07 / Driving seasons",
+        title: "Summer and winter need different margins",
+        intro:
+          "Lofoten is not automatically inaccessible in winter, but the season changes the experience, vehicle preparation and amount of time a realistic road day needs.",
+        cards: [
+          {
+            label: "Summer",
+            title: "Long light, higher pressure",
+            description:
+              "Long daylight, more open services and flexible evening driving make summer straightforward in some ways, but visitor pressure, busy parking and ferry demand can slow the route.",
+          },
+          {
+            label: "Winter",
+            title: "Short light, changing conditions",
+            description:
+              "Snow, ice, slush, strong winds and short daylight require conservative plans. Exposed bridges, tunnels and roads can have restrictions, while services and departures may be reduced or changed.",
+          },
+        ],
+      },
+      {
+        label: "08 / Before each driving day",
+        title: "Check conditions, then keep the route adjustable",
+        intro:
+          "Use current official information rather than yesterday's forecast or an old ferry screenshot. Conditions can change between the first coffee stop and the next bridge.",
+        cards: [
+          {
+            title: "Road and wind checks",
+            description:
+              "Check Statens vegvesen for road conditions, closures, wind restrictions, bridges, tunnels, traffic messages and webcams before driving. Severe weather can change the practical route without much notice.",
+          },
+          {
+            title: "Ferry and weather checks",
+            description:
+              "Check the ferry operator and journey planner for changes, then use the weather forecast to decide which beach, hike or long drive should stay flexible. Keep the map open for an alternative stop.",
+            href: "/map",
           },
         ],
       },
     ],
     relatedLinks: [
-      { label: "Browse the route hub", href: "/routes" },
-      { label: "Read the Lofoten Islands destination guide", href: "/destinations/lofoten-islands" },
-      { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
-      { label: "See the northern lights guide", href: "/northern-lights-norway" },
+      { label: "Compare villages, bases and seasons", href: "/destinations/lofoten-islands" },
+      { label: "Read the Norway ferry guide", href: "/guides/norway-ferry-guide-for-tourists" },
+      { label: "Driving in Norway: what visitors should know", href: "/guides/driving-in-norway-what-visitors-should-know" },
+      { label: "Read the camping rules guide", href: "/guides/camping-rules-in-norway" },
+      { label: "Open the Norway map", href: "/map" },
     ],
     cta: {
-      label: "Next step",
-      text: "Compare this route with Helgeland or move into destination-level planning.",
-      primaryHref: "/routes/helgeland-coast-road-trip",
-      primaryLabel: "View Helgeland route",
+      label: "Continue planning",
+      text: "Check ferry practicalities and current conditions, then use the map to keep bases, detours and daily stops realistic.",
+      primaryHref: "/guides/norway-ferry-guide-for-tourists",
+      primaryLabel: "Read ferry guide",
       secondaryHref: "/map",
       secondaryLabel: "Open map",
     },
     guideMeta: {
-      lastUpdated: GUIDE_LAST_UPDATED,
-      sources: guideSourceSets.roadTripScenic,
+      lastUpdated: "21 July 2026",
+      sources: guideSourceSets.roadTripLofoten,
     },
   },
   helgelandCoastRoadTrip: {
@@ -371,7 +493,7 @@ export const seoPages = {
       ],
       article: true,
     },
-    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
+    updatedDate: "2026-07-21",
     hero: {
       label: "Route field note",
       title: "Helgeland Coast Road Trip",
@@ -381,100 +503,266 @@ export const seoPages = {
       imageAlt: "Island coastline and a quiet road along the Helgeland Coast",
       imagePosition: "center 42%",
     },
+    answerBlock: {
+      label: "Quick route answer",
+      title: "Drive Fv17 as the journey, not as a shortcut north.",
+      summary:
+        "The Helgeland Coast is best driven as a dedicated coastal road trip, with ferry departures setting the day. The scenic route is a slower alternative to the E6; allow five to seven days for a first trip, or more if island detours matter.",
+      bullets: [
+        "South to north is a natural option when you are travelling toward Bodø, while the reverse direction works equally well when it suits your arrival plans.",
+        "Plan around the six main Fv17 ferries, then add island detours only when you have time for their separate connections.",
+        "Check live departures and traffic information again before each ferry day, especially outside summer.",
+      ],
+    },
     sections: [
       {
         label: "01 / Route character",
-        title: "Why Helgeland feels different",
+        title: "The best way to drive the Helgeland Coast",
         intro:
-          "Helgeland is less about single iconic stops and more about rhythm, ferries and calm landscapes.",
+          "Use Fv17 for the coast and the E6 when speed matters. The scenic route runs between Holm and Godøystraumen, with a Torghatten detour; it is a landscape-led journey, not a faster substitute for the inland road. The rhythm of ferries, quiet coastal roads, small harbours and open horizons is part of the journey.",
         cards: [
           {
-            title: "Island hopping pace",
+            title: "Let the ferries set the pace",
             description:
-              "Ferries naturally slow the trip and create a more intentional travel cadence.",
+              "Build each day around a crossing first, then place driving, food stops and accommodation around the remaining time. A ferry queue or a missed departure should not turn the whole day into a race.",
           },
           {
-            title: "Coastal road continuity",
+            title: "Choose a direction that fits the trip",
             description:
-              "Frequent shoreline access keeps the sea present throughout most of the route.",
+              "South to north, from Holm toward Bodø, is a natural option for travellers heading north. Drive the other way if your flights, train, rental car or onward journey make that more practical.",
           },
           {
-            title: "Lower visual noise",
+            title: "Keep the daily range modest",
             description:
-              "Smaller settlements and open horizons make it ideal for reflective road travel.",
+              "The distance on a map hides ferry waits, quay approaches and stops worth making. Plan fewer bases and avoid treating every island as a drive-by detour.",
           },
         ],
       },
       {
-        label: "02 / Places to shape around",
-        title: "Anchor points",
+        label: "02 / Route length",
+        title: "How many days do you need?",
         intro:
-          "Build around a few distinct clusters and avoid overloading the route with daily transfers.",
+          "Three days can cover the through-route at a purposeful pace; five to seven days is a more useful first-trip range. Ten days creates space for island stays, weather buffers and quieter detours.",
         cards: [
           {
-            label: "Mountain backdrop",
-            title: "Seven Sisters range",
+            label: "Minimum",
+            title: "3 days: drive the main route",
             description:
-              "Use viewpoints and detours where weather reveals the mountain wall above the coast.",
+              "Enough for the coastal through-route and a few short stops, but not for outer islands or a relaxed response to weather. Keep accommodation changes and detours to a minimum.",
           },
           {
-            label: "Island detour",
-            title: "Donna and Heroy",
+            label: "Comfortable short trip",
+            title: "5 days: add selected detours",
             description:
-              "Quiet roads, sea-facing farms and small harbors define this slower segment.",
+              "A realistic length for the main scenic route with Torghatten, the Seven Sisters area or one island-related detour, while retaining useful ferry buffer time.",
           },
           {
-            label: "Ferry junction",
-            title: "Coastal crossing nodes",
+            label: "Recommended first trip",
+            title: "7 days: travel at the coast's rhythm",
             description:
-              "Check key ferry transitions before booking stays and daily stops.",
+              "The best balance for two-night stays, a weather-flexible walking day and a choice between places such as Vega, Dønna, Herøy or Rødøy rather than rushing through all of them.",
+          },
+          {
+            label: "Slow route",
+            title: "10 days: make room for the islands",
+            description:
+              "Use the extra days for a deeper regional loop, outer-island overnights or time around Svartisen. It also leaves room for ferry changes without sacrificing the journey itself.",
           },
         ],
       },
       {
-        label: "03 / Seasonal notes",
-        title: "When to go",
+        label: "03 / Mainline ferries",
+        title: "The six ferries along Fv17",
         intro:
-          "Late spring to early autumn is usually easiest for driving and island logistics.",
+          "These are the six main car-ferry crossings on the official Scenic Route Helgelandskysten. Island ferries and express boats are additional connections, not part of this through-route count.",
+        layout: "list",
         cards: [
           {
-            label: "May-Aug",
-            title: "Long daylight and stable rhythm",
+            title: "Holm – Vennesund",
             description:
-              "Best window for extended evening stops and flexible coastal detours.",
+              "The southern ferry link on the through-route between the Bindal and Sømna sides of the coast.",
           },
           {
-            label: "Sep-Oct",
-            title: "Atmospheric shoulder season",
+            title: "Horn – Anddalsvågen",
             description:
-              "Fewer travelers, darker skies and strong weather texture across the coast.",
+              "The Fv17 crossing west of the Seven Sisters area, following the southern ferry link.",
           },
           {
-            label: "Winter",
-            title: "Selective route planning",
+            title: "Forvik – Tjøtta",
             description:
-              "Possible in parts, but weather and ferry changes require tighter planning margins.",
+              "A central southern crossing that threads the route between the Vevelstad and Alstahaug sides of Helgeland.",
+          },
+          {
+            title: "Levang – Nesna",
+            description:
+              "A mainland link that joins the central and northern parts of the coastal drive.",
+          },
+          {
+            title: "Kilboghavn – Jektvik",
+            description:
+              "The Arctic Circle crossing on the main route, where an unhurried day is particularly valuable.",
+          },
+          {
+            title: "Ågskardet – Forøy",
+            description:
+              "The northern scenic-route ferry before Fv17 continues toward the Godøystraumen end of the official route.",
+          },
+        ],
+      },
+      {
+        label: "04 / Ferry planning",
+        title: "Do you need to book the ferries?",
+        intro:
+          "For ordinary car-ferry travel, Reis Nordland currently advises drivers to use the quay queue rather than buy a ticket or pre-book. Payment is normally registered automatically through licence-plate recognition when boarding. Treat that as current operator guidance, not a rule that automatically applies to every boat or special vehicle.",
+        cards: [
+          {
+            title: "Use the quay queue",
+            description:
+              "Arrive in good time, join the marked line and follow the crew's loading directions. This is usually simpler than trying to turn every crossing into a reservation.",
+          },
+          {
+            title: "Expect busier summer crossings",
+            description:
+              "Reis Nordland recommends arriving early in summer and on public holidays. Build margin into days with a fixed accommodation check-in or an important onward connection.",
+          },
+          {
+            title: "Check the specific service",
+            description:
+              "Capacity and booking expectations can differ for island detours, express boats, larger vehicles and seasonal services. Confirm the exact journey with the operator before setting the plan.",
+          },
+        ],
+      },
+      {
+        label: "05 / Live travel information",
+        title: "Where to check current ferry timetables",
+        intro:
+          "Use Reis Nordland's journey planner or ferry timetable page for the exact sailing you intend to take. Departures, holiday patterns and service changes can vary by season, so do not plan from a copied timetable.",
+        cards: [
+          {
+            title: "Start with Reis Nordland",
+            description:
+              "Search the full journey, not only one ferry. The planner is the best place to identify current departures and see whether a day still works end to end.",
+          },
+          {
+            title: "Check again before driving to the quay",
+            description:
+              "Review operator traffic messages on the travel day. A delayed service can recover time, so meet the original scheduled departure unless the operator says otherwise.",
+          },
+          {
+            title: "Pair departures with road information",
+            description:
+              "Use current road and traffic information alongside ferry updates, especially in exposed weather. The Norway ferry guide explains the wider practicalities of ferry travel.",
+            href: "/guides/norway-ferry-guide-for-tourists",
+          },
+        ],
+      },
+      {
+        label: "06 / Seasonal planning",
+        title: "Best time to drive the Helgeland Coast",
+        intro:
+          "Late spring to early autumn is usually easiest for a first drive because the days are long and the range of open services is broader. The best month still depends on whether you value long light, quieter roads or winter atmosphere.",
+        cards: [
+          {
+            label: "June-August",
+            title: "The fullest summer route",
+            description:
+              "Long days make ferry-linked driving more forgiving, and island stays, walks, food stops and activities are more likely to be available. It is also the period when queues deserve the most attention.",
+          },
+          {
+            label: "May and September",
+            title: "A calmer shoulder-season trade-off",
+            description:
+              "These months can feel quieter and more atmospheric, but daily departures, opening hours and weather tolerance become more important. Check the actual seasonal timetable before booking a chain of stays.",
+          },
+          {
+            label: "October-April",
+            title: "A focused winter journey",
+            description:
+              "Choose a smaller section, flexible bases and a weather-aware plan. This is better suited to quiet coastal stays than trying to recreate a summer island-hopping itinerary.",
+          },
+        ],
+      },
+      {
+        label: "07 / Winter access",
+        title: "Can you drive Kystriksveien in winter?",
+        intro:
+          "The route is not automatically closed in winter, but a continuous road trip depends on current road conditions, ferry operations, weather and available accommodation. Check each road, ferry and service individually before you commit to the next stage.",
+        cards: [
+          {
+            title: "Plan route by route",
+            description:
+              "A road trip is possible when the relevant roads and ferries are operating, but weather, wind and daylight can reshape the practical route at short notice.",
+          },
+          {
+            title: "Travel with proper winter readiness",
+            description:
+              "From roughly October to April, winter conditions are common on many Helgeland roads. Use suitable tyres, a properly equipped vehicle and only drive within your winter experience.",
+          },
+          {
+            title: "Expect fewer options",
+            description:
+              "Ferries may run less often, and individual attractions, mountain trails, cafés and island facilities can be seasonal or temporarily unavailable. Leave more buffer than you would in summer.",
+          },
+        ],
+      },
+      {
+        label: "08 / Stops and detours",
+        title: "Best stops along the National Scenic Route",
+        intro:
+          "These are practical anchors for a Helgeland itinerary, not a checklist. Choose a few that match your direction, ferry rhythm and weather rather than trying to collect every stop in one drive.",
+        cards: [
+          {
+            title: "Brønnøysund and Torghatten",
+            description:
+              "A strong southern base for the pierced mountain, coastal harbour life and a first overnight before the route moves north.",
+          },
+          {
+            title: "Vega Archipelago",
+            description:
+              "A separate island detour for World Heritage culture, cycling and a slower stay. Add it only when the boat connection and an overnight fit the route.",
+          },
+          {
+            title: "Sandnessjøen and the Seven Sisters",
+            description:
+              "Use the central coast for the mountain skyline and a base for nearby ferry-linked island roads. A summit day needs suitable conditions and more time than a roadside stop.",
+          },
+          {
+            title: "Herøy and Dønna",
+            description:
+              "Low island roads, farmland and open sea make this a rewarding slower detour from the main Fv17 line, especially with two nights in the area.",
+          },
+          {
+            title: "Rødøy and the northern islands",
+            description:
+              "Use an extra day or more for these outer-coast places. Their boat links make them memorable, but they should not be fitted into a tight transfer day.",
+          },
+          {
+            title: "Svartisen and Ureddplassen",
+            description:
+              "Northern Helgeland combines glacier landscapes with one of the route's distinctive rest areas. Check current access and seasonal services before adding a glacier-related detour.",
           },
         ],
       },
     ],
     relatedLinks: [
       { label: "Browse the route hub", href: "/routes" },
-      { label: "See the Lofoten road trip", href: "/routes/lofoten-road-trip" },
+      { label: "Read the Helgeland Coast travel guide", href: "/destinations/helgeland-coast" },
+      { label: "Read the Norway ferry guide", href: "/guides/norway-ferry-guide-for-tourists" },
+      { label: "Driving in Norway: what visitors should know", href: "/guides/driving-in-norway-what-visitors-should-know" },
       { label: "Read the seasonal planning guide", href: "/best-time-to-visit-norway" },
       { label: "Open the Norway map", href: "/map" },
     ],
     cta: {
       label: "Continue planning",
-      text: "Pair Helgeland with Lofoten or keep it as a standalone slower coastal journey.",
-      primaryHref: "/routes",
-      primaryLabel: "Back to route hub",
-      secondaryHref: "/#destinations",
-      secondaryLabel: "View destinations",
+      text: "Check the ferry practicalities, then use the map to keep overnight stops and coastal detours realistic.",
+      primaryHref: "/guides/norway-ferry-guide-for-tourists",
+      primaryLabel: "Read ferry guide",
+      secondaryHref: "/map",
+      secondaryLabel: "Open map",
     },
     guideMeta: {
-      lastUpdated: GUIDE_LAST_UPDATED,
-      sources: guideSourceSets.destinationHelgeland,
+      lastUpdated: "July 2026",
+      sources: guideSourceSets.roadTripHelgeland,
     },
   },
   northernLightsNorway: {
@@ -609,7 +897,7 @@ export const seoPages = {
       ],
       article: true,
     },
-    updatedDate: CURRENT_ARTICLE_UPDATE_DATE,
+    updatedDate: "2026-07-21",
     hero: {
       label: "Destination guide",
       title: "Fjords of Norway",
@@ -625,9 +913,9 @@ export const seoPages = {
       summary:
         "Water, tunnels, ferries and mountain roads make distances feel longer than the map suggests. The calmest fjord trips use fewer bases, more buffer and a slower pace.",
       bullets: [
-        "Most famous fjords sit in Western Norway, but the north adds a quieter Arctic version.",
-        "Plan ferry crossings and overnight stops together.",
-        "Late spring through early autumn is usually the easiest first-trip window.",
+        "For a first trip, choose one region: Nærøyfjord is a strong all-round, car-free-friendly option; Geirangerfjord offers classic dramatic scenery; Hardangerfjord suits road trips; and Lysefjord suits hiking-focused travel.",
+        "Geirangerfjord and Nærøyfjord are separate fjord areas that together form the UNESCO World Heritage property West Norwegian Fjords – Geirangerfjord and Nærøyfjord. That designation does not extend to Sognefjord, Hardangerfjord or Lysefjord.",
+        "Plan ferry crossings and overnight stops together. Late spring through early autumn is usually the easiest first-trip window.",
       ],
     },
     sections: [
@@ -659,22 +947,27 @@ export const seoPages = {
         label: "02 / Regions",
         title: "Where the main fjord landscapes sit",
         intro:
-          "The broad shape is simple: the classic fjord belt is in the west, but there are quieter fjord landscapes further north and smaller systems elsewhere along the coast.",
+          "The practical map is regional: choose one connected group rather than treating every famous fjord as part of a single short circuit.",
         cards: [
           {
-            title: "Western Norway",
+            title: "Bergen, Hardanger and the Sognefjord arms",
             description:
-              "The classic fjord belt, with the best-known scenery and the densest network of visitor stops.",
+              "Bergen, Hardangerfjord, Flåm, Aurlandsfjord and Nærøyfjord make a natural western cluster when you allow time for ferries, mountain roads and weather.",
           },
           {
-            title: "Southern and central fjords",
+            title: "Nordfjord, Geiranger and Ålesund",
             description:
-              "A quieter mix of coast, valley and water that often suits slower road trips and fewer overnight changes.",
+              "This is a distinct northern-western road-trip group, combining fjord, glacier country and mountain scenery without returning to Bergen between each stop.",
+          },
+          {
+            title: "Stavanger and Lysefjord",
+            description:
+              "Treat Lysefjord as its own southern cluster, with Stavanger as the practical base for boat views and hiking access.",
           },
           {
             title: "Northern Norway",
             description:
-              "Broader sky, more space and longer light, with fjords that feel more open and less crowded.",
+              "Build Trollfjord with Lofoten and Vesterålen. Senja and Lyngen are separate Arctic fjord landscapes, not quick additions to a short western-fjord trip.",
           },
         ],
       },
@@ -682,21 +975,23 @@ export const seoPages = {
         label: "Explore the landscape",
         title: "Norway’s Fjord Constellation",
         intro:
-          "Move through Norway’s best-known fjord landscapes. Select a point to see where it sits, what shapes it and how it connects to a slower journey.",
+          "Start with the experience you want, then keep the trip inside one connected region rather than trying to reach every famous fjord.",
         layout: "constellation",
         cards: [
           {
             label: "Møre og Romsdal / Sunnmøre",
             title: "Geirangerfjord",
             description:
-              "One of the classic western fjords, known for steep walls and iconic viewpoints; plan it as part of a slower road day rather than a quick stop.",
-            externalUrl: "https://www.geirangerfjord.no/",
+              "A classic, high-drama fjord for waterfalls, steep walls, viewpoints and boat-and-road scenery. Together with the separate Nærøyfjord area, it forms the UNESCO World Heritage property West Norwegian Fjords – Geirangerfjord and Nærøyfjord.",
+            externalUrl:
+              "https://www.fjordnorway.com/en/see-and-do/the-geirangerfjord",
+            secondaryExternalUrl: "https://www.geirangerfjord.no/",
           },
           {
             label: "Vestland / Sogn",
             title: "Nærøyfjord",
             description:
-              "A narrow UNESCO fjord that many travelers pair with Aurlandsfjord and Flåm; it works best inside a longer west-coast loop.",
+              "A strong all-round first fjord and a practical car-free choice: boat and public-transport links connect Flåm, Aurland and Gudvangen. Nærøyfjord branches from Aurlandsfjord within the wider Sognefjord system.",
             externalUrl:
               "https://www.fjordnorway.com/en/attractions/the-naeroyfjord",
           },
@@ -704,7 +999,7 @@ export const seoPages = {
             label: "Vestland / Sogn",
             title: "Sognefjord",
             description:
-              "Norway’s longest and broadest fjord system; a strong anchor for scale, detours and slower travel.",
+              "Norway’s largest fjord system and a travel region rather than one stop. Aurlandsfjord branches from Sognefjord, then Nærøyfjord branches from Aurlandsfjord; choose one part of the system rather than attempting all of it.",
             externalUrl: "https://www.sognefjord.no/",
             secondaryExternalUrl:
               "https://www.fjordnorway.com/no/destinasjoner/sognefjord",
@@ -713,21 +1008,21 @@ export const seoPages = {
             label: "Vestland / Hardanger",
             title: "Hardangerfjord",
             description:
-              "Known for orchards, waterfalls and side trips; a strong choice for spring light and shoulder-season travel.",
+              "The strongest road-trip region for travellers who want orchards, waterfalls, ferries and slow drives in one connected area. It pairs naturally with Bergen, but needs time rather than a rushed detour.",
             externalUrl: "https://hardangerfjord.com/",
           },
           {
             label: "Rogaland / Stavanger area",
             title: "Lysefjord",
             description:
-              "Famous for Preikestolen and Kjerag; treat it as an access-and-weather route rather than a quick scenic stop.",
+              "A Stavanger-based fjord for hiking-focused trips, with Preikestolen, Kjerag and boat views. Treat it as its own southern cluster rather than adding it to a short western-fjord loop.",
             externalUrl: "https://lysefjorden365.com/no/",
           },
           {
             label: "Vestland / Sogn",
             title: "Aurlandsfjord",
             description:
-              "A scenic arm of Sognefjord near Flåm, combining fjord water, mountain roads and relatively easy access.",
+              "A branch of Sognefjord where Flåm and Aurland sit by the water. It links naturally with Nærøyfjord and Gudvangen by road, boat and public transport.",
             externalUrl:
               "https://www.fjordtours.com/no/norge/reisemal/fjord/aurlandsfjorden",
           },
@@ -735,14 +1030,14 @@ export const seoPages = {
             label: "Vestland / Nordfjord",
             title: "Nordfjord",
             description:
-              "A classic western fjord between coast and glacier country, suited to a broader route beyond the headline destinations.",
+              "A quieter road-trip alternative, combining fjord, glacier and mountain scenery. It works naturally with Geirangerfjord and Ålesund rather than the Bergen–Flåm cluster.",
             externalUrl: "https://www.nordfjord.no/",
           },
           {
             label: "Møre og Romsdal / Sunnmøre",
             title: "Hjørundfjord",
             description:
-              "A quieter western fjord framed by steep peaks, with less traffic than the best-known icons.",
+              "A quieter atmospheric fjord near Ålesund, suited to slow roads, small harbours and mountain views rather than a cross-country detour.",
             externalUrl:
               "https://www.fjordtours.com/no/norge/reisemal/fjord/hjorundfjorden",
           },
@@ -750,7 +1045,7 @@ export const seoPages = {
             label: "Nordland / Lofoten–Vesterålen",
             title: "Trollfjord",
             description:
-              "A short but iconic northern fjord, best experienced through an Arctic coastal route, boat journey or Lofoten extension.",
+              "A Northern Norway boat-trip experience on the Lofoten–Vesterålen side of the country. Keep it inside an Arctic itinerary rather than a short western-fjord circuit.",
             externalUrl: "https://visitlofoten.com/reisemal/trollfjorden/",
           },
         ],
@@ -759,7 +1054,7 @@ export const seoPages = {
         label: "04 / Northern Norway",
         title: "Fjords in the north",
         intro:
-          "Those classic fjords are only one part of the Norway story. Northern Norway shifts the pace: broader light, quieter roads, islands, ferries, fishing communities and weather-shaped travel.",
+          "Those classic fjords are only one part of the Norway story. In the north, build Trollfjord with Lofoten and Vesterålen; treat Senja and Lyngen as their own Arctic fjord landscapes rather than extensions of a Bergen or Ålesund trip.",
         layout: "split",
         media: {
           imageSrc: "/images/destinations/fjords/norway-fjord2.jpg",
@@ -813,26 +1108,26 @@ export const seoPages = {
       },
       {
         label: "06 / Movement",
-        title: "How to travel through fjord country",
+        title: "Match travel mode to the fjord",
         intro:
-          "The cleanest fjord trip is rarely the shortest one. It is the one where the road, ferry and overnight stop are planned together.",
+          "The cleanest fjord trip is rarely the shortest one. Match the route to the experience you want, then plan roads, boats and overnight stops together.",
         cards: [
           {
-            title: "By car",
+            title: "By boat or without a car",
             description:
-              "The most flexible way to combine viewpoints, ferries and overnight bases.",
-            href: "/guides/driving-in-norway-what-visitors-should-know",
-          },
-          {
-            title: "By ferry and boat",
-            description:
-              "Crossings are often part of the route itself rather than a separate excursion.",
+              "Nærøyfjord is a practical car-free choice through Flåm, Aurland and Gudvangen, while Geirangerfjord is especially memorable from the water.",
             href: "/guides/norway-ferry-guide-for-tourists",
           },
           {
-            title: "By route planning",
+            title: "By road trip",
             description:
-              "Start with crossings and distances, then build each day around the real rhythm of the water.",
+              "Hardangerfjord and Nordfjord reward a slower drive through connected scenery; Geirangerfjord belongs in the Ålesund–Nordfjord road-trip group.",
+            href: "/guides/driving-in-norway-what-visitors-should-know",
+          },
+          {
+            title: "By hiking-focused base",
+            description:
+              "Lysefjord is the clearest fit for a hiking-led stay, using Stavanger as the base and weather as part of the plan.",
             href: "/routes",
           },
         ],
@@ -844,9 +1139,9 @@ export const seoPages = {
           "The most common problem is trying to fit too much into a region where distance, ferry timing and weather all matter.",
         cards: [
           {
-            title: "Too many stops",
+            title: "Mixing distant regions",
             description:
-              "A fjord trip usually works better when you stay longer in fewer places.",
+              "Bergen–Hardanger–Flåm, Ålesund–Nordfjord–Geiranger, Stavanger–Lysefjord and Arctic Trollfjord are separate planning groups. Choose one for a short trip.",
           },
           {
             title: "No ferry buffer",
@@ -886,25 +1181,27 @@ export const seoPages = {
       },
       {
         label: "09 / Trip styles",
-        title: "The rhythms that work best",
+        title: "The timeframes that work best",
         intro:
-          "Fjords work for different travel styles, but the trip is best when you choose one clear pace and keep it consistent.",
+          "Choose a timeframe and one connected region. Fjord trips work better when days are built around manageable geography rather than a famous-name checklist.",
         cards: [
           {
-            title: "Road trip loop",
+            label: "3–4 days",
+            title: "One compact base",
             description:
-              "Best if you want movement, ferries and several scenery shifts in one itinerary.",
-            href: "/routes",
+              "Use one base or compact pair: Bergen with a selected Hardanger or Flåm–Aurland–Nærøyfjord experience, Stavanger with Lysefjord, or Ålesund with one nearby fjord.",
           },
           {
-            title: "Slow base stay",
+            label: "5–7 days",
+            title: "One connected region",
             description:
-              "Good when you want time to watch weather and return to the same view in different light.",
+              "A western journey can follow Bergen, Hardangerfjord, Flåm, Aurlandsfjord and Nærøyfjord; a Northern Norway route can centre on Lofoten, Vesterålen and Trollfjord.",
           },
           {
-            title: "Photo-first trip",
+            label: "7–10 days",
+            title: "A deeper regional journey",
             description:
-              "Works well when you build the day around sunrise, late afternoon and changing cloud.",
+              "Use the extra time for Nordfjord, Geirangerfjord and Ålesund, or for a slower Bergen–Sognefjord journey with room for changing light and weather. Keep Senja or Lyngen for a separate Arctic itinerary.",
           },
         ],
       },
@@ -927,7 +1224,7 @@ export const seoPages = {
           {
             title: "How many days do you need?",
             description:
-              "Three to five days gives a short sample; a week or more leaves room for ferries and slower pacing.",
+              "Three to four days is enough for one compact base; five to seven days suits one connected region; seven to ten days allows a deeper regional journey. Do not combine Western Norway and Arctic fjords on a short holiday.",
           },
         ],
       },
@@ -949,7 +1246,7 @@ export const seoPages = {
       secondaryLabel: "Open map",
     },
     guideMeta: {
-      lastUpdated: GUIDE_LAST_UPDATED,
+      lastUpdated: "21 July 2026",
       sources: guideSourceSets.fjordsNorway,
     },
   },

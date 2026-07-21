@@ -167,6 +167,17 @@ export function FjordConstellation({ cards }: FjordConstellationProps) {
             )}
           </h3>
           <p className="mt-5 text-sm font-light leading-[1.82] text-[#f4efe2]/68 sm:text-base">{activeCard.description}</p>
+          {activeCard.secondaryExternalUrl ? (
+            <a
+              href={activeCard.secondaryExternalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full border border-[#c6a15b]/22 px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.21em] text-[#d8c9a7]/84 transition-colors hover:border-[#d8c9a7]/55 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/75 focus-visible:ring-offset-2 focus-visible:ring-offset-[#081116]"
+            >
+              Further regional guide
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          ) : null}
           <div className="mt-8 border-t border-white/8 pt-5">
             <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#f4efe2]/44">Related landscapes</p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -184,6 +195,17 @@ export function FjordConstellation({ cards }: FjordConstellationProps) {
             <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#c6a15b]/74">{card.label}</p>
             <h3 className="mt-3 font-serif text-[1.55rem] leading-none tracking-[-0.035em] text-[#f4efe2]">{card.title}</h3>
             <p className="mt-3 text-sm font-light leading-[1.78] text-[#f4efe2]/66">{card.description}</p>
+            {card.secondaryExternalUrl ? (
+              <a
+                href={card.secondaryExternalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full border border-[#8fafa8]/22 px-3.5 py-2 text-[0.6rem] font-medium uppercase tracking-[0.19em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/42 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/75 focus-visible:ring-offset-2 focus-visible:ring-offset-[#081116]"
+              >
+                Further regional guide
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+            ) : null}
           </article>
         ))}
       </div>

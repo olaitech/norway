@@ -3,10 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
-import {
-  GUIDE_LAST_UPDATED,
-  guideSourceSets,
-} from "@/src/data/guide-meta-sources";
+import { guideSources, guideSourceSets } from "@/src/data/guide-meta-sources";
 import {
   JsonLd,
   createArticleJsonLd,
@@ -16,7 +13,8 @@ import {
 import { DestinationReveal } from "./DestinationReveal";
 import { LofotenLocationCompass } from "./LofotenLocationCompass";
 
-const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
+const LOFOTEN_DESTINATION_UPDATE_DATE = "2026-07-21";
+const LOFOTEN_DESTINATION_LAST_UPDATED = "21 July 2026";
 
 export const lofotenIslandsTravelGuideMetadata = {
   title:
@@ -59,7 +57,7 @@ const guideNav = [
   { label: "Rorbuer", href: "#rorbuer-and-cabins" },
   { label: "Camping", href: "#camping-and-campervan" },
   { label: "Places", href: "#places-worth-slowing-down" },
-  { label: "Itinerary", href: "#suggested-itinerary" },
+  { label: "Route rhythm", href: "#suggested-itinerary" },
   { label: "What not to do", href: "#things-not-to-do" },
   { label: "Responsible travel", href: "#responsible-travel" },
   { label: "FAQ", href: "#lofoten-faq" },
@@ -119,6 +117,10 @@ const getToLofoten = [
     text: "A practical route when entering Lofoten through the mainland road network and ferry crossings.",
   },
   {
+    title: "By road or ferry from Vesterålen",
+    text: "A northern approach can include the Melbu–Fiskebøl connection, depending on your wider route and current ferry plan.",
+  },
+  {
     title: "By air to Svolvær, Leknes, Evenes or Bodø",
     text: "Choose your airport by where you want to start driving and how much transfer time you can tolerate.",
   },
@@ -134,7 +136,7 @@ const gettingAround = [
   "Public transport requires careful planning, especially outside peak periods.",
   "Bike travel can be scenic but requires awareness of weather, traffic and narrow roads.",
   "Guided tours can help no-car travellers or winter visitors.",
-  "Ferry and express boat connections should always be checked through official planners.",
+  "Car ferries can carry vehicles, while passenger express boats may not have a vehicle deck; check the exact service before planning a car route.",
 ] as const;
 
 const ferryPlannerLinks = [
@@ -144,8 +146,8 @@ const ferryPlannerLinks = [
   },
   { title: "Reis Nordland", href: "https://www.reisnordland.no/" },
   {
-    title: "Torghatten Bodø-Værøy-Røst-Moskenes",
-    href: "https://www.torghatten.no/our-routes/18-782",
+    title: guideSources.torghattenBodoVaeroyRostMoskenes.label,
+    href: guideSources.torghattenBodoVaeroyRostMoskenes.href,
   },
   {
     title: "Torghatten Bognes-Lødingen",
@@ -253,39 +255,19 @@ const placesWorthSlowingDown = [
 
 const itinerary = [
   {
-    day: "Day 1",
-    title: "Arrive and settle",
-    text: "Start in Svolvær, Kabelvåg or Henningsvær. Keep the first day short and absorb local rhythm.",
+    day: "Start",
+    title: "Choose an arrival side",
+    text: "Let Evenes, Svolvær, Moskenes or a Vesterålen connection decide which part of Lofoten you see first, rather than doubling back across the islands.",
   },
   {
-    day: "Day 2",
-    title: "Eastern villages and coast",
-    text: "Use short drives and village walks instead of long mileage. Keep room for light and weather.",
+    day: "Stay",
+    title: "Use one or two practical areas",
+    text: "A short visit works best with one base; a longer visit can add a second area when it saves repeated driving and gives you more than one day nearby.",
   },
   {
-    day: "Day 3",
-    title: "Central transition",
-    text: "Move west toward Leknes, Ballstad or Ramberg with one or two focused stops.",
-  },
-  {
-    day: "Day 4",
-    title: "Beach and mountain balance",
-    text: "Choose one landscape type for the day and avoid over-packing viewpoints.",
-  },
-  {
-    day: "Day 5",
-    title: "Reine / Hamnøy zone",
-    text: "Stay near the western classics and plan around crowd patterns and shifting light.",
-  },
-  {
-    day: "Day 6",
-    title: "Weather buffer day",
-    text: "Use this day for a deferred hike, ferry-dependent move, or simple village time.",
-  },
-  {
-    day: "Day 7",
-    title: "Exit with margin",
-    text: "Keep departure timing conservative for ferries, airport transfers or long drives out.",
+    day: "Adjust",
+    title: "Leave one part of the plan flexible",
+    text: "Use weather, light and ferry conditions to choose the day’s beach, hike or village instead of treating the destination as a fixed daily checklist.",
   },
 ] as const;
 
@@ -461,14 +443,14 @@ const relatedGuides = [
     label: "Planning",
   },
   {
-    href: "/norway-itinerary-7-days",
-    title: "Norway Itinerary 7 Days",
-    label: "Itinerary",
+    href: "/guides/norway-ferry-guide-for-tourists",
+    title: "Norway Ferry Guide",
+    label: "Practical",
   },
   {
-    href: "/norway-itinerary-10-days",
-    title: "Norway Itinerary 10 Days",
-    label: "Itinerary",
+    href: "/guides/driving-in-norway-what-visitors-should-know",
+    title: "Driving in Norway",
+    label: "Practical",
   },
   {
     href: "/responsible-travel",
@@ -514,7 +496,7 @@ export function LofotenIslandsTravelGuide() {
             url: lofotenIslandsCanonicalPath,
             image: "/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg",
             articleSection: "Destinations",
-            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
+            dateModified: LOFOTEN_DESTINATION_UPDATE_DATE,
           }),
         ]}
       />
@@ -1181,9 +1163,9 @@ export function LofotenIslandsTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="13 / Itinerary"
-                title="Suggested Lofoten itinerary"
-                intro="Use this as a pacing model, not a fixed checklist."
+                label="13 / Route planning"
+                title="A broad Lofoten rhythm"
+                intro="Use this as a destination-level pacing model. The road-trip guide holds the ordered route, bases, ferry timing, parking and realistic daily execution."
               />
             </DestinationReveal>
             <div className="mt-12 divide-y divide-white/8 border-y border-white/8">
@@ -1205,6 +1187,15 @@ export function LofotenIslandsTravelGuide() {
                 </DestinationReveal>
               ))}
             </div>
+            <DestinationReveal delay={0.08} className="mt-8">
+              <Link
+                href="/routes/lofoten-road-trip"
+                className="inline-flex items-center gap-2 rounded-full border border-[#d8c9a7]/24 bg-white/[0.03] px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.23em] text-[#f4efe2]/86 transition-colors hover:border-[#d8c9a7]/45 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+              >
+                Plan the ordered driving route, bases and ferry timing
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </DestinationReveal>
           </section>
 
           <section
@@ -1354,7 +1345,7 @@ export function LofotenIslandsTravelGuide() {
           <section className="border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <GuideMetaFooter
-                lastUpdated={GUIDE_LAST_UPDATED}
+                lastUpdated={LOFOTEN_DESTINATION_LAST_UPDATED}
                 sources={guideSourceSets.destinationLofoten}
               />
             </DestinationReveal>

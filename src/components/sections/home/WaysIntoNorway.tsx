@@ -56,7 +56,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     description:
       "A focused route for seeing Norway's landscapes without rushing through every moment.",
     meta: "ITINERARY / FIRST JOURNEY",
-    href: "/norway-itinerary-7-days",
+    href: "/routes/lofoten-road-trip",
     image: "/images/cards/senja.png",
     imageAlt: "Dramatic Senja mountains above calm Arctic water",
   },
@@ -65,7 +65,7 @@ const norwayPlanningContent: StickyScrollItem[] = [
     description:
       "More space, longer drives and enough time to let the road become part of the journey.",
     meta: "ITINERARY / SLOWER ROUTE",
-    href: "/norway-itinerary-10-days",
+    href: "/routes/helgeland-coast-road-trip",
     image: "/images/cards/helgeland.png",
     imageAlt: "Island coastline and soft northern light along the Helgeland coast",
   },
