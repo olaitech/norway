@@ -16,6 +16,16 @@ This file is the first routing guide for Codex, Copilot, Claude and other coding
 
 This project may use a newer Next.js version than your training data. APIs, conventions and file structure may differ. Read the relevant guide in `node_modules/next/dist/docs/` before writing Next.js-specific code.
 
+## API and security rules
+
+- Before creating any API route, state who is allowed to call it.
+- Every endpoint that writes data, sends email or triggers an external action must have an explicit security strategy.
+- Never trust userId, email, role or permissions supplied by the request body. Derive identity from a verified session or token.
+- Internal service-to-service endpoints must use a server-side shared secret and fail closed if that secret is missing.
+- Every private route using an object ID must check object-level ownership, assignment or role permissions in addition to authentication.
+- Never create a generic email endpoint where the browser can choose the recipient, sender or arbitrary email headers.
+- Validate request bodies server-side and do not expose internal errors or secrets in API responses or logs.
+
 ## Specialist agents
 
 Use these files as specialist guidance when relevant. Do not copy their full contents into this file.
