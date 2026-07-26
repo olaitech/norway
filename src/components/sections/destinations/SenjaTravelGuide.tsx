@@ -1308,15 +1308,21 @@ export function SenjaTravelGuide() {
                 <DestinationReveal key={guide.href} delay={index * 0.04}>
                   <Link
                     href={guide.href}
-                    className="group block h-full rounded-[1.2rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7 transition-colors hover:border-[#d8c9a7]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:p-8"
+                    className="internal-card-link group block h-full rounded-[1.2rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:p-8"
                   >
                     <p className="text-[0.6rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/72">
                       {guide.label}
                     </p>
-                    <h3 className="mt-5 font-serif text-2xl tracking-[-0.035em] text-[#f4efe2]">
+                    <h3
+                      data-card-title
+                      className="mt-5 font-serif text-2xl tracking-[-0.035em] text-[#f4efe2]"
+                    >
                       {guide.title}
                     </h3>
-                    <span className="mt-6 inline-flex items-center gap-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/74 transition-colors group-hover:text-[#f4efe2]">
+                    <span
+                      data-card-cue
+                      className="mt-6 inline-flex items-center gap-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/74"
+                    >
                       Open guide
                       <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>

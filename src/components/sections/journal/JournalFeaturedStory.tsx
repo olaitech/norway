@@ -6,16 +6,17 @@ export function JournalFeaturedStory() {
   return (
     <Link
       href="/stories/northern-norway"
-      className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+      className="internal-card-link group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
     >
-      <article className="surface-fjord grid overflow-hidden rounded-[1.35rem] transition-[border-color,background-color] duration-500 hover:border-[#c6a15b]/24 hover:bg-[linear-gradient(165deg,rgba(23,35,38,0.88),rgba(8,17,22,0.96))] lg:grid-cols-[1.08fr_0.92fr]">
+      <article className="surface-fjord grid overflow-hidden rounded-[1.35rem] lg:grid-cols-[1.08fr_0.92fr]">
         <div className="relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[520px]">
           <Image
+            data-card-image
             src="/images/stories/northern-norway/lofoten1.jpg"
             alt="A Lofoten fishing village with blue water and steep mountains behind it"
             fill
             sizes="(min-width: 1024px) 54vw, 100vw"
-            className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.035]"
+            className="object-cover"
             style={{ objectPosition: "center 46%" }}
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.05)_22%,rgba(3,8,10,0.2)_52%,rgba(3,8,10,0.58)_100%)]" />
@@ -27,7 +28,10 @@ export function JournalFeaturedStory() {
             <p className="text-[0.63rem] font-medium uppercase tracking-[0.36em] text-[#d8c9a7]/64">
               Featured Story
             </p>
-            <h2 className="mt-7 font-serif text-[clamp(2.5rem,4.7vw,4.25rem)] font-normal leading-[0.98] tracking-[-0.052em] text-[#f4efe2]">
+            <h2
+              data-card-title
+              className="mt-7 font-serif text-[clamp(2.5rem,4.7vw,4.25rem)] font-normal leading-[0.98] tracking-[-0.052em] text-[#f4efe2]"
+            >
               Northern Norway: A Slow Journey Through Light
             </h2>
             <p className="mt-7 max-w-lg text-base font-light leading-[1.9] text-[#f4efe2]/66 sm:text-lg">
@@ -39,7 +43,10 @@ export function JournalFeaturedStory() {
 
           <div className="mt-12 flex items-center justify-between border-t border-white/8 pt-6 text-[0.62rem] font-medium uppercase tracking-[0.27em] text-[#f4efe2]/52">
             <span>Read the story</span>
-            <ArrowUpRight className="h-4 w-4 text-[#d8c9a7]/72 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            <ArrowUpRight
+              data-card-cue
+              className="h-4 w-4 text-[#d8c9a7]/72"
+            />
           </div>
         </div>
       </article>

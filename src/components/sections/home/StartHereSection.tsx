@@ -66,17 +66,17 @@ function StartHereCard({
   const isLightCard = index % 4 !== 3;
 
   const cardClassName = isLightCard
-    ? "border-[#7b6858]/24 bg-[linear-gradient(165deg,rgba(236,227,217,0.8),rgba(215,202,187,0.66))] shadow-[0_18px_52px_rgba(35,26,18,0.14)] hover:border-[#6b5a4a]/36 hover:shadow-[0_22px_60px_rgba(35,26,18,0.18)]"
-    : "border-[#d8c9b5]/16 bg-[linear-gradient(165deg,rgba(45,37,31,0.8),rgba(20,15,12,0.77))] shadow-[0_18px_52px_rgba(13,9,7,0.28)] hover:border-[#dfceb7]/30 hover:shadow-[0_22px_60px_rgba(13,9,7,0.34)]";
+    ? "border-[#7b6858]/24 bg-[linear-gradient(165deg,rgba(236,227,217,0.8),rgba(215,202,187,0.66))] shadow-[0_18px_52px_rgba(35,26,18,0.14)]"
+    : "border-[#d8c9b5]/16 bg-[linear-gradient(165deg,rgba(45,37,31,0.8),rgba(20,15,12,0.77))] shadow-[0_18px_52px_rgba(13,9,7,0.28)]";
   const eyebrowClassName = isLightCard ? "text-[#6b5a4a]/82" : "text-[#ead9c7]/76";
   const iconWrapperClassName = isLightCard
-    ? "border-[#8a725c]/22 bg-[#ece1d3]/72 text-[#4d3f33] group-hover:bg-[#e3d5c6] group-hover:text-[#1b1815]"
-    : "border-[#d8c9b5]/18 bg-[#f7f3ed]/10 text-[#f7f2ea]/80 group-hover:bg-[#f7f3ed]/14 group-hover:text-[#fffaf4]";
+    ? "border-[#8a725c]/22 bg-[#ece1d3]/72 text-[#4d3f33]"
+    : "border-[#d8c9b5]/18 bg-[#f7f3ed]/10 text-[#f7f2ea]/80";
   const titleClassName = isLightCard ? "text-[#211913]" : "text-[#f7f2ea]";
   const descriptionClassName = isLightCard ? "text-[#332923]/72" : "text-[#f7f2ea]/72";
   const ctaClassName = isLightCard
-    ? "border-[#7b6858]/22 bg-[#e4d7c8]/54 text-[#2f251f]/72 group-hover:border-[#6b5a4a]/34 group-hover:text-[#1c1511]"
-    : "border-[#d8c9b5]/18 bg-[#f7f3ed]/8 text-[#f7f2ea]/72 group-hover:border-[#efe3d4]/30 group-hover:text-[#fffaf4]";
+    ? "border-[#7b6858]/22 bg-[#e4d7c8]/54 text-[#2f251f]/72"
+    : "border-[#d8c9b5]/18 bg-[#f7f3ed]/8 text-[#f7f2ea]/72";
 
   return (
     <Link
@@ -84,7 +84,7 @@ function StartHereCard({
       prefetch={interactive}
       tabIndex={interactive ? 0 : -1}
       aria-hidden={interactive ? undefined : true}
-      className={`group flex h-full flex-col rounded-[1.2rem] border p-5 backdrop-blur-xl transition-[transform,border-color,box-shadow,background-color] duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7d6855]/55 ${
+      className={`internal-card-link group flex h-full flex-col rounded-[1.2rem] border p-5 backdrop-blur-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7d6855]/55 ${
         interactive ? "pointer-events-auto" : "pointer-events-none"
       } ${cardClassName} ${className}`}
     >
@@ -98,13 +98,14 @@ function StartHereCard({
           <Icon className="h-4 w-4" aria-hidden="true" />
         </span>
       </div>
-      <h3 className={`mt-5 font-serif text-[1.6rem] leading-[1.04] tracking-[-0.03em] ${titleClassName}`}>
+      <h3 data-card-title className={`mt-5 font-serif text-[1.6rem] leading-[1.04] tracking-[-0.03em] ${titleClassName}`}>
         {card.title}
       </h3>
       <p className={`mt-4 text-sm font-light leading-[1.78] sm:text-[0.97rem] ${descriptionClassName}`}>
         {card.description}
       </p>
       <div
+        data-card-cue
         className={`mt-6 inline-flex w-fit items-center gap-2 rounded-full border px-4 py-2 text-[0.58rem] font-medium uppercase tracking-[0.22em] transition-colors ${ctaClassName}`}
       >
         Open path

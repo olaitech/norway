@@ -268,13 +268,19 @@ function StoryLinkPill({ link }: { link: StoryLink }) {
   return (
     <Link
       href={link.href}
-      className="group flex w-full items-start gap-3 rounded-full border border-white/10 bg-white/[0.025] px-4 py-3 text-left transition-colors hover:border-[#b79b63]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b79b63]/45"
+      className="internal-card-link group flex w-full items-start gap-3 rounded-full border border-white/10 bg-white/[0.025] px-4 py-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b79b63]/45"
     >
-      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-[#f4efe2]/70 transition-colors group-hover:text-[#f4efe2]">
+      <span
+        data-card-cue
+        className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-[#f4efe2]/70"
+      >
         <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
       </span>
       <span className="min-w-0">
-        <span className="block text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/82">
+        <span
+          data-card-title
+          className="block text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/82"
+        >
           {link.label}
         </span>
         <span className="mt-1 block text-sm font-light leading-6 text-[#f4efe2]/56">

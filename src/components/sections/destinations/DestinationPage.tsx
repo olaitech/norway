@@ -388,15 +388,16 @@ export function DestinationPage({ destination }: DestinationPageProps) {
               <DestinationReveal key={related.slug} delay={index * 0.05}>
                 <Link
                   href={`/destinations/${related.slug}`}
-                  className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  className="internal-card-link group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
                 >
                   <article className="relative min-h-[340px] overflow-hidden rounded-[1.2rem] border border-white/10">
                     <Image
+                      data-card-image
                       src={related.imageSrc}
                       alt={related.imageAlt}
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.06)_20%,rgba(3,8,10,0.86)_100%)]" />
                     <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-5 p-6">
@@ -404,11 +405,17 @@ export function DestinationPage({ destination }: DestinationPageProps) {
                         <p className="mb-3 text-[0.6rem] uppercase tracking-[0.28em] text-[#d8c9a7]/74">
                           Destination
                         </p>
-                        <h3 className="font-serif text-3xl tracking-[-0.04em]">
+                        <h3
+                          data-card-title
+                          className="font-serif text-3xl tracking-[-0.04em]"
+                        >
                           {related.title}
                         </h3>
                       </div>
-                      <ArrowUpRight className="h-5 w-5 shrink-0 text-[#f4efe2]/76 transition-transform duration-500 group-hover:translate-x-1" />
+                      <ArrowUpRight
+                        data-card-cue
+                        className="h-5 w-5 shrink-0 text-[#f4efe2]/76"
+                      />
                     </div>
                   </article>
                 </Link>

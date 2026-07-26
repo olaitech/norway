@@ -109,12 +109,12 @@ export function SearchTheNorth() {
           {recommendation ? (
             <Link
               href={recommendation.bestResult.href}
-              className="group mb-4 block rounded-[1.2rem] border border-[#99846f]/30 bg-[linear-gradient(168deg,rgba(236,229,220,0.94),rgba(220,210,197,0.84)_42%,rgba(206,195,180,0.76))] p-6 transition-colors hover:border-[#7f6d58]/44 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b7663]/48 sm:p-7"
+              className="internal-card-link group mb-4 block rounded-[1.2rem] border border-[#99846f]/30 bg-[linear-gradient(168deg,rgba(236,229,220,0.94),rgba(220,210,197,0.84)_42%,rgba(206,195,180,0.76))] p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b7663]/48 sm:p-7"
             >
               <p className="text-[0.58rem] font-medium uppercase tracking-[0.3em] text-[#716050]/84">
                 Recommended result
               </p>
-              <h3 className="mt-4 font-serif text-[clamp(1.8rem,3.4vw,2.5rem)] leading-[0.98] tracking-[-0.035em] text-[#1d1814]">
+              <h3 data-card-title className="mt-4 font-serif text-[clamp(1.8rem,3.4vw,2.5rem)] leading-[0.98] tracking-[-0.035em] text-[#1d1814]">
                 Best match: {recommendation.bestResult.title}
               </h3>
               <p className="mt-4 max-w-4xl text-sm font-light leading-[1.78] text-[#1d1814]/64 sm:text-base">
@@ -124,7 +124,7 @@ export function SearchTheNorth() {
                 <p className="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-[#1d1814]/54">
                   {recommendation.bestResult.href}
                 </p>
-                <span className="inline-flex items-center gap-2 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-[#1d1814]/72 transition-colors group-hover:text-[#1d1814]">
+                <span data-card-cue className="inline-flex items-center gap-2 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-[#1d1814]/72">
                   Open section
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
@@ -144,12 +144,12 @@ export function SearchTheNorth() {
                   <Link
                     key={result.id}
                     href={result.href}
-                    className="group h-full rounded-[1.15rem] border border-[#99846f]/24 bg-[linear-gradient(170deg,rgba(236,229,220,0.84),rgba(220,210,197,0.7))] p-5 transition-colors hover:border-[#7f6d58]/42 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b7663]/48 sm:p-6"
+                    className="internal-card-link group h-full rounded-[1.15rem] border border-[#99846f]/24 bg-[linear-gradient(170deg,rgba(236,229,220,0.84),rgba(220,210,197,0.7))] p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b7663]/48 sm:p-6"
                   >
                     <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#716050]/82">
                       {result.category}
                     </p>
-                    <h3 className="mt-4 font-serif text-[1.75rem] leading-[1.02] tracking-[-0.033em] text-[#1d1814]">
+                    <h3 data-card-title className="mt-4 font-serif text-[1.75rem] leading-[1.02] tracking-[-0.033em] text-[#1d1814]">
                       {result.title}
                     </h3>
                     <p className="mt-4 text-sm font-light leading-[1.78] text-[#1d1814]/62 sm:text-[0.97rem]">
@@ -159,7 +159,7 @@ export function SearchTheNorth() {
                       <p className="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-[#1d1814]/50">
                         {result.href}
                       </p>
-                      <span className="inline-flex items-center gap-2 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-[#1d1814]/68 transition-colors group-hover:text-[#1d1814]">
+                      <span data-card-cue className="inline-flex items-center gap-2 text-[0.58rem] font-medium uppercase tracking-[0.24em] text-[#1d1814]/68">
                         Open page
                         <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>

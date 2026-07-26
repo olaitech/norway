@@ -171,12 +171,12 @@ export default function GuidesPage() {
                   <Link
                     key={guide.href}
                     href={guide.href}
-                    className="group h-full rounded-[1.2rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.014))] p-6 transition-colors hover:border-[#d8c9a7]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:p-7"
+                    className="internal-card-link group h-full rounded-[1.2rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.014))] p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:p-7"
                   >
                     <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/74">
                       {guide.category}
                     </p>
-                    <h2 className="mt-4 font-serif text-[1.8rem] leading-[1.02] tracking-[-0.033em] text-[#f4efe2]">
+                    <h2 data-card-title className="mt-4 font-serif text-[1.8rem] leading-[1.02] tracking-[-0.033em] text-[#f4efe2]">
                       {guide.title}
                     </h2>
                     <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/66 sm:text-base">
@@ -186,7 +186,7 @@ export default function GuidesPage() {
                       <span className="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/52">
                         {guide.readTime}
                       </span>
-                      <span className="text-[0.58rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors group-hover:text-[#f4efe2]">
+                      <span data-card-cue className="text-[0.58rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72">
                         Open guide
                       </span>
                     </div>

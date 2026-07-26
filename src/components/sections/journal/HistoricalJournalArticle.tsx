@@ -834,12 +834,15 @@ function ContinueExploring({
               <Link
                 key={related.slug}
                 href={`/journal/${related.slug}`}
-                className="group border border-white/10 p-6 transition-colors hover:border-[#d8c9a7]/32 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/60"
+                className="internal-card-link group border border-white/10 p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/60"
               >
                 <p className="text-[0.57rem] font-medium uppercase tracking-[0.23em] text-[#d8c9a7]/62">
                   {related.category}
                 </p>
-                <h3 className="mt-5 font-serif text-[1.9rem] leading-[0.96] tracking-[-0.04em]">
+                <h3
+                  data-card-title
+                  className="mt-5 font-serif text-[1.9rem] leading-[0.96] tracking-[-0.04em]"
+                >
                   {related.title}
                 </h3>
                 <p className="mt-4 text-sm font-light leading-[1.75] text-[#f4efe2]/60">

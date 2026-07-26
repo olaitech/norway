@@ -522,18 +522,24 @@ export function JournalArticlePage({
               <JournalReveal key={related.slug} delay={index * 0.045}>
                 <Link
                   href={`/journal/${related.slug}`}
-                  className="surface-fjord group block h-full rounded-[1.1rem] p-6 transition-colors hover:border-[#c6a15b]/24 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  className="internal-card-link surface-fjord group block h-full rounded-[1.1rem] p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
                 >
                   <p className="text-[0.57rem] font-medium uppercase tracking-[0.25em] text-[#d8c9a7]/68">
                     {related.category}
                   </p>
-                  <h3 className="mt-5 font-serif text-[1.85rem] leading-[1] tracking-[-0.04em] text-[#f4efe2]">
+                  <h3
+                    data-card-title
+                    className="mt-5 font-serif text-[1.85rem] leading-[1] tracking-[-0.04em] text-[#f4efe2]"
+                  >
                     {related.title}
                   </h3>
                   <p className="mt-4 text-sm font-light leading-[1.75] text-[#f4efe2]/62">
                     {related.excerpt}
                   </p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-[0.6rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/68 group-hover:text-[#f4efe2]">
+                  <span
+                    data-card-cue
+                    className="mt-6 inline-flex items-center gap-2 text-[0.6rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/68"
+                  >
                     Read note
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </span>

@@ -100,6 +100,90 @@ body {
   box-shadow: 0 24px 76px rgba(0, 0, 0, 0.26);
 }
 
+.internal-card-link,
+.internal-card-link > article,
+.internal-card-link [data-card-image],
+.internal-card-link [data-card-title],
+.internal-card-link [data-card-cue] {
+  transition-duration: 380ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.internal-card-link {
+  cursor: pointer;
+  transition-property: transform, border-color, filter;
+}
+
+.internal-card-link > article {
+  transition-property: border-color;
+}
+
+.internal-card-link [data-card-image] {
+  transition-property: transform;
+}
+
+.internal-card-link [data-card-title],
+.internal-card-link [data-card-cue] {
+  transition-property: color, filter;
+}
+
+.internal-card-link:focus-visible {
+  border-color: rgba(216, 201, 167, 0.42);
+  filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.2));
+  transform: translateY(-4px);
+}
+
+.internal-card-link:focus-visible > article {
+  border-color: rgba(216, 201, 167, 0.42);
+}
+
+.internal-card-link:focus-visible [data-card-image] {
+  transform: scale(1.02);
+}
+
+.internal-card-link:focus-visible [data-card-title],
+.internal-card-link:focus-visible [data-card-cue] {
+  filter: brightness(1.12);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .internal-card-link:hover {
+    border-color: rgba(216, 201, 167, 0.42);
+    filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.2));
+    transform: translateY(-4px);
+  }
+
+  .internal-card-link:hover > article {
+    border-color: rgba(216, 201, 167, 0.42);
+  }
+
+  .internal-card-link:hover [data-card-image] {
+    transform: scale(1.02);
+  }
+
+  .internal-card-link:hover [data-card-title],
+  .internal-card-link:hover [data-card-cue] {
+    filter: brightness(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .internal-card-link,
+  .internal-card-link > article,
+  .internal-card-link [data-card-image],
+  .internal-card-link [data-card-title],
+  .internal-card-link [data-card-cue] {
+    transition-duration: 0.01ms !important;
+  }
+
+  .internal-card-link:hover,
+  .internal-card-link:focus-visible,
+  .internal-card-link:hover [data-card-image],
+  .internal-card-link:focus-visible [data-card-image] {
+    transform: none !important;
+  }
+}
+
 .hero-mist {
   opacity: 0.7;
   overflow: hidden;
