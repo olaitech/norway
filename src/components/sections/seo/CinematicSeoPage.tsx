@@ -21,6 +21,15 @@ type CinematicSeoPageProps = {
   featureSection?: ReactNode;
 };
 
+function formatUpdatedDate(date: string) {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${date}T00:00:00.000Z`));
+}
+
 function SectionHeader({ section }: { section: SeoSection }) {
   return (
     <div className="max-w-3xl">
@@ -45,14 +54,14 @@ function ContentCard({ card }: { card: SeoCard }) {
           {card.label}
         </p>
       ) : null}
-      <h3 className="mt-4 font-serif text-[1.7rem] leading-[0.98] tracking-[-0.035em] text-[#f4efe2] sm:text-[1.9rem]">
+      <h3 data-card-title className="mt-4 font-serif text-[1.7rem] leading-[0.98] tracking-[-0.035em] text-[#f4efe2] sm:text-[1.9rem]">
         {card.title}
       </h3>
       <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64 sm:text-base">
         {card.description}
       </p>
       {card.href ? (
-        <span className="mt-6 inline-flex items-center gap-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#c6a15b]/74 transition-colors group-hover:text-[#f4efe2]">
+        <span data-card-cue className="mt-6 inline-flex items-center gap-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#c6a15b]/74">
           Open guide
           <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
@@ -67,7 +76,7 @@ function ContentCard({ card }: { card: SeoCard }) {
   return (
     <Link
       href={card.href}
-      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+      className="internal-card-link block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
     >
       {content}
     </Link>
@@ -83,7 +92,7 @@ function CompactListRow({ card }: { card: SeoCard }) {
             {card.label}
           </p>
         ) : null}
-        <h3 className="mt-3 font-serif text-[1.45rem] leading-[0.98] tracking-[-0.035em] text-[#f4efe2] sm:text-[1.6rem]">
+        <h3 data-card-title className="mt-3 font-serif text-[1.45rem] leading-[0.98] tracking-[-0.035em] text-[#f4efe2] sm:text-[1.6rem]">
           {card.title}
         </h3>
       </div>
@@ -92,7 +101,7 @@ function CompactListRow({ card }: { card: SeoCard }) {
           {card.description}
         </p>
         {card.href ? (
-          <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-[#c6a15b]/68" aria-hidden="true" />
+          <ArrowUpRight data-card-cue className="mt-1 h-4 w-4 shrink-0 text-[#c6a15b]/68" aria-hidden="true" />
         ) : null}
       </div>
     </article>
@@ -105,7 +114,7 @@ function CompactListRow({ card }: { card: SeoCard }) {
   return (
     <Link
       href={card.href}
-      className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+      className="internal-card-link block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
     >
       {content}
     </Link>
@@ -153,6 +162,9 @@ export function CinematicSeoPage({
   featureSection,
 }: CinematicSeoPageProps) {
   const heroOverlayOpacity = page.hero.overlayOpacity ?? 1;
+  const visibleUpdatedDate =
+    page.guideMeta?.lastUpdated ??
+    (page.updatedDate ? formatUpdatedDate(page.updatedDate) : undefined);
   const jsonLdSchemas = page.jsonLd
     ? [
         createBreadcrumbListJsonLd(page.jsonLd.breadcrumbs),
@@ -379,10 +391,10 @@ export function CinematicSeoPage({
             <section className="border-t border-white/8 pt-14 sm:pt-16">
               <div className="mx-auto max-w-4xl">{trustBox}</div>
             </section>
-          ) : page.guideMeta ? (
+          ) : page.guideMeta && visibleUpdatedDate ? (
             <section className="border-t border-white/8 pt-14 sm:pt-16">
               <GuideMetaFooter
-                lastUpdated={page.guideMeta.lastUpdated}
+                lastUpdated={visibleUpdatedDate}
                 sources={page.guideMeta.sources}
               />
             </section>

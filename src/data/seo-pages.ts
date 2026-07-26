@@ -68,7 +68,7 @@ export type SeoPageData = {
   publishedDate?: string;
   updatedDate?: string;
   guideMeta?: {
-    lastUpdated: string;
+    lastUpdated?: string;
     sources: ReadonlyArray<{ label: string; href: string }>;
   };
   jsonLd?: {
@@ -897,7 +897,7 @@ export const seoPages = {
       ],
       article: true,
     },
-    updatedDate: "2026-07-21",
+    updatedDate: "2026-07-26",
     hero: {
       label: "Destination guide",
       title: "Fjords of Norway",
@@ -1249,7 +1249,6 @@ export const seoPages = {
       secondaryLabel: "Open map",
     },
     guideMeta: {
-      lastUpdated: "21 July 2026",
       sources: guideSourceSets.fjordsNorway,
     },
   },
