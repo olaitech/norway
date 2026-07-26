@@ -55,6 +55,10 @@ Before UI/design changes, read:
 - `docs/agents/norway-ui-designer.md`
 - `docs/agents/design-brand-guardian.md`
 
+Before writing, rewriting or materially editing customer-facing travel content, read:
+
+- `docs/trips-norway-editorial-voice.md`
+
 Before large code changes, read:
 
 - `docs/agents/engineering-minimal-change-engineer.md`
