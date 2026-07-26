@@ -902,20 +902,20 @@ export const seoPages = {
       label: "Destination guide",
       title: "Fjords of Norway",
       intro:
-        "A calm guide to Norway's fjords: where they are, when to go and how to shape a trip around roads, ferries and slower pauses.",
+        "Choose one fjord region by base and travel style: Flåm for a car-free Nærøyfjord trip, Ålesund for Geirangerfjord by boat and road, Bergen for a Hardangerfjord self-drive, or Stavanger for a Lysefjord hiking trip. Allow 3–4 days for one compact base or 5–7 days for a fuller regional trip.",
       imageSrc: "/images/destinations/fjords/norway-fjord1.jpg",
       imageAlt: "A wide fjord basin with steep mountains and low cloud",
       imagePosition: "center 60%",
       overlayOpacity: 0.66,
     },
     answerBlock: {
-      title: "Fjords are route landscapes, not short scenic stops.",
+      title: "Which Norwegian fjords should first-time visitors choose?",
       summary:
-        "Water, tunnels, ferries and mountain roads make distances feel longer than the map suggests. The calmest fjord trips use fewer bases, more buffer and a slower pace.",
+        "Choose one connected region. Allow 3–4 days for a compact base or 5–7 days for a fuller regional trip; the right choice depends on whether you prefer car-free transport, self-driving, boat travel or hiking.",
       bullets: [
-        "For a first trip, choose one region: Nærøyfjord is a strong all-round, car-free-friendly option; Geirangerfjord offers classic dramatic scenery; Hardangerfjord suits road trips; and Lysefjord suits hiking-focused travel.",
+        "Nærøyfjord in Sogn, Vestland, is practical without a car through Flåm, Aurland and Gudvangen. Geirangerfjord in Sunnmøre, Møre og Romsdal, combines boat travel with road viewpoints from the Ålesund side. Hardangerfjord in Hardanger, Vestland, suits a multi-day self-drive from Bergen, while Lysefjord in Rogaland suits boat travel and hiking from Stavanger.",
         "Geirangerfjord and Nærøyfjord are separate fjord areas that together form the UNESCO World Heritage property West Norwegian Fjords – Geirangerfjord and Nærøyfjord. That designation does not extend to Sognefjord, Hardangerfjord or Lysefjord.",
-        "Plan ferry crossings and overnight stops together. Late spring through early autumn is usually the easiest first-trip window.",
+        "Plan ferry crossings and overnight stops together. May to September is usually the simplest first-trip window because daylight is longer, but mountain-road openings, ferry timetables and hiking access still vary by place and date.",
       ],
     },
     sections: [
@@ -923,7 +923,7 @@ export const seoPages = {
         label: "01 / Overview",
         title: "What a fjord is",
         intro:
-          "Fjords are not just scenery. They are the spaces that shape how Norway feels, how far a day really goes and where the trip pauses to breathe.",
+          "Fjords narrow the land available for settlement, so farms and villages gather on shorelines, terraces and valley mouths. Working quays connect these communities to boats and ferries, while roads, tunnels and bridges follow the ground that remains.",
         layout: "list",
         cards: [
           {
@@ -937,9 +937,9 @@ export const seoPages = {
               "Crossings, tunnels, viewpoints and short detours matter as much as distance once you start planning a fjord route.",
           },
           {
-            title: "Not one landscape",
+            title: "Access changes by region",
             description:
-              "Each fjord region has its own scale, weather and access pattern, so the experience changes from one coast to another.",
+              "Nærøyfjord can be planned around boats and public transport, while Hardangerfjord combines roads, local ferry crossings and longer self-drive loops.",
           },
         ],
       },
@@ -982,7 +982,7 @@ export const seoPages = {
             label: "Møre og Romsdal / Sunnmøre",
             title: "Geirangerfjord",
             description:
-              "A classic, high-drama fjord for waterfalls, steep walls, viewpoints and boat-and-road scenery. Together with the separate Nærøyfjord area, it forms the UNESCO World Heritage property West Norwegian Fjords – Geirangerfjord and Nærøyfjord.",
+              "A fjord of steep walls, waterfalls, road viewpoints and boat travel. Together with the separate Nærøyfjord area, it forms the UNESCO World Heritage property West Norwegian Fjords – Geirangerfjord and Nærøyfjord.",
             externalUrl:
               "https://www.fjordnorway.com/en/see-and-do/the-geirangerfjord",
             secondaryExternalUrl: "https://www.geirangerfjord.no/",
@@ -991,7 +991,7 @@ export const seoPages = {
             label: "Vestland / Sogn",
             title: "Nærøyfjord",
             description:
-              "A strong all-round first fjord and a practical car-free choice: boat and public-transport links connect Flåm, Aurland and Gudvangen. Nærøyfjord branches from Aurlandsfjord within the wider Sognefjord system.",
+              "A practical car-free choice: boat and public-transport links connect Flåm, Aurland and Gudvangen. Nærøyfjord branches from Aurlandsfjord within the wider Sognefjord system.",
             externalUrl:
               "https://www.fjordnorway.com/en/attractions/the-naeroyfjord",
           },
@@ -1008,7 +1008,7 @@ export const seoPages = {
             label: "Vestland / Hardanger",
             title: "Hardangerfjord",
             description:
-              "The strongest road-trip region for travellers who want orchards, waterfalls, ferries and slow drives in one connected area. It pairs naturally with Bergen, but needs time rather than a rushed detour.",
+              "Well suited to a multi-day self-drive, with orchards, waterfalls, ferries and Norwegian Scenic Route Hardanger in one connected region. It pairs naturally with Bergen, but needs time rather than a rushed detour.",
             externalUrl: "https://hardangerfjord.com/",
           },
           {
@@ -1030,14 +1030,14 @@ export const seoPages = {
             label: "Vestland / Nordfjord",
             title: "Nordfjord",
             description:
-              "A quieter road-trip alternative, combining fjord, glacier and mountain scenery. It works naturally with Geirangerfjord and Ålesund rather than the Bergen–Flåm cluster.",
+              "A road-trip region combining fjord, glacier and mountain scenery. It works naturally with Geirangerfjord and Ålesund rather than the Bergen–Flåm cluster.",
             externalUrl: "https://www.nordfjord.no/",
           },
           {
             label: "Møre og Romsdal / Sunnmøre",
             title: "Hjørundfjord",
             description:
-              "A quieter atmospheric fjord near Ålesund, suited to slow roads, small harbours and mountain views rather than a cross-country detour.",
+              "A Sunnmøre fjord near Ålesund, suited to slow road and ferry travel between small harbours and steep mountain landscapes rather than a cross-country detour.",
             externalUrl:
               "https://www.fjordtours.com/no/norge/reisemal/fjord/hjorundfjorden",
           },
@@ -1054,7 +1054,7 @@ export const seoPages = {
         label: "04 / Northern Norway",
         title: "Fjords in the north",
         intro:
-          "Those classic fjords are only one part of the Norway story. In the north, build Trollfjord with Lofoten and Vesterålen; treat Senja and Lyngen as their own Arctic fjord landscapes rather than extensions of a Bergen or Ålesund trip.",
+          "Use Svolvær as the practical base for Trollfjord and connect it with Lofoten or Vesterålen. Treat Senja as a separate road-based fjord landscape, and Tromsø as the gateway for Lyngen rather than combining the north with a short Bergen or Ålesund trip.",
         layout: "split",
         media: {
           imageSrc: "/images/destinations/fjords/norway-fjord2.jpg",
@@ -1062,23 +1062,26 @@ export const seoPages = {
           imagePosition: "center 42%",
           captionLabel: "Northern fjords",
           caption:
-            "A more open Arctic mood, where sea, mountain and weather sit closer together.",
+            "A red waterfront cabin beneath a steep mountain in a Northern Norway fjord.",
         },
         cards: [
           {
-            title: "Arctic fjord routes",
+            title: "Svolvær for Trollfjord",
             description:
-              "In the north, fjords often sit beside coast roads and island crossings, which changes the rhythm of the day.",
+              "Trollfjord has no road access. Boat trips depart from Svolvær, so plan it with a Lofoten or Vesterålen stay rather than as a drive-through stop.",
+            href: "/destinations/lofoten-islands",
           },
           {
-            title: "Midnight sun windows",
+            title: "Senja by road",
             description:
-              "June and July give long evenings, so short fjord distances can feel slower and more open.",
+              "Senja is a separate road-based fjord landscape. Build time around Norwegian Scenic Route Senja and its village detours instead of treating it as an extension of Trollfjord.",
+            href: "/destinations/senja",
           },
           {
-            title: "Northern lights season",
+            title: "Tromsø for Lyngen",
             description:
-              "From late autumn to early spring, the fjords can sit inside a wider aurora route through the north.",
+              "Use Tromsø as the gateway for Lyngen, then confirm road, ferry and hiking conditions for the season. Aurora viewing requires darkness, clear skies and sufficient auroral activity, and is never guaranteed.",
+            href: "/destinations/tromso",
           },
         ],
       },
@@ -1091,18 +1094,18 @@ export const seoPages = {
           {
             title: "Late spring to early autumn",
             description:
-              "Usually the easiest window for road-based fjord travel, ferry rhythm and viewpoint stops.",
+              "Longer daylight makes multi-stop driving easier. Mountain-road openings, ferry timetables and hiking access still require route-by-route checks.",
             href: "/best-time-to-visit-norway",
           },
           {
             title: "Winter",
             description:
-              "Quieter and more atmospheric, but best for travelers who are comfortable with slower conditions.",
+              "Shorter daylight, winter driving and possible weather disruption make long circuits harder. Use a smaller route and check roads, ferries and activities as you travel.",
           },
           {
             title: "Shoulder season",
             description:
-              "Often the best balance of light, access and space if you want room to move without full summer pressure.",
+              "In May, snow can still limit high mountain roads and hikes. In September, daylight shortens and some seasonal services may reduce; confirm each road, ferry and activity.",
           },
         ],
       },
@@ -1115,7 +1118,7 @@ export const seoPages = {
           {
             title: "By boat or without a car",
             description:
-              "Nærøyfjord is a practical car-free choice through Flåm, Aurland and Gudvangen, while Geirangerfjord is especially memorable from the water.",
+              "Nærøyfjord is a practical car-free choice through Flåm, Aurland and Gudvangen, while Geirangerfjord’s waterfalls and fjord farms can be seen from the water.",
             href: "/guides/norway-ferry-guide-for-tourists",
           },
           {
@@ -1181,7 +1184,7 @@ export const seoPages = {
       },
       {
         label: "09 / Trip styles",
-        title: "The timeframes that work best",
+        title: "Realistic trip timeframes",
         intro:
           "Choose a timeframe and one connected region. Fjord trips work better when days are built around manageable geography rather than a famous-name checklist.",
         cards: [
@@ -1219,18 +1222,18 @@ export const seoPages = {
           {
             title: "What is the best time to visit?",
             description:
-              "Late spring through early autumn is usually the easiest window for a first fjord trip.",
+              "For most first trips, May to September gives longer daylight. Mountain-road openings, ferry timetables and hiking access still need route-by-route checks.",
           },
           {
-            title: "How many days do you need?",
+            title: "Which city is the best base for Norway’s fjords?",
             description:
-              "Three to four days is enough for one compact base; five to seven days suits one connected region; seven to ten days allows a deeper regional journey. Do not combine Western Norway and Arctic fjords on a short holiday.",
+              "There is no single best city. Choose Bergen for Hardangerfjord and journeys towards the Sognefjord arms, Ålesund for Geirangerfjord and Hjørundfjord, Stavanger for Lysefjord, or Svolvær for Trollfjord boat trips.",
           },
         ],
       },
     ],
     relatedLinks: [
-      { label: "Browse Norway road trip routes", href: "/routes" },
+      { label: "Browse current road-trip routes", href: "/routes" },
       { label: "Open the seasonal planning guide", href: "/best-time-to-visit-norway" },
       { label: "Read the ferry guide", href: "/guides/norway-ferry-guide-for-tourists" },
       { label: "Read the driving guide", href: "/guides/driving-in-norway-what-visitors-should-know" },
@@ -1241,7 +1244,7 @@ export const seoPages = {
       label: "Continue planning",
       text: "Place the fjords inside a realistic route, then adjust the journey around season, ferry timing and weather.",
       primaryHref: "/routes",
-      primaryLabel: "Browse road trip routes",
+      primaryLabel: "Browse current route guides",
       secondaryHref: "/map",
       secondaryLabel: "Open map",
     },

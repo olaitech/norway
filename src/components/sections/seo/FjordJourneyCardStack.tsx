@@ -31,14 +31,14 @@ const journeyCards: FjordJourneyCard[] = [
   {
     id: "fjord-road-trip",
     tag: "01 / ROUTES",
-    title: "Build a fjord road trip",
+    title: "Browse published road-trip routes",
     description:
-      "Connect Norway’s fjord landscapes through realistic distances, scenic roads and room for unplanned stops.",
+      "Open the published Lofoten and Helgeland Coast route guides. For a Western Norway plan, use this page’s regional comparison with the Norway map.",
     imageSrc: "/images/destinations/lofoten/lofoten-e10-road-trip.jpg",
     imageAlt:
       "A winding road crossing turquoise water below a Lofoten mountain",
     href: "/routes",
-    ctaLabel: "Explore road trip routes",
+    ctaLabel: "Browse published route guides",
     destination: "routes",
     priority: true,
   },
