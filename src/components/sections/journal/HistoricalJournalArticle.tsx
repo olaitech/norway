@@ -15,6 +15,7 @@ import type {
   HistoricalArticleEvidenceFact,
   HistoricalArticleExperience,
   HistoricalArticleImageLabel,
+  HistoricalArticleObjectRecord,
   HistoricalArticlePeriod,
   HistoricalArticleStoryBlock,
   JournalArticle,
@@ -416,6 +417,109 @@ function IntroBlock({
   );
 }
 
+function ComplementaryObjectRecord({
+  article,
+  record,
+  mutedText,
+  rule,
+}: {
+  article: JournalArticle;
+  record: HistoricalArticleObjectRecord;
+  mutedText: string;
+  rule: string;
+}) {
+  const image = getImage(article, record.imageSrc);
+  const headingId = `object-record-${record.id}`;
+
+  return (
+    <section
+      data-object-record={record.id}
+      aria-labelledby={headingId}
+      className={`mx-auto mt-20 max-w-[82rem] border-t pt-16 sm:mt-28 sm:pt-20 ${rule}`}
+    >
+      <header className="grid min-w-0 gap-7 lg:grid-cols-[0.32fr_0.68fr] lg:gap-16">
+        <p className={`text-[0.6rem] font-medium uppercase tracking-[0.3em] ${mutedText}`}>
+          {record.eyebrow}
+        </p>
+        <div className="min-w-0">
+          <h3
+            id={headingId}
+            className="max-w-4xl break-words font-serif text-[clamp(2.7rem,5vw,4.8rem)] leading-[0.9] tracking-[-0.06em]"
+          >
+            {record.heading}
+          </h3>
+          <p className={`mt-6 max-w-2xl text-sm font-medium uppercase tracking-[0.2em] sm:text-base ${mutedText}`}>
+            {record.subheading}
+          </p>
+        </div>
+      </header>
+
+      {image ? (
+        <figure className="mt-12 min-w-0 sm:mt-16">
+          <div className={`relative min-w-0 overflow-hidden border bg-[#0b1515] ${rule}`}>
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={record.imageWidth}
+              height={record.imageHeight}
+              sizes="(min-width: 1024px) 82rem, 100vw"
+              className="block h-auto max-w-full w-full object-contain"
+            />
+          </div>
+          <ArchiveLabel label={record.imageLabel} />
+        </figure>
+      ) : null}
+
+      <div className="mt-14 grid min-w-0 gap-14 sm:mt-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+        <div className="min-w-0 space-y-7">
+          {record.narrative.map((paragraph, index) => (
+            <p
+              key={paragraph}
+              className={`max-w-2xl text-base font-light leading-[1.9] sm:text-lg ${
+                index === 0 ? "text-current" : mutedText
+              }`}
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
+        <section
+          aria-label={`Technical object record for ${record.heading}`}
+          className={`min-w-0 border-t pt-7 ${rule}`}
+        >
+          <p className={`text-[0.59rem] font-medium uppercase tracking-[0.27em] ${mutedText}`}>
+            Technical object record
+          </p>
+          <div className={`mt-6 border-y py-6 ${rule}`}>
+            <p className={`text-[0.58rem] font-medium uppercase tracking-[0.23em] ${mutedText}`}>
+              Inventory number
+            </p>
+            <p className="mt-3 break-words font-serif text-[clamp(1.9rem,3vw,2.8rem)] tracking-[-0.04em]">
+              {record.inventoryNumber}
+            </p>
+          </div>
+          <dl>
+            {record.technicalDetails.map((detail) => (
+              <div
+                key={detail.label}
+                className={`grid min-w-0 gap-2 border-b py-5 sm:grid-cols-[0.36fr_0.64fr] sm:gap-6 ${rule}`}
+              >
+                <dt className={`text-[0.58rem] font-medium uppercase tracking-[0.2em] ${mutedText}`}>
+                  {detail.label}
+                </dt>
+                <dd className="min-w-0 break-words text-sm font-light leading-[1.75] sm:text-base">
+                  {detail.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      </div>
+    </section>
+  );
+}
+
 function ObjectChapter({
   article,
   block,
@@ -431,62 +535,89 @@ function ObjectChapter({
     .filter((image): image is JournalArticleImage => Boolean(image));
   const isPaper = block.tone === "paper";
   const imageFirst = block.imagePosition === "left";
+  const isWideImage = block.imageLayout === "wide";
   const toneClass = isPaper
     ? "bg-[#e8e0d4] text-[#1c211f]"
     : "bg-[#07100f] text-[#f4efe2]";
   const mutedText = isPaper ? "text-[#1c211f]/69" : "text-[#f4efe2]/68";
   const rule = isPaper ? "border-[#4d534b]/18" : "border-white/10";
+  const titleBlock = (
+    <>
+      <p className={`text-[0.6rem] font-medium uppercase tracking-[0.3em] ${mutedText}`}>
+        {block.chapterLabel}
+      </p>
+      <h2 className="mt-5 font-serif text-[clamp(3rem,5.6vw,5.3rem)] leading-[0.86] tracking-[-0.065em]">
+        {block.title}
+      </h2>
+    </>
+  );
+  const storyBlock = (
+    <>
+      <p className={`text-[0.66rem] font-medium uppercase tracking-[0.25em] ${mutedText}`}>
+        {section.heading}
+      </p>
+      <div className={`mt-8 space-y-12 border-t pt-8 ${rule}`}>
+        {section.body.map((paragraph, index) => (
+          <p
+            key={paragraph}
+            className={`max-w-xl text-base font-light leading-[1.9] sm:text-lg ${
+              index === 0 ? "text-current" : mutedText
+            }`}
+          >
+            {paragraph}
+          </p>
+        ))}
+      </div>
+      <SourceMarker marker={section.sourceMarker} />
+    </>
+  );
+  const imageFigure = mainImage ? (
+    <figure className="min-w-0">
+      <div
+        className={`relative min-w-0 overflow-hidden border ${rule} bg-[#0b1515] ${
+          isWideImage ? "" : "lg:aspect-[4/5]"
+        }`}
+      >
+        <Image
+          src={mainImage.src}
+          alt={mainImage.alt}
+          width={isWideImage ? 1645 : 1536}
+          height={isWideImage ? 585 : 2048}
+          sizes={isWideImage ? "(min-width: 1024px) 82rem, 100vw" : "(min-width: 1024px) 42vw, 100vw"}
+          className={
+            isWideImage
+              ? "block h-auto max-w-full w-full object-contain"
+              : "h-auto w-full object-contain lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover"
+          }
+        />
+      </div>
+      <ArchiveLabel label={block.imageLabel} />
+    </figure>
+  ) : null;
 
   return (
     <div className={`${toneClass} px-5 py-16 sm:px-8 sm:py-24 md:px-12 lg:py-28`}>
-      <div
-        className={`mx-auto grid max-w-[82rem] items-start gap-10 lg:grid-cols-2 lg:gap-16 ${
-          imageFirst ? "" : "lg:[&>*:first-child]:order-2"
-        }`}
-      >
-        <div className="lg:sticky lg:top-7">
-          {mainImage ? (
-            <figure className="min-w-0">
-              <div className={`relative overflow-hidden border ${rule} bg-[#0b1515] lg:aspect-[4/5]`}>
-                <Image
-                  src={mainImage.src}
-                  alt={mainImage.alt}
-                  width={1536}
-                  height={2048}
-                  sizes="(min-width: 1024px) 42vw, 100vw"
-                  className="h-auto w-full object-contain lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover"
-                />
-              </div>
-              <ArchiveLabel label={block.imageLabel} />
-            </figure>
-          ) : null}
-        </div>
-
-        <div className="min-w-0 lg:py-10">
-          <p className={`text-[0.6rem] font-medium uppercase tracking-[0.3em] ${mutedText}`}>
-            {block.chapterLabel}
-          </p>
-          <h2 className="mt-5 font-serif text-[clamp(3rem,5.6vw,5.3rem)] leading-[0.86] tracking-[-0.065em]">
-            {block.title}
-          </h2>
-          <p className={`mt-7 text-[0.66rem] font-medium uppercase tracking-[0.25em] ${mutedText}`}>
-            {section.heading}
-          </p>
-          <div className={`mt-8 space-y-12 border-t pt-8 ${rule}`}>
-            {section.body.map((paragraph, index) => (
-              <p
-                key={paragraph}
-                className={`max-w-xl text-base font-light leading-[1.9] sm:text-lg ${
-                  index === 0 ? "text-current" : mutedText
-                }`}
-              >
-                {paragraph}
-              </p>
-            ))}
+      {isWideImage ? (
+        <div className="mx-auto max-w-[82rem]">
+          {imageFigure}
+          <div className="mt-14 grid min-w-0 gap-10 sm:mt-16 lg:grid-cols-[0.38fr_0.62fr] lg:gap-16">
+            <div className="min-w-0">{titleBlock}</div>
+            <div className="min-w-0 lg:pt-2">{storyBlock}</div>
           </div>
-          <SourceMarker marker={section.sourceMarker} />
         </div>
-      </div>
+      ) : (
+        <div
+          className={`mx-auto grid max-w-[82rem] items-start gap-10 lg:grid-cols-2 lg:gap-16 ${
+            imageFirst ? "" : "lg:[&>*:first-child]:order-2"
+          }`}
+        >
+          <div className="lg:sticky lg:top-7">{imageFigure}</div>
+          <div className="min-w-0 lg:py-10">
+            {titleBlock}
+            <div className="mt-7">{storyBlock}</div>
+          </div>
+        </div>
+      )}
 
       {supportingImages.length ? (
         <div className="mx-auto mt-12 max-w-[82rem] lg:mt-16">
@@ -521,6 +652,15 @@ function ObjectChapter({
             ))}
           </div>
         </div>
+      ) : null}
+
+      {block.relatedObjectRecord ? (
+        <ComplementaryObjectRecord
+          article={article}
+          record={block.relatedObjectRecord}
+          mutedText={mutedText}
+          rule={rule}
+        />
       ) : null}
     </div>
   );

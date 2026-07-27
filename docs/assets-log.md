@@ -14,6 +14,8 @@ they enter the project.
 | `public/images/cards/lofoten.png` | Destination/route image | Lofoten cards and guide content | Maintain realistic landscape treatment |
 | `public/images/cards/senja.png` | Destination image | Senja features and journal/route references | Use with accurate place context |
 | `public/images/cards/helgeland.png` | Destination/route image | Helgeland Coast content | Supports coastal route storytelling |
+| `public/images/destinations/helgeland/heroy-island-boat.png` | Documentary object photograph | “The island boat” object chapter in the Helgeland coastal-history journal article | 1645 × 585 PNG supplied by the site owner; display uncropped at its natural aspect ratio; exact collection catalogue reference and usage-rights status have not yet been documented |
+| `public/images/destinations/helgeland/nordlandsbåt2.png` | Documentary object photograph | Enigheten object record within “The island boat” chapter | 802 × 570 PNG supplied by the site owner; retain the Unicode filename; display uncropped at its natural aspect ratio; collection reference `HBS.G.10252`; exact public catalogue URL and usage-rights status have not yet been documented |
 | `public/images/cards/tromsø.png` | Destination/Arctic image | Tromsø and aurora content | Preserve real `ø` in references and visible labels |
 | `public/video/journal/lofoten.mp4` | Cinematic video | Journal hero experience | Provide robust fallback and avoid excessive load cost |
 | `public/video/atmosphere/lofoten-fisherman-sjar.mp4` | Atmosphere video | Homepage `Coastal Memory` / `LofotenFishermanFeature` section | Actual current path; autoplay, loop, muted, inline; no poster currently configured |

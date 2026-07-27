@@ -61,6 +61,25 @@ export type HistoricalArticleImageLabel = {
   provenance?: string;
 };
 
+export type HistoricalArticleObjectRecordDetail = {
+  label: string;
+  value: string;
+};
+
+export type HistoricalArticleObjectRecord = {
+  id: string;
+  eyebrow: string;
+  heading: string;
+  subheading: string;
+  imageSrc: string;
+  imageWidth: number;
+  imageHeight: number;
+  imageLabel: HistoricalArticleImageLabel;
+  narrative: string[];
+  inventoryNumber: string;
+  technicalDetails: HistoricalArticleObjectRecordDetail[];
+};
+
 export type HistoricalArticleEvidenceFact = {
   year: string;
   fact: string;
@@ -85,8 +104,10 @@ export type HistoricalArticleStoryBlock =
       imageSrc: string;
       supportingImageSrcs?: string[];
       imagePosition: "left" | "right";
+      imageLayout?: "wide";
       tone?: "dark" | "paper";
       imageLabel: HistoricalArticleImageLabel;
+      relatedObjectRecord?: HistoricalArticleObjectRecord;
     }
   | {
       type: "transition";
@@ -403,9 +424,9 @@ export const journalArticles: JournalArticle[] = [
     seoDescription:
       "Explore everyday life on the Helgeland coast from 1890 to 1955 through preserved homes, coastal work, schools, fishing communities and carefully sourced wartime history.",
     publishedDate: "2026-07-17",
-    updatedDate: "2026-07-17",
+    updatedDate: "2026-07-27",
     publishedLabel: "Published: 17 July 2026",
-    updatedLabel: "Updated: 17 July 2026",
+    updatedLabel: "Updated: 27 July 2026",
     highlights: [
       "Preserved interiors and objects photographed across the Helgeland coast.",
       "Everyday work, learning, travel and changing connections between 1890 and 1955.",
@@ -534,6 +555,81 @@ export const journalArticles: JournalArticle[] = [
           sectionHeading: "Between sea and land",
         },
         {
+          type: "chapter",
+          id: "island-boat",
+          periodId: "home-and-work",
+          chapterLabel: "Object chapter III",
+          title: "The island boat",
+          sectionHeading: "Fishing, farming and women’s work",
+          imageSrc:
+            "/images/destinations/helgeland/heroy-island-boat.png",
+          imagePosition: "left",
+          imageLayout: "wide",
+          imageLabel: {
+            category: "Preserved coastal boat",
+            caption:
+              "A boat connected to Sørøya in Austbø, used first for local fishing and later as an island boat for journeys to shared summer pastures.",
+            provenance:
+              "Bought by Nils Hermansen from Rana in 1872 and retained by the family until Hans Nilssen of Husvær donated it to Herøy bygdesamling in 1975. The boat is now preserved in Storbåtnaustet on Herøy. Ownership and use history supplied with the object information; an exact collection catalogue reference has not yet been added.",
+          },
+          relatedObjectRecord: {
+            id: "enigheten",
+            eyebrow: "Object record · 1914",
+            heading: "Enigheten — a restored firroring",
+            subheading:
+              "Built for fishing, rowing and sailing with a broad load",
+            imageSrc:
+              "/images/destinations/helgeland/nordlandsbåt2.png",
+            imageWidth: 802,
+            imageHeight: 570,
+            imageLabel: {
+              category: "Restored Nordland boat",
+              caption:
+                "Enigheten, a firroring built at Bjerka in Sør-Rana in 1914 and later used for fishing, rowing and sailing.",
+              provenance:
+                "Collection reference HBS.G.10252. The object history, measurements and technical description were supplied from the available collection information. An exact public catalogue URL has not yet been added.",
+            },
+            narrative: [
+              "Read together, the two boats document different parts of everyday coastal life without sharing the same use or ownership history. The Sørøya boat connects local fishing with women’s journeys to shared summer grazing, while Enigheten preserves a separate record of fishing, rowing, sailing, transport, ownership and restoration.",
+              "The firroring Enigheten was built in 1914 by P. J. Breivik at Bjerka in Hemnes, Sør-Rana. According to the supplied object record, the boat was reportedly registered for fishing.",
+              "Toralf Kristian Heen of Nordværnes bought Enigheten around 1990 from an older trader at Forstranda in Gildeskål. A later account attached to the boat says that it had once either been accepted as security for goods or used as payment. This has not been independently verified.",
+              "Heen last used the boat at the national gathering in Brønnøysund in 2003. Geir Olsen of Indre Kvarøy bought it in 2017. During the same year, he exchanged it for a firroring managed by Helgeland Museum. That other boat had previously belonged to Olsen’s grandfather and had been bought by Herøy historielag during the 1970s for NOK 400.",
+              "Enigheten is a broad-built Nordland boat with six strakes, five thwarts and four pairs of oars. It was rigged for a traditional “sneseil” and has four pairs of thole-pin positions. The boat is described as heavy to row but stable under sail with a broad load, and particularly well suited to gill-net fishing.",
+              "The hull is tarred and protected below the waterline with antifouling paint. The supplied object description records red, white and pale-green paint on the upper strake, black-and-white splashboards, dark internal trim and pale yellow, red and white details above a tarred interior bottom.",
+            ],
+            inventoryNumber: "HBS.G.10252",
+            technicalDetails: [
+              { label: "Name", value: "Enigheten" },
+              { label: "Object", value: "Nordland boat" },
+              {
+                label: "Classifications",
+                value: "Nordlandsbåt · Ranværingsbåt · Firroring",
+              },
+              { label: "Built", value: "1914" },
+              { label: "Builder", value: "P. J. Breivik" },
+              {
+                label: "Place built",
+                value: "Bjerka, Hemnes, Sør-Rana",
+              },
+              {
+                label: "Dimensions",
+                value:
+                  "Length 760 cm · Width 205 cm · Stem height 176 cm",
+              },
+              {
+                label: "Construction and equipment",
+                value:
+                  "Six strakes · five thwarts · four pairs of oars · four pairs of thole-pin positions · rigged for “sneseil” · relatively broad construction · additional splashboards that can be raised",
+              },
+              {
+                label: "Recorded use and performance",
+                value:
+                  "Fishing · sailing · rowing · transport · gill-net fishing · heavy to row · stable under sail with a broad load",
+              },
+            ],
+          },
+        },
+        {
           type: "section",
           periodId: "home-and-work",
           sectionHeading: "A house could also be a workplace",
@@ -559,7 +655,7 @@ export const journalArticles: JournalArticle[] = [
           type: "chapter",
           id: "written-word",
           periodId: "transition",
-          chapterLabel: "Object chapter III",
+          chapterLabel: "Object chapter IV",
           title: "The written word",
           sectionHeading: "School, writing and connection",
           imageSrc:
@@ -581,7 +677,7 @@ export const journalArticles: JournalArticle[] = [
           type: "chapter",
           id: "sea",
           periodId: "transition",
-          chapterLabel: "Object chapter IV",
+          chapterLabel: "Object chapter V",
           title: "The sea",
           sectionHeading: "Motors, teachers and a changing coast",
           imageSrc:
@@ -763,6 +859,29 @@ export const journalArticles: JournalArticle[] = [
               },
             ],
             caption: "A preserved workroom and maritime objects photographed across Helgeland.",
+          },
+        ],
+      },
+      {
+        heading: "Fishing, farming and women’s work",
+        body: [
+          "Nils Hermansen of Sørøya in Austbø bought this boat from Rana in 1872. It was said to have been fairly newly built at the time, although it had already had another owner. The boat remained in the family until Hans Nilssen of Husvær gave it to Herøy bygdesamling in 1975.",
+          "Until around 1920, it was used for local fishing. Edvard Nilssen used it particularly often, usually together with his neighbour Konrad Olsen. Their fishing grounds included the waters around Flæsen and Ytterholmen.",
+          "The boat later served for many years as an “øybåt” — an island boat used by women rowing out to milk cattle in the morning and evening. While the cows grazed collectively on the islands, each farm was required to provide boats according to an agreed rota.",
+          "The women rowed together from Øybåtstøa, in the centre of the settlement, to the islands where summer barns and grazing cattle were located. The boat is now preserved in Storbåtnaustet on Herøy.",
+        ],
+        image: {
+          src: "/images/destinations/helgeland/heroy-island-boat.png",
+          alt: "Long traditional wooden boat with green gunwales displayed beside a red boathouse on Herøy",
+        },
+        imageGroups: [
+          {
+            images: [
+              {
+                src: "/images/destinations/helgeland/nordlandsbåt2.png",
+                alt: "Restored Nordland firroring Enigheten moored beside a quay with its mast, rigging and painted wooden hull visible",
+              },
+            ],
           },
         ],
       },
