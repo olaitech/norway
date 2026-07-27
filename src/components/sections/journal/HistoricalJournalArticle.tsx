@@ -4,7 +4,12 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
 
 import type {
   HistoricalArticleEvidenceFact,
@@ -78,7 +83,7 @@ function PeriodBlock({
     <section
       id={anchorId}
       data-historical-period={periodId}
-      className={className}
+      className={`scroll-mt-24 ${className ?? ""}`}
     >
       {children}
     </section>
@@ -99,7 +104,7 @@ function SourceMarker({ marker }: { marker?: string }) {
 
 function ArchiveLabel({ label }: { label: HistoricalArticleImageLabel }) {
   return (
-    <figcaption className="mt-4 border-t border-current/20 pt-3 text-sm leading-[1.65] opacity-70">
+    <figcaption className="mt-4 break-words border-t border-current/20 pt-3 text-sm leading-[1.65] opacity-70">
       <p className="text-[0.59rem] font-medium uppercase tracking-[0.25em] opacity-85">
         {label.category}
       </p>
@@ -121,7 +126,7 @@ function HistoricalTimeRail({ periods }: { periods: HistoricalArticlePeriod[] })
   const [activePeriod, setActivePeriod] = useState(periods[0]?.id);
 
   useEffect(() => {
-    if (shouldReduceMotion || !periods.length) {
+    if (!periods.length) {
       return;
     }
 
@@ -156,15 +161,29 @@ function HistoricalTimeRail({ periods }: { periods: HistoricalArticlePeriod[] })
     periodSections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
-  }, [periods, shouldReduceMotion]);
+  }, [periods]);
 
-  const periodLinks = periods.map((period) => {
+  const scrollToPeriod = (
+    event: MouseEvent<HTMLAnchorElement>,
+    periodId: string,
+  ) => {
+    event.preventDefault();
+
+    document.getElementById(`period-${periodId}`)?.scrollIntoView({
+      behavior: shouldReduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  };
+
+  const desktopPeriodLinks = periods.map((period) => {
     const isActive = period.id === activePeriod;
 
     return (
       <li key={period.id} className="relative">
         <a
           href={`#period-${period.id}`}
+          onClick={(event) => scrollToPeriod(event, period.id)}
+          aria-label={`Jump to ${period.years}: ${period.label}`}
           aria-current={isActive ? "step" : undefined}
           className={`group block border-l pl-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#07100f] ${
             isActive
@@ -183,6 +202,42 @@ function HistoricalTimeRail({ periods }: { periods: HistoricalArticlePeriod[] })
     );
   });
 
+  const mobilePeriodLinks = periods.map((period) => {
+    const isActive = period.id === activePeriod;
+
+    return (
+      <li key={period.id} className="relative flex h-9 items-center">
+        <a
+          href={`#period-${period.id}`}
+          onClick={(event) => scrollToPeriod(event, period.id)}
+          aria-label={`Jump to ${period.years}: ${period.label}`}
+          aria-current={isActive ? "step" : undefined}
+          className={`group relative -ml-px flex h-9 w-8 items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#07100f] ${
+            isActive
+              ? "text-[#f4efe2]"
+              : "text-[#f4efe2]/48 hover:text-[#f4efe2]/78"
+          }`}
+        >
+          <span
+            aria-hidden="true"
+            className="relative -left-2 [writing-mode:vertical-rl] rotate-180 text-[0.48rem] font-medium tracking-[0.08em]"
+          >
+            {period.years.split("–")[0]}
+          </span>
+          <span
+            aria-hidden="true"
+            className={`absolute -left-0.5 top-1/2 -translate-y-1/2 rounded-full border border-[#07100f] ${
+              isActive
+                ? "h-2 w-2 bg-[#f4efe2]"
+                : "h-1.5 w-1.5 bg-[#d8c9a7]/55"
+            }`}
+          />
+          {isActive ? <span className="sr-only">Current period</span> : null}
+        </a>
+      </li>
+    );
+  });
+
   return (
     <>
       <nav
@@ -192,13 +247,15 @@ function HistoricalTimeRail({ periods }: { periods: HistoricalArticlePeriod[] })
         <p className="text-[0.58rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/66">
           Time rail
         </p>
-        <ol className="mt-6 space-y-6">{periodLinks}</ol>
+        <ol className="mt-6 space-y-6">{desktopPeriodLinks}</ol>
       </nav>
       <nav
         aria-label="Historical periods"
-        className="sticky top-0 z-30 -mx-5 border-y border-[#d8c9a7]/16 bg-[#07100f]/96 px-5 py-3 backdrop-blur-sm lg:hidden"
+        className="pointer-events-none fixed left-0 top-1/2 z-40 -translate-y-1/2 lg:hidden"
       >
-        <ol className="flex gap-5 overflow-x-auto pb-1">{periodLinks}</ol>
+        <ol className="pointer-events-auto relative flex flex-col gap-1 border-l border-[#d8c9a7]/34">
+          {mobilePeriodLinks}
+        </ol>
       </nav>
     </>
   );
@@ -237,7 +294,7 @@ function HistoricalHero({
             <ArrowLeft className="h-4 w-4" />
             Back to journal
           </Link>
-          <nav className="flex max-w-[calc(100vw-8rem)] items-center gap-4 overflow-x-auto rounded-full border border-[#8fafa8]/12 bg-[#0b171a]/84 px-4 py-2.5 sm:gap-7 sm:px-6">
+          <nav className="flex min-w-0 max-w-[calc(100vw-12rem)] items-center gap-4 overflow-x-auto rounded-full border border-[#8fafa8]/12 bg-[#0b171a]/84 px-4 py-2.5 sm:max-w-[calc(100vw-8rem)] sm:gap-7 sm:px-6">
             <Link
               href="/"
               className="shrink-0 text-[0.58rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/56 transition-colors hover:text-[#f4efe2]"
@@ -389,14 +446,15 @@ function ObjectChapter({
       >
         <div className="lg:sticky lg:top-7">
           {mainImage ? (
-            <figure>
-              <div className={`relative aspect-[4/5] overflow-hidden border ${rule} bg-[#0b1515]`}>
+            <figure className="min-w-0">
+              <div className={`relative overflow-hidden border ${rule} bg-[#0b1515] lg:aspect-[4/5]`}>
                 <Image
                   src={mainImage.src}
                   alt={mainImage.alt}
-                  fill
+                  width={1536}
+                  height={2048}
                   sizes="(min-width: 1024px) 42vw, 100vw"
-                  className="object-cover"
+                  className="h-auto w-full object-contain lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover"
                 />
               </div>
               <ArchiveLabel label={block.imageLabel} />
@@ -442,20 +500,21 @@ function ObjectChapter({
             {supportingImages.map((image, index) => (
               <figure
                 key={image.src}
-                className={
+                className={`min-w-0 ${
                   index === supportingImages.length - 1 &&
                   supportingImages.length === 3
                     ? "sm:col-span-2 sm:max-w-md"
                     : ""
-                }
+                }`}
               >
-                <div className={`relative overflow-hidden border ${rule} ${index === 0 ? "aspect-[4/5]" : "aspect-[5/4]"}`}>
+                <div className={`relative overflow-hidden border ${rule} ${index === 0 ? "lg:aspect-[4/5]" : "lg:aspect-[5/4]"}`}>
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    fill
+                    width={1536}
+                    height={2048}
                     sizes="(min-width: 1024px) 32vw, (min-width: 640px) 45vw, 100vw"
-                    className="object-cover"
+                    className="h-auto w-full object-contain lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover"
                   />
                 </div>
               </figure>
@@ -487,7 +546,7 @@ function EditorialSection({
         <p className={`text-[0.6rem] font-medium uppercase tracking-[0.29em] ${mutedText}`}>
           Historical context
         </p>
-        <div className={`border-t pt-8 ${rule}`}>
+        <div className={`min-w-0 border-t pt-8 ${rule}`}>
           <h2 className="font-serif text-[clamp(2.6rem,5vw,4.6rem)] leading-[0.9] tracking-[-0.055em]">
             {section.heading}
           </h2>
@@ -554,7 +613,7 @@ function EvidenceStrip({
             return (
               <li
                 key={`${fact.year}-${fact.fact}`}
-                className="grid gap-5 border-b border-[#4d534b]/16 py-7 last:border-b-0 md:grid-cols-[0.2fr_0.56fr_0.24fr] md:items-start"
+                className="grid min-w-0 gap-5 border-b border-[#4d534b]/16 py-7 last:border-b-0 md:grid-cols-[0.2fr_0.56fr_0.24fr] md:items-start"
               >
                 <p className="font-serif text-3xl tracking-[-0.05em] text-[#1c211f]">
                   {fact.year}
@@ -567,7 +626,7 @@ function EvidenceStrip({
                     href={source.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[0.6rem] font-medium uppercase tracking-[0.19em] text-[#3e4b46]/76 underline decoration-[#3e4b46]/32 underline-offset-4 transition-colors hover:text-[#1c211f]"
+                    className="break-words text-[0.6rem] font-medium uppercase tracking-[0.19em] text-[#3e4b46]/76 underline decoration-[#3e4b46]/32 underline-offset-4 transition-colors hover:text-[#1c211f]"
                   >
                     [{source.marker}] {source.label}
                   </a>
@@ -636,7 +695,7 @@ function HumanStorySequence({
               Lånan → North Sea → Shetland
             </div>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="text-[0.6rem] font-medium uppercase tracking-[0.27em] text-[#d8c9a7]/70">
               Human story · later accounts
             </p>
@@ -671,7 +730,7 @@ function HumanStorySequence({
                     href={source.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[0.6rem] font-medium uppercase tracking-[0.2em] text-[#d8c9a7]/76 underline decoration-[#d8c9a7]/30 underline-offset-4 transition-colors hover:text-[#f4efe2]"
+                    className="min-w-0 break-words text-[0.6rem] font-medium uppercase tracking-[0.2em] text-[#d8c9a7]/76 underline decoration-[#d8c9a7]/30 underline-offset-4 transition-colors hover:text-[#f4efe2]"
                   >
                     [{source.marker}] {source.label}
                   </a>
@@ -715,13 +774,14 @@ function ClosingSequence({
               transition={{ duration: 0.75, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
               className={index === 1 ? "md:pb-12" : ""}
             >
-              <div className={`relative overflow-hidden border border-white/10 ${index === 1 ? "aspect-[4/5]" : "aspect-[3/4]"}`}>
+              <div className={`relative overflow-hidden border border-white/10 ${index === 1 ? "lg:aspect-[4/5]" : "lg:aspect-[3/4]"}`}>
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  fill
+                  width={1536}
+                  height={2048}
                   sizes="(min-width: 768px) 28vw, 100vw"
-                  className="object-cover"
+                  className="h-auto w-full object-contain lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover"
                 />
               </div>
             </motion.figure>
@@ -731,7 +791,7 @@ function ClosingSequence({
           <p className="text-[0.6rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/66">
             Final reflection
           </p>
-          <div className="space-y-6 border-t border-white/10 pt-8 text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg">
+          <div className="min-w-0 space-y-6 border-t border-white/10 pt-8 text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg">
             <h2 className="font-serif text-[clamp(2.4rem,4.6vw,4.2rem)] leading-[0.92] tracking-[-0.055em] text-[#f4efe2]">
               {section.heading}
             </h2>
@@ -768,7 +828,7 @@ function ResearchNotes({ article }: { article: JournalArticle }) {
                       href={source.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm font-light leading-[1.7] text-[#1c211f]/72 underline decoration-[#4d534b]/32 underline-offset-4 transition-colors hover:text-[#1c211f] sm:text-base"
+                      className="block break-words text-sm font-light leading-[1.7] text-[#1c211f]/72 underline decoration-[#4d534b]/32 underline-offset-4 transition-colors hover:text-[#1c211f] sm:text-base"
                     >
                       <span className="mr-2 text-[0.6rem] font-medium tracking-[0.16em] text-[#3e4b46]/70">
                         [{source.marker}]
@@ -953,12 +1013,12 @@ export function HistoricalJournalArticle({
   const seenPeriods = new Set<string>();
 
   return (
-    <main className="min-h-screen overflow-x-clip bg-[#07100f]">
+    <main className="min-h-screen bg-[#07100f]">
       <HistoricalHero article={article} experience={experience} />
       <section className="relative bg-[#07100f] px-5 sm:px-8 md:px-12">
         <div className="mx-auto grid max-w-[92rem] gap-10 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-14">
           <HistoricalTimeRail periods={experience.periods} />
-          <div>
+          <div className="min-w-0">
             {experience.storyBlocks.map((block, index) => {
               const isFirstPeriodBlock = !seenPeriods.has(block.periodId);
               seenPeriods.add(block.periodId);
