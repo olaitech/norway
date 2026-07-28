@@ -357,6 +357,23 @@ export default function HelgelandCoastItineraryPage() {
           </div>
         </section>
 
+        <figure className="itinerary-print-hidden mt-14 overflow-hidden rounded-[1.5rem] border border-[#d8c9a7]/18 bg-[#071418] sm:mt-16">
+          <div className="relative aspect-[16/10] sm:aspect-[16/7]">
+            <Image
+              src="/images/destinations/helgeland/helgeland-coast.jpg"
+              alt="A globe-shaped marker silhouetted against an orange sunset over the sea"
+              fill
+              loading="lazy"
+              sizes="(min-width: 1280px) 1280px, (min-width: 768px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#071418]/78 to-transparent" />
+          </div>
+          <figcaption className="border-t border-white/8 px-5 py-4 text-sm font-light leading-6 text-[#f4efe2]/66 sm:px-7">
+            Island roads and open horizons along the Helgeland Coast.
+          </figcaption>
+        </figure>
+
         <section className="mt-16 border-t border-white/8 pt-16 sm:mt-20 sm:pt-20" aria-labelledby="before-you-begin-title">
           <SectionHeader
             eyebrow="02 / Before you begin"
@@ -384,85 +401,139 @@ export default function HelgelandCoastItineraryPage() {
             intro="This is a realistic sequence, not a route to complete at any cost. Each day gives the coast enough room for weather, quays and the places between the headline stops."
           />
           <div id="itinerary-title" className="mt-12 space-y-5">
-            {itineraryDays.map((item) => (
-              <article key={item.day} className="itinerary-day overflow-hidden rounded-[1.35rem] border border-[#8fafa8]/14 bg-[linear-gradient(165deg,rgba(23,35,38,0.84),rgba(8,17,22,0.94))] shadow-[0_22px_70px_rgba(0,0,0,0.18)]">
-                <div className="grid gap-8 p-7 sm:p-9 lg:grid-cols-[10rem_1fr] lg:gap-12 lg:p-10">
-                  <div>
-                    <p className="text-[0.64rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/78">
-                      {item.day}
-                    </p>
-                    <p className="mt-4 text-sm font-light leading-6 text-[#f4efe2]/58">
-                      {item.intensity}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-[clamp(2.15rem,4.2vw,4rem)] font-normal leading-[0.94] tracking-[-0.048em] text-[#f4efe2]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-5 max-w-3xl text-base font-light leading-[1.82] text-[#f4efe2]/72 sm:text-lg">
-                      {item.focus}
-                    </p>
+            {itineraryDays.map((item, index) => (
+              <div key={item.day} className="space-y-5">
+                <article className="itinerary-day overflow-hidden rounded-[1.35rem] border border-[#8fafa8]/14 bg-[linear-gradient(165deg,rgba(23,35,38,0.84),rgba(8,17,22,0.94))] shadow-[0_22px_70px_rgba(0,0,0,0.18)]">
+                  <div className="grid gap-8 p-7 sm:p-9 lg:grid-cols-[10rem_1fr] lg:gap-12 lg:p-10">
+                    <div>
+                      <p className="text-[0.64rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/78">
+                        {item.day}
+                      </p>
+                      <p className="mt-4 text-sm font-light leading-6 text-[#f4efe2]/58">
+                        {item.intensity}
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-[clamp(2.15rem,4.2vw,4rem)] font-normal leading-[0.94] tracking-[-0.048em] text-[#f4efe2]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-5 max-w-3xl text-base font-light leading-[1.82] text-[#f4efe2]/72 sm:text-lg">
+                        {item.focus}
+                      </p>
 
-                    <dl className="mt-8 grid gap-4 border-y border-white/8 py-6 sm:grid-cols-2">
-                      <div>
-                        <dt className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/68">
-                          Starting area
-                        </dt>
-                        <dd className="mt-2 text-sm font-light leading-6 text-[#f4efe2]/78">
-                          {item.start}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/68">
-                          Overnight area
-                        </dt>
-                        <dd className="mt-2 text-sm font-light leading-6 text-[#f4efe2]/78">
-                          {item.overnight}
-                        </dd>
-                      </div>
-                    </dl>
+                      <dl className="mt-8 grid gap-4 border-y border-white/8 py-6 sm:grid-cols-2">
+                        <div>
+                          <dt className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/68">
+                            Starting area
+                          </dt>
+                          <dd className="mt-2 text-sm font-light leading-6 text-[#f4efe2]/78">
+                            {item.start}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/68">
+                            Overnight area
+                          </dt>
+                          <dd className="mt-2 text-sm font-light leading-6 text-[#f4efe2]/78">
+                            {item.overnight}
+                          </dd>
+                        </div>
+                      </dl>
 
-                    <div className="mt-7 grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
-                      <div>
-                        <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/68">
-                          Recommended stops
-                        </p>
-                        <ul className="mt-4 space-y-3">
-                          {item.stops.map((stop) => (
-                            <li key={stop} className="border-l border-[#d8c9a7]/32 pl-4 text-sm font-light leading-6 text-[#f4efe2]/70">
-                              {stop}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="space-y-5">
+                      <div className="mt-7 grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
                         <div>
                           <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/68">
-                            Ferry or transport consideration
+                            Recommended stops
                           </p>
-                          <p className="mt-3 text-sm font-light leading-[1.82] text-[#f4efe2]/68 sm:text-base">
-                            {item.transport}
+                          <ul className="mt-4 space-y-3">
+                            {item.stops.map((stop) => (
+                              <li key={stop} className="border-l border-[#d8c9a7]/32 pl-4 text-sm font-light leading-6 text-[#f4efe2]/70">
+                                {stop}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="space-y-5">
+                          <div>
+                            <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/68">
+                              Ferry or transport consideration
+                            </p>
+                            <p className="mt-3 text-sm font-light leading-[1.82] text-[#f4efe2]/68 sm:text-base">
+                              {item.transport}
+                            </p>
+                          </div>
+                          <div className="rounded-[1rem] border border-[#c6a15b]/16 bg-[#c6a15b]/[0.045] p-5">
+                            <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/76">
+                              Slow down for
+                            </p>
+                            <p className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/74 sm:text-base">
+                              {item.slowDownFor}
+                            </p>
+                          </div>
+                          <p className="border-l border-[#8fafa8]/40 pl-4 text-sm font-light leading-[1.8] text-[#f4efe2]/62 sm:text-base">
+                            {item.practicalNote}
                           </p>
                         </div>
-                        <div className="rounded-[1rem] border border-[#c6a15b]/16 bg-[#c6a15b]/[0.045] p-5">
-                          <p className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#d8c9a7]/76">
-                            Slow down for
-                          </p>
-                          <p className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/74 sm:text-base">
-                            {item.slowDownFor}
-                          </p>
-                        </div>
-                        <p className="border-l border-[#8fafa8]/40 pl-4 text-sm font-light leading-[1.8] text-[#f4efe2]/62 sm:text-base">
-                          {item.practicalNote}
-                        </p>
                       </div>
                     </div>
                   </div>
-                </div>
-              </article>
+                </article>
+
+                {index === 2 ? (
+                  <div className="itinerary-print-hidden grid gap-5 md:grid-cols-[0.78fr_1.22fr]">
+                    <figure className="overflow-hidden rounded-[1.35rem] border border-[#d8c9a7]/18 bg-[#071418]">
+                      <div className="relative aspect-[4/5]">
+                        <Image
+                          src="/images/destinations/helgeland/ferry.jpg"
+                          alt="A white vehicle ferry crossing blue water between forested mountains"
+                          fill
+                          loading="lazy"
+                          sizes="(min-width: 768px) 38vw, calc(100vw - 40px)"
+                          className="object-cover object-[center_58%]"
+                        />
+                      </div>
+                      <figcaption className="border-t border-white/8 px-5 py-4 text-sm font-light leading-6 text-[#f4efe2]/66">
+                        Ferry crossings are part of the rhythm of the journey.
+                      </figcaption>
+                    </figure>
+                    <figure className="overflow-hidden rounded-[1.35rem] border border-[#d8c9a7]/18 bg-[#071418]">
+                      <div className="relative aspect-[16/11]">
+                        <Image
+                          src="/images/destinations/helgeland/nordlandsbåt2.png"
+                          alt="A traditional wooden boat moored beside a quay on an overcast coastal day"
+                          fill
+                          loading="lazy"
+                          sizes="(min-width: 768px) 58vw, calc(100vw - 40px)"
+                          className="object-cover object-center"
+                        />
+                      </div>
+                      <figcaption className="border-t border-white/8 px-5 py-4 text-sm font-light leading-6 text-[#f4efe2]/66">
+                        The coast has always been read from the water as well as the road.
+                      </figcaption>
+                    </figure>
+                  </div>
+                ) : null}
+              </div>
             ))}
           </div>
         </section>
+
+        <figure className="itinerary-print-hidden mt-16 overflow-hidden rounded-[1.5rem] border border-[#d8c9a7]/18 bg-[#071418] sm:mt-20">
+          <div className="relative aspect-[16/10] sm:aspect-[21/9]">
+            <Image
+              src="/images/destinations/helgeland/helgeland.jpg"
+              alt="A coastal village and mountains reflected in calm water in Northern Norway"
+              fill
+              loading="lazy"
+              sizes="(min-width: 1280px) 1280px, (min-width: 768px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#071418]/74 to-transparent" />
+          </div>
+          <figcaption className="border-t border-white/8 px-5 py-4 text-sm font-light leading-6 text-[#f4efe2]/66 sm:px-7">
+            Leave room for weather, detours and slow coastal evenings.
+          </figcaption>
+        </figure>
 
         <section className="mt-16 grid gap-10 border-t border-white/8 pt-16 sm:mt-20 sm:pt-20 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16" aria-labelledby="ferry-planning-title">
           <SectionHeader
@@ -565,6 +636,20 @@ export default function HelgelandCoastItineraryPage() {
             </Link>
           </div>
         </section>
+
+        <figure className="itinerary-print-hidden mt-16 overflow-hidden rounded-[1.5rem] border border-[#d8c9a7]/18 bg-[#071418] sm:mt-20">
+          <div className="relative aspect-[16/10] sm:aspect-[16/7]">
+            <Image
+              src="/images/destinations/helgeland/helgeland2.jpg"
+              alt="A mountain-lined coastal settlement beside bright blue water in Northern Norway"
+              fill
+              loading="lazy"
+              sizes="(min-width: 1280px) 1280px, (min-width: 768px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#071418]/72 to-transparent" />
+          </div>
+        </figure>
 
         <section className="mt-16 border-t border-white/8 pt-16 sm:mt-20 sm:pt-20" aria-labelledby="final-route-note-title">
           <div className="rounded-[1.5rem] border border-[#d8c9a7]/18 bg-[linear-gradient(145deg,rgba(198,161,91,0.08),rgba(7,20,24,0.76))] p-8 sm:p-10 lg:p-12">
