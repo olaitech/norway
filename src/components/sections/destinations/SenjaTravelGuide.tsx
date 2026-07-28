@@ -1305,7 +1305,10 @@ export function SenjaTravelGuide() {
             </DestinationReveal>
             <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {relatedGuides.map((guide, index) => (
-                <DestinationReveal key={guide.href} delay={index * 0.04}>
+                <DestinationReveal
+                  key={`${guide.href}-${guide.title}`}
+                  delay={index * 0.04}
+                >
                   <Link
                     href={guide.href}
                     className="internal-card-link group block h-full rounded-[1.2rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:p-8"

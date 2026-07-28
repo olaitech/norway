@@ -19,7 +19,7 @@ const privacySections = [
   },
   {
     title: "Information you send directly",
-    text: "If you use the contact page or email hello@tripsnorway.com, the details you choose to share are used only to read and reply. There is no contact form or newsletter on the site right now.",
+    text: "If you use the contact page or email hello@tripsnorway.com, the details you choose to share are used only to read and reply. If you sign up for the Helgeland Coast itinerary, Sender receives your email address to deliver the itinerary and occasional Trips Norway travel inspiration. You can unsubscribe at any time.",
   },
   {
     title: "Optional analytics",
@@ -31,7 +31,7 @@ const privacySections = [
   },
   {
     title: "Maps and external services",
-    text: "The map page can request tiles from OpenStreetMap-style services when you open it. Outbound links to Google Maps, TikTok and similar services open on those sites instead of embedding their players here. There are no third-party embeds on the site right now.",
+    text: "The map page can request tiles from OpenStreetMap-style services when you open it. The newsletter signup form is embedded from Sender, which handles its validation, subscription and delivery. Outbound links to Google Maps, TikTok and similar services open on those sites instead of embedding their players here.",
   },
   {
     title: "Your choices",

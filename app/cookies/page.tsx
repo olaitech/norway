@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const cookieSections = [
   {
     title: "Necessary storage",
-    text: "Trips Norway uses only the small browser storage needed to remember your choice and keep the site usable. If the hosting platform uses technical cookies or similar storage for security, they are limited to that job.",
+    text: "Trips Norway uses small browser-storage entries to remember your privacy choice, whether the newsletter dialog has appeared during a visit, and a 14-day dismissal period if you close it. If the hosting platform uses technical cookies or similar storage for security, they are limited to that job.",
   },
   {
     title: "Optional analytics",
@@ -23,7 +23,7 @@ const cookieSections = [
   },
   {
     title: "Maps and external content",
-    text: "The map page can request OpenStreetMap-style tiles when you open it. The site does not currently embed YouTube or TikTok players, and outbound links open those services separately.",
+    text: "The map page can request OpenStreetMap-style tiles when you open it. The newsletter form is embedded from Sender and may use its own technical storage when loaded. The site does not currently embed YouTube or TikTok players, and outbound links open those services separately.",
   },
   {
     title: "Change preferences",

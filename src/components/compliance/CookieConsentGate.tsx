@@ -37,8 +37,8 @@ function CookieConsentBanner({
             </h2>
             <p className="mt-3 max-w-2xl text-sm font-light leading-[1.8] text-[#f4efe2]/66 sm:text-base">
               Trips Norway uses only the storage needed to remember this
-              preference unless you allow optional analytics. There are no
-              newsletter tools or embedded players on the site right now.
+              preference and newsletter-dialog choices unless you allow
+              optional analytics. The newsletter form is provided by Sender.
             </p>
           </div>
 

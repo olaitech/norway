@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 
 import { GlobalShaderBackground } from "@/src/components/backgrounds/GlobalShaderBackground";
 import { CookieConsentGate } from "@/src/components/compliance/CookieConsentGate";
 import { Footer } from "@/src/components/layout/Footer";
+import { NewsletterSignupDialog } from "@/src/components/newsletter/NewsletterSignupDialog";
 import {
   DEFAULT_SOCIAL_IMAGE,
   SITE_DESCRIPTION,
@@ -16,6 +18,29 @@ import "./globals.css";
 const siteName = SITE_NAME;
 const siteDescription = SITE_DESCRIPTION;
 const socialImage = DEFAULT_SOCIAL_IMAGE;
+
+const senderUniversalScript = `
+window.tripsNorwaySenderFormsReady = function () {
+  window.dispatchEvent(new Event('trips-norway-sender-forms-ready'));
+};
+
+(function (s, e, n, d, er) {
+  s['Sender'] = er;
+  s[er] = s[er] || function () {
+    (s[er].q = s[er].q || []).push(arguments)
+  }, s[er].l = 1 * new Date();
+  s[er].on = function(event, callback) {
+    s[er].listeners = s[er].listeners || {};
+    (s[er].listeners[event] = s[er].listeners[event] || []).push(callback);
+  };
+  var a = e.createElement(n),
+      m = e.getElementsByTagName(n)[0];
+  a.async = 1;
+  a.src = d;
+  m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js?explicit=true&onload=tripsNorwaySenderFormsReady', 'sender');
+sender('a7a05949148518')
+`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,9 +104,13 @@ export default function RootLayout({
         <GlobalShaderBackground />
         <div className="relative z-10 flex min-h-full flex-col">
           {children}
+          <NewsletterSignupDialog />
           <CookieConsentGate />
           <Footer />
         </div>
+        <Script id="sender-universal" strategy="afterInteractive">
+          {senderUniversalScript}
+        </Script>
       </body>
     </html>
   );

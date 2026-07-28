@@ -16,7 +16,7 @@ const settings = [
   {
     title: "Necessary storage",
     status: "Always on",
-    text: "Trips Norway stores the minimum needed to remember your choice and keep the site usable. This does not include a full account or profile system.",
+    text: "Trips Norway stores the minimum needed to remember your privacy choice and newsletter-dialog dismissal. This does not include a full account or profile system.",
   },
   {
     title: "Optional analytics",
