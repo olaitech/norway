@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HelgelandLiveDepartures } from "@/src/components/sections/routes/HelgelandLiveDepartures";
 import { CinematicSeoPage } from "@/src/components/sections/seo/CinematicSeoPage";
 import { seoPages, toMetadata } from "@/src/data/seo-pages";
 
@@ -13,6 +14,7 @@ export default function HelgelandCoastRoadTripPage() {
     <CinematicSeoPage
       page={seoPages.helgelandCoastRoadTrip}
       canonicalPath="/routes/helgeland-coast-road-trip"
+      featureSection={<HelgelandLiveDepartures />}
     />
   );
 }
