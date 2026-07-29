@@ -41,7 +41,7 @@ function FooterColumn({ title, links }: FooterColumnProps) {
       </h2>
       <ul className="mt-6 space-y-3">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={`${link.href}-${link.label}`}>
             <Link
               href={link.href}
               className="text-sm font-light text-[#afa796] transition-colors duration-300 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/50"

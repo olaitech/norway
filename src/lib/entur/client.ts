@@ -8,6 +8,7 @@ import type {
 const ENTUR_JOURNEY_PLANNER_URL =
   "https://api.entur.io/journey-planner/v3/graphql";
 const TJOTTA_STOP_PLACE_ID = "NSR:StopPlace:63216";
+const ENTUR_REQUEST_TIMEOUT_MS = 10_000;
 
 const departuresQuery = `
   query HelgelandFerryDepartures {
@@ -71,6 +72,7 @@ async function fetchFerryDepartures(): Promise<EnturDeparturesResponse> {
     },
     body: JSON.stringify({ query: departuresQuery }),
     cache: "no-store",
+    signal: AbortSignal.timeout(ENTUR_REQUEST_TIMEOUT_MS),
   });
 
   if (!response.ok) {
