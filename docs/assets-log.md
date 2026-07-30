@@ -21,6 +21,8 @@ they enter the project.
 | `public/video/atmosphere/lofoten-fisherman-sjar.mp4` | Atmosphere video | Homepage `Coastal Memory` / `LofotenFishermanFeature` section | Actual current path; autoplay, loop, muted, inline; no poster currently configured |
 | `public/images/map/map-norway.jpg` | Real map image | Gateways to Northern Norway arrival-map panel | Foundation image for cinematic map presentation |
 | `public/images/branding/logo-norge-removebg-preview.png` | Brand mark | Header/hero navigation | Treat as decorative when text label supplies name |
+| `https://kamera.atlas.vegvesen.no/api/images/3000614_1` | Updated official ferry-quay camera image | Bodø departures on the Nordland ferry board | 800 × 600 JPEG from Statens vegvesen camera `3000614_1`; display uncropped, lazy-loaded and unoptimized with timestamp refresh; attribution links to the official camera page |
+| `https://kamera.atlas.vegvesen.no/api/images/1800234_1` | Updated official ferry-quay camera image | Bognes departures on the Nordland ferry board | 800 × 600 JPEG from Statens vegvesen camera `1800234_1`; display uncropped, lazy-loaded and unoptimized with timestamp refresh; attribution links to the official camera page |
 
 ## Asset Rules
 

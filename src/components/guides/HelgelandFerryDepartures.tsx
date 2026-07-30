@@ -3,6 +3,10 @@
 import { ChevronDown } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
+import {
+  FerryQuayCamera,
+  type FerryQuayCameraConfig,
+} from "@/src/components/guides/FerryQuayCamera";
 import type {
   EnturDeparturesResponse,
   EnturFerryDeparture,
@@ -26,6 +30,43 @@ const ferryRouteGroups: EnturFerryRoute["group"][] = [
   "Helgeland",
   "Bodø & Lofoten",
   "Tysfjord & Ofoten",
+];
+
+type FerryCameraSelection = {
+  routeIds: readonly string[];
+  departureId: string;
+  camera: FerryQuayCameraConfig;
+};
+
+const ferryCameraSelections: readonly FerryCameraSelection[] = [
+  {
+    routeIds: ["bodo-vaeroy-rost-moskenes"],
+    departureId: "bodo",
+    camera: {
+      cameraId: "3000614_1",
+      cameraName: "Bodø ferjekai",
+      imageUrl: "https://kamera.atlas.vegvesen.no/api/images/3000614_1",
+      pageUrl: "https://www.vegvesen.no/trafikk/vaerveikamera/3000614",
+      heading: "Live view from Bodø ferry quay",
+      description:
+        "Check the current traffic and queue situation at Bodø ferry quay before departure.",
+      altText: "Current traffic and queue situation at Bodø ferry quay",
+    },
+  },
+  {
+    routeIds: ["bognes-skarberget", "bognes-lodingen"],
+    departureId: "bognes",
+    camera: {
+      cameraId: "1800234_1",
+      cameraName: "Bognes ferjekai",
+      imageUrl: "https://kamera.atlas.vegvesen.no/api/images/1800234_1",
+      pageUrl: "https://www.vegvesen.no/trafikk/vaerveikamera/1800234",
+      heading: "Live view from Bognes ferry quay",
+      description:
+        "Check the current traffic and queue situation at Bognes ferry quay before departure.",
+      altText: "Current traffic and queue situation at Bognes ferry quay",
+    },
+  },
 ];
 
 const osloDateTimeFormatter = new Intl.DateTimeFormat("en-GB", {
@@ -207,6 +248,12 @@ export function HelgelandFerryDepartures() {
 
   const isLoading = request.status === "loading";
   const isRefreshing = request.status === "refreshing";
+  const selectedCamera =
+    ferryCameraSelections.find(
+      ({ routeIds, departureId }) =>
+        routeIds.includes(selectedRoute?.id ?? "") &&
+        departureId === selectedDirection?.id,
+    )?.camera ?? null;
 
   return (
     <section
@@ -492,6 +539,13 @@ export function HelgelandFerryDepartures() {
             </ol>
           ) : null}
         </div>
+
+        {selectedCamera ? (
+          <FerryQuayCamera
+            key={selectedCamera.cameraId}
+            camera={selectedCamera}
+          />
+        ) : null}
 
         {data ? (
           <p className="mt-5 text-xs font-light leading-[1.7] text-[#f4efe2]/48">
