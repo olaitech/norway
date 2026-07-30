@@ -27,8 +27,10 @@ type GuideArticleLayoutProps = {
   category: string;
   readTime: string;
   lastUpdated: string;
+  dateModified?: string;
   canonicalPath: string;
   answerBlock?: ReactNode;
+  featureSection?: ReactNode;
   faqItems?: readonly FaqItem[];
   trustBox?: ReactNode;
   sources?: GuideSource[];
@@ -45,8 +47,10 @@ export function GuideArticleLayout({
   category,
   readTime,
   lastUpdated,
+  dateModified,
   canonicalPath,
   answerBlock,
+  featureSection,
   faqItems,
   trustBox,
   sources,
@@ -75,7 +79,7 @@ export function GuideArticleLayout({
             description: subtitle ?? title,
             url: canonicalPath,
             articleSection: category,
-            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
+            dateModified: dateModified ?? CURRENT_SITE_WIDE_REFRESH_DATE,
           }),
           ...(hasFaqItems ? [createFaqJsonLd(faqItems ?? [])] : []),
         ]}
@@ -117,6 +121,7 @@ export function GuideArticleLayout({
       <section className="border-t border-white/8 bg-[linear-gradient(180deg,rgba(8,17,22,0.2),rgba(5,8,10,0.1))] px-5 py-12 sm:px-8 sm:py-14 md:px-12 lg:py-16">
         <article className="mx-auto max-w-4xl">
           {answerBlock ? <div className="mb-8">{answerBlock}</div> : null}
+          {featureSection ? <div className="mb-12">{featureSection}</div> : null}
           <div className="rounded-[1.25rem] border border-[#8fafa8]/12 bg-[linear-gradient(165deg,rgba(23,35,38,0.84),rgba(8,17,22,0.94))] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)] sm:p-8 md:p-10">
           <div className="[&_a]:text-[#c6a15b]/86 [&_a]:underline [&_a]:decoration-[#c6a15b]/35 [&_a]:underline-offset-4 [&_a]:transition-colors [&_a:hover]:text-[#f4efe2] [&_blockquote]:mt-7 [&_blockquote]:border-l [&_blockquote]:border-[#c6a15b]/35 [&_blockquote]:pl-4 [&_blockquote]:text-[#f4efe2]/72 [&_h2]:mt-12 [&_h2]:font-serif [&_h2]:text-[clamp(2rem,4vw,3.1rem)] [&_h2]:font-normal [&_h2]:leading-[0.95] [&_h2]:tracking-[-0.04em] [&_h2]:text-[#f4efe2] [&_h3]:mt-9 [&_h3]:font-serif [&_h3]:text-[clamp(1.5rem,3.2vw,2.2rem)] [&_h3]:font-normal [&_h3]:leading-[1.02] [&_h3]:tracking-[-0.03em] [&_h3]:text-[#f4efe2] [&_li]:mt-2 [&_li]:text-base [&_li]:font-light [&_li]:leading-[1.8] [&_li]:text-[#f4efe2]/68 [&_ol]:mt-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mt-5 [&_p]:text-base [&_p]:font-light [&_p]:leading-[1.85] [&_p]:text-[#f4efe2]/70 [&_table]:mt-7 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:rounded-[0.9rem] [&_table]:border [&_table]:border-white/10 [&_tbody_tr]:border-t [&_tbody_tr]:border-white/10 [&_td]:px-3 [&_td]:py-3 [&_td]:text-sm [&_td]:font-light [&_td]:text-[#f4efe2]/68 [&_th]:bg-white/[0.03] [&_th]:px-3 [&_th]:py-3 [&_th]:text-left [&_th]:text-xs [&_th]:font-medium [&_th]:uppercase [&_th]:tracking-[0.2em] [&_th]:text-[#c6a15b]/76 [&_ul]:mt-5 [&_ul]:list-disc [&_ul]:pl-5">
               {children}

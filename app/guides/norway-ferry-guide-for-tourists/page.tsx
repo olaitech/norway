@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { HelgelandFerryDepartures } from "@/src/components/guides/HelgelandFerryDepartures";
 import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 import { TrustBox } from "@/src/components/shared/TrustBox";
 
@@ -43,8 +44,10 @@ export default function NorwayFerryGuideForTouristsPage() {
       subtitle="How car ferries, passenger boats, coastal routes, payment systems and ferry planning work in Norway."
       category="Transport & Planning"
       readTime="14 min read"
-      lastUpdated="May 2026"
+      lastUpdated="July 2026"
+      dateModified="2026-07-30"
       canonicalPath="/guides/norway-ferry-guide-for-tourists"
+      featureSection={<HelgelandFerryDepartures />}
       faqItems={faqItems}
       answerBlock={
         <AnswerBlock

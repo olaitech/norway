@@ -30,6 +30,8 @@ The current workspace includes:
   destination text panels.
 - Adjusted homepage spacing to avoid large empty scroll areas between sections
   and above the footer.
+- A cached Entur-powered Helgeland Coast ferry board in the Norway Ferry Guide,
+  with the former road-trip anchor retained as a link to the live section.
 
 ## Current Work Plan
 
