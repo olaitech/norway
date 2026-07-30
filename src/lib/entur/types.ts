@@ -22,6 +22,7 @@ export type EnturFerryDirection = {
 export type EnturFerryRoute = {
   id: string;
   label: string;
+  group: "Helgeland" | "Bodø & Lofoten" | "Tysfjord & Ofoten";
   directions: EnturFerryDirection[];
 };
 

@@ -1,8 +1,10 @@
 import { unstable_cache } from "next/cache";
 
 import {
-  helgelandFerryQuayIds,
-  helgelandFerryRoutes,
+  nordlandFerryQuayIds,
+  nordlandFerryRoutes,
+  type FerryDirectionDefinition,
+  type FerryRouteDefinition,
 } from "@/src/lib/entur/ferryRoutes";
 import type {
   EnturDeparturesResponse,
@@ -16,7 +18,7 @@ const ENTUR_JOURNEY_PLANNER_URL =
 const ENTUR_REQUEST_TIMEOUT_MS = 10_000;
 
 const departuresQuery = `
-  query HelgelandFerryDepartures($quayIds: [String!]) {
+  query NordlandFerryDepartures($quayIds: [String!]) {
     quays(ids: $quayIds) {
       id
       name
@@ -29,6 +31,7 @@ const departuresQuery = `
         expectedDepartureTime
         realtime
         cancellation
+        forBoarding
         destinationDisplay {
           frontText
         }
@@ -46,6 +49,7 @@ const departuresQuery = `
         }
         serviceJourney {
           line {
+            id
             publicCode
             transportMode
           }
@@ -68,6 +72,7 @@ type EnturEstimatedCall = {
   expectedDepartureTime?: string | null;
   realtime?: boolean | null;
   cancellation?: boolean | null;
+  forBoarding?: boolean | null;
   destinationDisplay?: {
     frontText?: string | null;
   } | null;
@@ -85,6 +90,7 @@ type EnturEstimatedCall = {
   } | null> | null;
   serviceJourney?: {
     line?: {
+      id?: string | null;
       publicCode?: string | null;
       transportMode?: string | null;
     } | null;
@@ -138,6 +144,7 @@ function toFerryDeparture(
     !scheduledDepartureTime ||
     !departureQuay ||
     !line ||
+    call.forBoarding !== true ||
     call.quay?.id !== expectedQuayId ||
     transportMode?.toLowerCase() !== "water"
   ) {
@@ -153,7 +160,9 @@ function toFerryDeparture(
     }),
   ];
   const destination =
-    validText(call.destinationDisplay?.frontText) ?? sailingSequence.at(-1);
+    sailingSequence.length > 1
+      ? sailingSequence.at(-1)
+      : validText(call.destinationDisplay?.frontText);
 
   if (!destination) {
     return null;
@@ -190,8 +199,8 @@ function toFerryDeparture(
 }
 
 function toDirection(
-  route: (typeof helgelandFerryRoutes)[number],
-  direction: (typeof route.directions)[number],
+  route: FerryRouteDefinition,
+  direction: FerryDirectionDefinition,
   quaysById: ReadonlyMap<string, EnturQuay>,
 ): EnturFerryDirection {
   const quay = quaysById.get(direction.quayId);
@@ -207,9 +216,16 @@ function toDirection(
   }
 
   const departures = (quay.estimatedCalls ?? [])
+    .filter((call) => {
+      const lineId = validText(call.serviceJourney?.line?.id);
+      const linePublicCode = validText(call.serviceJourney?.line?.publicCode);
+
+      return route.lineId
+        ? lineId === route.lineId
+        : linePublicCode === route.linePublicCode;
+    })
     .map((call) => toFerryDeparture(call, direction.quayId))
     .filter((departure): departure is EnturFerryDeparture => departure !== null)
-    .filter((departure) => departure.line === route.linePublicCode)
     .sort(
       (first, second) =>
         new Date(first.scheduledDepartureTime).getTime() -
@@ -230,11 +246,11 @@ async function fetchFerryDepartures(): Promise<EnturDeparturesResponse> {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "ET-Client-Name": "tripsnorway-helgeland-planner",
+      "ET-Client-Name": "tripsnorway-nordland-planner",
     },
     body: JSON.stringify({
       query: departuresQuery,
-      variables: { quayIds: helgelandFerryQuayIds },
+      variables: { quayIds: nordlandFerryQuayIds },
     }),
     cache: "no-store",
     signal: AbortSignal.timeout(ENTUR_REQUEST_TIMEOUT_MS),
@@ -258,9 +274,10 @@ async function fetchFerryDepartures(): Promise<EnturDeparturesResponse> {
       return quay && quayId ? [[quayId, quay] as const] : [];
     }),
   );
-  const routes: EnturFerryRoute[] = helgelandFerryRoutes.map((route) => ({
+  const routes: EnturFerryRoute[] = nordlandFerryRoutes.map((route) => ({
     id: route.id,
     label: route.label,
+    group: route.group,
     directions: route.directions.map((direction) =>
       toDirection(route, direction, quaysById),
     ),
@@ -274,6 +291,6 @@ async function fetchFerryDepartures(): Promise<EnturDeparturesResponse> {
 
 export const getFerryDepartures = unstable_cache(
   fetchFerryDepartures,
-  ["entur", "helgeland-ferry-departures", ...helgelandFerryQuayIds],
+  ["entur", "nordland-ferry-departures", ...nordlandFerryQuayIds],
   { revalidate: 60 },
 );

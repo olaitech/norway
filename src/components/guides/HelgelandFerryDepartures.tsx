@@ -1,11 +1,12 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
 import type {
   EnturDeparturesResponse,
   EnturFerryDeparture,
-  EnturFerryDirection,
+  EnturFerryRoute,
 } from "@/src/lib/entur/types";
 
 type RequestState =
@@ -19,6 +20,12 @@ type DayFilter = "today" | "tomorrow";
 const dateFilters: Array<{ value: DayFilter; label: string }> = [
   { value: "today", label: "Today" },
   { value: "tomorrow", label: "Tomorrow" },
+];
+
+const ferryRouteGroups: EnturFerryRoute["group"][] = [
+  "Helgeland",
+  "Bodø & Lofoten",
+  "Tysfjord & Ofoten",
 ];
 
 const osloDateTimeFormatter = new Intl.DateTimeFormat("en-GB", {
@@ -198,10 +205,6 @@ export function HelgelandFerryDepartures() {
     setDirectionId(nextRoute?.directions[0]?.id ?? "");
   };
 
-  const selectDirection = (direction: EnturFerryDirection) => {
-    setDirectionId(direction.id);
-  };
-
   const isLoading = request.status === "loading";
   const isRefreshing = request.status === "refreshing";
 
@@ -215,18 +218,25 @@ export function HelgelandFerryDepartures() {
         <div className="flex flex-wrap items-end justify-between gap-5">
           <div className="max-w-2xl">
             <p className="text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#c6a15b]/76">
-              Helgeland Coast planning
+              Nordland ferry planning
             </p>
             <h2
               id="live-ferry-departures-heading"
               className="mt-4 font-serif text-[clamp(2.2rem,4.4vw,4.15rem)] font-normal leading-[0.94] tracking-[-0.05em] text-[#f4efe2]"
             >
-              Live Helgeland Coast ferry departures
+              Live ferry departures in Nordland
             </h2>
             <p className="mt-4 text-sm font-light leading-[1.75] text-[#f4efe2]/64 sm:text-base">
-              Check upcoming ferry departures for the main Helgeland Coast
-              crossings and island connections. Times are provided by Entur and
-              should always be checked again before travelling.
+              Check upcoming ferry departures for important crossings along the
+              Helgeland Coast, between Bodø and Lofoten, and across Tysfjord and
+              Ofoten. Departure information is provided by Entur and should
+              always be verified before travelling.
+            </p>
+            <p className="mt-3 text-xs font-light leading-[1.75] text-[#f4efe2]/52 sm:text-sm">
+              <span className="font-medium text-[#9ecad8]">Live</span> means
+              Entur has supplied estimated realtime information.{" "}
+              <span className="font-medium text-[#f4efe2]/76">Scheduled</span>{" "}
+              means only timetable information is currently available.
             </p>
           </div>
           <button
@@ -240,57 +250,99 @@ export function HelgelandFerryDepartures() {
         </div>
 
         {data && selectedRoute && selectedDirection ? (
-          <div className="mt-7 grid gap-5 border-y border-white/8 py-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_auto]">
+          <div className="mt-7 grid gap-5 border-y border-white/8 py-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)_auto]">
             <div className="min-w-0">
               <label
-                htmlFor="helgeland-ferry-route"
-                className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#f4efe2]/48"
+                htmlFor="nordland-ferry-route"
+                className="block text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/78"
               >
-                Ferry connection
+                1. Choose a ferry connection
               </label>
-              <select
-                id="helgeland-ferry-route"
-                value={selectedRoute.id}
-                onChange={(event) => selectRoute(event.target.value)}
-                className="mt-3 min-h-11 w-full rounded-lg border border-white/10 bg-[#0b1519] px-3 text-sm text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/70"
+              <p
+                id="nordland-ferry-route-help"
+                className="mt-1.5 text-xs font-light leading-[1.6] text-[#f4efe2]/52"
               >
-                {data.routes.map((route) => (
-                  <option key={route.id} value={route.id}>
-                    {route.label}
-                  </option>
-                ))}
-              </select>
+                Select the route you want to check
+              </p>
+              <div className="relative mt-3">
+                <select
+                  id="nordland-ferry-route"
+                  value={selectedRoute.id}
+                  onChange={(event) => selectRoute(event.target.value)}
+                  aria-describedby="nordland-ferry-route-help nordland-ferry-route-hint"
+                  className="min-h-14 w-full appearance-none rounded-xl border border-[#8fafa8]/36 bg-[#071216] px-4 pr-12 text-base text-[#f4efe2] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors hover:border-[#c6a15b]/58 hover:bg-[#0a171c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/76 focus-visible:ring-offset-3 focus-visible:ring-offset-[#081116] motion-reduce:transition-none"
+                >
+                  {ferryRouteGroups.map((group) => (
+                    <optgroup key={group} label={group}>
+                      {data.routes
+                        .filter((route) => route.group === group)
+                        .map((route) => (
+                          <option key={route.id} value={route.id}>
+                            {route.label}
+                          </option>
+                        ))}
+                    </optgroup>
+                  ))}
+                </select>
+                <ChevronDown
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#c6a15b]"
+                  size={20}
+                  strokeWidth={1.8}
+                />
+              </div>
+              <p
+                id="nordland-ferry-route-hint"
+                className="mt-2 text-[0.68rem] font-medium uppercase tracking-[0.14em] text-[#c6a15b]/72"
+              >
+                Select to change connection
+              </p>
+            </div>
+
+            <div className="min-w-0">
+              <label
+                htmlFor="nordland-ferry-direction"
+                className="block text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/78"
+              >
+                2. Departing from
+              </label>
+              <p
+                id="nordland-ferry-direction-help"
+                className="mt-1.5 text-xs font-light leading-[1.6] text-[#f4efe2]/52"
+              >
+                Choose your departure quay
+              </p>
+              <div className="relative mt-3">
+                <select
+                  id="nordland-ferry-direction"
+                  value={selectedDirection.id}
+                  onChange={(event) => setDirectionId(event.target.value)}
+                  aria-describedby="nordland-ferry-direction-help nordland-ferry-direction-hint"
+                  className="min-h-14 w-full appearance-none rounded-xl border border-[#8fafa8]/36 bg-[#071216] px-4 pr-12 text-base text-[#f4efe2] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors hover:border-[#c6a15b]/58 hover:bg-[#0a171c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/76 focus-visible:ring-offset-3 focus-visible:ring-offset-[#081116] motion-reduce:transition-none"
+                >
+                  {selectedRoute.directions.map((direction) => (
+                    <option key={direction.id} value={direction.id}>
+                      {direction.label}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#c6a15b]"
+                  size={20}
+                  strokeWidth={1.8}
+                />
+              </div>
+              <p
+                id="nordland-ferry-direction-hint"
+                className="mt-2 text-[0.68rem] font-medium uppercase tracking-[0.14em] text-[#c6a15b]/72"
+              >
+                Select to change departure quay
+              </p>
             </div>
 
             <fieldset className="min-w-0">
-              <legend className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#f4efe2]/48">
-                Departure direction
-              </legend>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {selectedRoute.directions.map((direction) => {
-                  const isSelected = selectedDirection.id === direction.id;
-
-                  return (
-                    <button
-                      key={direction.id}
-                      type="button"
-                      aria-pressed={isSelected}
-                      onClick={() => selectDirection(direction)}
-                      className={`min-h-10 rounded-full border px-3.5 text-[0.6rem] font-medium uppercase tracking-[0.18em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#081116] ${
-                        isSelected
-                          ? "border-[#c6a15b]/46 bg-[#c6a15b]/12 text-[#f4efe2]"
-                          : "border-white/10 text-[#f4efe2]/62"
-                      }`}
-                    >
-                      {direction.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </fieldset>
-
-            <fieldset className="min-w-0">
-              <legend className="text-[0.58rem] font-medium uppercase tracking-[0.26em] text-[#f4efe2]/48">
+              <legend className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/78">
                 Day
               </legend>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -350,7 +402,7 @@ export function HelgelandFerryDepartures() {
                 Departure data for this quay is temporarily unavailable.
               </p>
               <p className="mt-2 text-sm font-light leading-[1.75] text-[#f4efe2]/56">
-                Other Helgeland connections remain available to check.
+                Other Nordland connections remain available to check.
               </p>
             </div>
           ) : null}
@@ -449,7 +501,7 @@ export function HelgelandFerryDepartures() {
         ) : null}
 
         <p className="mt-3 text-xs font-light leading-[1.7] text-[#f4efe2]/48">
-          Verify the journey with{" "}
+          Verify departures and disruptions with the operator,{" "}
           <a
             href="https://entur.no/"
             target="_blank"
