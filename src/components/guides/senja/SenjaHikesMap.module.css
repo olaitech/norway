@@ -1,0 +1,185 @@
+.mapShell {
+  position: relative;
+  min-height: clamp(31rem, 66vw, 44rem);
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 1.4rem;
+  background:
+    radial-gradient(circle at 50% 30%, rgb(58 86 90 / 24%), transparent 52%),
+    #081216;
+  box-shadow: 0 28px 85px rgb(0 0 0 / 26%);
+}
+
+.mapCanvas {
+  min-height: clamp(31rem, 66vw, 44rem);
+  width: 100%;
+  background: #0a1519;
+}
+
+.mapState {
+  position: absolute;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at 50% 42%, rgb(59 88 92 / 30%), transparent 48%),
+    rgb(8 18 22 / 96%);
+  color: rgb(244 239 226 / 72%);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  line-height: 1.7;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.mapShell :global(.leaflet-container) {
+  color: #142125;
+  font-family: inherit;
+}
+
+.mapShell :global(.leaflet-tile-pane) {
+  filter: grayscale(0.74) saturate(0.52) brightness(0.47) contrast(1.16)
+    sepia(0.12);
+}
+
+.mapShell :global(.leaflet-control-zoom) {
+  overflow: hidden;
+  border: 1px solid rgb(244 239 226 / 18%);
+  border-radius: 0.75rem;
+  box-shadow: none;
+}
+
+.mapShell :global(.leaflet-control-zoom a) {
+  border-color: rgb(244 239 226 / 12%);
+  background: rgb(8 18 22 / 92%);
+  color: #f4efe2;
+}
+
+.mapShell :global(.leaflet-control-zoom a:hover),
+.mapShell :global(.leaflet-control-zoom a:focus-visible) {
+  background: #17292d;
+  color: #fff;
+}
+
+.mapShell :global(.leaflet-control-attribution) {
+  border-radius: 0.45rem 0 0 0;
+  background: rgb(8 18 22 / 88%);
+  color: rgb(244 239 226 / 72%);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.mapShell :global(.leaflet-control-attribution a) {
+  color: #f4efe2;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.mapShell :global(.leaflet-popup-content-wrapper),
+.mapShell :global(.leaflet-popup-tip) {
+  border: 1px solid rgb(216 201 167 / 24%);
+  background: #0b171b;
+  color: #f4efe2;
+  box-shadow: 0 18px 55px rgb(0 0 0 / 34%);
+}
+
+.mapShell :global(.leaflet-popup-content-wrapper) {
+  border-radius: 0.95rem;
+}
+
+.mapShell :global(.leaflet-popup-close-button) {
+  color: rgb(244 239 226 / 70%);
+}
+
+.hikeMarker {
+  display: grid !important;
+  place-items: center;
+  border: 0;
+  background: transparent;
+}
+
+.hikeMarker span {
+  display: block;
+  width: 1.45rem;
+  height: 1.45rem;
+  transform: rotate(45deg);
+  border: 2px solid #f4efe2;
+  border-radius: 50% 50% 50% 0;
+  background: #c6a15b;
+  box-shadow: 0 0 0 5px rgb(8 18 22 / 44%), 0 8px 24px rgb(0 0 0 / 44%);
+}
+
+.hikeMarker:focus-visible span {
+  outline: 3px solid #f4efe2;
+  outline-offset: 4px;
+}
+
+.placeTooltip {
+  border: 1px solid rgb(244 239 226 / 9%) !important;
+  border-radius: 0.45rem !important;
+  background: rgb(8 18 22 / 76%) !important;
+  box-shadow: none !important;
+  color: rgb(244 239 226 / 78%) !important;
+  font-size: 0.56rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.placeTooltip::before {
+  display: none;
+}
+
+.popupContent {
+  display: grid;
+  min-width: 12rem;
+  gap: 0.45rem;
+  margin: 0.25rem 0;
+  color: rgb(244 239 226 / 72%);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.popupContent strong {
+  color: #f4efe2;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.popupContent a {
+  margin-top: 0.25rem;
+  color: #d8c9a7;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .mapShell,
+  .mapCanvas {
+    min-height: 35rem;
+  }
+
+  .placeTooltip {
+    font-size: 0.49rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mapShell *,
+  .mapShell *::before,
+  .mapShell *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

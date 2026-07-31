@@ -33,6 +33,7 @@ const expectedRoutes = [
   "/norway-itinerary-10-days",
   "/responsible-travel",
   "/about",
+  "/guides/best-hikes-in-senja",
 ];
 
 const defaultMetadataPatterns = [

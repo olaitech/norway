@@ -35,6 +35,21 @@ they enter the project.
 | `public/images/guides/camping-rules/card-trips.jpg` | Famous-hikes jump card | Norwegian mountains reflected in a calm lake | 5181 × 3060 JPEG; 2,900,491 bytes | `object-cover`, responsive 45vw/100vw | User-supplied; permission/source details to confirm before external publication |
 | `public/images/guides/camping-rules/nature-clean.jpg` | Famous hikes introduction | A mountain rising above a pale Norwegian beach and sea | 4284 × 5712 JPEG; 4,477,564 bytes | `object-cover`, responsive 36vw/100vw; consider a smaller derivative if delivery data warrants it | User-supplied; permission/source details to confirm before external publication |
 
+## Best Hikes in Senja — Wikimedia Commons images (2026-07-31)
+
+All four local files are resized derivatives of the linked originals by Simo
+Räsänen (Wikimedia Commons), licensed under
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). No crop is
+baked into the local derivatives; any noted crop is applied responsively in the
+page layout.
+
+| Asset path | Page / section | Alt text | Dimensions / size | Crop and loading | Source / licensing |
+| --- | --- | --- | --- | --- | --- |
+| `public/images/guides/best-hikes-in-senja/segla-from-hesten.jpg` | `/guides/best-hikes-in-senja` hero | Segla rising between Ørnfjorden and Mefjorden, seen from the Hesten ridge on Senja | 1920 × 1039 JPEG; 894,096 bytes | `object-cover`, mobile focal point 58% horizontal and desktop centre/48%; priority-loaded LCP image with `sizes="100vw"` | Simo Räsänen / Wikimedia Commons / CC BY-SA 4.0; [original](https://commons.wikimedia.org/wiki/File:View_towards_Segla_from_ridge_at_Hesten_in_Senja,_Troms_og_Finnmark,_Norway,_2022_August.jpg) |
+| `public/images/guides/best-hikes-in-senja/segla-hesten-panorama.jpg` | Hesten or Segla comparison | Panorama from the ridge between Segla and Hesten with Øyfjorden to the left and Mefjorden to the right | 1920 × 617 JPEG; 481,510 bytes | Full panoramic ratio, `object-contain`, responsive 1200px/94vw/100vw; lazy-loaded | Simo Räsänen / Wikimedia Commons / CC BY-SA 4.0; [original](https://commons.wikimedia.org/wiki/File:View_from_a_ridge_between_Segla_and_Hesten,_Senja,_Norway,_2014_August.jpg) |
+| `public/images/guides/best-hikes-in-senja/keipen-grytetippen.jpg` | Core mountain hikes | Keipen and Grytetippen above Ørnfjorden, viewed from Hesten on Senja | 1920 × 1280 JPEG; 725,610 bytes | `object-cover`, centre/48% focal point, responsive 50vw/94vw/100vw; lazy-loaded | Simo Räsänen / Wikimedia Commons / CC BY-SA 4.0; [original](https://commons.wikimedia.org/wiki/File:Keipen_and_Grytetippen_from_Hesten_in_Senja,_Troms_og_Finnmark,_Norway,_2022_August.jpg) |
+| `public/images/guides/best-hikes-in-senja/tungeneset-steinfjorden.jpg` | Season and conditions | Snow-covered coast at Tungeneset and Steinfjorden on Senja in April | 1920 × 830 JPEG; 542,288 bytes | Full wide ratio, `object-contain`, responsive 52vw/94vw/100vw; lazy-loaded | Simo Räsänen / Wikimedia Commons / CC BY-SA 4.0; [original](https://commons.wikimedia.org/wiki/File:Coast_of_Tungeneset_and_Steinfjorden_in_Senja,_Troms,_Norway,_2017_April_-_2.jpg) |
+
 ## Asset Rules
 
 - Prefer public-facing assets under `public/images/` or `public/video/`.

@@ -42,6 +42,7 @@ Before creating pages, confirm:
 | `/guides/how-to-travel-northern-norway-without-a-car` | Transport guide | Primary live guide page |
 | `/guides/how-expensive-is-norway-for-tourists` | Budget guide | Primary live guide page |
 | `/guides/50-local-money-saving-tips-for-norway` | Budget guide | Primary live guide page |
+| `/guides/best-hikes-in-senja` | Senja hiking guide | Primary live guide page |
 | `/guides/camping-rules-in-norway` | Outdoor travel guide | Primary live guide page |
 | `/guides/what-to-pack-for-norway` | Packing guide | Primary live guide page |
 

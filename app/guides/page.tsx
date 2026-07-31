@@ -105,6 +105,14 @@ const guideGroups = [
     label: "Responsible Outdoor Travel",
     guides: [
       {
+        title: "Best Hikes in Senja, Norway",
+        description:
+          "Compare Hesten, Segla, Husfjellet and seven more Senja hikes with route facts, an interactive map and practical safety guidance.",
+        category: "Responsible Outdoor Travel",
+        readTime: "16 min read",
+        href: "/guides/best-hikes-in-senja",
+      },
+      {
         title: "Camping Rules in Norway",
         description:
           "A tourist-friendly guide to wild camping, campervans, the right to roam, campfires and responsible outdoor travel.",
@@ -117,9 +125,9 @@ const guideGroups = [
 ] as const satisfies readonly GuideGroup[];
 
 export const metadata = createPageMetadata({
-  title: "Norway Travel Guides | Seasons, Ferries, Budget and Northern Lights",
+  title: "Norway Travel Guides | Hiking, Ferries, Budget and Northern Lights",
   description:
-    "Practical Norway travel guides for seasons, ferries, driving, camping, northern lights, budgets and planning a calmer journey.",
+    "Practical Norway travel guides for hiking, seasons, ferries, driving, camping, northern lights, budgets and planning a calmer journey.",
   canonical: "/guides",
   image: {
     url: "/images/hero/preikestolen.png",
@@ -139,14 +147,14 @@ export default function GuidesPage() {
       <InfoPageShell
         eyebrow="Practical archive"
         title="Practical Guides"
-        intro="Useful travel planning guides for Norway - ferries, costs, transport, seasons, camping, packing and northern lights."
+        intro="Useful travel planning guides for Norway - hiking, ferries, costs, transport, seasons, camping, packing and northern lights."
         actions={[
           { label: "Explore routes", href: "/routes" },
           { label: "Open map", href: "/map" },
         ]}
         bottomContent={
           <GuideMetaFooter
-            lastUpdated="May 2026"
+            lastUpdated="31 July 2026"
             sources={[
               { label: "Visit Norway", href: "https://www.visitnorway.com/" },
               { label: "Entur", href: "https://entur.no/" },

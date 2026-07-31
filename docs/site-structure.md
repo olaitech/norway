@@ -51,6 +51,7 @@ Canonical live guide pages currently include:
 - `/guides/how-to-travel-northern-norway-without-a-car`
 - `/guides/how-expensive-is-norway-for-tourists`
 - `/guides/50-local-money-saving-tips-for-norway`
+- `/guides/best-hikes-in-senja`
 - `/guides/camping-rules-in-norway`
 - `/guides/what-to-pack-for-norway`
 

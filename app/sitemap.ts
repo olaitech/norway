@@ -44,6 +44,7 @@ const pageLastModifiedByPath = new Map<string, Date>();
   "/destinations/tromso",
   "/guides/50-local-money-saving-tips-for-norway",
   "/guides/best-time-to-visit-northern-norway",
+  "/guides/best-hikes-in-senja",
   "/guides/camping-rules-in-norway",
   "/guides/driving-in-norway-what-visitors-should-know",
   "/guides/how-expensive-is-norway-for-tourists",
@@ -56,6 +57,7 @@ const pageLastModifiedByPath = new Map<string, Date>();
 });
 
 setPageLastModified("/guides/camping-rules-in-norway", "2026-07-31");
+setPageLastModified("/guides/best-hikes-in-senja", "2026-07-31");
 setPageLastModified("/routes", seoPages.routesHub.updatedDate);
 setPageLastModified("/routes/lofoten-road-trip", seoPages.lofotenRoadTrip.updatedDate);
 setPageLastModified(
@@ -172,6 +174,7 @@ const routePages: SitemapEntry[] = [
 const guidePages: SitemapEntry[] = [
   "/guides/50-local-money-saving-tips-for-norway",
   "/guides/best-time-to-visit-northern-norway",
+  "/guides/best-hikes-in-senja",
   "/guides/camping-rules-in-norway",
   "/guides/driving-in-norway-what-visitors-should-know",
   "/guides/how-expensive-is-norway-for-tourists",

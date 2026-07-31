@@ -1140,6 +1140,12 @@ export function SenjaTravelGuide() {
                   mountain safety principles and current local weather should
                   always override social media plans.
                 </p>
+                <Link
+                  href="/guides/best-hikes-in-senja"
+                  className="mt-5 inline-flex text-sm font-medium text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2] focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:text-base"
+                >
+                  Compare the 10 best hikes in Senja
+                </Link>
               </article>
             </DestinationReveal>
           </section>
