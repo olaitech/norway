@@ -23,6 +23,19 @@ type GuideGroup = {
 
 const guideGroups = [
   {
+    label: "Hiking & Outdoors",
+    guides: [
+      {
+        title: "25 of Norway’s Most Famous Hikes",
+        description:
+          "Compare 25 well-known Norwegian hikes by area, approximate time and typical difficulty, with practical safety notes.",
+        category: "Hiking",
+        readTime: "15 min read",
+        href: "/guides/best-hikes-in-norway",
+      },
+    ],
+  },
+  {
     label: "Money & Budget",
     guides: [
       {

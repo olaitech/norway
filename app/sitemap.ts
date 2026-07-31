@@ -43,6 +43,7 @@ const pageLastModifiedByPath = new Map<string, Date>();
   "/destinations/helgeland-coast",
   "/destinations/tromso",
   "/guides/50-local-money-saving-tips-for-norway",
+  "/guides/best-hikes-in-norway",
   "/guides/best-time-to-visit-northern-norway",
   "/guides/camping-rules-in-norway",
   "/guides/driving-in-norway-what-visitors-should-know",
@@ -55,6 +56,7 @@ const pageLastModifiedByPath = new Map<string, Date>();
   pageLastModifiedByPath.set(path, SITE_WIDE_REFRESH_LAST_MODIFIED);
 });
 
+setPageLastModified("/guides/best-hikes-in-norway", "2026-07-31");
 setPageLastModified("/routes", seoPages.routesHub.updatedDate);
 setPageLastModified("/routes/lofoten-road-trip", seoPages.lofotenRoadTrip.updatedDate);
 setPageLastModified(
@@ -170,6 +172,7 @@ const routePages: SitemapEntry[] = [
 
 const guidePages: SitemapEntry[] = [
   "/guides/50-local-money-saving-tips-for-norway",
+  "/guides/best-hikes-in-norway",
   "/guides/best-time-to-visit-northern-norway",
   "/guides/camping-rules-in-norway",
   "/guides/driving-in-norway-what-visitors-should-know",
