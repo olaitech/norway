@@ -14,11 +14,13 @@ import {
   useSyncExternalStore,
 } from "react";
 
+import {
+  SENDER_FORM_FALLBACK_DELAY_MS,
+  SENDER_FORM_ID,
+  SENDER_FORMS_READY_EVENT,
+} from "@/src/components/newsletter/sender-form-config";
 import { COOKIE_CONSENT_CHANGE_EVENT } from "@/src/lib/compliance/cookie-consent";
 
-const SENDER_FORM_ID = "en5yAD";
-const SENDER_FORMS_READY_EVENT = "trips-norway-sender-forms-ready";
-const SENDER_FORM_FALLBACK_DELAY_MS = 8_000;
 const SESSION_SHOWN_KEY = "trips-norway-newsletter-dialog-shown-v1";
 const DISMISSED_UNTIL_KEY =
   "trips-norway-newsletter-dialog-dismissed-until-v1";
@@ -26,35 +28,6 @@ const DISMISSAL_DURATION_MS = 14 * 24 * 60 * 60 * 1000;
 const OPEN_DELAY_MS = 20_000;
 const OPEN_SCROLL_PROGRESS = 0.4;
 const BLOCKER_RETRY_MS = 1_000;
-
-type SenderFormStatus =
-  | "unavailable"
-  | "initialized"
-  | "rendering"
-  | "enabled"
-  | "disabled";
-
-type SenderFormRenderConfig = {
-  initialStatus?: "enabled" | "disabled";
-  onRender?: (formId: string) => void;
-};
-
-type SenderFormsApi = {
-  getStatus: (
-    formIds: string | string[],
-  ) => Record<string, SenderFormStatus>;
-  render: (
-    formIds?: "all" | string | string[],
-    config?: SenderFormRenderConfig,
-  ) => void;
-};
-
-declare global {
-  interface Window {
-    senderForms?: SenderFormsApi;
-    senderFormsLoaded?: boolean;
-  }
-}
 
 const FOCUSABLE_SELECTOR = [
   "a[href]",
@@ -267,7 +240,10 @@ export function NewsletterSignupDialog() {
     try {
       const status = senderForms.getStatus(SENDER_FORM_ID)[SENDER_FORM_ID];
 
-      if (status === "enabled" || status === "disabled") {
+      if (
+        (status === "enabled" || status === "disabled") &&
+        formMountRef.current.querySelector("iframe")
+      ) {
         markFormAsLoaded();
         return;
       }
@@ -382,12 +358,30 @@ export function NewsletterSignupDialog() {
     const handleSenderFormsReady = () => {
       renderSenderForm();
     };
+    const formObserver = new MutationObserver(() => {
+      if (formMountRef.current?.querySelector("iframe")) {
+        markFormAsLoaded();
+      }
+    });
     const fallbackTimer = window.setTimeout(() => {
-      if (!formHasRenderedRef.current) {
+      if (formMountRef.current?.querySelector("iframe")) {
+        markFormAsLoaded();
+      } else if (!formHasRenderedRef.current) {
         formRenderRequestedRef.current = false;
         setFormState("error");
       }
     }, SENDER_FORM_FALLBACK_DELAY_MS);
+
+    if (formMountRef.current) {
+      formObserver.observe(formMountRef.current, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    if (formMountRef.current?.querySelector("iframe")) {
+      markFormAsLoaded();
+    }
 
     window.addEventListener(
       SENDER_FORMS_READY_EVENT,
@@ -404,6 +398,7 @@ export function NewsletterSignupDialog() {
     return () => {
       isCancelled = true;
       window.clearTimeout(fallbackTimer);
+      formObserver.disconnect();
       window.removeEventListener(
         SENDER_FORMS_READY_EVENT,
         handleSenderFormsReady,
@@ -413,7 +408,7 @@ export function NewsletterSignupDialog() {
         handleSenderFormsReady,
       );
     };
-  }, [isOpen, renderSenderForm]);
+  }, [isOpen, markFormAsLoaded, renderSenderForm]);
 
   useEffect(() => {
     const dialog = dialogRef.current;

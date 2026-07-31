@@ -6,6 +6,7 @@ import { GlobalShaderBackground } from "@/src/components/backgrounds/GlobalShade
 import { CookieConsentGate } from "@/src/components/compliance/CookieConsentGate";
 import { Footer } from "@/src/components/layout/Footer";
 import { NewsletterSignupDialog } from "@/src/components/newsletter/NewsletterSignupDialog";
+import { NewsletterSignupSection } from "@/src/components/newsletter/NewsletterSignupSection";
 import {
   DEFAULT_SOCIAL_IMAGE,
   SITE_DESCRIPTION,
@@ -106,6 +107,7 @@ export default function RootLayout({
           {children}
           <NewsletterSignupDialog />
           <CookieConsentGate />
+          <NewsletterSignupSection />
           <Footer />
         </div>
         <Script id="sender-universal" strategy="afterInteractive">
