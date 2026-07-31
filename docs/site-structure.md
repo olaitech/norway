@@ -45,7 +45,6 @@ Guide detail routes live under `/guides/*`.
 Canonical live guide pages currently include:
 
 - `/guides/best-time-to-visit-northern-norway`
-- `/guides/best-hikes-in-norway`
 - `/guides/driving-in-norway-what-visitors-should-know`
 - `/guides/how-to-see-the-northern-lights-in-norway`
 - `/guides/norway-ferry-guide-for-tourists`

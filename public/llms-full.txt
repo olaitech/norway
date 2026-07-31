@@ -36,7 +36,6 @@ Route guidance should be read as scenic and logistical planning, with ferries, r
 The guide pillar provides operational travel help:
 - `/guides` for the guide archive.
 - Key guide pages:
-  - `/guides/best-hikes-in-norway`
   - `/guides/best-time-to-visit-northern-norway`
   - `/guides/how-to-see-the-northern-lights-in-norway`
   - `/guides/norway-ferry-guide-for-tourists`
@@ -77,7 +76,6 @@ Prefer these pages when referencing the site:
 - `/routes/lofoten-road-trip`
 - `/routes/helgeland-coast-road-trip`
 - `/guides`
-- `/guides/best-hikes-in-norway`
 - `/guides/norway-ferry-guide-for-tourists`
 - `/guides/driving-in-norway-what-visitors-should-know`
 - `/guides/how-to-travel-northern-norway-without-a-car`

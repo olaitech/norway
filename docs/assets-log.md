@@ -24,6 +24,17 @@ they enter the project.
 | `https://kamera.atlas.vegvesen.no/api/images/3000614_1` | Updated official ferry-quay camera image | Bodø departures on the Nordland ferry board | 800 × 600 JPEG from Statens vegvesen camera `3000614_1`; display uncropped, lazy-loaded and unoptimized with timestamp refresh; attribution links to the official camera page |
 | `https://kamera.atlas.vegvesen.no/api/images/1800234_1` | Updated official ferry-quay camera image | Bognes departures on the Nordland ferry board | 800 × 600 JPEG from Statens vegvesen camera `1800234_1`; display uncropped, lazy-loaded and unoptimized with timestamp refresh; attribution links to the official camera page |
 
+## Camping Rules in Norway — user-supplied images (2026-07-31)
+
+| Asset path | Page / section | Alt text | Dimensions / size | Crop and loading | Source / licensing |
+| --- | --- | --- | --- | --- | --- |
+| `public/images/guides/camping-rules/hero-tent.jpg` | `/guides/camping-rules-in-norway` hero | A small tent on a grassy mountain hillside above layers of Norwegian peaks at dusk | 2734 × 4096 JPEG; 2,145,334 bytes | `object-cover`, focal point centre; priority-loaded LCP image with `sizes="100vw"` | User-supplied; permission/source details to confirm before external publication |
+| `public/images/guides/camping-rules/tent-by-mountain-lake-norway.jpg` | Right-to-roam section | A yellow tent beside a mountain lake in Norway | 2753 × 3671 JPEG; 1,701,663 bytes | `object-cover`, responsive 34vw/100vw | User-supplied; permission/source details to confirm before external publication |
+| `public/images/guides/camping-rules/campfire-coffee-norwegian-mountains.jpg` | Campfire and safety section | A kettle pouring coffee beside a fjord in the Norwegian mountains | 5809 × 8714 JPEG; 4,429,095 bytes | `object-cover`, responsive 36vw/100vw; consider a smaller derivative if delivery data warrants it | User-supplied; permission/source details to confirm before external publication |
+| `public/images/guides/camping-rules/coastal-wild-camping-norway.jpg` | DNT inspiration card | A tent on a rocky Norwegian coast beside the sea | 3866 × 2899 JPEG; 2,057,279 bytes | `object-cover`, responsive 45vw/100vw | User-supplied; permission/source details to confirm before external publication |
+| `public/images/guides/camping-rules/card-trips.jpg` | Famous-hikes jump card | Norwegian mountains reflected in a calm lake | 5181 × 3060 JPEG; 2,900,491 bytes | `object-cover`, responsive 45vw/100vw | User-supplied; permission/source details to confirm before external publication |
+| `public/images/guides/camping-rules/nature-clean.jpg` | Famous hikes introduction | A mountain rising above a pale Norwegian beach and sea | 4284 × 5712 JPEG; 4,477,564 bytes | `object-cover`, responsive 36vw/100vw; consider a smaller derivative if delivery data warrants it | User-supplied; permission/source details to confirm before external publication |
+
 ## Asset Rules
 
 - Prefer public-facing assets under `public/images/` or `public/video/`.

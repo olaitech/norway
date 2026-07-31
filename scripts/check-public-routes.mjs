@@ -31,7 +31,6 @@ const expectedPublicRoutes = [
   "/norway-itinerary-7-days",
   "/norway-itinerary-10-days",
   "/fjords-of-norway",
-  "/guides/best-hikes-in-norway",
 ];
 
 const expectedRedirects = new Map([
@@ -66,7 +65,6 @@ const requiredSitemapRoutes = [
   "/best-time-to-visit-norway",
   "/northern-lights-norway",
   "/fjords-of-norway",
-  "/guides/best-hikes-in-norway",
 ];
 
 let errors = 0;

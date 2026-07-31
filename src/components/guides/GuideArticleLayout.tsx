@@ -25,7 +25,6 @@ type GuideArticleLayoutProps = {
   title: string;
   subtitle?: string;
   category: string;
-  metaLabel?: string;
   readTime: string;
   lastUpdated: string;
   dateModified?: string;
@@ -46,7 +45,6 @@ export function GuideArticleLayout({
   title,
   subtitle,
   category,
-  metaLabel = "Practical guide",
   readTime,
   lastUpdated,
   dateModified,
@@ -112,7 +110,7 @@ export function GuideArticleLayout({
             ) : null}
 
             <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#f4efe2]/56">
-              <span>{metaLabel}</span>
+              <span>Practical guide</span>
               <span>{readTime}</span>
               <span>Updated {lastUpdated}</span>
             </div>
