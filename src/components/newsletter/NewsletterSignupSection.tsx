@@ -197,6 +197,11 @@ export function NewsletterSignupSection() {
               box-shadow: none !important;
             }
 
+            .sender-form-box {
+              border: 0 !important;
+              box-shadow: none !important;
+            }
+
             .sender-form-inputs {
               min-width: 0 !important;
               margin: 0 !important;
@@ -352,6 +357,8 @@ export function NewsletterSignupSection() {
         iframe.style.width = "100%";
         iframe.style.maxWidth = "none";
         iframe.style.borderRadius = "0";
+        iframe.style.setProperty("border", "0", "important");
+        iframe.style.setProperty("box-shadow", "none", "important");
 
         feedbackObserverRef.current = new MutationObserver(
           normalizeFeedback,
