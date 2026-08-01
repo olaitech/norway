@@ -11,7 +11,7 @@ const defaultItems = [
   { id: "hero", label: "Hero" },
   { id: "routes", label: "Routes" },
   { id: "start-here", label: "Start" },
-  { id: "moments", label: "Moments" },
+  { id: "ferries", label: "Ferries" },
   { id: "destinations", label: "Destinations" },
 ] as const satisfies readonly SectionProgressItem[];
 

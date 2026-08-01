@@ -2,10 +2,10 @@ import { PrismaHero } from "@/components/prisma-hero";
 import { SectionProgressNav } from "@/src/components/navigation/SectionProgressNav";
 import { LofotenFishermanFeature } from "@/src/components/sections/atmosphere/LofotenFishermanFeature";
 import { FeaturedDestinations } from "@/src/components/sections/destinations/FeaturedDestinations";
+import { FerryGuideFeature } from "@/src/components/sections/FerryGuideFeature";
 import { SearchTheNorth } from "@/src/components/sections/home/SearchTheNorth";
 import { StartHereSection } from "@/src/components/sections/home/StartHereSection";
 import { WaysIntoNorway } from "@/src/components/sections/home/WaysIntoNorway";
-import { TikTokMomentsSection } from "@/src/components/sections/TikTokMomentsSection";
 import { createPageMetadata } from "@/src/lib/metadata";
 import {
   JsonLd,
@@ -30,7 +30,7 @@ export default function Home() {
       <SearchTheNorth />
       <WaysIntoNorway />
       <StartHereSection />
-      <TikTokMomentsSection />
+      <FerryGuideFeature />
       <FeaturedDestinations />
     </>
   );
