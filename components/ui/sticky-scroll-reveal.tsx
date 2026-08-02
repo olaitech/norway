@@ -63,7 +63,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
 
             const itemContent = (
               <>
-                <p className="text-[0.61rem] font-medium uppercase tracking-[0.28em] text-[#9d8458]">
+                <p className="text-[0.61rem] font-medium uppercase tracking-[0.28em] text-[#5f5138]">
                   {item.meta}
                 </p>
                 <h3 className="mt-5 font-serif text-[clamp(2rem,3.2vw,3rem)] leading-[0.96] tracking-[-0.04em] text-[#1c1a17]">
@@ -185,7 +185,7 @@ export function StickyScrollReveal({ content }: StickyScrollRevealProps) {
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.04)_0%,rgba(3,8,10,0.6)_100%)]" />
               </div>
               <div className="px-6 py-6 text-[#1c1a17]">
-                <p className="text-[0.58rem] font-medium uppercase tracking-[0.27em] text-[#9d8458]">
+                <p className="text-[0.58rem] font-medium uppercase tracking-[0.27em] text-[#5f5138]">
                   {item.meta}
                 </p>
                 <h3 className="mt-4 font-serif text-[2rem] leading-[0.96] tracking-[-0.04em] text-[#1c1a17]">

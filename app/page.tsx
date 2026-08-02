@@ -23,15 +23,23 @@ export const metadata = createPageMetadata({
 export default function Home() {
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[#f4efe2] focus:px-5 focus:py-3 focus:text-sm focus:font-medium focus:text-[#07100f] focus:shadow-[0_16px_50px_rgba(0,0,0,0.38)] focus:outline-none focus:ring-2 focus:ring-[#d8c9a7] focus:ring-offset-2 focus:ring-offset-[#050607]"
+      >
+        Skip to main content
+      </a>
       <JsonLd value={[createWebSiteJsonLd(), createOrganizationJsonLd()]} />
-      <PrismaHero />
-      <SectionProgressNav />
-      <LofotenFishermanFeature />
-      <SearchTheNorth />
-      <WaysIntoNorway />
-      <StartHereSection />
-      <FerryGuideFeature />
-      <FeaturedDestinations />
+      <main id="main-content" tabIndex={-1}>
+        <PrismaHero />
+        <SectionProgressNav />
+        <LofotenFishermanFeature />
+        <SearchTheNorth />
+        <WaysIntoNorway />
+        <StartHereSection />
+        <FerryGuideFeature />
+        <FeaturedDestinations />
+      </main>
     </>
   );
 }

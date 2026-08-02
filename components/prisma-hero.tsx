@@ -93,6 +93,7 @@ export function PrismaHero() {
   const cardTrackRef = useRef<HTMLDivElement>(null);
   const progressFillRef = useRef<HTMLSpanElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [usesDesktopExperience, setUsesDesktopExperience] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -116,6 +117,7 @@ export function PrismaHero() {
       animationContext = undefined;
       window.cancelAnimationFrame(refreshFrame);
       setActiveIndex(0);
+      setUsesDesktopExperience(motionQuery.matches);
 
       if (!motionQuery.matches) {
         return;
@@ -244,6 +246,9 @@ export function PrismaHero() {
     };
   }, []);
 
+  const DesktopHeading = usesDesktopExperience ? "h1" : "h2";
+  const SimpleHeading = usesDesktopExperience ? "h2" : "h1";
+
   return (
     <section
       ref={sectionRef}
@@ -339,12 +344,12 @@ export function PrismaHero() {
                       {scene.label}
                     </p>
                     {index === 0 ? (
-                      <h1
+                      <DesktopHeading
                         id="hero-title"
                         className="mt-5 font-serif text-[clamp(4.4rem,7.6vw,8.75rem)] font-normal leading-[0.82] tracking-[-0.06em] text-[#f4efe2]"
                       >
                         {scene.title}
-                      </h1>
+                      </DesktopHeading>
                     ) : (
                       <h2 className="mt-5 font-serif text-[clamp(4.4rem,7.6vw,8.75rem)] font-normal leading-[0.82] tracking-[-0.06em] text-[#f4efe2]">
                         {scene.title}
@@ -435,9 +440,9 @@ export function PrismaHero() {
               <p className="text-[0.62rem] font-medium uppercase tracking-[0.34em] text-[#d8c9a7]/82">
                 {scenes[0].label}
               </p>
-              <h1 className="mt-5 font-serif text-[clamp(4.4rem,20vw,8.5rem)] font-normal leading-[0.82] tracking-[-0.06em] text-[#f4efe2]">
+              <SimpleHeading className="mt-5 font-serif text-[clamp(4.4rem,20vw,8.5rem)] font-normal leading-[0.82] tracking-[-0.06em] text-[#f4efe2]">
                 {scenes[0].title}
-              </h1>
+              </SimpleHeading>
               <p className="mt-7 max-w-[34rem] text-sm font-light leading-[1.75] text-[#f4efe2]/78 sm:text-base">
                 {scenes[0].intro}
               </p>

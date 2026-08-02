@@ -38,6 +38,7 @@ type GuideArticleLayoutProps = {
   relatedEyebrow?: string;
   relatedTitle?: string;
   relatedIntro?: string;
+  hero?: ReactNode;
   children: ReactNode;
 };
 
@@ -58,6 +59,7 @@ export function GuideArticleLayout({
   relatedEyebrow,
   relatedTitle = "Related planning paths",
   relatedIntro = "Keep the trip moving with a few calm next steps.",
+  hero,
   children,
 }: GuideArticleLayoutProps) {
   const hasSources = Boolean(sources && sources.length > 0);
@@ -85,7 +87,7 @@ export function GuideArticleLayout({
         ]}
       />
       <main className="min-h-screen bg-[linear-gradient(180deg,var(--deep-fjord)_0%,var(--polar-night)_100%)] text-[#f4efe2]">
-      <section className="relative overflow-hidden px-5 pb-12 pt-8 sm:px-8 sm:pb-14 sm:pt-10 md:px-12">
+      {hero ?? <section className="relative overflow-hidden px-5 pb-12 pt-8 sm:px-8 sm:pb-14 sm:pt-10 md:px-12">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(143,175,168,0.08),transparent_30%),radial-gradient(circle_at_82%_16%,rgba(198,161,91,0.1),transparent_34%),linear-gradient(180deg,rgba(16,26,30,0.24),rgba(5,8,10,0))]" />
 
         <div className="relative mx-auto max-w-4xl">
@@ -116,7 +118,7 @@ export function GuideArticleLayout({
             </div>
           </header>
         </div>
-      </section>
+      </section>}
 
       <section className="border-t border-white/8 bg-[linear-gradient(180deg,rgba(8,17,22,0.2),rgba(5,8,10,0.1))] px-5 py-12 sm:px-8 sm:py-14 md:px-12 lg:py-16">
         <article className="mx-auto max-w-4xl">
