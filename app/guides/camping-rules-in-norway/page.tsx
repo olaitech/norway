@@ -13,6 +13,9 @@ import {
 
 const CANONICAL_PATH = "/guides/camping-rules-in-norway";
 const HERO_IMAGE = "/images/guides/camping-rules/hero-tent.jpg";
+const PAGE_TITLE = "Camping Rules in Norway: Wild Camping & the 150m Rule";
+const PAGE_DESCRIPTION =
+  "Can you wild camp in Norway? Learn the 150-metre rule, two-night limit, campfire rules, campervan restrictions and where camping is allowed.";
 
 const famousHikes = [
   ["Preikestolen", "Lysefjorden, Rogaland", "Around 4 hours", "Moderate"],
@@ -48,6 +51,19 @@ const sources = [
     href: "https://www.miljodirektoratet.no/ansvarsomrader/friluftsliv/friluftsliv-og-allemannsretten/telt-og-hengekoye/",
   },
   {
+    label: "Norwegian Environment Agency — Camping and the right to roam",
+    href: "https://www.environmentagency.no/areas-of-activity/right-to-roam/camping/",
+  },
+  {
+    label:
+      "Norwegian Environment Agency — Frequently asked questions about the right to roam",
+    href: "https://www.miljodirektoratet.no/ansvarsomrader/friluftsliv/friluftsliv-og-allemannsretten/ofte-stilte-sporsmal-om-allemannsretten/",
+  },
+  {
+    label: "DSB: what to know before lighting a campfire",
+    href: "https://www.dsb.no/en/Safe-everyday-life/fire/what-you-need-to-know-before-you-light-a-bonfire/",
+  },
+  {
     label: "Visit Norway: mountain safety",
     href: "https://www.visitnorway.com/safe-travel/mountain-safety/",
   },
@@ -60,9 +76,8 @@ const sources = [
 ] as const;
 
 export const metadata = createPageMetadata({
-  title: "Camping Rules in Norway & Famous Hikes | Trips Norway",
-  description:
-    "Plan responsible camping in Norway with right-to-roam, campfire and campervan guidance, plus 25 famous hikes and current mountain-safety advice.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   canonical: CANONICAL_PATH,
   type: "article",
   image: {
@@ -111,13 +126,12 @@ export default function CampingRulesInNorwayPage() {
             { name: "Camping Rules in Norway", href: CANONICAL_PATH },
           ]),
           createArticleJsonLd({
-            headline: "Camping Rules in Norway",
-            description:
-              "Responsible wild-camping guidance for Norway, with current mountain-safety advice and 25 famous hikes to plan carefully.",
+            headline: PAGE_TITLE,
+            description: PAGE_DESCRIPTION,
             url: CANONICAL_PATH,
             image: HERO_IMAGE,
-            articleSection: "Responsible Outdoor Travel",
-            dateModified: "2026-07-31",
+            articleSection: "Camping in Norway",
+            dateModified: "2026-08-03",
           }),
         ]}
       />
@@ -156,9 +170,9 @@ export default function CampingRulesInNorwayPage() {
               who live close to the landscape.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[0.61rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/62">
-              <span>Camping and hiking guide</span>
+              <span>Camping guide</span>
               <span>12 min read</span>
-              <span>Updated 31 July 2026</span>
+              <span>Updated 3 August 2026</span>
             </div>
           </div>
         </section>
@@ -166,12 +180,14 @@ export default function CampingRulesInNorwayPage() {
         <section className="border-t border-white/8 px-5 py-14 sm:px-8 sm:py-20 md:px-12 lg:py-24">
           <div className="mx-auto max-w-7xl">
             <AnswerBlock
-              title="Camping freedom comes with clear boundaries."
-              summary="The right to roam is generous, but the best trips still respect distance, access, fire rules and the places people actually live."
+              title="Wild Camping Rules at a Glance"
+              summary="Yes. Wild camping is generally allowed on uncultivated land in Norway under the right to roam, known as allemannsretten. Stay at least 150 metres from inhabited houses and cabins, normally remain no more than two nights in the same place, and check local restrictions before setting up camp."
               bullets={[
+                "Wild camping is generally allowed on uncultivated land.",
                 "Stay at least 150 metres from inhabited houses and cabins.",
-                "Choose uncultivated land, check local restrictions and leave no trace.",
-                "Use official weather and hazard forecasts before any overnight or hike.",
+                "Normally stay no more than two nights in the same place.",
+                "Check local camping, parking, protected-area and fire restrictions.",
+                "Leave no trace and avoid cultivated or vulnerable ground.",
               ]}
             />
 
@@ -185,22 +201,24 @@ export default function CampingRulesInNorwayPage() {
               />
               <div className="max-w-2xl">
                 <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#c6a15b]/75">
-                  The right to roam
+                  Camping freedom comes with clear boundaries.
                 </p>
                 <h2 className="mt-5 font-serif text-[clamp(2.45rem,5vw,4.5rem)] font-normal leading-[0.93] tracking-[-0.05em]">
-                  Camp with room for nature and neighbours.
+                  Can You Wild Camp in Norway?
                 </h2>
                 <p className="mt-6 text-base font-light leading-[1.87] text-[#f4efe2]/70 sm:text-lg">
                   Norway&apos;s right to roam, known as <em>allemannsretten</em>,
-                  generally allows short stays on uncultivated land. For a tent,
-                  the practical baseline is to stay at least 150 metres from the
-                  nearest inhabited house or cabin.
+                  generally allows short stays on uncultivated land, or
+                  <em> utmark</em>, even when the land is privately owned. A
+                  property boundary alone does not decide whether camping is
+                  allowed.
                 </p>
                 <p className="mt-5 text-base font-light leading-[1.87] text-[#f4efe2]/70 sm:text-lg">
-                  The rule is an invitation to use the outdoors carefully, not a
-                  promise that every scenic pull-off or shoreline is a campsite.
-                  Around homes, farms and busy destinations, give people and
-                  vegetation more space than the minimum.
+                  The right does not give general permission to camp in gardens,
+                  farmyards, cultivated fields, active agricultural areas or
+                  other cultivated land, known as <em>innmark</em>. Choose durable
+                  ground and move on if a stay may damage the place or cause
+                  unreasonable inconvenience to other people.
                 </p>
               </div>
             </div>
@@ -208,24 +226,80 @@ export default function CampingRulesInNorwayPage() {
             <div className="mt-16 grid gap-6 md:grid-cols-2">
               <section className="rounded-[1.25rem] border border-white/10 bg-white/[0.025] p-7 sm:p-8">
                 <h2 className="font-serif text-[clamp(2rem,4vw,3.2rem)] font-normal leading-[0.97] tracking-[-0.042em]">
-                  Where you should not camp
+                  The 150-Metre Camping Rule
                 </h2>
-                <ul className="mt-6 space-y-3 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
-                  <li>On cultivated fields, active farmland or fragile ground.</li>
-                  <li>In private zones close to homes and cabins.</li>
-                  <li>Where signs prohibit camping or overnight parking.</li>
-                  <li>Anywhere your tent, vehicle or noise blocks access for others.</li>
-                </ul>
+                <p className="mt-6 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
+                  A tent should normally be pitched at least 150 metres from the
+                  nearest inhabited house or cabin. The same minimum distance
+                  applies when camping in a campervan or motorhome.
+                </p>
+                <p className="mt-5 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
+                  Ask the owner or user for permission if you want to camp closer.
+                  In busy places, give homes and cabins more room than the minimum
+                  distance whenever possible.
+                </p>
               </section>
               <section className="rounded-[1.25rem] border border-white/10 bg-white/[0.025] p-7 sm:p-8">
                 <h2 className="font-serif text-[clamp(2rem,4vw,3.2rem)] font-normal leading-[0.97] tracking-[-0.042em]">
-                  Campervans and motorhomes
+                  How Long Can You Camp in the Same Place?
                 </h2>
                 <ul className="mt-6 space-y-3 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
-                  <li>Do not assume a scenic lay-by allows overnight parking.</li>
-                  <li>Respect all no-parking, no-camping and local access signs.</li>
-                  <li>Choose designated motorhome areas or campsites where possible.</li>
-                  <li>Never empty greywater or toilet waste in nature.</li>
+                  <li>Normally, stay no more than two nights without permission.</li>
+                  <li>Longer stays may be allowed in mountains and remote, sparsely populated areas.</li>
+                  <li>Local rules may set a stricter limit.</li>
+                  <li>Your stay must not damage nature or cause unreasonable inconvenience to others.</li>
+                </ul>
+              </section>
+            </div>
+
+            <div className="mt-16 grid gap-6 md:grid-cols-2">
+              <section className="rounded-[1.25rem] border border-white/10 bg-white/[0.025] p-7 sm:p-8">
+                <h2 className="font-serif text-[clamp(2rem,4vw,3.2rem)] font-normal leading-[0.97] tracking-[-0.042em]">
+                  Where You Can and Cannot Camp
+                </h2>
+                <p className="mt-6 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
+                  Choose uncultivated land such as suitable forest, mountain or
+                  coastal ground. Do not camp on cultivated fields, active
+                  farmland, gardens, farmyards, private zones around homes or
+                  fragile vegetation.
+                </p>
+                <ul className="mt-6 space-y-3 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
+                  <li>Respect signs that prohibit camping or overnight parking.</li>
+                  <li>Do not block roads, paths, gates or access for other people.</li>
+                  <li>Keep noise low and give residents, livestock and other campers space.</li>
+                </ul>
+                <h3 className="mt-8 font-serif text-[1.55rem] font-normal leading-[1.02] tracking-[-0.03em] text-[#f4efe2]">
+                  Camping on Private Land
+                </h3>
+                <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
+                  Private ownership does not by itself prevent camping on
+                  uncultivated land. What matters is whether the place is
+                  <em> utmark</em> or <em>innmark</em>, together with distance,
+                  local rules and the duty to act considerately.
+                </p>
+                <h3 className="mt-8 font-serif text-[1.55rem] font-normal leading-[1.02] tracking-[-0.03em] text-[#f4efe2]">
+                  Local Restrictions and Protected Areas
+                </h3>
+                <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
+                  Nature reserves, national parks, popular visitor areas and
+                  some municipalities may have their own rules or camping bans.
+                  Check local signs and official information for the specific
+                  area before you settle in for the night.
+                </p>
+              </section>
+              <section className="rounded-[1.25rem] border border-white/10 bg-white/[0.025] p-7 sm:p-8">
+                <h2 className="font-serif text-[clamp(2rem,4vw,3.2rem)] font-normal leading-[0.97] tracking-[-0.042em]">
+                  Campervan and Motorhome Camping Rules
+                </h2>
+                <ul className="mt-6 space-y-3 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
+                  <li>The right to roam does not include a right to drive motor vehicles off-road.</li>
+                  <li>Cars, campervans and motorhomes must not be driven or camped in open terrain.</li>
+                  <li>Parking beside a public road on uncultivated land may be allowed unless signs or regulations prohibit it.</li>
+                  <li>A landowner may restrict vehicle access and parking on a private road.</li>
+                  <li>Follow parking signs, the 150-metre rule, the normal two-night limit and local regulations.</li>
+                  <li>Whether a lay-by permits an overnight stay depends on its signs and local rules.</li>
+                  <li>Never discharge toilet waste or greywater in nature.</li>
+                  <li>Use designated motorhome areas or campsites in busy locations.</li>
                 </ul>
               </section>
             </div>
@@ -233,21 +307,28 @@ export default function CampingRulesInNorwayPage() {
             <div className="mt-20 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
               <div className="max-w-2xl">
                 <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#c6a15b]/75">
-                  Campfires and safety
+                  A campfire starts with a conditions check.
                 </p>
                 <h2 className="mt-5 font-serif text-[clamp(2.45rem,5vw,4.5rem)] font-normal leading-[0.93] tracking-[-0.05em]">
-                  A campfire starts with a conditions check.
+                  Campfire Rules in Norway
                 </h2>
                 <p className="mt-6 text-base font-light leading-[1.87] text-[#f4efe2]/70 sm:text-lg">
-                  Fire restrictions can change with the season, drought and local
-                  risk. Check the rules for your exact area before lighting any
-                  open flame, use established fire-safe places where possible,
-                  and do not leave a fire until it is completely out.
+                  The general fire ban applies from 15 April to 15 September in
+                  or near forests and other uncultivated land. An open fire may
+                  only be lit when it is obvious that it cannot cause a fire and
+                  no local or stricter ban applies.
                 </p>
                 <p className="mt-5 text-base font-light leading-[1.87] text-[#f4efe2]/70 sm:text-lg">
-                  Pack out every trace, keep noise low, and have a backup
-                  overnight option when weather or crowding changes the plan.
+                  Local authorities may introduce stricter or complete bans
+                  during drought and periods of high fire risk. Check current
+                  fire danger and the rules for the municipality before using
+                  any open flame.
                 </p>
+                <ul className="mt-6 space-y-3 text-sm font-light leading-[1.8] text-[#f4efe2]/70 sm:text-base">
+                  <li>Use an established firepit when conditions and local rules make it safe.</li>
+                  <li>Keep control of the fire and extinguish it completely before leaving.</li>
+                  <li>Never light a fire directly on bare coastal rock or bedrock; heat can damage or split the stone.</li>
+                </ul>
               </div>
               <EditorialImage
                 src="/images/guides/camping-rules/campfire-coffee-norwegian-mountains.jpg"
@@ -260,10 +341,10 @@ export default function CampingRulesInNorwayPage() {
             <section className="mt-20 border-t border-white/8 pt-16 sm:pt-20">
               <div className="max-w-3xl">
                 <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#c6a15b]/75">
-                  Before each overnight
+                  Keep a calm alternative ready.
                 </p>
                 <h2 className="mt-5 font-serif text-[clamp(2.45rem,5vw,4.5rem)] font-normal leading-[0.93] tracking-[-0.05em]">
-                  Keep a calm alternative ready.
+                  Before You Camp Overnight
                 </h2>
               </div>
               <ol className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -292,7 +373,7 @@ export default function CampingRulesInNorwayPage() {
                   More to explore
                 </p>
                 <h2 className="mt-5 font-serif text-[clamp(2.45rem,5vw,4.5rem)] font-normal leading-[0.93] tracking-[-0.05em]">
-                  Find the next reason to stay outside.
+                  More Outdoor Planning in Norway
                 </h2>
               </div>
               <div className="mt-9 grid gap-5 lg:grid-cols-2">
@@ -357,9 +438,9 @@ export default function CampingRulesInNorwayPage() {
                   <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#c6a15b]/75">
                     Hiking inspiration
                   </p>
-                  <h2 className="mt-5 font-serif text-[clamp(2.6rem,5.6vw,5.1rem)] font-normal leading-[0.9] tracking-[-0.055em]">
-                    Norway&apos;s most famous hikes
-                  </h2>
+                  <h3 className="mt-5 font-serif text-[clamp(2.6rem,5.6vw,5.1rem)] font-normal leading-[0.9] tracking-[-0.055em]">
+                    Norway&apos;s Most Famous Hikes
+                  </h3>
                   <p className="mt-7 text-base font-light leading-[1.87] text-[#f4efe2]/70 sm:text-lg">
                     These routes span coastal paths, mountain ridges and guided
                     climbs. The times and difficulty below are useful starting
@@ -405,9 +486,9 @@ export default function CampingRulesInNorwayPage() {
               <div className="mt-10 grid gap-4 lg:hidden">
                 {famousHikes.map(([name, area, time, difficulty]) => (
                   <article key={name} className="rounded-[1.1rem] border border-white/10 bg-white/[0.025] p-5">
-                    <h3 className="font-serif text-[1.55rem] font-normal leading-[1.02] tracking-[-0.03em] text-[#f4efe2]">
+                    <p className="font-serif text-[1.55rem] font-normal leading-[1.02] tracking-[-0.03em] text-[#f4efe2]">
                       {name}
-                    </h3>
+                    </p>
                     <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 text-sm">
                       <div>
                         <dt className="text-[0.58rem] font-medium uppercase tracking-[0.2em] text-[#d8c9a7]/70">Area</dt>
@@ -429,7 +510,7 @@ export default function CampingRulesInNorwayPage() {
               <aside className="mt-12 rounded-[1.3rem] border border-[#c6a15b]/24 bg-[linear-gradient(135deg,rgba(198,161,91,0.12),rgba(23,35,38,0.72))] p-7 sm:p-8" aria-labelledby="hike-safety-title">
                 <p className="text-[0.62rem] font-medium uppercase tracking-[0.31em] text-[#d8c9a7]/82">Safety first</p>
                 <h3 id="hike-safety-title" className="mt-4 font-serif text-[clamp(1.95rem,4vw,3.2rem)] font-normal leading-[0.96] tracking-[-0.04em]">
-                  Conditions shape every hike.
+                  Conditions Shape Every Hike
                 </h3>
                 <p className="mt-5 max-w-4xl text-sm font-light leading-[1.84] text-[#f4efe2]/76 sm:text-base">
                   Weather, trail conditions, snow, season, daylight and your own fitness can change both the time and difficulty of a route. Check an official <a className="underline decoration-[#d8c9a7]/45 underline-offset-4 hover:text-white" href="https://www.yr.no/en" target="_blank" rel="noopener noreferrer">Yr forecast</a>, relevant <a className="underline decoration-[#d8c9a7]/45 underline-offset-4 hover:text-white" href="https://www.varsom.no/en/" target="_blank" rel="noopener noreferrer">Varsom hazard advice</a> and <a className="underline decoration-[#d8c9a7]/45 underline-offset-4 hover:text-white" href="https://www.visitnorway.com/safe-travel/mountain-safety/the-mountain-code/" target="_blank" rel="noopener noreferrer">the Mountain Code</a> before you set out. Turn around if the conditions do not match your plan.
@@ -437,7 +518,7 @@ export default function CampingRulesInNorwayPage() {
               </aside>
             </section>
 
-            <GuideMetaFooter className="mt-16" lastUpdated="31 July 2026" sources={sources} />
+            <GuideMetaFooter className="mt-16" lastUpdated="3 August 2026" sources={sources} />
           </div>
         </section>
       </main>
