@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -37,6 +37,11 @@ jobs:
           else
             echo "No lint script found, skipping lint."
           fi
+
+      - name: Check SEO and AEO foundations
+        run: |
+          npm run check:seo
+          npm run check:aeo
 
       - name: Build project
         run: npm run build
