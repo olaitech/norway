@@ -58,6 +58,7 @@ const pageLastModifiedByPath = new Map<string, Date>();
 
 setPageLastModified("/guides/camping-rules-in-norway", "2026-08-03");
 setPageLastModified("/guides/best-hikes-in-senja", "2026-07-31");
+setPageLastModified("/guides/norway-ferry-guide-for-tourists", "2026-08-03");
 setPageLastModified("/routes", seoPages.routesHub.updatedDate);
 setPageLastModified("/routes/lofoten-road-trip", seoPages.lofotenRoadTrip.updatedDate);
 setPageLastModified(

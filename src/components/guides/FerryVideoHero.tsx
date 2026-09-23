@@ -78,7 +78,7 @@ export function FerryVideoHero({
       <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.6rem] font-medium uppercase tracking-[0.23em] text-[#f4efe2]/62 sm:mt-8 sm:text-[0.62rem]">
         <span>Practical guide</span>
         <span>{readTime}</span>
-        <span>Updated {lastUpdated}</span>
+        <span>Guide last updated: {lastUpdated}</span>
       </div>
     </div>
   );

@@ -17,9 +17,11 @@ type RequestState =
   | { status: "loading"; data: null }
   | { status: "ready"; data: EnturDeparturesResponse }
   | { status: "refreshing"; data: EnturDeparturesResponse }
-  | { status: "error"; data: null };
+  | { status: "error"; data: EnturDeparturesResponse | null };
 
 type DayFilter = "today" | "tomorrow";
+
+const DEPARTURE_REFRESH_INTERVAL = 60_000;
 
 const dateFilters: Array<{ value: DayFilter; label: string }> = [
   { value: "today", label: "Today" },
@@ -78,6 +80,21 @@ const osloDateTimeFormatter = new Intl.DateTimeFormat("en-GB", {
   hourCycle: "h23",
 });
 
+const osloFetchedDateFormatter = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Europe/Oslo",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const osloFetchedTimeFormatter = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Europe/Oslo",
+  hour: "2-digit",
+  minute: "2-digit",
+  hourCycle: "h23",
+  timeZoneName: "short",
+});
+
 const osloDateKeyFormatter = new Intl.DateTimeFormat("en-GB", {
   timeZone: "Europe/Oslo",
   year: "numeric",
@@ -89,6 +106,12 @@ function formatDateTime(value: string) {
   return osloDateTimeFormatter.format(new Date(value));
 }
 
+function formatFetchedAt(value: string) {
+  const date = new Date(value);
+
+  return `${osloFetchedDateFormatter.format(date)}, ${osloFetchedTimeFormatter.format(date)}`;
+}
+
 function formatDateKey(value: Date) {
   const parts = osloDateKeyFormatter.formatToParts(value);
   const partValue = (type: Intl.DateTimeFormatPartTypes) =>
@@ -97,10 +120,10 @@ function formatDateKey(value: Date) {
   return `${partValue("year")}-${partValue("month")}-${partValue("day")}`;
 }
 
-function dateKeyForFilter(updatedAt: string, dayFilter: DayFilter) {
+function dateKeyForFilter(fetchedAt: string, dayFilter: DayFilter) {
   const offset = dayFilter === "tomorrow" ? 24 * 60 * 60 * 1000 : 0;
 
-  return formatDateKey(new Date(new Date(updatedAt).getTime() + offset));
+  return formatDateKey(new Date(new Date(fetchedAt).getTime() + offset));
 }
 
 function departureStatus(departure: EnturFerryDeparture) {
@@ -159,6 +182,18 @@ function routeDirection(
   return { route, direction };
 }
 
+function pushSelectionToUrl(routeId: string, directionId: string) {
+  const url = new URL(window.location.href);
+
+  url.searchParams.set("route", routeId);
+  url.searchParams.set("from", directionId);
+  window.history.pushState(
+    null,
+    "",
+    `${url.pathname}${url.search}${url.hash}`,
+  );
+}
+
 export function HelgelandFerryDepartures() {
   const [request, setRequest] = useState<RequestState>({
     status: "loading",
@@ -167,6 +202,9 @@ export function HelgelandFerryDepartures() {
   const [routeId, setRouteId] = useState("");
   const [directionId, setDirectionId] = useState("");
   const [dayFilter, setDayFilter] = useState<DayFilter>("today");
+  const [expandedDepartureKey, setExpandedDepartureKey] = useState<
+    string | null
+  >(null);
   const [now, setNow] = useState(Date.now);
 
   const fetchDepartures = useCallback(async () => {
@@ -217,9 +255,18 @@ export function HelgelandFerryDepartures() {
       const data = await fetchDepartures();
       setRequest({ status: "ready", data });
     } catch {
-      setRequest({ status: "error", data: null });
+      setRequest((previous) => ({ status: "error", data: previous.data }));
     }
   }, [fetchDepartures]);
+
+  useEffect(() => {
+    const interval = window.setInterval(
+      () => void refreshDepartures(),
+      DEPARTURE_REFRESH_INTERVAL,
+    );
+
+    return () => window.clearInterval(interval);
+  }, [refreshDepartures]);
 
   const data = request.data;
   const { route: selectedRoute, direction: selectedDirection } = routeDirection(
@@ -228,7 +275,7 @@ export function HelgelandFerryDepartures() {
     directionId,
   );
   const selectedDateKey = data
-    ? dateKeyForFilter(data.updatedAt, dayFilter)
+    ? dateKeyForFilter(data.fetchedAt, dayFilter)
     : null;
   const filteredDepartures =
     selectedDirection && selectedDateKey
@@ -239,11 +286,52 @@ export function HelgelandFerryDepartures() {
         )
       : [];
 
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+
+    const syncSelectionFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const route =
+        data.routes.find((candidate) => candidate.id === params.get("route")) ??
+        data.routes[0];
+      const direction =
+        route?.directions.find(
+          (candidate) => candidate.id === params.get("from"),
+        ) ?? route?.directions[0];
+
+      setRouteId(route?.id ?? "");
+      setDirectionId(direction?.id ?? "");
+      setExpandedDepartureKey(null);
+    };
+
+    syncSelectionFromUrl();
+    window.addEventListener("popstate", syncSelectionFromUrl);
+
+    return () => window.removeEventListener("popstate", syncSelectionFromUrl);
+  }, [data]);
+
   const selectRoute = (nextRouteId: string) => {
     const nextRoute = data?.routes.find((route) => route.id === nextRouteId);
+    const nextDirectionId = nextRoute?.directions[0]?.id ?? "";
 
     setRouteId(nextRouteId);
-    setDirectionId(nextRoute?.directions[0]?.id ?? "");
+    setDirectionId(nextDirectionId);
+    setExpandedDepartureKey(null);
+
+    if (nextRoute && nextDirectionId) {
+      pushSelectionToUrl(nextRoute.id, nextDirectionId);
+    }
+  };
+
+  const selectDirection = (nextDirectionId: string) => {
+    setDirectionId(nextDirectionId);
+    setExpandedDepartureKey(null);
+
+    if (selectedRoute) {
+      pushSelectionToUrl(selectedRoute.id, nextDirectionId);
+    }
   };
 
   const isLoading = request.status === "loading";
@@ -274,10 +362,9 @@ export function HelgelandFerryDepartures() {
               Live ferry departures in Nordland
             </h2>
             <p className="mt-4 text-sm font-light leading-[1.75] text-[#f4efe2]/64 sm:text-base">
-              Check upcoming ferry departures for important crossings along the
-              Helgeland Coast, between Bodø and Lofoten, and across Tysfjord and
-              Ofoten. Departure information is provided by Entur and should
-              always be verified before travelling.
+              Live departure data for 14 selected ferry routes in Nordland.
+              Information is retrieved from Entur and refreshed automatically
+              every 60 seconds.
             </p>
             <p className="mt-3 text-xs font-light leading-[1.75] text-[#f4efe2]/52 sm:text-sm">
               <span className="font-medium text-[#9ecad8]">Live</span> means
@@ -363,7 +450,7 @@ export function HelgelandFerryDepartures() {
                 <select
                   id="nordland-ferry-direction"
                   value={selectedDirection.id}
-                  onChange={(event) => setDirectionId(event.target.value)}
+                  onChange={(event) => selectDirection(event.target.value)}
                   aria-describedby="nordland-ferry-direction-help nordland-ferry-direction-hint"
                   className="min-h-14 w-full appearance-none rounded-xl border border-[#8fafa8]/36 bg-[#071216] px-4 pr-12 text-base text-[#f4efe2] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors hover:border-[#c6a15b]/58 hover:bg-[#0a171c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/76 focus-visible:ring-offset-3 focus-visible:ring-offset-[#081116] motion-reduce:transition-none"
                 >
@@ -417,12 +504,27 @@ export function HelgelandFerryDepartures() {
           </div>
         ) : null}
 
+        {selectedRoute?.officialUrl ? (
+          <p className="mt-4 text-xs font-light leading-[1.7] text-[#f4efe2]/56 sm:text-sm">
+            <a
+              href={selectedRoute.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center rounded-full border border-[#8fafa8]/24 px-4 text-[0.62rem] font-medium uppercase tracking-[0.18em] text-[#f4efe2]/82 transition-colors hover:border-[#c6a15b]/44 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/70 focus-visible:ring-offset-3 focus-visible:ring-offset-[#081116] motion-reduce:transition-none"
+            >
+              Check the operator&apos;s official timetable
+            </a>
+          </p>
+        ) : null}
+
         <div className="mt-1" aria-busy={isLoading || isRefreshing}>
           <p className="sr-only" aria-live="polite">
             {isLoading
               ? "Loading ferry departures."
               : request.status === "error"
-                ? "Live ferry departures are temporarily unavailable."
+                ? data
+                  ? "Live updates are temporarily unavailable. Showing the latest successful ferry data."
+                  : "Live ferry departures are temporarily unavailable."
                 : `${filteredDepartures.length} ferry departures shown.`}
           </p>
 
@@ -432,7 +534,23 @@ export function HelgelandFerryDepartures() {
             </p>
           ) : null}
 
-          {request.status === "error" ? (
+          {request.status === "error" && data ? (
+            <div
+              className="my-5 rounded-xl border border-[#c6a15b]/24 bg-[#c6a15b]/[0.06] px-4 py-4"
+              role="status"
+            >
+              <p className="text-sm text-[#f4efe2]/82 sm:text-base">
+                Live updates are temporarily unavailable. Showing the latest
+                successful data from{" "}
+                <time dateTime={data.fetchedAt}>
+                  {formatFetchedAt(data.fetchedAt)}
+                </time>
+                .
+              </p>
+            </div>
+          ) : null}
+
+          {request.status === "error" && !data ? (
             <div className="py-7" role="alert">
               <p className="text-sm text-[#f4efe2]/82 sm:text-base">
                 Live ferry departures are temporarily unavailable.
@@ -462,77 +580,142 @@ export function HelgelandFerryDepartures() {
           ) : null}
 
           {data && selectedDirection?.status === "ready" && filteredDepartures.length > 0 ? (
-            <ol className="divide-y divide-white/8" aria-label="Filtered ferry departures">
+            <ol className="space-y-2" aria-label="Filtered ferry departures">
               {filteredDepartures.map((departure, index) => {
                 const status = departureStatus(departure);
+                const isNextDeparture = index === 0;
+                const departureKey = `${selectedRoute?.id ?? "route"}-${selectedDirection?.id ?? "direction"}-${departure.scheduledDepartureTime}-${index}`;
+                const detailsId = `ferry-departure-details-${selectedRoute?.id ?? "route"}-${selectedDirection?.id ?? "direction"}-${index}`;
+                const isExpanded = expandedDepartureKey === departureKey;
 
                 return (
                   <li
-                    key={`${selectedRoute?.id ?? "route"}-${selectedDirection?.id ?? "direction"}-${departure.line}-${departure.departureQuay}-${departure.scheduledDepartureTime}-${index}`}
-                    className="grid gap-5 py-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(15rem,0.9fr)_minmax(10rem,0.65fr)] lg:items-start"
+                    key={departureKey}
+                    className={
+                      isNextDeparture
+                        ? "rounded-xl border border-[#9ecad8]/24 bg-[#9ecad8]/[0.055] p-5 shadow-[0_16px_44px_rgba(0,0,0,0.16)] sm:p-6"
+                        : "border-b border-white/8 py-4"
+                    }
                   >
-                    <div className="min-w-0">
-                      <p className="text-[0.58rem] font-medium uppercase tracking-[0.23em] text-[#c6a15b]/68">
-                        {departure.realtime ? "Live Entur update" : "Scheduled timetable"}
-                      </p>
-                      <h3 className="mt-1.5 break-words font-serif text-xl font-normal tracking-[-0.025em] text-[#f4efe2] sm:text-2xl">
-                        {departure.destination}
-                      </h3>
-                      <p className="mt-2 text-sm font-light leading-[1.6] text-[#f4efe2]/58">
-                        Departs from {departure.departureQuay}
-                      </p>
-                      {departure.sailingSequence.length > 1 ? (
-                        <p className="mt-2 text-xs font-light leading-[1.7] text-[#f4efe2]/52">
-                          Sailing sequence: {departure.sailingSequence.join(" → ")}
-                        </p>
-                      ) : null}
-                      {departure.serviceMessages.length > 0 ? (
-                        <p className="mt-3 rounded-md border border-[#c6a15b]/20 bg-[#c6a15b]/[0.06] px-3 py-2 text-xs leading-[1.65] text-[#f4efe2]/70">
-                          Service update: {departure.serviceMessages.join(" · ")}
-                        </p>
-                      ) : null}
-                    </div>
-
-                    <dl className="grid grid-cols-2 gap-x-5 gap-y-4 text-sm">
-                      <div>
-                        <dt className="text-[0.54rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/42">
-                          Scheduled
-                        </dt>
-                        <dd className="mt-1 text-[#f4efe2]/84">
-                          {formatDateTime(departure.scheduledDepartureTime)}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt className="text-[0.54rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/42">
-                          Estimated
-                        </dt>
-                        <dd className="mt-1 text-[#f4efe2]/84">
-                          {departure.estimatedDepartureTime
-                            ? formatDateTime(departure.estimatedDepartureTime)
-                            : "Scheduled time only"}
-                        </dd>
-                      </div>
-                      <div className="col-span-2">
-                        <dt className="text-[0.54rem] font-medium uppercase tracking-[0.2em] text-[#f4efe2]/42">
-                          Time to departure
-                        </dt>
-                        <dd className="mt-1 text-[#f4efe2]/84">
-                          {timeUntilDeparture(departure.scheduledDepartureTime, now)}
-                        </dd>
-                      </div>
-                    </dl>
-
-                    <p
-                      className={`text-sm font-medium leading-[1.5] ${
-                        departure.cancellation
-                          ? "text-[#c6a15b]"
-                          : departure.realtime
-                            ? "text-[#9ecad8]"
-                            : "text-[#f4efe2]/72"
+                    <div
+                      className={`grid min-w-0 gap-4 ${
+                        isNextDeparture
+                          ? "lg:grid-cols-[minmax(0,1.05fr)_minmax(14rem,0.85fr)_minmax(9rem,0.55fr)] lg:items-start"
+                          : "sm:grid-cols-[minmax(0,1fr)_minmax(13rem,0.8fr)_minmax(8rem,0.55fr)] sm:items-start"
                       }`}
                     >
-                      {status}
-                    </p>
+                      <div className="min-w-0">
+                        <p className="text-[0.56rem] font-medium uppercase tracking-[0.21em] text-[#c6a15b]/72">
+                          {isNextDeparture ? "Next departure · " : ""}
+                          {departure.realtime
+                            ? "Live Entur update"
+                            : "Scheduled timetable"}
+                        </p>
+                        <strong
+                          className={`mt-1.5 block break-words font-serif font-normal tracking-[-0.025em] text-[#f4efe2] ${
+                            isNextDeparture
+                              ? "text-2xl sm:text-3xl"
+                              : "text-lg sm:text-xl"
+                          }`}
+                        >
+                          {departure.destination}
+                        </strong>
+                        <p className="mt-1.5 break-words text-sm font-light leading-[1.6] text-[#f4efe2]/58">
+                          Departs from {departure.departureQuay}
+                        </p>
+                      </div>
+
+                      <dl className="grid min-w-0 grid-cols-2 gap-x-4 gap-y-3 text-sm">
+                        <div className="min-w-0">
+                          <dt className="text-[0.52rem] font-medium uppercase tracking-[0.18em] text-[#f4efe2]/42">
+                            Scheduled
+                          </dt>
+                          <dd className="mt-1 break-words text-[#f4efe2]/84">
+                            <time dateTime={departure.scheduledDepartureTime}>
+                              {formatDateTime(departure.scheduledDepartureTime)}
+                            </time>
+                          </dd>
+                        </div>
+                        <div className="min-w-0">
+                          <dt className="text-[0.52rem] font-medium uppercase tracking-[0.18em] text-[#f4efe2]/42">
+                            Estimated
+                          </dt>
+                          <dd className="mt-1 break-words text-[#f4efe2]/84">
+                            {departure.estimatedDepartureTime ? (
+                              <time dateTime={departure.estimatedDepartureTime}>
+                                {formatDateTime(
+                                  departure.estimatedDepartureTime,
+                                )}
+                              </time>
+                            ) : (
+                              "Scheduled time only"
+                            )}
+                          </dd>
+                        </div>
+                      </dl>
+
+                      <div className="min-w-0">
+                        <p
+                          className={`break-words text-sm font-medium leading-[1.5] ${
+                            departure.cancellation
+                              ? "text-[#c6a15b]"
+                              : departure.realtime
+                                ? "text-[#9ecad8]"
+                                : "text-[#f4efe2]/72"
+                          }`}
+                        >
+                          {status}
+                        </p>
+                        <p className="mt-1.5 text-xs font-light leading-[1.6] text-[#f4efe2]/56">
+                          {timeUntilDeparture(
+                            departure.scheduledDepartureTime,
+                            now,
+                          )}
+                        </p>
+                      </div>
+                    </div>
+
+                    {departure.serviceMessages.length > 0 ? (
+                      <p className="mt-3 rounded-md border border-[#c6a15b]/20 bg-[#c6a15b]/[0.06] px-3 py-2 text-xs leading-[1.65] text-[#f4efe2]/70">
+                        Service update: {departure.serviceMessages.join(" · ")}
+                      </p>
+                    ) : null}
+
+                    <div className="mt-3">
+                      <button
+                        type="button"
+                        aria-expanded={isExpanded}
+                        aria-controls={detailsId}
+                        onClick={() =>
+                          setExpandedDepartureKey(
+                            isExpanded ? null : departureKey,
+                          )
+                        }
+                        className="min-h-10 rounded-full border border-white/10 px-3 text-[0.58rem] font-medium uppercase tracking-[0.17em] text-[#f4efe2]/68 transition-colors hover:border-[#c6a15b]/34 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a15b]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#081116] motion-reduce:transition-none"
+                      >
+                        {isExpanded ? "Hide details" : "Show details"}
+                      </button>
+                      <div id={detailsId} hidden={!isExpanded}>
+                        <dl className="mt-3 grid min-w-0 gap-3 rounded-lg border border-white/8 bg-black/10 p-3 text-xs sm:grid-cols-2">
+                          <div className="min-w-0">
+                            <dt className="font-medium uppercase tracking-[0.16em] text-[#f4efe2]/42">
+                              Ferry line
+                            </dt>
+                            <dd className="mt-1 break-words font-light leading-[1.65] text-[#f4efe2]/68">
+                              {departure.line ?? "Not listed by Entur"}
+                            </dd>
+                          </div>
+                          <div className="min-w-0">
+                            <dt className="font-medium uppercase tracking-[0.16em] text-[#f4efe2]/42">
+                              Sailing sequence
+                            </dt>
+                            <dd className="mt-1 break-words font-light leading-[1.65] text-[#f4efe2]/68">
+                              {departure.sailingSequence.join(" → ")}
+                            </dd>
+                          </div>
+                        </dl>
+                      </div>
+                    </div>
                   </li>
                 );
               })}
@@ -547,10 +730,13 @@ export function HelgelandFerryDepartures() {
           />
         ) : null}
 
-        {data ? (
+        {data && request.status !== "error" ? (
           <p className="mt-5 text-xs font-light leading-[1.7] text-[#f4efe2]/48">
-            Last updated {formatDateTime(data.updatedAt)} (Europe/Oslo).
-            Successful responses are cached for 60 seconds.
+            Live departures refreshed:{" "}
+            <time dateTime={data.fetchedAt}>
+              {formatFetchedAt(data.fetchedAt)}
+            </time>
+            . Successful responses are cached for 60 seconds.
           </p>
         ) : null}
 

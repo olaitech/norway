@@ -10,6 +10,7 @@ export type FerryRouteDefinition = {
   group: "Helgeland" | "Bodø & Lofoten" | "Tysfjord & Ofoten";
   lineId?: string;
   linePublicCode: string;
+  officialUrl?: string;
   directions: readonly FerryDirectionDefinition[];
 };
 
@@ -125,6 +126,7 @@ export const nordlandFerryRoutes = [
     group: "Bodø & Lofoten",
     lineId: "NOR:Line:12_8782",
     linePublicCode: "18-782",
+    officialUrl: "https://www.torghatten.no/our-routes/18-782",
     directions: [
       { id: "bodo", label: "Bodø", quayId: "NSR:Quay:85038" },
       { id: "vaeroy", label: "Værøy", quayId: "NSR:Quay:84710" },

@@ -5,36 +5,63 @@ import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 import { HelgelandFerryDepartures } from "@/src/components/guides/HelgelandFerryDepartures";
 import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 import { TrustBox } from "@/src/components/shared/TrustBox";
+import {
+  DEFAULT_SOCIAL_IMAGE,
+  SITE_NAME,
+} from "@/src/config/site";
+
+const PAGE_TITLE = "Norway Ferry Guide: Live Times & Payments | Trips Norway";
+const ARTICLE_HEADLINE = "Norway Ferry Guide: Live Times & Payments";
+const PAGE_DESCRIPTION =
+  "Check live Nordland ferry departures and harbour cameras, plus Norway ferry advice on AutoPASS, booking, queues and travelling with a car or campervan.";
+const CANONICAL_PATH = "/guides/norway-ferry-guide-for-tourists";
+const GUIDE_LAST_UPDATED = "3 August 2026";
+const GUIDE_LAST_UPDATED_ISO = "2026-08-03";
 
 export const metadata: Metadata = {
-  title: "Norway Ferry Guide for Tourists | Practical Norway Travel Guide",
-  description:
-    "A practical ferry guide for tourists in Norway, covering car ferries, passenger boats, ticketing, AutoPASS ferry payments, schedules and route planning.",
+  title: { absolute: PAGE_TITLE },
+  description: PAGE_DESCRIPTION,
   alternates: {
-    canonical: "/guides/norway-ferry-guide-for-tourists",
+    canonical: CANONICAL_PATH,
+  },
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: CANONICAL_PATH,
+    siteName: SITE_NAME,
+    locale: "en_US",
+    type: "article",
+    modifiedTime: GUIDE_LAST_UPDATED_ISO,
+    images: [DEFAULT_SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [DEFAULT_SOCIAL_IMAGE.url],
   },
 };
 
 const faqItems = [
   {
-    question: "Do I need to book ferries in Norway in advance?",
+    question: "How early should I arrive for a ferry with a car?",
     answer:
-      "Most ordinary road ferries do not need advance booking, but busy summer crossings can have queues. Check the timetable before the day starts and leave buffer time around important connections.",
+      "There is no single arrival time for every route. Queue conditions and operator guidance vary, so check the specific crossing and leave sensible margin without assuming that early arrival guarantees space.",
   },
   {
-    question: "How do tourists pay for ferries in Norway?",
+    question: "Can I take a rental car or campervan on Norwegian ferries?",
     answer:
-      "Many ferry payments are handled automatically through number plate recognition, AutoPASS agreements or later invoicing. Some routes may still use app, card or local ticketing, so check the operator information before travelling.",
+      "Car ferries commonly carry rental cars and campervans, but billing and vehicle rules can vary. Confirm ferry charges with the rental company and check the operator’s information for the exact crossing and vehicle size.",
   },
   {
-    question: "Should I plan my route around ferry times?",
+    question: "Are ferries in Norway free?",
     answer:
-      "Yes. In coastal Norway, ferries are part of the route. Treat crossing times as fixed points, then build driving distances and overnight stops around them.",
+      "Payment arrangements vary by route. Many crossings use number-plate recognition, AutoPASS agreements or later invoicing, while other arrangements may apply, so check the current operator information before travelling.",
   },
   {
-    question: "Can weather affect Norwegian ferries?",
+    question: "Can ferry crossings be booked in advance?",
     answer:
-      "Yes. Wind, rough sea and winter conditions can delay or cancel exposed crossings. Always check live updates before remote or important ferry legs.",
+      "Reservation options vary between routes and operators. Check the official information for the crossing you plan to use, and do not treat a timetable or early arrival as a guarantee of space on board.",
   },
 ] as const;
 
@@ -45,20 +72,25 @@ export default function NorwayFerryGuideForTouristsPage() {
       subtitle="How car ferries, passenger boats, coastal routes, payment systems and ferry planning work in Norway."
       category="Transport & Planning"
       readTime="14 min read"
-      lastUpdated="July 2026"
-      dateModified="2026-07-30"
+      lastUpdated={GUIDE_LAST_UPDATED}
+      dateModified={GUIDE_LAST_UPDATED_ISO}
       canonicalPath="/guides/norway-ferry-guide-for-tourists"
+      articleHeadline={ARTICLE_HEADLINE}
+      articleDescription={PAGE_DESCRIPTION}
       hero={
         <FerryVideoHero
           title="Norway Ferry Guide for Tourists"
           subtitle="How car ferries, passenger boats, coastal routes, payment systems and ferry planning work in Norway."
           category="Transport & Planning"
           readTime="14 min read"
-          lastUpdated="July 2026"
+          lastUpdated={GUIDE_LAST_UPDATED}
         />
       }
       featureSection={<HelgelandFerryDepartures />}
       faqItems={faqItems}
+      faqTitle="Frequently Asked Questions About Ferries in Norway"
+      faqIntro="Practical answers for vehicle travellers. Always confirm the current details with the operator for the crossing you plan to use."
+      includeFaqJsonLd={false}
       answerBlock={
         <AnswerBlock
           title="Ferries are part of the route, not a detour."
@@ -125,7 +157,7 @@ export default function NorwayFerryGuideForTouristsPage() {
             "Expect summer queues on busy crossings",
             "Leave buffer for wind and weather",
           ]}
-          lastUpdated="May 2026"
+          lastUpdated={GUIDE_LAST_UPDATED}
           reviewedFor="2026 route planning"
           editorialNote="Independent planning guidance, not operator booking support."
           safetyNote="Verify live timetables and weather updates before each crossing."

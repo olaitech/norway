@@ -23,10 +23,11 @@ export type EnturFerryRoute = {
   id: string;
   label: string;
   group: "Helgeland" | "Bodø & Lofoten" | "Tysfjord & Ofoten";
+  officialUrl: string | null;
   directions: EnturFerryDirection[];
 };
 
 export type EnturDeparturesResponse = {
   routes: EnturFerryRoute[];
-  updatedAt: string;
+  fetchedAt: string;
 };

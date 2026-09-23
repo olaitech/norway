@@ -5,6 +5,7 @@ import Script from "next/script";
 import { GlobalShaderBackground } from "@/src/components/backgrounds/GlobalShaderBackground";
 import { CookieConsentGate } from "@/src/components/compliance/CookieConsentGate";
 import { Footer } from "@/src/components/layout/Footer";
+import { FundraiserDialog } from "@/src/components/fundraiser/FundraiserDialog";
 import { NewsletterSignupDialog } from "@/src/components/newsletter/NewsletterSignupDialog";
 import { NewsletterSignupSection } from "@/src/components/newsletter/NewsletterSignupSection";
 import {
@@ -105,6 +106,7 @@ export default function RootLayout({
         <GlobalShaderBackground />
         <div className="relative z-10 flex min-h-full flex-col">
           {children}
+          <FundraiserDialog />
           <NewsletterSignupDialog />
           <CookieConsentGate />
           <NewsletterSignupSection />

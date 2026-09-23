@@ -32,6 +32,11 @@ type GuideArticleLayoutProps = {
   answerBlock?: ReactNode;
   featureSection?: ReactNode;
   faqItems?: readonly FaqItem[];
+  faqTitle?: string;
+  faqIntro?: string;
+  includeFaqJsonLd?: boolean;
+  articleHeadline?: string;
+  articleDescription?: string;
   trustBox?: ReactNode;
   sources?: GuideSource[];
   relatedLinks?: readonly RelatedLinkCard[];
@@ -53,6 +58,11 @@ export function GuideArticleLayout({
   answerBlock,
   featureSection,
   faqItems,
+  faqTitle = "Planning questions",
+  faqIntro = "Short answers to the decisions that most often shape the route, timing and pace of the trip.",
+  includeFaqJsonLd = true,
+  articleHeadline,
+  articleDescription,
   trustBox,
   sources,
   relatedLinks,
@@ -77,13 +87,15 @@ export function GuideArticleLayout({
         value={[
           createBreadcrumbListJsonLd(guideBreadcrumbs),
           createArticleJsonLd({
-            headline: title,
-            description: subtitle ?? title,
+            headline: articleHeadline ?? title,
+            description: articleDescription ?? subtitle ?? title,
             url: canonicalPath,
             articleSection: category,
             dateModified: dateModified ?? CURRENT_SITE_WIDE_REFRESH_DATE,
           }),
-          ...(hasFaqItems ? [createFaqJsonLd(faqItems ?? [])] : []),
+          ...(hasFaqItems && includeFaqJsonLd
+            ? [createFaqJsonLd(faqItems ?? [])]
+            : []),
         ]}
       />
       <main className="min-h-screen bg-[linear-gradient(180deg,var(--deep-fjord)_0%,var(--polar-night)_100%)] text-[#f4efe2]">
@@ -138,11 +150,10 @@ export function GuideArticleLayout({
                     FAQ
                   </p>
                   <h2 className="mt-5 font-serif text-[clamp(2rem,4vw,3.1rem)] font-normal leading-[0.95] tracking-[-0.04em] text-[#f4efe2]">
-                    Planning questions
+                    {faqTitle}
                   </h2>
                   <p className="mt-5 max-w-lg text-sm font-light leading-[1.85] text-[#f4efe2]/64 sm:text-base">
-                    Short answers to the decisions that most often shape the
-                    route, timing and pace of the trip.
+                    {faqIntro}
                   </p>
                 </div>
                 <div className="space-y-4">

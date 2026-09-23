@@ -278,6 +278,7 @@ async function fetchFerryDepartures(): Promise<EnturDeparturesResponse> {
     id: route.id,
     label: route.label,
     group: route.group,
+    officialUrl: "officialUrl" in route ? route.officialUrl : null,
     directions: route.directions.map((direction) =>
       toDirection(route, direction, quaysById),
     ),
@@ -285,7 +286,7 @@ async function fetchFerryDepartures(): Promise<EnturDeparturesResponse> {
 
   return {
     routes,
-    updatedAt: new Date().toISOString(),
+    fetchedAt: new Date().toISOString(),
   };
 }
 
