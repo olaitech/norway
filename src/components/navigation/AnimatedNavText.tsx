@@ -9,11 +9,15 @@ type AnimatedNavTextProps = {
 
 export function AnimatedNavText({ text, className = "" }: AnimatedNavTextProps) {
   return (
-    <span
-      data-text={text}
-      className={`${styles.root} ${className}`.trim()}
-    >
-      <span className={styles.text}>{text}</span>
-    </span>
+    <>
+      <span className="sr-only">{text}</span>
+      <span
+        aria-hidden="true"
+        data-text={text}
+        className={`${styles.root} ${className}`.trim()}
+      >
+        <span className={styles.text}>{text}</span>
+      </span>
+    </>
   );
 }
