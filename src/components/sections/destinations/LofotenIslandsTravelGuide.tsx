@@ -10,6 +10,9 @@ import {
   createBreadcrumbListJsonLd,
 } from "@/src/lib/seo/jsonLd";
 
+import { DestinationAtAGlance } from "./DestinationAtAGlance";
+import { DestinationQuickFacts } from "./DestinationQuickFacts";
+import { DestinationSection } from "./DestinationSection";
 import { DestinationReveal } from "./DestinationReveal";
 import { LofotenLocationCompass } from "./LofotenLocationCompass";
 
@@ -49,18 +52,23 @@ const quickFacts = [
 ] as const;
 
 const guideNav = [
+  { label: "Overview", href: "#first-impression" },
+  { label: "At a glance", href: "#at-a-glance" },
   { label: "Why visit", href: "#why-visit" },
+  { label: "Things to do", href: "#places-worth-slowing-down" },
+  { label: "Quick facts", href: "#quick-facts" },
+  { label: "Ferries and transport", href: "#how-to-get-to-lofoten" },
+  { label: "Getting around", href: "#getting-around" },
   { label: "Best time", href: "#best-time" },
   { label: "How many days", href: "#how-many-days" },
-  { label: "Ferries and transport", href: "#how-to-get-to-lofoten" },
   { label: "Where to stay", href: "#where-to-stay" },
   { label: "Rorbuer", href: "#rorbuer-and-cabins" },
   { label: "Camping", href: "#camping-and-campervan" },
-  { label: "Places", href: "#places-worth-slowing-down" },
   { label: "Route rhythm", href: "#suggested-itinerary" },
   { label: "What not to do", href: "#things-not-to-do" },
   { label: "Responsible travel", href: "#responsible-travel" },
   { label: "FAQ", href: "#lofoten-faq" },
+  { label: "Related guides", href: "#related-guides" },
 ] as const;
 
 const whyVisit = [
@@ -569,28 +577,6 @@ export function LofotenIslandsTravelGuide() {
         </div>
       </section>
 
-      <section className="border-y border-white/8 bg-white/[0.015] px-5 sm:px-8 md:px-12">
-        <div className="mx-auto max-w-7xl py-9 sm:py-11">
-          <DestinationReveal className="w-full">
-            <dl className="grid grid-cols-2 gap-y-8 md:grid-cols-4">
-              {quickFacts.map((fact) => (
-                <div
-                  key={fact.label}
-                  className="border-white/10 pr-5 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"
-                >
-                  <dt className="text-[0.62rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/62">
-                    {fact.label}
-                  </dt>
-                  <dd className="mt-3 text-sm font-light leading-[1.75] text-[#f4efe2]/82 sm:text-base">
-                    {fact.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </DestinationReveal>
-        </div>
-      </section>
-
       <div className="px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-32">
         <div className="mx-auto max-w-7xl space-y-24 sm:space-y-28">
           <section
@@ -599,7 +585,7 @@ export function LofotenIslandsTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="01 / First impression"
+                label="Destination overview"
                 title="Extraordinary landscapes, lived-in communities"
                 intro="Lofoten is extraordinary, but it is not a film set. It is a chain of small communities where weather, roads, ferries and local routines matter every day."
               />
@@ -627,7 +613,7 @@ export function LofotenIslandsTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="02 / Navigation"
+                label="Navigation"
                 title="On this guide"
                 intro="Jump directly to the sections you need while planning."
               />
@@ -647,13 +633,24 @@ export function LofotenIslandsTravelGuide() {
             </DestinationReveal>
           </section>
 
+          <div className="-mx-5 sm:-mx-8 md:-mx-12 [&_section]:scroll-mt-24">
+            <DestinationAtAGlance
+              region="Nordland, Northern Norway"
+              idealTripLength="4+ days"
+              bestSeason="Year-round — summer for long daylight and road trips, winter for northern lights and Arctic conditions"
+              nearestGateway="Svolvær and Leknes locally; Bodø and Harstad/Narvik Evenes for wider connections"
+              transport="Flights, ferry/express boat, bus and car via the E10"
+              carRecommended="Useful for flexibility, but not essential. Public transport requires more planning, especially away from the E10."
+            />
+          </div>
+
           <section
             id="why-visit"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="03 / Perspective"
+                label="Perspective"
                 title="Why visit Lofoten"
               />
             </DestinationReveal>
@@ -674,12 +671,35 @@ export function LofotenIslandsTravelGuide() {
           </section>
 
           <section
+            id="places-worth-slowing-down"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Things to do / Highlights"
+                title="Places worth slowing down for"
+              />
+            </DestinationReveal>
+            <LofotenLocationCompass places={placesWorthSlowingDown} />
+          </section>
+
+          <div className="-mx-5 sm:-mx-8 md:-mx-12 [&_section]:scroll-mt-24">
+            <DestinationSection
+              id="quick-facts"
+              eyebrow="Practical reference"
+              heading="Lofoten quick facts"
+            >
+              <DestinationQuickFacts facts={quickFacts} />
+            </DestinationSection>
+          </div>
+
+          <section
             id="where-it-is"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="04 / Orientation"
+                label="Orientation"
                 title="Where Lofoten is"
                 intro="Lofoten sits in Nordland above the Arctic Circle, linked by the E10 and several ferry-dependent edges."
               />
@@ -716,65 +736,13 @@ export function LofotenIslandsTravelGuide() {
           </section>
 
           <section
-            id="best-time"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="05 / Seasons"
-                title="Best time to visit Lofoten"
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {bestTimeCards.map((card, index) => (
-                <DestinationReveal key={card.title} delay={index * 0.06}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
-                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
-                      {card.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
-                      {card.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
-
-          <section
-            id="how-many-days"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="06 / Planning"
-                title="How many days do you need in Lofoten?"
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {dayGuidance.map((item, index) => (
-                <DestinationReveal key={item.title} delay={index * 0.06}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7 sm:p-8">
-                    <p className="text-[0.62rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/62">
-                      {item.title}
-                    </p>
-                    <p className="mt-5 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
-                      {item.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
-
-          <section
             id="how-to-get-to-lofoten"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <span id="ferries" className="block scroll-mt-24" aria-hidden="true" />
             <DestinationReveal>
               <SectionIntro
-                label="07 / Access"
+                label="Access"
                 title="How to get to Lofoten"
                 intro="Treat arrival as route planning, not one transfer step. Ferry, road and air choices all affect your daily rhythm."
               />
@@ -833,7 +801,7 @@ export function LofotenIslandsTravelGuide() {
             />
             <DestinationReveal>
               <SectionIntro
-                label="08 / Mobility"
+                label="Mobility"
                 title="Getting around Lofoten"
               />
             </DestinationReveal>
@@ -910,12 +878,64 @@ export function LofotenIslandsTravelGuide() {
           </section>
 
           <section
+            id="best-time"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Seasons"
+                title="Best time to visit Lofoten"
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {bestTimeCards.map((card, index) => (
+                <DestinationReveal key={card.title} delay={index * 0.06}>
+                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
+                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
+                      {card.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+          </section>
+
+          <section
+            id="how-many-days"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Planning"
+                title="How many days do you need in Lofoten?"
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {dayGuidance.map((item, index) => (
+                <DestinationReveal key={item.title} delay={index * 0.06}>
+                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7 sm:p-8">
+                    <p className="text-[0.62rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/62">
+                      {item.title}
+                    </p>
+                    <p className="mt-5 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
+                      {item.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+          </section>
+
+          <section
             id="where-to-stay"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="09 / Accommodation areas"
+                label="Accommodation areas"
                 title="Where to stay in Lofoten"
                 intro="These are practical bases and well-known areas to compare, not a ranking."
               />
@@ -1006,7 +1026,7 @@ export function LofotenIslandsTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="10 / Rorbuer"
+                label="Rorbuer"
                 title="Rorbuer and cabins in Lofoten"
                 intro="Traditional fishermen's cabins, often restored into atmospheric accommodation near harbours, fjords and working coastal villages."
               />
@@ -1068,7 +1088,7 @@ export function LofotenIslandsTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="11 / Camping"
+                label="Camping"
                 title="Camping and campervan travel in Lofoten"
                 intro="Camping can be beautiful, but it needs more planning than social media suggests."
               />
@@ -1145,25 +1165,12 @@ export function LofotenIslandsTravelGuide() {
           </section>
 
           <section
-            id="places-worth-slowing-down"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="12 / Places"
-                title="Places worth slowing down for"
-              />
-            </DestinationReveal>
-            <LofotenLocationCompass places={placesWorthSlowingDown} />
-          </section>
-
-          <section
             id="suggested-itinerary"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="13 / Route planning"
+                label="Route planning"
                 title="A broad Lofoten rhythm"
                 intro="Use this as a destination-level pacing model. The road-trip guide holds the ordered route, bases, ferry timing, parking and realistic daily execution."
               />
@@ -1204,7 +1211,7 @@ export function LofotenIslandsTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="14 / Trust notes"
+                label="Trust notes"
                 title="Things not to do in Lofoten"
               />
             </DestinationReveal>
@@ -1233,7 +1240,7 @@ export function LofotenIslandsTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="15 / Responsibility"
+                label="Responsibility"
                 title="Responsible travel in Lofoten"
               />
             </DestinationReveal>
@@ -1290,7 +1297,7 @@ export function LofotenIslandsTravelGuide() {
             className="grid gap-10 border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16"
           >
             <DestinationReveal>
-              <SectionIntro label="16 / FAQ" title="Lofoten FAQ" />
+              <SectionIntro label="FAQ" title="Lofoten FAQ" />
             </DestinationReveal>
             <DestinationReveal delay={0.08} className="divide-y divide-white/8">
               {faqItems.map((item) => (
@@ -1315,7 +1322,7 @@ export function LofotenIslandsTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="17 / Continue planning"
+                label="Continue planning"
                 title="Related guides"
               />
             </DestinationReveal>
