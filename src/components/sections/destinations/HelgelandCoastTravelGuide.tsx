@@ -12,6 +12,9 @@ import {
   createFaqJsonLd,
 } from "@/src/lib/seo/jsonLd";
 
+import { DestinationAtAGlance } from "./DestinationAtAGlance";
+import { DestinationQuickFacts } from "./DestinationQuickFacts";
+import { DestinationSection } from "./DestinationSection";
 import { DestinationReveal } from "./DestinationReveal";
 import { HelgelandStackedPlaces } from "./HelgelandStackedPlaces";
 
@@ -422,17 +425,21 @@ const breadcrumbItems = [
 
 const guideIndexItems = [
   { label: "What it is", href: "#first-impression" },
+  { label: "At a glance", href: "#at-a-glance" },
   { label: "Why it feels different", href: "#why-visit" },
   { label: "Understand the coast", href: "#understand-coast" },
+  { label: "Places", href: "#places" },
+  { label: "Experiences", href: "#experiences" },
+  { label: "Quick facts", href: "#quick-facts" },
   { label: "Travel essentials", href: "#travel-essentials" },
-  { label: "Best time to visit", href: "#best-time" },
-  { label: "How many days", href: "#how-many-days" },
   { label: "How to travel", href: "#how-to-get-there" },
   { label: "Coastal Route Fv17", href: "#route" },
-  { label: "Places", href: "#places" },
+  { label: "Best time to visit", href: "#best-time" },
+  { label: "How many days", href: "#how-many-days" },
   { label: "Travel slowly", href: "#travel-slowly" },
   { label: "Responsible travel", href: "#responsible-travel" },
   { label: "FAQ", href: "#faq" },
+  { label: "Related guides", href: "#related-guides" },
 ] as const;
 
 const faqJsonLd = createFaqJsonLd(faqs);
@@ -592,21 +599,6 @@ export function HelgelandCoastTravelGuide() {
         </div>
       </section>
 
-      <section className="border-y border-white/8 bg-white/[0.015] px-5 sm:px-8 md:px-12">
-        <dl className="mx-auto grid max-w-7xl gap-px py-6 sm:grid-cols-2 md:grid-cols-4">
-          {quickFacts.map((fact) => (
-            <div key={fact.label} className="border-white/8 py-5 sm:px-5 md:border-r md:last:border-r-0">
-              <dt className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/64">
-                {fact.label}
-              </dt>
-              <dd className="mt-3 text-sm font-light leading-6 text-[#f4efe2]/82">
-                {fact.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
       <nav
         aria-label="Breadcrumb"
         className="border-b border-white/8 px-5 py-5 sm:px-8 md:px-12"
@@ -634,51 +626,14 @@ export function HelgelandCoastTravelGuide() {
         </ol>
       </nav>
 
-      <section className="border-b border-white/8 px-5 py-6 sm:px-8 md:px-12">
-        <div className="mx-auto max-w-7xl rounded-[1.15rem] border border-white/8 bg-white/[0.02] px-5 py-5 sm:px-6 sm:py-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-8">
-            <div className="max-w-[14rem]">
-              <p className="text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#d8c9a7]/72">
-                On this guide
-              </p>
-              <p className="mt-3 text-sm font-light leading-[1.75] text-[#f4efe2]/58">
-                Jump to the sections that matter while planning the route.
-              </p>
-            </div>
-            <nav aria-label="On this guide" className="min-w-0 flex-1">
-              <div className="flex flex-wrap gap-2 sm:hidden">
-                {guideIndexItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="inline-flex items-center rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.5))] px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-              <div className="hidden gap-2 sm:flex sm:flex-wrap">
-                {guideIndexItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="inline-flex items-center rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.5))] px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </nav>
-          </div>
-        </div>
-      </section>
+
 
       <div className="px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-28">
         <div className="mx-auto max-w-7xl space-y-24 sm:space-y-28">
           <section id="first-impression" className="grid gap-10 lg:grid-cols-[0.74fr_1.26fr] lg:gap-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="01 / Direct answer"
+                eyebrow="Direct answer"
                 title="What is the Helgeland Coast?"
               />
             </DestinationReveal>
@@ -698,6 +653,144 @@ export function HelgelandCoastTravelGuide() {
                 mountain walks and coastal culture rather than one compact set
                 of sights. Compared with <Link href="/destinations/lofoten-islands" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Lofoten</Link> or <Link href="/destinations/senja" className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2]">Senja</Link>, Helgeland is more dispersed and asks for more transport planning, which is exactly why it works so well for slow travel.
               </p>
+            </DestinationReveal>
+          </section>
+
+          <section className="border-b border-white/8 py-6">
+            <div className="mx-auto max-w-7xl rounded-[1.15rem] border border-white/8 bg-white/[0.02] px-5 py-5 sm:px-6 sm:py-6">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-8">
+                <div className="max-w-[14rem]">
+                  <p className="text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#d8c9a7]/72">
+                    On this guide
+                  </p>
+                  <p className="mt-3 text-sm font-light leading-[1.75] text-[#f4efe2]/58">
+                    Jump to the sections that matter while planning the route.
+                  </p>
+                </div>
+                <nav aria-label="On this guide" className="min-w-0 flex-1">
+                  <div className="flex flex-wrap gap-2 sm:hidden">
+                    {guideIndexItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="inline-flex items-center rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.5))] px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="hidden gap-2 sm:flex sm:flex-wrap">
+                    {guideIndexItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="inline-flex items-center rounded-full border border-[#8fafa8]/12 bg-[linear-gradient(180deg,rgba(16,26,30,0.72),rgba(8,17,22,0.5))] px-4 py-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#f4efe2]/72 transition-colors hover:border-[#d8c9a7]/30 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </section>
+
+          <div className="-mx-5 sm:-mx-8 md:-mx-12 [&_section]:scroll-mt-24">
+            <DestinationAtAGlance
+              region="The southern part of Northern Norway, in Nordland"
+              idealTripLength="4-5 days for one selected section; 10-14 days for a broader coastal route"
+              bestSeason="Summer is easiest; spring and autumn have fewer services, while winter suits focused, flexible stays"
+              nearestGateway="Brønnøysund and Sandnessjøen on the coast; Mosjøen and Mo i Rana for inland connections"
+              transport="Fv17, ferries and express boats; regional flights, the Nordland Line, buses and bicycles for selected journeys"
+              carRecommended="Car and ferry suit the coastal road journey. Selected towns and islands can also be linked without a car, with careful connection planning."
+            />
+          </div>
+
+          <section id="why-visit" className="border-t border-white/8 pt-16 sm:pt-20">
+            <DestinationReveal>
+              <SectionHeader
+                eyebrow="Character"
+                title="Why Helgeland feels different"
+                intro="The coast is less one concentrated attraction than a sequence of landscapes, crossings and communities."
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {whyHelgelandFeelsDifferent.map((item, index) => (
+                <DestinationReveal key={item.title} delay={index * 0.06}>
+                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] p-7 sm:p-8">
+                    <p className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/62">
+                      0{index + 1}
+                    </p>
+                    <h3 className="mt-7 font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64">
+                      {item.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+          </section>
+
+          <section id="understand-coast" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
+            <DestinationReveal>
+              <SectionHeader
+                eyebrow="Geography"
+                title="Understand the coast"
+                intro="A practical way to read Helgeland is as four travel zones. These are planning shortcuts, not formal administrative regions."
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {travelZones.map((zone, index) => (
+                <DestinationReveal key={zone.title} delay={index * 0.05}>
+                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
+                    <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/68">
+                      {zone.label}
+                    </p>
+                    <h3 className="mt-5 font-serif text-3xl leading-[1.02] tracking-[-0.035em] text-[#f4efe2]">
+                      {zone.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
+                      {zone.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+          </section>
+
+          <section id="places" className="border-t border-white/8 pt-16 sm:pt-20">
+            <DestinationReveal>
+              <SectionHeader
+                eyebrow="Places"
+                title="Places worth slowing down for"
+                intro="Treat these as anchors, not a checklist. The route is better when weather and ferry timing have room to breathe."
+                wideOnDesktop
+              />
+            </DestinationReveal>
+            <HelgelandStackedPlaces places={places} />
+          </section>
+
+          <section id="experiences" className="scroll-mt-24 grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+            <DestinationReveal>
+              <SectionHeader
+                eyebrow="Experiences"
+                title="Signature experiences"
+                intro="Choose a small number and leave enough time for the journey between them."
+              />
+            </DestinationReveal>
+            <DestinationReveal delay={0.08}>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {thingsToDo.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[0.95rem] border border-white/8 bg-white/[0.025] px-4 py-4 text-sm font-light leading-[1.7] text-[#f4efe2]/68"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
             </DestinationReveal>
           </section>
 
@@ -771,64 +864,20 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </DestinationReveal>
 
-          <section id="why-visit" className="border-t border-white/8 pt-16 sm:pt-20">
-            <DestinationReveal>
-              <SectionHeader
-                eyebrow="02 / Character"
-                title="Why Helgeland feels different"
-                intro="The coast is less one concentrated attraction than a sequence of landscapes, crossings and communities."
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {whyHelgelandFeelsDifferent.map((item, index) => (
-                <DestinationReveal key={item.title} delay={index * 0.06}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] p-7 sm:p-8">
-                    <p className="text-[0.58rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/62">
-                      0{index + 1}
-                    </p>
-                    <h3 className="mt-7 font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64">
-                      {item.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
-
-          <section id="understand-coast" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
-            <DestinationReveal>
-              <SectionHeader
-                eyebrow="03 / Geography"
-                title="Understand the coast"
-                intro="A practical way to read Helgeland is as four travel zones. These are planning shortcuts, not formal administrative regions."
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {travelZones.map((zone, index) => (
-                <DestinationReveal key={zone.title} delay={index * 0.05}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
-                    <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/68">
-                      {zone.label}
-                    </p>
-                    <h3 className="mt-5 font-serif text-3xl leading-[1.02] tracking-[-0.035em] text-[#f4efe2]">
-                      {zone.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
-                      {zone.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
+          <div className="-mx-5 sm:-mx-8 md:-mx-12 [&_section]:scroll-mt-24">
+            <DestinationSection
+              id="quick-facts"
+              eyebrow="Practical reference"
+              heading="Helgeland quick facts"
+            >
+              <DestinationQuickFacts facts={quickFacts} />
+            </DestinationSection>
+          </div>
 
           <section id="travel-essentials" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="04 / Essentials"
+                eyebrow="Essentials"
                 title="Travel essentials"
                 intro="The coast is straightforward when you respect the ferries, weather and local rhythm. A little preparation keeps the trip calm."
               />
@@ -883,78 +932,10 @@ export function HelgelandCoastTravelGuide() {
             </DestinationReveal>
           </section>
 
-          <section id="best-time" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
-            <DestinationReveal>
-              <SectionHeader
-                eyebrow="05 / Seasons"
-                title="Best time to visit"
-                intro="The route changes with light, ferry frequency and weather. Summer is easiest, but the shoulder seasons can be deeply atmospheric."
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {seasonNotes.map((season, index) => (
-                <DestinationReveal key={season.title} delay={index * 0.05}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
-                    <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/68">
-                      {season.label}
-                    </p>
-                    <h3 className="mt-5 font-serif text-3xl tracking-[-0.035em] text-[#f4efe2]">
-                      {season.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
-                      {season.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-            <DestinationReveal
-              delay={0.08}
-              className="surface-fjord-media mt-10 overflow-hidden rounded-[1.35rem]"
-            >
-              <figure className="relative aspect-video">
-                <Image
-                  src="/images/destinations/helgeland/helgeland-sunset.jpg"
-                  alt="Seabirds flying above the sea in warm sunset light"
-                  fill
-                  sizes="(min-width: 1280px) 1280px, (min-width: 768px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
-                  className="object-cover object-[center_58%]"
-                />
-              </figure>
-            </DestinationReveal>
-          </section>
-
-          <section id="how-many-days" className="border-t border-white/8 pt-16 sm:pt-20">
-            <DestinationReveal>
-              <SectionHeader
-                eyebrow="06 / Pacing"
-                title="How many days you need"
-                intro="The mistake is not driving too slowly. The mistake is planning Helgeland like a highway."
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {dayGuidance.map((item) => (
-                <DestinationReveal key={item.label}>
-                  <article className="h-full rounded-[1.2rem] border border-[#d8c9a7]/18 bg-[#d8c9a7]/[0.045] p-7 sm:p-8">
-                    <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/78">
-                      {item.label}
-                    </p>
-                    <h3 className="mt-5 font-serif text-3xl tracking-[-0.035em] text-[#f4efe2]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/66">
-                      {item.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
-
           <section id="how-to-get-there" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="07 / Transport"
+                eyebrow="Transport"
                 title="How to travel through Helgeland"
                 intro="Choose the transport around the part of the region you want to understand, not the other way around."
               />
@@ -988,7 +969,7 @@ export function HelgelandCoastTravelGuide() {
             />
             <DestinationReveal>
               <SectionHeader
-                eyebrow="08 / Coastal Route Fv17"
+                eyebrow="Coastal Route Fv17"
                 title="Driving the Coastal Route"
                 intro="Fv17 is not just a road; it is a rhythm of driving, waiting, crossing and continuing."
               />
@@ -1043,22 +1024,78 @@ export function HelgelandCoastTravelGuide() {
             </div>
           </section>
 
-          <section id="places" className="border-t border-white/8 pt-16 sm:pt-20">
+          <section id="best-time" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="09 / Places"
-                title="Places worth slowing down for"
-                intro="Treat these as anchors, not a checklist. The route is better when weather and ferry timing have room to breathe."
-                wideOnDesktop
+                eyebrow="Seasons"
+                title="Best time to visit"
+                intro="The route changes with light, ferry frequency and weather. Summer is easiest, but the shoulder seasons can be deeply atmospheric."
               />
             </DestinationReveal>
-            <HelgelandStackedPlaces places={places} />
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {seasonNotes.map((season, index) => (
+                <DestinationReveal key={season.title} delay={index * 0.05}>
+                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-white/[0.025] p-7 sm:p-8">
+                    <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/68">
+                      {season.label}
+                    </p>
+                    <h3 className="mt-5 font-serif text-3xl tracking-[-0.035em] text-[#f4efe2]">
+                      {season.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
+                      {season.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+            <DestinationReveal
+              delay={0.08}
+              className="surface-fjord-media mt-10 overflow-hidden rounded-[1.35rem]"
+            >
+              <figure className="relative aspect-video">
+                <Image
+                  src="/images/destinations/helgeland/helgeland-sunset.jpg"
+                  alt="Seabirds flying above the sea in warm sunset light"
+                  fill
+                  sizes="(min-width: 1280px) 1280px, (min-width: 768px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                  className="object-cover object-[center_58%]"
+                />
+              </figure>
+            </DestinationReveal>
+          </section>
+
+          <section id="how-many-days" className="border-t border-white/8 pt-16 sm:pt-20">
+            <DestinationReveal>
+              <SectionHeader
+                eyebrow="Pacing"
+                title="How many days you need"
+                intro="The mistake is not driving too slowly. The mistake is planning Helgeland like a highway."
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {dayGuidance.map((item) => (
+                <DestinationReveal key={item.label}>
+                  <article className="h-full rounded-[1.2rem] border border-[#d8c9a7]/18 bg-[#d8c9a7]/[0.045] p-7 sm:p-8">
+                    <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/78">
+                      {item.label}
+                    </p>
+                    <h3 className="mt-5 font-serif text-3xl tracking-[-0.035em] text-[#f4efe2]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.82] text-[#f4efe2]/66">
+                      {item.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
           </section>
 
           <section id="travel-slowly" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="10 / Slow travel"
+                eyebrow="Slow travel"
                 title="Travel slowly through Helgeland"
                 intro="Leave room for crossings, weather and communities. This one-week framework is a starting point, not a schedule to complete at any cost."
               />
@@ -1112,32 +1149,10 @@ export function HelgelandCoastTravelGuide() {
             </DestinationReveal>
           </section>
 
-          <section className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-            <DestinationReveal>
-              <SectionHeader
-                eyebrow="11 / Experiences"
-                title="Signature experiences"
-                intro="Choose a small number and leave enough time for the journey between them."
-              />
-            </DestinationReveal>
-            <DestinationReveal delay={0.08}>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {thingsToDo.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-[0.95rem] border border-white/8 bg-white/[0.025] px-4 py-4 text-sm font-light leading-[1.7] text-[#f4efe2]/68"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </DestinationReveal>
-          </section>
-
           <section id="responsible-travel" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
             <DestinationReveal>
               <SectionHeader
-                eyebrow="12 / Responsibility"
+                eyebrow="Responsibility"
                 title="Travel with care"
                 intro="Helgeland's quietness is part of its value. Protect that by moving carefully through local communities and fragile coastal places."
               />
@@ -1161,7 +1176,7 @@ export function HelgelandCoastTravelGuide() {
 
           <section id="faq" className="grid gap-10 border-t border-white/8 pt-16 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
             <DestinationReveal>
-              <SectionHeader eyebrow="13 / FAQ" title="Planning questions" />
+              <SectionHeader eyebrow="FAQ" title="Planning questions" />
             </DestinationReveal>
             <DestinationReveal delay={0.08} className="divide-y divide-white/8">
               {faqs.map((item) => (
@@ -1180,11 +1195,11 @@ export function HelgelandCoastTravelGuide() {
             </DestinationReveal>
           </section>
 
-          <section className="border-t border-white/8 pt-16 sm:pt-20">
+          <section id="related-guides" className="scroll-mt-24 border-t border-white/8 pt-16 sm:pt-20">
             <DestinationReveal>
               <article className="rounded-[1.35rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.036),rgba(255,255,255,0.014))] p-8 sm:p-10">
                 <SectionHeader
-                  eyebrow="14 / Related guides"
+                  eyebrow="Related guides"
                   title="Continue planning"
                   intro="Move from regional understanding into route, ferry, driving, camping, seasonal and no-car planning."
                 />
