@@ -122,6 +122,7 @@ export function LofotenLocationCompass({ places }: LofotenLocationCompassProps) 
                 key={place.title}
                 id={`lofoten-compass-panel-${index}`}
                 aria-labelledby={`lofoten-compass-node-${index}`}
+                aria-hidden={!isSelected}
                 className={`relative col-start-1 row-start-1 flex min-h-[16rem] flex-col justify-center p-7 transition-[opacity,transform] duration-500 ease-out motion-reduce:transform-none motion-reduce:transition-none sm:p-9 xl:p-10 ${
                   isSelected
                     ? "z-10 translate-y-0 opacity-100"
@@ -142,6 +143,16 @@ export function LofotenLocationCompass({ places }: LofotenLocationCompassProps) 
           })}
         </div>
       </div>
+      <noscript>
+        <div className="mt-6 space-y-6">
+          {places.slice(1).map((place) => (
+            <article key={place.title}>
+              <h3 className="font-serif text-2xl text-[#f4efe2]">{place.title}</h3>
+              <p className="mt-3 text-sm font-light leading-[1.85] text-[#f4efe2]/68">{place.text}</p>
+            </article>
+          ))}
+        </div>
+      </noscript>
     </div>
   );
 }

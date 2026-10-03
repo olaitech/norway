@@ -974,8 +974,8 @@ export function HelgelandCoastTravelGuide() {
                 intro="Fv17 is not just a road; it is a rhythm of driving, waiting, crossing and continuing."
               />
             </DestinationReveal>
-            <div className="mt-12 grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
-              <DestinationReveal className="rounded-[1.35rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.036),rgba(255,255,255,0.014))] p-7 sm:p-10">
+            <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+              <DestinationReveal className="min-w-0 break-words rounded-[1.35rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.036),rgba(255,255,255,0.014))] p-7 sm:p-10">
                 <p className="text-base font-light leading-[1.9] text-[#f4efe2]/70 sm:text-lg">
                   Norwegian Scenic Route Helgelandskysten runs between Holm and
                   Godøystraumen, with important coastal detours including
@@ -992,9 +992,9 @@ export function HelgelandCoastTravelGuide() {
                   with official operators before driving to the quay.
                 </p>
               </DestinationReveal>
-              <DestinationReveal delay={0.08}>
+              <DestinationReveal delay={0.08} className="min-w-0">
                 <div className="overflow-hidden rounded-[1.35rem] border border-[#d8c9a7]/18 bg-[#d8c9a7]/[0.045]">
-                  <div className="relative aspect-[4/3] min-h-[230px] border-b border-[#d8c9a7]/14">
+                  <div className="relative aspect-[4/3] w-full min-h-[230px] border-b border-[#d8c9a7]/14">
                     <Image
                       src="/images/destinations/helgeland/ferry.jpg"
                       alt="Ferry crossing on the Helgeland Coast in Northern Norway"

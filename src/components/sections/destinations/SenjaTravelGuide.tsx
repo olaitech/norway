@@ -506,7 +506,6 @@ const relatedGuides = [
   { label: "Route hub", title: "Norway Road Trip Routes", href: "/routes" },
   { label: "Planning", title: "Best Time to Visit Norway", href: "/best-time-to-visit-norway" },
   { label: "Guidance", title: "Responsible Travel", href: "/responsible-travel" },
-  { label: "Route hub", title: "All Routes", href: "/routes" },
   { label: "Tool", title: "Norway Map", href: "/map" },
 ] as const;
 

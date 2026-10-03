@@ -618,7 +618,6 @@ const relatedGuides = [
     title: "Responsible Travel",
     href: "/responsible-travel",
   },
-  { label: "Route hub", title: "All Routes", href: "/routes" },
   { label: "Tool", title: "Norway Map", href: "/map" },
 ] as const;
 
