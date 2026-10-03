@@ -13,6 +13,9 @@ import {
   createBreadcrumbListJsonLd,
 } from "@/src/lib/seo/jsonLd";
 
+import { DestinationAtAGlance } from "./DestinationAtAGlance";
+import { DestinationQuickFacts } from "./DestinationQuickFacts";
+import { DestinationSection } from "./DestinationSection";
 import { DestinationReveal } from "./DestinationReveal";
 
 const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
@@ -53,19 +56,27 @@ const quickFacts = [
 ] as const;
 
 const guideNav = [
+  { label: "Overview", href: "#first-impression" },
+  { label: "At a glance", href: "#at-a-glance" },
   { label: "Why visit", href: "#why-visit" },
-  { label: "Best time", href: "#best-time" },
-  { label: "How many days", href: "#how-many-days" },
+  { label: "City life", href: "#city-life" },
+  { label: "Places and day trips", href: "#places-worth-slowing-down" },
+  { label: "Quick facts", href: "#quick-facts" },
+  { label: "Orientation", href: "#where-tromso-is" },
   { label: "Getting there", href: "#how-to-get-to-tromso" },
+  { label: "Getting around", href: "#getting-around-tromso" },
+  { label: "Best time", href: "#best-time" },
   { label: "Northern lights", href: "#northern-lights" },
   { label: "Winter activities", href: "#winter-activities" },
   { label: "Summer", href: "#summer-midnight-sun" },
+  { label: "How many days", href: "#how-many-days" },
   { label: "Where to stay", href: "#where-to-stay" },
-  { label: "City life", href: "#city-life" },
+  { label: "Stays to research", href: "#stays-worth-researching" },
   { label: "Itineraries", href: "#itineraries" },
   { label: "What not to do", href: "#things-not-to-do" },
   { label: "Responsible travel", href: "#responsible-travel" },
   { label: "FAQ", href: "#tromso-faq" },
+  { label: "Related guides", href: "#related-guides" },
 ] as const;
 
 const whyVisit = [
@@ -719,28 +730,6 @@ export function TromsoTravelGuide() {
         </div>
       </section>
 
-      <section className="border-y border-white/8 bg-white/[0.015] px-5 sm:px-8 md:px-12">
-        <div className="mx-auto max-w-7xl py-9 sm:py-11">
-          <DestinationReveal className="w-full">
-            <dl className="grid grid-cols-2 gap-y-8 md:grid-cols-5">
-              {quickFacts.map((fact) => (
-                <div
-                  key={fact.label}
-                  className="border-white/10 pr-5 md:border-r md:px-6 md:first:pl-0 md:last:border-r-0"
-                >
-                  <dt className="text-[0.62rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/62">
-                    {fact.label}
-                  </dt>
-                  <dd className="mt-3 text-sm font-light leading-[1.75] text-[#f4efe2]/82 sm:text-base">
-                    {fact.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </DestinationReveal>
-        </div>
-      </section>
-
       <div className="px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-32">
         <div className="mx-auto max-w-7xl space-y-24 sm:space-y-28">
           <section
@@ -749,7 +738,7 @@ export function TromsoTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="01 / First impression"
+                label="First impression"
                 title="Arctic city life with weather reality"
                 intro="Tromso is one of the easiest Northern Norway bases for first-time Arctic travellers, but the best trips still leave room for clouds, late nights and changing plans."
               />
@@ -776,7 +765,7 @@ export function TromsoTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="02 / Navigation"
+                label="Navigation"
                 title="On this guide"
                 intro="Jump directly to the planning blocks that matter most."
               />
@@ -796,12 +785,23 @@ export function TromsoTravelGuide() {
             </DestinationReveal>
           </section>
 
+          <div className="-mx-5 sm:-mx-8 md:-mx-12 [&_section]:scroll-mt-24">
+            <DestinationAtAGlance
+              region="Troms, Northern Norway"
+              idealTripLength="3-4 nights in winter; 2-3 nights in summer"
+              bestSeason="Winter for northern lights and Arctic activities; summer for midnight sun and outdoor city life"
+              nearestGateway="Tromso Airport Langnes"
+              transport="City walking, public transport and tours; rental car for selected trips beyond the city"
+              carRecommended="Optional in the city. Useful for Kvaloya and Sommaroy; winter driving requires confidence on snow and ice."
+            />
+          </div>
+
           <section
             id="why-visit"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
-              <SectionIntro label="03 / Perspective" title="Why visit Tromso" />
+              <SectionIntro label="Perspective" title="Why visit Tromso" />
             </DestinationReveal>
             <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {whyVisit.map((item, index) => (
@@ -820,12 +820,110 @@ export function TromsoTravelGuide() {
           </section>
 
           <section
+            id="city-life"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Urban Arctic"
+                title="Food, culture and city life"
+                intro="Tromso is a real Arctic city, not only a tour base."
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 lg:grid-cols-[0.98fr_1.02fr]">
+              <DestinationReveal>
+                <article className="surface-fjord-media relative min-h-[340px] overflow-hidden rounded-[1.35rem] sm:min-h-[420px]">
+                  <Image
+                    src="/images/destinations/tromso/tromso-ishavskatedralen.jpg"
+                    alt="The Arctic Cathedral in Tromso during winter"
+                    fill
+                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.1)_0%,rgba(3,8,10,0.42)_48%,rgba(3,8,10,0.9)_100%)]" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                    <p className="text-[0.62rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/72">
+                      City and architecture
+                    </p>
+                    <p className="mt-4 max-w-md text-sm font-light leading-[1.8] text-[#f4efe2]/74 sm:text-base">
+                      Tromso combines urban routines with clear Arctic identity.
+                    </p>
+                  </div>
+                </article>
+              </DestinationReveal>
+              <DestinationReveal delay={0.08}>
+                <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-8 sm:p-10">
+                  <ul className="space-y-4">
+                    {[
+                      "Seafood and northern ingredients shape much of the city menu landscape.",
+                      "Cafes are important pacing anchors during dark winter days.",
+                      "Museums provide Arctic history and weather-resilient activity blocks.",
+                      "Sami Week requires cultural respect and context-aware participation.",
+                      "Festival season includes TIFF, Northern Lights Festival, Midnight Sun Marathon, Bukta Festival and Sami Week.",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="border-b border-white/6 pb-4 text-sm font-light leading-[1.8] text-[#f4efe2]/68 last:border-b-0 last:pb-0 sm:text-base"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </DestinationReveal>
+            </div>
+          </section>
+
+          <section
+            id="places-worth-slowing-down"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Places"
+                title="Places and day trips worth slowing down for"
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {places.map((place, index) => (
+                <DestinationReveal key={place.title} delay={index * 0.03}>
+                  <article className="h-full rounded-[1.15rem] border border-white/10 bg-white/[0.02] p-6">
+                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
+                      {place.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
+                      {place.mood}
+                    </p>
+                    <p className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
+                      <span className="text-[#f4efe2]/82">Practical note:</span>{" "}
+                      {place.note}
+                    </p>
+                    <p className="mt-4 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#d8c9a7]/70">
+                      {place.tags}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+          </section>
+
+          <div className="-mx-5 sm:-mx-8 md:-mx-12 [&_section]:scroll-mt-24">
+            <DestinationSection
+              id="quick-facts"
+              eyebrow="Practical reference"
+              heading="Tromso quick facts"
+            >
+              <DestinationQuickFacts facts={quickFacts} />
+            </DestinationSection>
+          </div>
+
+          <section
             id="where-tromso-is"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="04 / Orientation"
+                label="Orientation"
                 title="Where Tromso is"
                 intro="Tromso lies in Northern Norway around 350 km north of the Arctic Circle, with city life on Tromsoya and quick access toward Tromsdalen and Kvaloya."
               />
@@ -862,12 +960,85 @@ export function TromsoTravelGuide() {
           </section>
 
           <section
+            id="how-to-get-to-tromso"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Access"
+                title="How to get to Tromso"
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {getToTromso.map((item, index) => (
+                <DestinationReveal key={item.title} delay={index * 0.05}>
+                  <article className="rounded-[1.2rem] border border-white/8 bg-white/[0.02] p-7">
+                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
+                      {item.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+            <DestinationReveal delay={0.08} className="mt-8">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                {transportLinks.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group rounded-[1.15rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-5 transition-colors hover:border-[#d8c9a7]/34 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="font-serif text-xl tracking-[-0.03em] text-[#f4efe2]">
+                        {item.title}
+                      </h3>
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-[#f4efe2]/66 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </DestinationReveal>
+          </section>
+
+          <section
+            id="getting-around-tromso"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <span id="getting-around" className="block scroll-mt-24" aria-hidden="true" />
+            <DestinationReveal>
+              <SectionIntro
+                label="Mobility"
+                title="Getting around Tromso"
+              />
+            </DestinationReveal>
+            <DestinationReveal delay={0.06} className="mt-12">
+              <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-8 sm:p-10">
+                <ul className="space-y-4">
+                  {gettingAround.map((item) => (
+                    <li
+                      key={item}
+                      className="border-b border-white/6 pb-4 text-sm font-light leading-[1.8] text-[#f4efe2]/68 last:border-b-0 last:pb-0 sm:text-base"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </DestinationReveal>
+          </section>
+
+          <section
             id="best-time"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="05 / Seasons"
+                label="Seasons"
                 title="Best time to visit Tromso"
               />
             </DestinationReveal>
@@ -918,115 +1089,27 @@ export function TromsoTravelGuide() {
           </section>
 
           <section
-            id="how-many-days"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="06 / Planning"
-                title="How many days do you need in Tromso?"
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {dayGuidance.map((item, index) => (
-                <DestinationReveal key={item.title} delay={index * 0.06}>
-                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7 sm:p-8">
-                    <p className="text-[0.62rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/62">
-                      {item.title}
-                    </p>
-                    <p className="mt-5 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
-                      {item.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
-
-          <section
-            id="how-to-get-to-tromso"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="07 / Access"
-                title="How to get to Tromso"
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {getToTromso.map((item, index) => (
-                <DestinationReveal key={item.title} delay={index * 0.05}>
-                  <article className="rounded-[1.2rem] border border-white/8 bg-white/[0.02] p-7">
-                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
-                      {item.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-            <DestinationReveal delay={0.08} className="mt-8">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                {transportLinks.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group rounded-[1.15rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-5 transition-colors hover:border-[#d8c9a7]/34 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="font-serif text-xl tracking-[-0.03em] text-[#f4efe2]">
-                        {item.title}
-                      </h3>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-[#f4efe2]/66 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </DestinationReveal>
-          </section>
-
-          <section
-            id="getting-around-tromso"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <span id="getting-around" className="block scroll-mt-24" aria-hidden="true" />
-            <DestinationReveal>
-              <SectionIntro
-                label="08 / Mobility"
-                title="Getting around Tromso"
-              />
-            </DestinationReveal>
-            <DestinationReveal delay={0.06} className="mt-12">
-              <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-8 sm:p-10">
-                <ul className="space-y-4">
-                  {gettingAround.map((item) => (
-                    <li
-                      key={item}
-                      className="border-b border-white/6 pb-4 text-sm font-light leading-[1.8] text-[#f4efe2]/68 last:border-b-0 last:pb-0 sm:text-base"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </DestinationReveal>
-          </section>
-
-          <section
             id="northern-lights"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="09 / Aurora"
+                label="Aurora"
                 title="Northern lights in Tromso"
                 intro="Tromso is a strong aurora base because it sits under the auroral oval, but clear sky matters as much as aurora activity."
               />
             </DestinationReveal>
+            <figure className="surface-fjord-media relative mt-12 overflow-hidden rounded-[1.35rem]">
+              <Image
+                src="/images/destinations/tromso/ddstudio-northern-light-2387773.jpg"
+                alt="Green northern lights sweeping across a starry sky above snow-covered mountains, coastal buildings and water"
+                width={5029}
+                height={3353}
+                sizes="(min-width: 1376px) 1280px, (min-width: 768px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                className="h-auto w-full object-contain object-center"
+              />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.02)_0%,rgba(3,8,10,0.06)_65%,rgba(3,8,10,0.22)_100%)]" />
+            </figure>
             <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_1fr]">
               <DestinationReveal>
                 <article className="surface-fjord-media relative min-h-[340px] overflow-hidden rounded-[1.35rem] sm:min-h-[420px]">
@@ -1120,7 +1203,7 @@ export function TromsoTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="10 / Winter activities"
+                label="Winter activities"
                 title="Winter activities and tours"
               />
             </DestinationReveal>
@@ -1189,7 +1272,7 @@ export function TromsoTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="11 / Summer"
+                label="Summer"
                 title="Summer and midnight sun"
               />
             </DestinationReveal>
@@ -1255,12 +1338,38 @@ export function TromsoTravelGuide() {
           </section>
 
           <section
+            id="how-many-days"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Planning"
+                title="How many days do you need in Tromso?"
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {dayGuidance.map((item, index) => (
+                <DestinationReveal key={item.title} delay={index * 0.06}>
+                  <article className="h-full rounded-[1.2rem] border border-white/8 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7 sm:p-8">
+                    <p className="text-[0.62rem] font-medium uppercase tracking-[0.29em] text-[#d8c9a7]/62">
+                      {item.title}
+                    </p>
+                    <p className="mt-5 text-sm font-light leading-[1.82] text-[#f4efe2]/64 sm:text-base">
+                      {item.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+          </section>
+
+          <section
             id="where-to-stay"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="12 / Accommodation areas"
+                label="Accommodation areas"
                 title="Where to stay in Tromso"
                 intro="Use area choices as planning tools, not rankings."
               />
@@ -1287,7 +1396,7 @@ export function TromsoTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="13 / Research names"
+                label="Research names"
                 title="Hotels, lodges and cabins worth researching"
                 intro="These are well-known places worth researching, not ranked recommendations."
               />
@@ -1314,100 +1423,12 @@ export function TromsoTravelGuide() {
           </section>
 
           <section
-            id="city-life"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="14 / Urban Arctic"
-                title="Food, culture and city life"
-                intro="Tromso is a real Arctic city, not only a tour base."
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 lg:grid-cols-[0.98fr_1.02fr]">
-              <DestinationReveal>
-                <article className="surface-fjord-media relative min-h-[340px] overflow-hidden rounded-[1.35rem] sm:min-h-[420px]">
-                  <Image
-                    src="/images/destinations/tromso/tromso-ishavskatedralen.jpg"
-                    alt="The Arctic Cathedral in Tromso during winter"
-                    fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.1)_0%,rgba(3,8,10,0.42)_48%,rgba(3,8,10,0.9)_100%)]" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                    <p className="text-[0.62rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/72">
-                      City and architecture
-                    </p>
-                    <p className="mt-4 max-w-md text-sm font-light leading-[1.8] text-[#f4efe2]/74 sm:text-base">
-                      Tromso combines urban routines with clear Arctic identity.
-                    </p>
-                  </div>
-                </article>
-              </DestinationReveal>
-              <DestinationReveal delay={0.08}>
-                <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-8 sm:p-10">
-                  <ul className="space-y-4">
-                    {[
-                      "Seafood and northern ingredients shape much of the city menu landscape.",
-                      "Cafes are important pacing anchors during dark winter days.",
-                      "Museums provide Arctic history and weather-resilient activity blocks.",
-                      "Sami Week requires cultural respect and context-aware participation.",
-                      "Festival season includes TIFF, Northern Lights Festival, Midnight Sun Marathon, Bukta Festival and Sami Week.",
-                    ].map((item) => (
-                      <li
-                        key={item}
-                        className="border-b border-white/6 pb-4 text-sm font-light leading-[1.8] text-[#f4efe2]/68 last:border-b-0 last:pb-0 sm:text-base"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </DestinationReveal>
-            </div>
-          </section>
-
-          <section
-            id="places-worth-slowing-down"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="15 / Places"
-                title="Places and day trips worth slowing down for"
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {places.map((place, index) => (
-                <DestinationReveal key={place.title} delay={index * 0.03}>
-                  <article className="h-full rounded-[1.15rem] border border-white/10 bg-white/[0.02] p-6">
-                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
-                      {place.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
-                      {place.mood}
-                    </p>
-                    <p className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
-                      <span className="text-[#f4efe2]/82">Practical note:</span>{" "}
-                      {place.note}
-                    </p>
-                    <p className="mt-4 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#d8c9a7]/70">
-                      {place.tags}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
-
-          <section
             id="itineraries"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="16 / Itineraries"
+                label="Itineraries"
                 title="Suggested Tromso itineraries"
               />
             </DestinationReveal>
@@ -1442,7 +1463,7 @@ export function TromsoTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="17 / Trust notes"
+                label="Trust notes"
                 title="Things not to do in Tromso"
               />
             </DestinationReveal>
@@ -1471,7 +1492,7 @@ export function TromsoTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="18 / Responsibility"
+                label="Responsibility"
                 title="Responsible travel in Tromso"
               />
             </DestinationReveal>
@@ -1524,7 +1545,7 @@ export function TromsoTravelGuide() {
             className="grid gap-10 border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16"
           >
             <DestinationReveal>
-              <SectionIntro label="19 / FAQ" title="Tromso FAQ" />
+              <SectionIntro label="FAQ" title="Tromso FAQ" />
             </DestinationReveal>
             <DestinationReveal delay={0.08} className="divide-y divide-white/8">
               {faqItems.map((item) => (
@@ -1549,7 +1570,7 @@ export function TromsoTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="20 / Continue planning"
+                label="Continue planning"
                 title="Related guides"
               />
             </DestinationReveal>
