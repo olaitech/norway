@@ -78,6 +78,7 @@ setPageLastModified("/privacy", "2026-06-28");
 setPageLastModified("/cookies", "2026-06-28");
 setPageLastModified("/accessibility", "2026-06-28");
 setPageLastModified("/privacy-settings", "2026-06-28");
+setPageLastModified("/affiliate-disclosure", "2026-10-03");
 
 for (const article of journalArticles) {
   setPageLastModified(`/journal/${article.slug}`, article.updatedDate);
@@ -134,6 +135,7 @@ const supportingPages: SitemapEntry[] = [
   { path: "/accessibility", changeFrequency: "yearly", priority: 0.3 },
   { path: "/privacy-settings", changeFrequency: "yearly", priority: 0.3 },
   { path: "/terms", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/affiliate-disclosure", changeFrequency: "yearly", priority: 0.3 },
 ];
 
 const destinationPages: SitemapEntry[] = [

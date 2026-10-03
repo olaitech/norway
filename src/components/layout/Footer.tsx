@@ -23,6 +23,7 @@ const informationLinks = [
   { label: "Cookies", href: "/cookies" },
   { label: "Accessibility", href: "/accessibility" },
   { label: "Terms", href: "/terms" },
+  { label: "Affiliate Disclosure", href: "/affiliate-disclosure" },
 ] as const;
 
 type FooterColumnProps = {
@@ -74,15 +75,20 @@ export function Footer() {
               id="site-footer-title"
               className="font-serif text-4xl font-normal tracking-[-0.045em] text-[#f4efe2]"
             >
-              Norway
+              Trips Norway
             </h2>
             <p className="mt-5 text-sm font-light leading-7 text-[#afa796] sm:text-base">
-              A cinematic travel knowledge portal for Norway&apos;s quiet
-              roads, dramatic fjords, northern light skies and remote coastal
-              places worth slowing down for.
+              Independent travel guide to Norway
             </p>
-            <p className="mt-6 border-l border-[#c6a15b]/45 pl-4 text-xs font-light uppercase tracking-[0.22em] text-[#c6a15b]/85">
-              Built as an independent editorial travel guide.
+            <p className="mt-6 border-l border-[#c6a15b]/45 pl-4 text-xs font-light leading-6 text-[#c6a15b]/85">
+              Designed &amp; developed by{" "}
+              <a
+                href="https://across-it.no/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Across-IT
+              </a>
             </p>
           </div>
 
@@ -95,11 +101,6 @@ export function Footer() {
           <div className="space-y-2 sm:space-y-0">
             <p>
               &copy; {currentYear} Trips Norway. All rights reserved.
-            </p>
-            <p className="max-w-2xl text-[#afa796]/75">
-              Independently built on Helgeland by a tech-minded local who has
-              spent years exploring Northern Norway - a personal contribution
-              to better, slower and more responsible travel.
             </p>
           </div>
 
