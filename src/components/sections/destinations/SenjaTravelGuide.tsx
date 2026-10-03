@@ -13,6 +13,9 @@ import {
   createBreadcrumbListJsonLd,
 } from "@/src/lib/seo/jsonLd";
 
+import { DestinationAtAGlance } from "./DestinationAtAGlance";
+import { DestinationQuickFacts } from "./DestinationQuickFacts";
+import { DestinationSection } from "./DestinationSection";
 import { DestinationReveal } from "./DestinationReveal";
 
 const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
@@ -45,19 +48,24 @@ const quickFacts = [
 ] as const;
 
 const guideNav = [
+  { label: "Overview", href: "#first-impression" },
+  { label: "At a glance", href: "#at-a-glance" },
   { label: "Why visit", href: "#why-visit" },
-  { label: "Best time", href: "#best-time" },
-  { label: "How many days", href: "#how-many-days" },
-  { label: "Getting there", href: "#how-to-get-to-senja" },
-  { label: "Ferries", href: "#senja-ferries" },
-  { label: "Where to stay", href: "#where-to-stay" },
-  { label: "Camping", href: "#camping-and-campervan" },
   { label: "Places", href: "#places-worth-slowing-down" },
   { label: "Hikes", href: "#hikes-and-viewpoints" },
+  { label: "Quick facts", href: "#quick-facts" },
+  { label: "Getting there", href: "#how-to-get-to-senja" },
+  { label: "Getting around", href: "#getting-around-senja" },
+  { label: "Ferries", href: "#senja-ferries" },
+  { label: "Best time", href: "#best-time" },
+  { label: "How many days", href: "#how-many-days" },
+  { label: "Where to stay", href: "#where-to-stay" },
+  { label: "Camping", href: "#camping-and-campervan" },
   { label: "Itinerary", href: "#suggested-itinerary" },
   { label: "What not to do", href: "#things-not-to-do" },
   { label: "Responsible travel", href: "#responsible-travel" },
   { label: "FAQ", href: "#senja-faq" },
+  { label: "Related guides", href: "#related-guides" },
 ] as const;
 
 const whyVisit = [
@@ -610,28 +618,6 @@ export function SenjaTravelGuide() {
         </div>
       </section>
 
-      <section className="border-y border-white/8 bg-white/[0.015] px-5 sm:px-8 md:px-12">
-        <div className="mx-auto max-w-7xl py-9 sm:py-11">
-          <DestinationReveal className="w-full">
-            <dl className="grid grid-cols-2 gap-y-8 md:grid-cols-4">
-              {quickFacts.map((fact) => (
-                <div
-                  key={fact.label}
-                  className="border-white/10 pr-5 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"
-                >
-                  <dt className="text-[0.62rem] font-medium uppercase tracking-[0.3em] text-[#d8c9a7]/62">
-                    {fact.label}
-                  </dt>
-                  <dd className="mt-3 text-sm font-light leading-[1.75] text-[#f4efe2]/82 sm:text-base">
-                    {fact.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </DestinationReveal>
-        </div>
-      </section>
-
       <div className="px-5 py-20 sm:px-8 sm:py-24 md:px-12 lg:py-32">
         <div className="mx-auto max-w-7xl space-y-24 sm:space-y-28">
           <section
@@ -640,7 +626,7 @@ export function SenjaTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="01 / First impression"
+                label="Destination overview"
                 title="A quieter, weather-shaped island"
                 intro="Senja rewards travellers who slow down, check the weather, respect the villages and leave room for the unexpected."
               />
@@ -668,7 +654,7 @@ export function SenjaTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="02 / Navigation"
+                label="Navigation"
                 title="On this guide"
                 intro="Jump to the sections you need while planning."
               />
@@ -688,12 +674,23 @@ export function SenjaTravelGuide() {
             </DestinationReveal>
           </section>
 
+          <div className="-mx-5 sm:-mx-8 md:-mx-12 [&_section]:scroll-mt-24">
+            <DestinationAtAGlance
+              region="Troms, Northern Norway"
+              idealTripLength="3-4 days for slower travel and weather buffers; 2 days for a scenic route sample"
+              bestSeason="Summer for access and hiking; autumn for quieter roads and photography; winter for northern lights with more demanding conditions"
+              nearestGateway="Finnsnes / Silsand via Gisund Bridge; flights via Bardufoss, Tromsø or Evenes"
+              transport="Road via Gisund Bridge, ferry connections, and bus and ferry legs planned with Entur and Svipper"
+              carRecommended="Strongly recommended for first-time visitors. Public transport is possible but limits outer-coast flexibility."
+            />
+          </div>
+
           <section
             id="why-visit"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
-              <SectionIntro label="03 / Perspective" title="Why visit Senja" />
+              <SectionIntro label="Perspective" title="Why visit Senja" />
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[1.04fr_0.96fr]">
               <div className="grid gap-5 sm:grid-cols-2">
@@ -735,12 +732,101 @@ export function SenjaTravelGuide() {
           </section>
 
           <section
+            id="places-worth-slowing-down"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <span id="scenic-route" className="block scroll-mt-24" aria-hidden="true" />
+            <DestinationReveal>
+              <SectionIntro
+                label="Things to do / Highlights"
+                title="Places worth slowing down for"
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {places.map((place, index) => (
+                <DestinationReveal key={place.title} delay={index * 0.03}>
+                  <article className="h-full rounded-[1.15rem] border border-white/10 bg-white/[0.02] p-6">
+                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
+                      {place.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
+                      {place.mood}
+                    </p>
+                    <p className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
+                      <span className="text-[#f4efe2]/82">Practical note:</span>{" "}
+                      {place.note}
+                    </p>
+                    <p className="mt-4 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#d8c9a7]/70">
+                      {place.tags}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+          </section>
+
+          <section
+            id="hikes-and-viewpoints"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Hikes and viewpoints"
+                title="Best hikes and viewpoints in Senja"
+                intro="Hiking choices should be weather-first and safety-first. Check UT.no, forecasts and local condition updates before departure."
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {hikes.map((item, index) => (
+                <DestinationReveal key={item.title} delay={index * 0.03}>
+                  <article className="h-full rounded-[1.15rem] border border-white/10 bg-white/[0.02] p-6">
+                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#d8c9a7]/70">
+                      {item.difficulty}
+                    </p>
+                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
+                      {item.note}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+            <DestinationReveal delay={0.1} className="mt-6">
+              <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-6 sm:p-7">
+                <p className="text-sm font-light leading-[1.85] text-[#f4efe2]/70 sm:text-base">
+                  Treat mountain routes as condition-dependent decisions. DNT
+                  mountain safety principles and current local weather should
+                  always override social media plans.
+                </p>
+                <Link
+                  href="/guides/best-hikes-in-senja"
+                  className="mt-5 inline-flex text-sm font-medium text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2] focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:text-base"
+                >
+                  Compare the 10 best hikes in Senja
+                </Link>
+              </article>
+            </DestinationReveal>
+          </section>
+
+          <div className="-mx-5 sm:-mx-8 md:-mx-12 [&_section]:scroll-mt-24">
+            <DestinationSection
+              id="quick-facts"
+              eyebrow="Practical reference"
+              heading="Senja quick facts"
+            >
+              <DestinationQuickFacts facts={quickFacts} />
+            </DestinationSection>
+          </div>
+
+          <section
             id="where-senja-is"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="04 / Orientation"
+                label="Orientation"
                 title="Where Senja is"
                 intro="Senja lies in Troms in Northern Norway and connects to the mainland via the Gisund Bridge near Finnsnes."
               />
@@ -776,11 +862,116 @@ export function SenjaTravelGuide() {
           </section>
 
           <section
+            id="how-to-get-to-senja"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <DestinationReveal>
+              <SectionIntro
+                label="Access"
+                title="How to get to Senja"
+              />
+            </DestinationReveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {getToSenja.map((item, index) => (
+                <DestinationReveal key={item.title} delay={index * 0.05}>
+                  <article className="rounded-[1.2rem] border border-white/8 bg-white/[0.02] p-7">
+                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
+                      {item.text}
+                    </p>
+                  </article>
+                </DestinationReveal>
+              ))}
+            </div>
+          </section>
+
+          <section
+            id="getting-around-senja"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <span id="getting-around" className="block scroll-mt-24" aria-hidden="true" />
+            <DestinationReveal>
+              <SectionIntro
+                label="Mobility"
+                title="Getting around Senja"
+              />
+            </DestinationReveal>
+            <DestinationReveal delay={0.06} className="mt-12">
+              <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-8 sm:p-10">
+                <ul className="space-y-4">
+                  {gettingAround.map((item) => (
+                    <li
+                      key={item}
+                      className="border-b border-white/6 pb-4 text-sm font-light leading-[1.8] text-[#f4efe2]/68 last:border-b-0 last:pb-0 sm:text-base"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </DestinationReveal>
+          </section>
+
+          <section
+            id="senja-ferries"
+            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
+          >
+            <span id="ferries" className="block scroll-mt-24" aria-hidden="true" />
+            <span
+              id="official-planners"
+              className="block scroll-mt-24"
+              aria-hidden="true"
+            />
+            <DestinationReveal>
+              <SectionIntro
+                label="Ferries and planners"
+                title="Senja ferries and official planners"
+              />
+            </DestinationReveal>
+            <DestinationReveal delay={0.06} className="mt-12">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {planners.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group rounded-[1.15rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-5 transition-colors hover:border-[#d8c9a7]/34 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/72">
+                          Official planner
+                        </p>
+                        <h3 className="mt-3 font-serif text-xl tracking-[-0.03em] text-[#f4efe2]">
+                          {item.title}
+                        </h3>
+                      </div>
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-[#f4efe2]/66 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </DestinationReveal>
+            <DestinationReveal delay={0.1} className="mt-6">
+              <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-6 sm:p-7">
+                <p className="text-sm font-light leading-[1.85] text-[#f4efe2]/70 sm:text-base">
+                  Do not trust old ferry screenshots. Use official planners the
+                  day before and the morning of travel. Timetables, weather and
+                  seasonal routes can change.
+                </p>
+              </article>
+            </DestinationReveal>
+          </section>
+
+          <section
             id="best-time"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
-              <SectionIntro label="05 / Seasons" title="Best time to visit Senja" />
+              <SectionIntro label="Seasons" title="Best time to visit Senja" />
             </DestinationReveal>
             <div className="mt-12 grid gap-5 lg:grid-cols-[0.98fr_1.02fr]">
               <DestinationReveal>
@@ -860,7 +1051,7 @@ export function SenjaTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="06 / Planning"
+                label="Planning"
                 title="How many days do you need in Senja?"
               />
             </DestinationReveal>
@@ -881,117 +1072,12 @@ export function SenjaTravelGuide() {
           </section>
 
           <section
-            id="how-to-get-to-senja"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="07 / Access"
-                title="How to get to Senja"
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {getToSenja.map((item, index) => (
-                <DestinationReveal key={item.title} delay={index * 0.05}>
-                  <article className="rounded-[1.2rem] border border-white/8 bg-white/[0.02] p-7">
-                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
-                      {item.text}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
-
-          <section
-            id="getting-around-senja"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <span id="getting-around" className="block scroll-mt-24" aria-hidden="true" />
-            <DestinationReveal>
-              <SectionIntro
-                label="08 / Mobility"
-                title="Getting around Senja"
-              />
-            </DestinationReveal>
-            <DestinationReveal delay={0.06} className="mt-12">
-              <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-8 sm:p-10">
-                <ul className="space-y-4">
-                  {gettingAround.map((item) => (
-                    <li
-                      key={item}
-                      className="border-b border-white/6 pb-4 text-sm font-light leading-[1.8] text-[#f4efe2]/68 last:border-b-0 last:pb-0 sm:text-base"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </DestinationReveal>
-          </section>
-
-          <section
-            id="senja-ferries"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <span id="ferries" className="block scroll-mt-24" aria-hidden="true" />
-            <span
-              id="official-planners"
-              className="block scroll-mt-24"
-              aria-hidden="true"
-            />
-            <DestinationReveal>
-              <SectionIntro
-                label="09 / Ferries and planners"
-                title="Senja ferries and official planners"
-              />
-            </DestinationReveal>
-            <DestinationReveal delay={0.06} className="mt-12">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {planners.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group rounded-[1.15rem] border border-white/10 bg-[linear-gradient(165deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-5 transition-colors hover:border-[#d8c9a7]/34 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-[#d8c9a7]/72">
-                          Official planner
-                        </p>
-                        <h3 className="mt-3 font-serif text-xl tracking-[-0.03em] text-[#f4efe2]">
-                          {item.title}
-                        </h3>
-                      </div>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-[#f4efe2]/66 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </DestinationReveal>
-            <DestinationReveal delay={0.1} className="mt-6">
-              <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-6 sm:p-7">
-                <p className="text-sm font-light leading-[1.85] text-[#f4efe2]/70 sm:text-base">
-                  Do not trust old ferry screenshots. Use official planners the
-                  day before and the morning of travel. Timetables, weather and
-                  seasonal routes can change.
-                </p>
-              </article>
-            </DestinationReveal>
-          </section>
-
-          <section
             id="where-to-stay"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="10 / Accommodation areas"
+                label="Accommodation areas"
                 title="Where to stay in Senja"
                 intro="Area-based planning is usually more useful than searching for one perfect stay."
               />
@@ -1018,7 +1104,7 @@ export function SenjaTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="11 / Research names"
+                label="Research names"
                 title="Hotels, lodges and cabins worth researching"
                 intro="These are well-known places worth researching, not ranked recommendations."
               />
@@ -1050,7 +1136,7 @@ export function SenjaTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="12 / Camping"
+                label="Camping"
                 title="Camping and campervan travel in Senja"
                 intro="Camping can be excellent here, but only when legal-distance rules and local limits are respected."
               />
@@ -1072,91 +1158,12 @@ export function SenjaTravelGuide() {
           </section>
 
           <section
-            id="places-worth-slowing-down"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <span id="scenic-route" className="block scroll-mt-24" aria-hidden="true" />
-            <DestinationReveal>
-              <SectionIntro
-                label="13 / Places"
-                title="Places worth slowing down for"
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {places.map((place, index) => (
-                <DestinationReveal key={place.title} delay={index * 0.03}>
-                  <article className="h-full rounded-[1.15rem] border border-white/10 bg-white/[0.02] p-6">
-                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
-                      {place.title}
-                    </h3>
-                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
-                      {place.mood}
-                    </p>
-                    <p className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
-                      <span className="text-[#f4efe2]/82">Practical note:</span>{" "}
-                      {place.note}
-                    </p>
-                    <p className="mt-4 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#d8c9a7]/70">
-                      {place.tags}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-          </section>
-
-          <section
-            id="hikes-and-viewpoints"
-            className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
-          >
-            <DestinationReveal>
-              <SectionIntro
-                label="14 / Hikes and viewpoints"
-                title="Best hikes and viewpoints in Senja"
-                intro="Hiking choices should be weather-first and safety-first. Check UT.no, forecasts and local condition updates before departure."
-              />
-            </DestinationReveal>
-            <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {hikes.map((item, index) => (
-                <DestinationReveal key={item.title} delay={index * 0.03}>
-                  <article className="h-full rounded-[1.15rem] border border-white/10 bg-white/[0.02] p-6">
-                    <h3 className="font-serif text-2xl tracking-[-0.03em] text-[#f4efe2]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#d8c9a7]/70">
-                      {item.difficulty}
-                    </p>
-                    <p className="mt-4 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
-                      {item.note}
-                    </p>
-                  </article>
-                </DestinationReveal>
-              ))}
-            </div>
-            <DestinationReveal delay={0.1} className="mt-6">
-              <article className="rounded-[1.35rem] border border-white/8 bg-white/[0.02] p-6 sm:p-7">
-                <p className="text-sm font-light leading-[1.85] text-[#f4efe2]/70 sm:text-base">
-                  Treat mountain routes as condition-dependent decisions. DNT
-                  mountain safety principles and current local weather should
-                  always override social media plans.
-                </p>
-                <Link
-                  href="/guides/best-hikes-in-senja"
-                  className="mt-5 inline-flex text-sm font-medium text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 transition-colors hover:text-[#f4efe2] focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 sm:text-base"
-                >
-                  Compare the 10 best hikes in Senja
-                </Link>
-              </article>
-            </DestinationReveal>
-          </section>
-
-          <section
             id="suggested-itinerary"
             className="border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20"
           >
             <DestinationReveal>
               <SectionIntro
-                label="15 / Itinerary"
+                label="Itinerary"
                 title="Suggested Senja itinerary"
               />
             </DestinationReveal>
@@ -1194,7 +1201,7 @@ export function SenjaTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="16 / Trust notes"
+                label="Trust notes"
                 title="Things not to do in Senja"
               />
             </DestinationReveal>
@@ -1223,7 +1230,7 @@ export function SenjaTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="17 / Responsibility"
+                label="Responsibility"
                 title="Responsible travel in Senja"
               />
             </DestinationReveal>
@@ -1280,7 +1287,7 @@ export function SenjaTravelGuide() {
             className="grid gap-10 border-t border-white/8 pt-16 scroll-mt-24 sm:pt-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16"
           >
             <DestinationReveal>
-              <SectionIntro label="18 / FAQ" title="Senja FAQ" />
+              <SectionIntro label="FAQ" title="Senja FAQ" />
             </DestinationReveal>
             <DestinationReveal delay={0.08} className="divide-y divide-white/8">
               {faqItems.map((item) => (
@@ -1305,7 +1312,7 @@ export function SenjaTravelGuide() {
           >
             <DestinationReveal>
               <SectionIntro
-                label="19 / Continue planning"
+                label="Continue planning"
                 title="Related guides"
               />
             </DestinationReveal>
