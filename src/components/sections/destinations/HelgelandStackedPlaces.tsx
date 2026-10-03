@@ -91,7 +91,7 @@ export function HelgelandStackedPlaces({ places }: HelgelandStackedPlacesProps) 
           const surfaces = cards.map(
             (card) => card.querySelector<HTMLElement>("[data-helgeland-card-surface]")!,
           );
-          const animations = cards.slice(0, -1).map((card, index) =>
+          const animations = cards.slice(0, -1).map((_card, index) =>
             gsap.to(surfaces[index], {
               scale: 0.985,
               transformOrigin: "center top",
