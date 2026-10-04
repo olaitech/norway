@@ -856,7 +856,7 @@ export function HelgelandCoastTravelGuide() {
                 src="/images/cards/helgeland.png"
                 alt="A broad island landscape under low evening light on the Helgeland Coast"
                 fill
-                          sizes="(min-width: 1280px) 380px, 92vw"
+                          sizes="(min-width: 1376px) 1278px, (min-width: 1024px) max(924.45px, calc(100vw - 98px)), (min-width: 768px) max(640px, calc(100vw - 98px)), (min-width: 640px) max(640px, calc(100vw - 66px)), max(462.23px, calc(100vw - 42px))"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,5,8,0.08)_0%,rgba(2,5,8,0.2)_54%,rgba(2,5,8,0.62)_100%)]" />
@@ -999,7 +999,7 @@ export function HelgelandCoastTravelGuide() {
                       src="/images/destinations/helgeland/ferry.jpg"
                       alt="Ferry crossing on the Helgeland Coast in Northern Norway"
                       fill
-                      sizes="(min-width: 1024px) 440px, 92vw"
+                      sizes="(min-width: 1376px) 564.72px, (min-width: 1024px) calc(46vw - 68.24px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,5,8,0.03)_0%,rgba(2,5,8,0.3)_100%)]" />
@@ -1058,7 +1058,7 @@ export function HelgelandCoastTravelGuide() {
                   src="/images/destinations/helgeland/helgeland-sunset.jpg"
                   alt="Seabirds flying above the sea in warm sunset light"
                   fill
-                  sizes="(min-width: 1280px) 1280px, (min-width: 768px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                  sizes="(min-width: 1376px) 1278px, (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                   className="object-cover object-[center_58%]"
                 />
               </figure>

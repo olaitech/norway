@@ -712,7 +712,7 @@ export function SenjaTravelGuide() {
                     src="/images/destinations/senja/peaks-of-senja.jpg"
                     alt="Jagged mountain peaks on Senja rising above the sea"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 602.8px, (min-width: 1024px) calc(48vw - 57.68px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.08)_0%,rgba(3,8,10,0.44)_48%,rgba(3,8,10,0.9)_100%)]" />
@@ -979,7 +979,7 @@ export function SenjaTravelGuide() {
                     src="/images/destinations/senja/senja-sunset.jpg"
                     alt="Sunset over the coast of Senja in Northern Norway"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 615.4px, (min-width: 1024px) calc(49vw - 58.84px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.08)_0%,rgba(3,8,10,0.44)_48%,rgba(3,8,10,0.9)_100%)]" />

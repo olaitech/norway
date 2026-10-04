@@ -836,7 +836,7 @@ export function TromsoTravelGuide() {
                     src="/images/destinations/tromso/tromso-ishavskatedralen.jpg"
                     alt="The Arctic Cathedral in Tromso during winter"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 615.4px, (min-width: 1024px) calc(49vw - 58.84px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.1)_0%,rgba(3,8,10,0.42)_48%,rgba(3,8,10,0.9)_100%)]" />
@@ -1116,7 +1116,7 @@ export function TromsoTravelGuide() {
                     src="/images/destinations/tromso/tromso-nordlys.jpg"
                     alt="Aurora above Tromso and snowy mountains in winter"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 628px, (min-width: 1024px) calc(50vw - 60px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.1)_0%,rgba(3,8,10,0.42)_48%,rgba(3,8,10,0.9)_100%)]" />
@@ -1137,7 +1137,7 @@ export function TromsoTravelGuide() {
                     src="/images/destinations/tromso/tromso-aurora-view.jpg"
                     alt="Aurora over snowy mountains near Tromso"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 628px, (min-width: 1024px) calc(50vw - 60px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.08)_0%,rgba(3,8,10,0.42)_48%,rgba(3,8,10,0.9)_100%)]" />
@@ -1213,7 +1213,7 @@ export function TromsoTravelGuide() {
                     src="/images/destinations/tromso/tromso-winter-landscape.jpg"
                     alt="Snowy mountains around Tromso under a pale winter sky"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 615.4px, (min-width: 1024px) calc(49vw - 58.84px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.08)_0%,rgba(3,8,10,0.42)_48%,rgba(3,8,10,0.9)_100%)]" />
@@ -1318,7 +1318,7 @@ export function TromsoTravelGuide() {
                     src="/images/destinations/tromso/tromso-summer-night.jpg"
                     alt="Bright summer night over the coast near Tromso"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 602.8px, (min-width: 1024px) calc(48vw - 57.68px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.06)_0%,rgba(3,8,10,0.42)_48%,rgba(3,8,10,0.9)_100%)]" />

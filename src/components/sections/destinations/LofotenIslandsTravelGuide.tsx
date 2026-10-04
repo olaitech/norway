@@ -754,7 +754,7 @@ export function LofotenIslandsTravelGuide() {
                     src="/images/destinations/lofoten/lofoten-ferry-bodo-moskenes.jpg"
                     alt="Ferry connection between Bodø and Moskenes in Lofoten"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 602.8px, (min-width: 1024px) calc(48vw - 57.68px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.12)_0%,rgba(3,8,10,0.42)_44%,rgba(3,8,10,0.88)_100%)]" />
@@ -826,7 +826,7 @@ export function LofotenIslandsTravelGuide() {
                     src="/images/destinations/lofoten/lofoten-e10-road-trip.jpg"
                     alt="Scenic road through mountains and coastline in Lofoten"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 602.8px, (min-width: 1024px) calc(48vw - 57.68px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.1)_0%,rgba(3,8,10,0.42)_42%,rgba(3,8,10,0.88)_100%)]" />
@@ -947,7 +947,7 @@ export function LofotenIslandsTravelGuide() {
                     src="/images/destinations/lofoten/lofoten-henningsvaer-harbour.jpg"
                     alt="Harbour and village life in Henningsvær, Lofoten"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 596.5px, (min-width: 1024px) calc(47.5vw - 57.1px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.08)_0%,rgba(3,8,10,0.42)_50%,rgba(3,8,10,0.9)_100%)]" />
@@ -1038,7 +1038,7 @@ export function LofotenIslandsTravelGuide() {
                     src="/images/destinations/lofoten/lofoten-rorbuer-hamnoy.jpg"
                     alt="Traditional red fishermen cabins in Hamnøy, Lofoten"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 653.2px, (min-width: 1024px) calc(52vw - 62.32px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.1)_0%,rgba(3,8,10,0.42)_50%,rgba(3,8,10,0.9)_100%)]" />
@@ -1100,7 +1100,7 @@ export function LofotenIslandsTravelGuide() {
                     src="/images/destinations/lofoten/lofoten-midnight-sun-beach.jpg"
                     alt="Midnight sun over a beach in Lofoten during summer"
                     fill
-                    sizes="(min-width: 1024px) 48vw, 100vw"
+                    sizes="(min-width: 1376px) 615.4px, (min-width: 1024px) calc(49vw - 58.84px), (min-width: 768px) calc(100vw - 98px), (min-width: 640px) calc(100vw - 66px), calc(100vw - 42px)"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,10,0.06)_0%,rgba(3,8,10,0.38)_46%,rgba(3,8,10,0.9)_100%)]" />
