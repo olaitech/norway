@@ -100,4 +100,30 @@ Observed PageSpeed desktop result:
 - `/lofoten` and `/lofoten-travel-guide` are redirect/legacy aliases unless explicitly changed.
 - `/norway-itinerary-7-days` and `/norway-itinerary-10-days` are redirect stubs, not completed standalone itinerary pages.
 
+## Installed Marketing Skills
+
+Selected third-party Agent Skills from `coreyhaines31/marketingskills` are installed under `.agents/skills/`:
+
+- `product-marketing`
+- `seo-audit`
+- `ai-seo`
+- `content-strategy`
+- `schema`
+- `analytics`
+- `copy-editing`
+- `competitor-profiling`
+
+Shared Trips Norway marketing context lives in `.agents/product-marketing.md`.
+
+Rules for use:
+- Project-specific Trips Norway guidance overrides generic skill assumptions.
+- For SEO/AEO work, combine the relevant skill with `docs/agents/marketing-aeo-foundations.md`.
+- Do not redo the existing SEO/AEO foundation unless explicitly requested.
+- Do not apply SaaS/e-commerce assumptions unless they actually fit the task.
+- Preserve the Trips Norway editorial voice and Nordic Fjord Editorial identity.
+- Do not invent travel facts, dates, metrics, rankings or authority claims.
+- For audit-only requests, report findings before editing implementation files.
+
+See `.agents/marketing-skills.md` for source and version provenance.
+
 <!-- END:project-agent-routing -->
