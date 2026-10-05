@@ -103,6 +103,31 @@ export default function WhatToPackForNorwayPage() {
         <li>Bring eye mask if midnight light affects sleep.</li>
         <li>Expect rain, especially in fjord and coastal regions.</li>
       </ul>
+      <aside
+        aria-labelledby="midnight-sun-note"
+        className="mt-7 rounded-xl border border-white/10 bg-white/[0.03] p-5 sm:p-6"
+      >
+        <span
+          id="midnight-sun-note"
+          className="text-xs font-medium uppercase tracking-[0.2em] text-[#d8c9a7]"
+        >
+          Sleep under the midnight sun
+        </span>
+        <p>
+          Norway’s long summer light can make it harder to switch into a normal
+          bedtime routine. An eye mask helps with the brightness; if you prefer
+          a steady background while winding down, Nordic Hush has ambient sleep
+          sounds you can play in the browser.
+        </p>
+        <a
+          href="https://nordic-hush.com/sounds"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex min-h-11 items-center rounded-sm py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8c9a7]"
+        >
+          Explore Nordic Hush sleep sounds
+        </a>
+      </aside>
       <h3>Autumn and shoulder season</h3>
       <ul>
         <li>Increase insulation and keep waterproof gear accessible.</li>

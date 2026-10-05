@@ -147,6 +147,31 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
         <li>Headlamp and spare power bank</li>
         <li>Tripod and camera-ready accessories if photographing</li>
       </ul>
+      <aside
+        aria-labelledby="aurora-night-note"
+        className="mt-7 rounded-xl border border-white/10 bg-white/[0.03] p-5 sm:p-6"
+      >
+        <span
+          id="aurora-night-note"
+          className="text-xs font-medium uppercase tracking-[0.2em] text-[#d8c9a7]"
+        >
+          After a late aurora night
+        </span>
+        <p>
+          Northern-lights evenings can run late, especially when you stay
+          flexible for clearer skies. Once you are back indoors, a quiet routine
+          can make the transition from an Arctic night to bedtime feel a little
+          slower.
+        </p>
+        <a
+          href="https://nordic-hush.com/stories"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex min-h-11 items-center rounded-sm py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8c9a7]"
+        >
+          Listen to Nordic Hush sleep stories
+        </a>
+      </aside>
     </GuideArticleLayout>
   );
 }
