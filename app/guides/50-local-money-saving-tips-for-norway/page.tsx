@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 import { MoneySavingGuideSignup } from "@/src/components/guides/MoneySavingGuideSignup";
+import { DEFAULT_SOCIAL_IMAGE, SITE_NAME } from "@/src/config/site";
 
 type Tip = {
   number: number;
@@ -467,10 +468,47 @@ const tipSections: readonly TipSection[] = [
   },
 ] as const;
 
+const PAGE_TITLE = "How to Save Money in Norway: 50 Local Tips";
+const PAGE_DESCRIPTION =
+  "Travel Norway on a budget with 50 local tips for cheaper food, transport, ferries and accommodation, plus free things to do and practical everyday savings.";
+const CANONICAL_PATH = "/guides/50-local-money-saving-tips-for-norway";
+
+const faqItems = [
+  {
+    question: "Is Norway expensive for tourists?",
+    answer:
+      "Yes, especially for restaurant meals, alcohol, taxis and accommodation in popular places during peak season. Grocery shopping, self-catering, planned public transport and free outdoor activities can reduce the total cost.",
+  },
+  {
+    question: "How can I travel Norway on a budget?",
+    answer:
+      "Choose accommodation with a kitchen, pack lunches and plan fewer stops to limit transport costs. Compare travel outside peak season, book suitable transport early and build most days around free experiences rather than paid tours.",
+  },
+  {
+    question: "How can I eat cheaply in Norway?",
+    answer:
+      "Shop at Kiwi, Rema 1000 or Coop Extra, compare store-brand staples and make breakfast and packed lunches yourself. Too Good To Go can offer discounted surplus food where available; supermarkets are usually better value than cafes and roadside convenience stops.",
+  },
+  {
+    question: "What is cheap in Norway?",
+    answer:
+      "Tap water and many outdoor experiences are free, including walks, viewpoints and access to nature where permitted. Supermarket meals and store-brand groceries are relatively affordable compared with eating out, though parking, transport and equipment can still add costs.",
+  },
+  {
+    question: "How can I save money on transport in Norway?",
+    answer:
+      "Walk in cities, compare public transport connections in Entur and buy tickets before boarding. Check whether a day pass suits your journeys, compare advance train fares and avoid renting a car for city-only trips. For road trips, budget for fuel, tolls, parking and ferries before choosing the route.",
+  },
+  {
+    question: "What are the best free things to do in Norway?",
+    answer:
+      "Walk along waterfronts, visit public parks, explore viewpoints and choose hikes suited to the weather and your ability. Some museums and churches also offer free entry; check local opening hours, access rules and any parking charges before visiting.",
+  },
+] as const;
+
 export const metadata: Metadata = {
-  title: "50 Local Money-Saving Tips for Norway | Practical Norway Travel Guide",
-  description:
-    "A practical guide for tourists visiting Norway, with 50 local-style money-saving tips for groceries, transport, accommodation, ferries, hiking, city passes and everyday travel costs.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   keywords: [
     "money saving tips Norway",
     "Norway budget travel tips",
@@ -481,19 +519,38 @@ export const metadata: Metadata = {
     "Norway travel costs",
   ],
   alternates: {
-    canonical: "/guides/50-local-money-saving-tips-for-norway",
+    canonical: CANONICAL_PATH,
+  },
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: CANONICAL_PATH,
+    siteName: SITE_NAME,
+    locale: "en_US",
+    type: "article",
+    images: [DEFAULT_SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [DEFAULT_SOCIAL_IMAGE.url],
   },
 };
 
 export default function LocalMoneySavingTipsForNorwayPage() {
   return (
     <GuideArticleLayout
-      title="50 Local Money-Saving Tips for Norway"
+      title={PAGE_TITLE}
       subtitle="A practical guide for tourists who want to experience Norway without burning through their travel budget."
       category="Money & Budget"
       readTime="12 min read"
       lastUpdated="May 2026"
-      canonicalPath="/guides/50-local-money-saving-tips-for-norway"
+      canonicalPath={CANONICAL_PATH}
+      articleDescription={PAGE_DESCRIPTION}
+      faqItems={faqItems}
+      faqTitle="Norway on a budget: common questions"
+      faqIntro="Practical answers about food, transport and free experiences in Norway."
       sources={[
         {
           label: "Visit Norway",
@@ -545,6 +602,16 @@ export default function LocalMoneySavingTipsForNorwayPage() {
         },
       ]}
     >
+      <h2>How can you save money while travelling in Norway?</h2>
+      <p>
+        Save money in Norway by buying supermarket food, preparing meals and
+        packed lunches, and choosing accommodation with a kitchen. Use public
+        transport where connections suit your route, compare advance fares and
+        avoid unnecessary taxis or car rental. Build days around free walks,
+        viewpoints and nature, while allowing for parking, ferries and other
+        route costs.
+      </p>
+
       <h2>Intro</h2>
       <p>
         Norway is not a cheap country, but it is possible to travel smarter by
@@ -552,6 +619,14 @@ export default function LocalMoneySavingTipsForNorwayPage() {
         transport, buying food in the right places, avoiding unnecessary taxis,
         choosing nature-based experiences and understanding the small systems
         that save Norwegians money every day.
+      </p>
+      <p>
+        Start with our <a href="/guides/how-expensive-is-norway-for-tourists">Norway travel cost guide</a> to
+        see where your budget is likely to go. For a northern route, compare
+        the connections in our guide to <a href="/guides/how-to-travel-northern-norway-without-a-car">travelling Northern Norway without a car</a>.
+        If you plan to drive, check <a href="/guides/norway-ferry-guide-for-tourists">Norway ferry payments and crossings</a> alongside
+        our <a href="/guides/driving-in-norway-what-visitors-should-know">driving and road-trip planning guide</a> before
+        estimating fuel, tolls and parking.
       </p>
 
       {tipSections.map((section) => (
