@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { getDestination } from "@/src/data/destinations";
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import {
   GUIDE_LAST_UPDATED,
@@ -18,7 +19,6 @@ import { DestinationQuickFacts } from "./DestinationQuickFacts";
 import { DestinationSection } from "./DestinationSection";
 import { DestinationReveal } from "./DestinationReveal";
 
-const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
 
 export const senjaTravelGuideMetadata = {
   title: "Senja Travel Guide: Best Time, Scenic Route, Hikes, Ferries & Where to Stay",
@@ -545,7 +545,7 @@ export function SenjaTravelGuide() {
             url: senjaCanonicalPath,
             image: "/images/destinations/senja/senja-hero.jpg",
             articleSection: "Destinations",
-            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
+            dateModified: getDestination("senja")?.updatedDate,
           }),
         ]}
       />

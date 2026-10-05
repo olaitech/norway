@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { getDestination } from "@/src/data/destinations";
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import {
   GUIDE_LAST_UPDATED,
@@ -18,7 +19,6 @@ import { DestinationQuickFacts } from "./DestinationQuickFacts";
 import { DestinationSection } from "./DestinationSection";
 import { DestinationReveal } from "./DestinationReveal";
 
-const CURRENT_SITE_WIDE_REFRESH_DATE = "2026-06-25";
 
 export const tromsoTravelGuideMetadata = {
   title:
@@ -657,7 +657,7 @@ export function TromsoTravelGuide() {
             url: tromsoCanonicalPath,
             image: "/images/destinations/tromso/tromso-header.jpg",
             articleSection: "Destinations",
-            dateModified: CURRENT_SITE_WIDE_REFRESH_DATE,
+            dateModified: getDestination("tromso")?.updatedDate,
           }),
         ]}
       />

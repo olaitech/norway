@@ -27,6 +27,7 @@ type DestinationFaq = {
 
 export type Destination = {
   slug: DestinationSlug;
+  updatedDate: string;
   title: string;
   subtitle: string;
   label: string;
@@ -59,6 +60,7 @@ export type DestinationArchiveCard = {
 export const destinations: Destination[] = [
   {
     slug: "lofoten-islands",
+    updatedDate: "2026-10-03",
     title: "Lofoten Islands",
     subtitle: "Dramatic peaks & fishing villages",
     label: "Island archipelago | Nordland",
@@ -153,6 +155,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "senja",
+    updatedDate: "2026-10-03",
     title: "Senja",
     subtitle: "Norway's hidden cinematic island",
     label: "Wild island | Troms",
@@ -247,6 +250,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "helgeland-coast",
+    updatedDate: "2026-10-03",
     title: "Helgeland Coast",
     subtitle: "Quiet roads & Arctic shoreline",
     label: "Coastal passage | Nordland",
@@ -341,6 +345,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "tromso",
+    updatedDate: "2026-10-03",
     title: "Tromsø",
     subtitle: "Northern lights & Arctic city life",
     label: "Arctic city | Troms",

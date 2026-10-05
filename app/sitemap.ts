@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { SITE_URL } from "@/src/config/site";
+import { destinations } from "@/src/data/destinations";
 import { journalArticles } from "@/src/data/journal-articles";
 import { seoPages } from "@/src/data/seo-pages";
 
@@ -38,10 +39,6 @@ const pageLastModifiedByPath = new Map<string, Date>();
   "/stories/northern-norway",
   "/responsible-travel",
   "/contact",
-  "/destinations/lofoten-islands",
-  "/destinations/senja",
-  "/destinations/helgeland-coast",
-  "/destinations/tromso",
   "/guides/50-local-money-saving-tips-for-norway",
   "/guides/best-time-to-visit-northern-norway",
   "/guides/best-hikes-in-senja",
@@ -79,6 +76,10 @@ setPageLastModified("/cookies", "2026-06-28");
 setPageLastModified("/accessibility", "2026-06-28");
 setPageLastModified("/privacy-settings", "2026-06-28");
 setPageLastModified("/affiliate-disclosure", "2026-10-03");
+
+for (const destination of destinations) {
+  setPageLastModified(`/destinations/${destination.slug}`, destination.updatedDate);
+}
 
 for (const article of journalArticles) {
   setPageLastModified(`/journal/${article.slug}`, article.updatedDate);

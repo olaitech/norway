@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { getDestination } from "@/src/data/destinations";
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import { guideSources, guideSourceSets } from "@/src/data/guide-meta-sources";
 import {
@@ -16,7 +17,6 @@ import { DestinationSection } from "./DestinationSection";
 import { DestinationReveal } from "./DestinationReveal";
 import { LofotenLocationCompass } from "./LofotenLocationCompass";
 
-const LOFOTEN_DESTINATION_UPDATE_DATE = "2026-07-21";
 const LOFOTEN_DESTINATION_LAST_UPDATED = "21 July 2026";
 
 export const lofotenIslandsTravelGuideMetadata = {
@@ -504,7 +504,7 @@ export function LofotenIslandsTravelGuide() {
             url: lofotenIslandsCanonicalPath,
             image: "/images/destinations/lofoten/lofoten-hero-reine-hamnoy.jpg",
             articleSection: "Destinations",
-            dateModified: LOFOTEN_DESTINATION_UPDATE_DATE,
+            dateModified: getDestination("lofoten-islands")?.updatedDate,
           }),
         ]}
       />

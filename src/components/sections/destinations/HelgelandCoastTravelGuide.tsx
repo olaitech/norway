@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FieldNoteFeature } from "@/src/components/shared/FieldNoteFeature";
+import { getDestination } from "@/src/data/destinations";
 import { GuideMetaFooter } from "@/src/components/shared/GuideMetaFooter";
 import { guideSourceSets } from "@/src/data/guide-meta-sources";
 import {
@@ -18,7 +19,6 @@ import { DestinationSection } from "./DestinationSection";
 import { DestinationReveal } from "./DestinationReveal";
 import { HelgelandStackedPlaces } from "./HelgelandStackedPlaces";
 
-const HELGELAND_GUIDE_REFRESH_DATE = "2026-07-10";
 const HELGELAND_GUIDE_LAST_UPDATED = "July 2026";
 
 export const helgelandCoastGuideMetadata = {
@@ -520,7 +520,7 @@ export function HelgelandCoastTravelGuide() {
             url: helgelandCoastCanonicalPath,
             image: "/images/cards/helgeland.png",
             articleSection: "Destinations",
-            dateModified: HELGELAND_GUIDE_REFRESH_DATE,
+            dateModified: getDestination("helgeland-coast")?.updatedDate,
           }),
           faqJsonLd,
         ]}
