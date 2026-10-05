@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
+import { MoneySavingGuideSignup } from "@/src/components/guides/MoneySavingGuideSignup";
 
 type Tip = {
   number: number;
@@ -626,20 +627,7 @@ export default function LocalMoneySavingTipsForNorwayPage() {
         </table>
       </div>
 
-      <h2>Suggested Signup Hook</h2>
-      <div className="mt-6 rounded-[1rem] border border-[#d8c9a7]/24 bg-[#d8c9a7]/6 p-5 sm:p-6">
-        <p className="text-[0.62rem] font-medium uppercase tracking-[0.24em] text-[#d8c9a7]/84">
-          Downloadable Guide
-        </p>
-        <p className="mt-3 text-lg font-light leading-[1.6] text-[#f4efe2]/86 sm:text-xl">
-          Download the free guide: 50 Local Money-Saving Tips for Norway
-        </p>
-        <p className="mt-3 text-base font-light leading-[1.8] text-[#f4efe2]/72">
-          Learn how locals avoid tourist prices on food, transport, ferries,
-          hiking, city travel and road trips before your first expensive
-          mistake.
-        </p>
-      </div>
+      <MoneySavingGuideSignup />
 
       <h2>Useful Official Links</h2>
       <ul>
