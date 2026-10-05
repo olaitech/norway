@@ -1281,37 +1281,67 @@ export const seoPages = {
         label: "01 / Month by month",
         title: "Season rhythm at a glance",
         intro:
-          "Use these windows as planning anchors, then refine with route and weather realities.",
+          "Norway’s seasons vary greatly by latitude, distance from the coast and elevation. The same month can bring spring conditions in Southern Norway, snow in the mountains and winter weather farther north. Use these monthly notes as a starting point, then check conditions for your route.",
         cards: [
           {
-            label: "Jan-Mar",
-            title: "Winter depth",
+            title: "January",
             description:
-              "Snow, dark skies and strong northern lights potential in Arctic regions.",
+              "Best for: Deep winter, skiing and northern lights in the north. Trade-off: Very short daylight and demanding winter driving in many regions.",
           },
           {
-            label: "Apr-May",
-            title: "Spring transition",
+            title: "February",
             description:
-              "Longer days and calmer shoulder-season pacing for mixed road conditions.",
+              "Best for: Snow activities with returning daylight. Trade-off: Roads and mountains remain firmly in winter conditions.",
           },
           {
-            label: "Jun-Aug",
-            title: "Summer light",
+            title: "March",
             description:
-              "Midnight sun in the north and longer driving flexibility across most regions.",
+              "Best for: Skiing, ski touring and snow with longer days. Trade-off: Winter conditions remain common despite spring-like daylight.",
           },
           {
-            label: "Sep-Oct",
-            title: "Autumn contrast",
+            title: "April",
             description:
-              "Cooler air, lower traffic and the start of darker aurora-friendly nights.",
+              "Best for: Spring cities, late-season skiing and seasonal contrasts. Trade-off: Sea-level spring can coincide with winter in the mountains and north.",
           },
           {
-            label: "Nov-Dec",
-            title: "Early winter return",
+            title: "May",
             description:
-              "Darkness settles back in with increasing snow risk and fewer daylight hours.",
+              "Best for: Waterfalls, spring landscapes, long days and quieter road trips. Trade-off: High trails and parts of Northern Norway may retain substantial snow.",
+          },
+          {
+            title: "June",
+            description:
+              "Best for: Fjords, road trips, long hiking days and midnight sun in Northern Norway. Trade-off: Some high mountain routes remain too snowy in early June.",
+          },
+          {
+            title: "July",
+            description:
+              "Best for: The widest choice of summer hiking, coast and mountain trips. Trade-off: Peak season in many places, with heavy road traffic in Lofoten.",
+          },
+          {
+            title: "August",
+            description:
+              "Best for: Hiking, scenic road trips and late-summer coastal travel. Trade-off: Northern days shorten quickly; some seasonal services reduce later in the month.",
+          },
+          {
+            title: "September",
+            description:
+              "Best for: Autumn colours, hiking, quieter travel and dark aurora nights returning in the north. Trade-off: Less predictable weather and reduced summer ferry and activity schedules.",
+          },
+          {
+            title: "October",
+            description:
+              "Best for: Autumn atmosphere, city breaks and northern lights trips in the north. Trade-off: Winter conditions may begin in Northern Norway and mountain regions.",
+          },
+          {
+            title: "November",
+            description:
+              "Best for: Early winter atmosphere, northern lights and seasonal whale watching around Tromsø. Trade-off: Very limited far-northern daylight and weather-sensitive travel.",
+          },
+          {
+            title: "December",
+            description:
+              "Best for: Snow, winter activities, northern lights and polar-night light in the north. Trade-off: Short daylight, winter roads and seasonal or holiday opening hours need planning.",
           },
         ],
       },
