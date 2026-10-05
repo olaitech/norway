@@ -31,6 +31,9 @@ export type MapFilter = {
 };
 
 export type FeaturedRoute = {
+  id: string;
+  /** Ordered [latitude, longitude] stops, not drivable road geometry. */
+  routePoints: [number, number][];
   title: string;
   duration: string;
   season: string;
@@ -122,6 +125,13 @@ function googleDirectionsUrl({
 
 export const featuredRoutes: FeaturedRoute[] = [
   {
+    id: "northern-norway-7-days",
+    routePoints: [
+      [69.6492, 18.9553], // Tromsø
+      [69.31, 17.48], // Senja
+      [68.2343, 14.5682], // Svolvær
+      [67.9325, 13.0896], // Reine
+    ],
     title: "Northern Norway 7-day route",
     duration: "7 days",
     season: "September - March",
@@ -137,6 +147,13 @@ export const featuredRoutes: FeaturedRoute[] = [
   },
   {
     title: "Helgeland Coast road trip",
+    id: "helgeland-coast-road-trip",
+    routePoints: [
+      [65.4749, 12.2117], // Brønnøysund
+      [66.0217, 12.6316], // Sandnessjøen
+      [66.1967, 13.0213], // Nesna
+      [67.2804, 14.4049], // Bodø
+    ],
     duration: "5 - 7 days",
     season: "May - September",
     description:
@@ -152,6 +169,14 @@ export const featuredRoutes: FeaturedRoute[] = [
   },
   {
     title: "Lofoten scenic route",
+    id: "lofoten-scenic-route",
+    routePoints: [
+      [68.2343, 14.5682], // Svolvær
+      [68.1544, 14.2057], // Henningsvær
+      [68.0897, 13.2296], // Ramberg
+      [67.9325, 13.0896], // Reine
+      [67.8806, 12.9826], // Å
+    ],
     duration: "4 - 6 days",
     season: "May - October",
     description:

@@ -12,7 +12,62 @@ import { createPageMetadata } from "@/src/lib/metadata";
 import {
   JsonLd,
   createBreadcrumbListJsonLd,
+  createFaqJsonLd,
+  type FaqItem,
 } from "@/src/lib/seo/jsonLd";
+
+const carFreeGuide = "/guides/how-to-travel-northern-norway-without-a-car";
+const ferryGuide = "/guides/norway-ferry-guide-for-tourists";
+const drivingGuide = "/guides/driving-in-norway-what-visitors-should-know";
+
+const planningPaths = [
+  {
+    title: "Plan a Norway road trip",
+    href: "/routes",
+    description: "Compare scenic roads and ferry-linked routes before choosing your stops.",
+  },
+  {
+    title: "Travel Norway without a car",
+    href: carFreeGuide,
+    description: "Start with our Northern Norway guide to rail, buses, ferries and realistic connections.",
+  },
+  {
+    title: "Plan around Norway’s ferries",
+    href: ferryGuide,
+    description: "Understand crossings and leave room for waiting and onward connections.",
+  },
+  {
+    title: "Driving in Norway",
+    href: drivingGuide,
+    description: "Prepare for mountain roads, changing weather and seasonal road conditions.",
+  },
+];
+
+const mapFaqItems: (FaqItem & { link?: { text: string; href: string } })[] = [
+  {
+    question: "What is the best way to use this Norway travel map?",
+    answer: "Locate featured destinations, compare regions and select a route to see its approximate path. Follow the destination and transport guides to build your plan, then use Google Maps for live directions.",
+  },
+  {
+    question: "Can I plan a Norway road trip with this map?",
+    answer: "Yes. The three featured routes show an approximate sequence of stops, not exact roads or driving times. Use the road-trip guides to plan your itinerary and check current routing in Google Maps.",
+    link: { text: "road-trip guides", href: "/routes" },
+  },
+  {
+    question: "Can I travel around Norway without a car?",
+    answer: "Yes, where public transport connections suit your route. Our Northern Norway car-free guide covers rail where available, buses, ferries and passenger boats. Choose fewer bases and check timetables before planning remote stops.",
+    link: { text: "Northern Norway car-free guide", href: carFreeGuide },
+  },
+  {
+    question: "How accurate are driving times in Norway?",
+    answer: "Treat driving-time estimates as a starting point. Ferries, mountain roads, weather and seasonal closures can add time beyond the distance shown on a map. Read the driving guide and check current road conditions and ferry departures before travelling.",
+    link: { text: "driving guide", href: drivingGuide },
+  },
+  {
+    question: "Where should I start a trip in Northern Norway?",
+    answer: "Choose a gateway that fits your region: Bodø for coastal journeys and Lofoten ferry connections; Evenes for Lofoten, Vesterålen and Narvik; Tromsø for the city and Senja; Alta for Finnmark; or Kirkenes for eastern Finnmark. Check onward transport before choosing your arrival.",
+  },
+];
 
 export const metadata = createPageMetadata({
   title: "Norway Travel Map | Destinations, Routes & Trip Planning",
@@ -34,6 +89,7 @@ export default function MapPage() {
           { name: "Map", href: "/map" },
         ])}
       />
+      <JsonLd value={createFaqJsonLd(mapFaqItems)} />
       <main className="relative min-h-screen overflow-hidden bg-[rgba(5,6,7,0.9)] text-[#f4efe2]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_68%_8%,rgba(106,151,160,0.12),transparent_31%),radial-gradient(circle_at_16%_24%,rgba(216,201,167,0.07),transparent_27%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[linear-gradient(180deg,rgba(12,23,25,0.48),transparent)]" />
@@ -97,14 +153,14 @@ export default function MapPage() {
             Norway Travel Map
           </h1>
           <p className="mt-7 max-w-2xl text-base font-light leading-[1.8] text-[#f4efe2]/68 sm:text-lg md:text-xl">
-            Explore Norway by region, discover destinations and open locations
-            directly in Google Maps for live directions, distances and route
-            planning.
+            Use this map to locate key destinations, explore scenic road-trip
+            routes and understand the distances between regions. Select a place
+            or featured route to start shaping your journey.
           </p>
           <p className="mt-4 max-w-2xl text-sm font-light leading-[1.8] text-[#f4efe2]/52 sm:text-base">
-            Trips Norway connects the map with destination guides, scenic
-            routes, ferry-aware travel information and practical planning
-            advice.
+            Continue into destination, ferry and driving guides for practical
+            planning. The route lines are approximate; open locations in Google
+            Maps for live navigation and current routing.
           </p>
         </div>
       </section>
@@ -133,9 +189,9 @@ export default function MapPage() {
           </div>
           <div className="space-y-4 text-sm font-light leading-[1.85] text-[#f4efe2]/64 sm:text-base">
             <p>
-              Use the map to understand where Norway&apos;s destinations are
-              located. Select a place to read its Trips Norway guide or open it
-              in Google Maps for live directions, distances and route planning.
+              A short distance on the map can still take much of a travel day.
+              Allow time for ferry queues and crossings, slower mountain roads
+              and stops rather than planning from distance alone.
             </p>
             <p>
               Driving time in Norway may be affected by ferries, mountain roads,
@@ -159,12 +215,39 @@ export default function MapPage() {
         </div>
       </section>
 
+      <section aria-labelledby="map-planning-paths" className="relative z-10 px-5 pb-20 sm:px-8 sm:pb-24 md:px-12">
+        <div className="mx-auto max-w-7xl">
+          <h2 id="map-planning-paths" className="font-serif text-2xl font-normal tracking-[-0.035em] sm:text-3xl">
+            Choose your next planning step
+          </h2>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {planningPaths.map((path) => (
+              <Link
+                key={path.href}
+                href={path.href}
+                className="group rounded-[1rem] border border-white/8 bg-white/[0.025] p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-serif text-xl leading-tight tracking-[-0.025em]">
+                    {path.title}
+                  </h3>
+                  <ArrowUpRight className="mt-1 h-3.5 w-3.5 shrink-0 text-[#d8c9a7]/74 group-hover:text-[#f4efe2]" aria-hidden="true" />
+                </div>
+                <p className="mt-3 text-sm font-light leading-[1.7] text-[#f4efe2]/64">
+                  {path.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <GatewaysToNorthernNorway />
 
       <section className="border-t border-white/8 px-5 py-16 sm:px-8 sm:py-20 md:px-12">
         <div className="mx-auto max-w-7xl">
           <RelatedLinkCards
-            eyebrow="Planning paths"
+            eyebrow="Destinations and regions"
             title="Continue exploring Norway"
             intro="Move from the map into destination guides, fjord regions and road trips with realistic planning context."
             links={[
@@ -198,14 +281,46 @@ export default function MapPage() {
                 href: "/fjords-of-norway",
                 description: "Compare fjord regions, coastal landscapes and the pace needed for a scenic trip.",
               },
-              {
-                label: "Route collection",
-                title: "Norway road trips",
-                href: "/routes",
-                description: "Compare scenic roads, ferry-linked journeys and practical route guides.",
-              },
             ]}
           />
+        </div>
+      </section>
+      <section
+        aria-labelledby="map-faq-title"
+        className="relative z-10 border-t border-white/8 px-5 py-16 sm:px-8 sm:py-20 md:px-12"
+      >
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
+          <div>
+            <p className="text-[0.62rem] font-medium uppercase tracking-[0.34em] text-[#d8c9a7]/72">
+              Planning questions
+            </p>
+            <h2 id="map-faq-title" className="mt-5 font-serif text-[clamp(2rem,4vw,3.35rem)] font-normal leading-[0.98] tracking-[-0.045em]">
+              From the map to your journey
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {mapFaqItems.map((item) => {
+              const linkStart = item.link ? item.answer.indexOf(item.link.text) : -1;
+              return (
+                <article key={item.question} className="rounded-[1rem] border border-white/8 bg-white/[0.025] p-5 sm:p-6">
+                  <h3 className="font-serif text-xl font-normal leading-tight tracking-[-0.025em]">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 text-sm font-light leading-[1.8] text-[#f4efe2]/64">
+                    {item.link && linkStart >= 0 ? (
+                      <>
+                        {item.answer.slice(0, linkStart)}
+                        <Link href={item.link.href} className="text-[#d8c9a7] underline decoration-[#d8c9a7]/35 underline-offset-4 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55">
+                          {item.link.text}
+                        </Link>
+                        {item.answer.slice(linkStart + item.link.text.length)}
+                      </>
+                    ) : item.answer}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </section>
       </main>

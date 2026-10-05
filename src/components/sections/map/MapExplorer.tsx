@@ -1,13 +1,14 @@
 "use client";
 
 import { useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Compass, Route } from "lucide-react";
+import { ArrowUpRight, Check, Compass, Route } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   LayerGroup as LeafletLayerGroup,
   Map as LeafletMap,
+  Polyline as LeafletPolyline,
 } from "leaflet";
 
 import type {
@@ -74,11 +75,15 @@ function popupContent(place: MapPlace) {
 
 export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
   const [activeFilter, setActiveFilter] = useState<MapFilterKey>("all");
+  const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
   const [isMapReady, setIsMapReady] = useState(false);
   const shouldReduceMotion = useReducedMotion() === true;
   const mapElementRef = useRef<HTMLDivElement>(null);
+  const mapControlsRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const markerLayerRef = useRef<LeafletLayerGroup | null>(null);
+  const routeLayerRef = useRef<LeafletLayerGroup | null>(null);
+  const routeLinesRef = useRef(new Map<string, LeafletPolyline>());
   const leafletRef = useRef<LeafletLibrary | null>(null);
 
   const visiblePlaces = useMemo(
@@ -92,6 +97,7 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
   useEffect(() => {
     let cancelled = false;
     let map: LeafletMap | null = null;
+    const routeLines = routeLinesRef.current;
 
     async function createMap() {
       const L = await import("leaflet");
@@ -116,6 +122,7 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
       L.control.zoom({ position: "bottomright" }).addTo(map);
 
       leafletRef.current = L;
+      routeLayerRef.current = L.layerGroup().addTo(map);
       markerLayerRef.current = L.layerGroup().addTo(map);
       mapRef.current = map;
       setIsMapReady(true);
@@ -128,9 +135,103 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
       map?.remove();
       mapRef.current = null;
       markerLayerRef.current = null;
+      routeLayerRef.current = null;
+      routeLines.clear();
       leafletRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    const L = leafletRef.current;
+    const routeLayer = routeLayerRef.current;
+
+    if (!L || !routeLayer || !isMapReady) {
+      return;
+    }
+
+    routeLayer.clearLayers();
+    const routeLines = routeLinesRef.current;
+    routeLines.clear();
+
+    routes.forEach((route) => {
+      // Leaflet's overlay pane sits beneath markers and popups. Keep these
+      // editorial lines non-interactive so map and marker gestures pass through.
+      const line = L.polyline(route.routePoints, {
+        color: "#d8c9a7",
+        weight: 2,
+        opacity: 0.55,
+        dashArray: "6 5",
+        lineCap: "round",
+        lineJoin: "round",
+        interactive: false,
+      }).addTo(routeLayer);
+      routeLines.set(route.id, line);
+
+      const path = line.getElement();
+      if (path) {
+        const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        title.textContent = `${route.title} — approximate planning route`;
+        path.appendChild(title);
+        path.setAttribute("role", "img");
+        path.setAttribute("aria-label", title.textContent);
+        path.setAttribute("data-route-id", route.id);
+      }
+    });
+
+    return () => {
+      routeLayer.clearLayers();
+      routeLines.clear();
+    };
+  }, [isMapReady, routes]);
+
+  useEffect(() => {
+    routeLinesRef.current.forEach((line, id) => {
+      const isSelected = id === selectedRouteId;
+      line.setStyle({
+        weight: isSelected ? 3 : 2,
+        opacity: isSelected ? 0.85 : selectedRouteId ? 0.2 : 0.55,
+        dashArray: isSelected ? "8 4" : "6 5",
+      });
+      if (isSelected) line.bringToFront();
+    });
+  }, [isMapReady, routes, selectedRouteId]);
+
+  function selectRoute(route: FeaturedRoute) {
+    const L = leafletRef.current;
+    const map = mapRef.current;
+    if (!L || !map) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    setSelectedRouteId(route.id);
+    map.stop();
+    map.fitBounds(L.latLngBounds(route.routePoints), {
+      animate: !reduceMotion,
+      duration: reduceMotion ? undefined : 0.65,
+      maxZoom: 9,
+      padding: [48, 48],
+    });
+
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      // Move keyboard focus with the viewport, without a second automatic scroll.
+      mapElementRef.current?.focus({ preventScroll: true });
+      mapControlsRef.current?.scrollIntoView({
+        behavior: reduceMotion ? "instant" : "smooth",
+        block: "start",
+      });
+    }
+  }
+
+  function showAllRoutes() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setSelectedRouteId(null);
+    mapRef.current?.stop();
+    mapRef.current?.fitBounds(norwayBounds, {
+      animate: !reduceMotion,
+      duration: reduceMotion ? undefined : 0.65,
+      padding: [18, 18],
+    });
+    mapElementRef.current?.focus({ preventScroll: true });
+  }
 
   useEffect(() => {
     const L = leafletRef.current;
@@ -198,8 +299,8 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
           <div className="mt-8 space-y-5">
             {routes.map((route) => (
               <article
-                key={route.title}
-                className="rounded-[1rem] border border-white/8 bg-black/15 p-5"
+                key={route.id}
+                className={`rounded-[1rem] border p-5 ${selectedRouteId === route.id ? "border-[#d8c9a7]/30 bg-[#d8c9a7]/[0.045]" : "border-white/8 bg-black/15"}`}
               >
                 <div className="flex items-center gap-2 text-[0.59rem] font-medium uppercase tracking-[0.25em] text-[#d8c9a7]/68">
                   <Route className="h-3.5 w-3.5" />
@@ -215,6 +316,18 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
                   {route.season}. {route.travelNote}
                 </p>
                 <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <button
+                    type="button"
+                    disabled={!isMapReady}
+                    aria-label={`View ${route.title} on map`}
+                    aria-pressed={selectedRouteId === route.id}
+                    onClick={() => selectRoute(route)}
+                    className="inline-flex min-h-11 items-center gap-2 text-[0.59rem] font-medium uppercase tracking-[0.2em] text-[#d8c9a7]/88 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 disabled:opacity-40"
+                  >
+                    {selectedRouteId === route.id ? (
+                      <><Check className="h-3.5 w-3.5" aria-hidden="true" />Selected route</>
+                    ) : "View on map"}
+                  </button>
                   {route.href ? (
                     <Link
                       href={route.href}
@@ -251,7 +364,7 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
           </div>
         </aside>
 
-        <div className="order-1 lg:order-2">
+        <div ref={mapControlsRef} className="order-1 scroll-mt-6 lg:order-2">
           <div className="mb-5 flex flex-wrap items-center gap-2">
             {filters.map((filter) => {
               const isActive = activeFilter === filter.key;
@@ -272,6 +385,15 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
                 </button>
               );
             })}
+            <button
+              type="button"
+              disabled={!selectedRouteId}
+              aria-hidden={!selectedRouteId}
+              onClick={showAllRoutes}
+              className={`min-h-11 rounded-full border border-[#d8c9a7]/20 px-4 py-2.5 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#d8c9a7]/88 hover:text-[#f4efe2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8c9a7]/55 ${selectedRouteId ? "" : "invisible"}`}
+            >
+              Show all routes
+            </button>
             <p className="ml-auto hidden text-xs font-light text-[#f4efe2]/42 sm:block">
               {visiblePlaces.length} places shown
             </p>
@@ -280,9 +402,10 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
           <div className="relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#07100f] shadow-[0_34px_100px_rgba(0,0,0,0.38)]">
             <div
               ref={mapElementRef}
-              className={styles.map}
+              className={`${styles.map} focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#d8c9a7]/55`}
+              tabIndex={-1}
               role="region"
-              aria-label="Interactive map of featured destinations in Norway"
+              aria-label="Interactive map of featured destinations and approximate planning routes in Norway"
             />
             <div
               className={`pointer-events-none absolute inset-0 z-[500] grid place-items-center bg-[#07100f] transition-opacity duration-500 ${
@@ -299,8 +422,9 @@ export function MapExplorer({ places, filters, routes }: MapExplorerProps) {
             </div>
           </div>
           <p className="mt-4 text-xs font-light leading-relaxed text-[#f4efe2]/42">
-            Travel times are approximate and meant for inspiration. Open routes
-            in Google Maps for live directions, traffic and ferry updates.
+            Dashed lines show approximate planning routes, not exact roads. Open
+            routes in Google Maps for live directions, traffic and current routing
+            information.
           </p>
 
           <section className={styles.planningCard} aria-labelledby="map-planning-card-title">
