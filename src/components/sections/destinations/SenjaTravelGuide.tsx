@@ -1,3 +1,5 @@
+import { AffiliateCollectionSection } from "@/src/components/affiliate/AffiliateCollectionSection";
+
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -1304,6 +1306,20 @@ export function SenjaTravelGuide() {
               ))}
             </DestinationReveal>
           </section>
+
+          <div className="mx-auto max-w-4xl">
+            <AffiliateCollectionSection
+              collection="road-trip-kit"
+              title="Useful gear for exploring Senja"
+              intro="A few practical additions for exposed viewpoints, changing weather and long days on the road or trail."
+              itemIds={[
+                "waterproof-dry-bag",
+                "pentax-green-binoculars",
+                "helly-hansen-rain-jackets",
+                "compact-first-aid-kits",
+              ]}
+            />
+          </div>
 
           <section
             id="related-guides"

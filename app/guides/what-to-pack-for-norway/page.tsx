@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { AffiliateCollectionSection } from "@/src/components/affiliate/AffiliateCollectionSection";
+
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 
 export const metadata: Metadata = {
@@ -20,6 +22,19 @@ export default function WhatToPackForNorwayPage() {
       readTime="9 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/what-to-pack-for-norway"
+      supplementarySection={
+        <AffiliateCollectionSection
+          collection="travel-essentials"
+          title="Practical things worth packing"
+          intro="A few useful additions for changing weather, long travel days and keeping your luggage organised."
+          itemIds={[
+            "norway-power-adapter-us",
+            "eagle-creek-packing-cubes",
+            "helly-hansen-rain-jackets",
+            "compact-first-aid-kits",
+          ]}
+        />
+      }
       sources={[
         { label: "Visit Norway", href: "https://www.visitnorway.com/" },
         { label: "Yr", href: "https://www.yr.no/" },

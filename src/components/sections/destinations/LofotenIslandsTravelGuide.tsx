@@ -1,3 +1,5 @@
+import { AffiliateCollectionSection } from "@/src/components/affiliate/AffiliateCollectionSection";
+
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -1315,6 +1317,20 @@ export function LofotenIslandsTravelGuide() {
               ))}
             </DestinationReveal>
           </section>
+
+          <div className="mx-auto max-w-4xl">
+            <AffiliateCollectionSection
+              collection="road-trip-kit"
+              title="Useful gear for exploring Lofoten"
+              intro="Compact gear for wet weather, coastal viewpoints and days spent exploring away from towns."
+              itemIds={[
+                "waterproof-dry-bag",
+                "pentax-green-binoculars",
+                "helly-hansen-rain-jackets",
+                "compact-first-aid-kits",
+              ]}
+            />
+          </div>
 
           <section
             id="related-guides"
