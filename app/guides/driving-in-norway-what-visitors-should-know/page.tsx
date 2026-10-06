@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { AffiliateCollectionSection } from "@/src/components/affiliate/AffiliateCollectionSection";
 import { GuideArticleLayout } from "@/src/components/guides/GuideArticleLayout";
 import { AnswerBlock } from "@/src/components/shared/AnswerBlock";
 
@@ -75,6 +76,22 @@ export default function DrivingInNorwayGuidePage() {
       readTime="12 min read"
       lastUpdated="May 2026"
       canonicalPath="/guides/driving-in-norway-what-visitors-should-know"
+      supplementarySection={
+        <AffiliateCollectionSection
+          collection="road-trip-kit"
+          title="Road trip essentials"
+          intro="A few practical things worth packing for long drives, ferry crossings, changing weather and days spent exploring away from towns."
+          itemIds={[
+            "anker-powerbank-10k",
+            "anker-usbc-car-charger",
+            "iottie-dashboard-phone-mount",
+            "waterproof-dry-bag",
+            "pentax-green-binoculars",
+            "helly-hansen-rain-jackets",
+            "compact-first-aid-kits",
+          ]}
+        />
+      }
       answerBlock={
         <AnswerBlock
           title="Driving in Norway is safe, but it asks for time."

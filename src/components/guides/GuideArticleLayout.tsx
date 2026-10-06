@@ -31,6 +31,7 @@ type GuideArticleLayoutProps = {
   canonicalPath: string;
   answerBlock?: ReactNode;
   featureSection?: ReactNode;
+  supplementarySection?: ReactNode;
   faqItems?: readonly FaqItem[];
   faqTitle?: string;
   faqIntro?: string;
@@ -57,6 +58,7 @@ export function GuideArticleLayout({
   canonicalPath,
   answerBlock,
   featureSection,
+  supplementarySection,
   faqItems,
   faqTitle = "Planning questions",
   faqIntro = "Short answers to the decisions that most often shape the route, timing and pace of the trip.",
@@ -141,6 +143,8 @@ export function GuideArticleLayout({
               {children}
           </div>
           </div>
+
+          {supplementarySection}
 
           {hasFaqItems ? (
             <section className="mt-12 border-t border-white/8 pt-12 sm:mt-14 sm:pt-14">
