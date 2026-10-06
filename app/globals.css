@@ -44,6 +44,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Keep EPN impression pixels outside document flow at their intended size. */
+body > img[src^="https://www.ebayadservices.com/marketingtracking/v1/impression?"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+}
+
 .global-shader-background {
   position: fixed;
   z-index: 0;
