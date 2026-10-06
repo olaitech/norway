@@ -49,7 +49,18 @@ assert.ok(!render(AffiliateProductCard, { item: product, showDisclosure: false }
 assert.ok(render(AffiliateDisclosure, {}).includes("no extra cost"));
 assert.ok(render(AffiliateProductCard, { item: { ...product, disclosure: "Custom disclosure", ctaLabel: "Custom CTA", hook: "Editorial hook", badge: "Alternative" }, headingLevel: 2 }).includes("<h2"));
 assert.ok(render(AffiliateProductCard, { item: { ...product, imageUrl: "/development-only.png", imageAlt: "Development image" } }).includes('alt="Development image"'));
-assert.deepEqual(affiliateItems, []);
+assert.equal(affiliateItems.length, 10);
+assert.equal(new Set(affiliateItems.map((item) => item.id)).size, 10);
+assert.equal(affiliateItems.filter((item) => item.type === "product").length, 8);
+assert.equal(affiliateItems.filter((item) => item.type === "collection").length, 2);
+for (const item of affiliateItems) {
+  const url = new URL(item.affiliateUrl);
+  assert.equal(url.searchParams.get("campid"), "5339218147");
+  assert.ok(item.customId.trim());
+  assert.equal(url.searchParams.get("customid"), item.customId);
+  assert.equal(item.status, "active");
+  assert.ok(!("imageUrl" in item));
+}
 const records = [product, collection, { ...product, status: "disabled" }];
 assert.equal(getAffiliateItemsByCollection("road-trip", records).length, 2);
 assert.equal(getAffiliateItemsByCollection("outdoors", records).length, 2);

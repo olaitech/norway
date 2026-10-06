@@ -1,7 +1,8 @@
 # Affiliate foundation — Step 1
 
-The equipment catalogue lives in `src/data/partners/affiliate.ts` and is deliberately
-empty. Existing experience partner data and analytics remain separate.
+The equipment catalogue lives in `src/data/partners/affiliate.ts`. Step 2 adds ten
+approved entries: eight products and two curated collections, with no images or
+live placements. Existing experience partner data and analytics remain separate.
 
 `src/types/affiliate.ts` defines a discriminated product/collection union. Each item
 can belong to multiple collection keys. The collection selector excludes disabled
