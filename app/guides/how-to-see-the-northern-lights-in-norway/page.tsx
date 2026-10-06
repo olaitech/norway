@@ -144,7 +144,10 @@ export default function HowToSeeNorthernLightsInNorwayPage() {
       <ul>
         <li>Insulated layers and warm outer shell</li>
         <li>Hat, gloves and insulated footwear</li>
-        <li>Headlamp and spare power bank</li>
+        <li>
+          A headlamp such as the <a href="https://www.ebay.com/sch/i.html?_nkw=Petzl+ACTIK+CORE+625" rel="sponsored">Petzl ACTIK CORE 625</a> is useful for moving around safely while keeping your hands free for camera gear.
+        </li>
+        <li>Spare power bank</li>
         <li>Tripod and camera-ready accessories if photographing</li>
       </ul>
       <aside

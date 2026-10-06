@@ -365,6 +365,9 @@ export default function CampingRulesInNorwayPage() {
                   </li>
                 ))}
               </ol>
+              <p className="mt-5 text-base font-light leading-[1.87] text-[#f4efe2]/70 sm:text-lg">
+                When darkness returns, a headlamp such as the <a href="https://www.ebay.com/sch/i.html?_nkw=Petzl+ACTIK+CORE+625" rel="sponsored">Petzl ACTIK CORE 625</a> keeps your hands free while organising equipment around camp.
+              </p>
             </section>
 
             <section className="mt-20 border-t border-white/8 pt-16 sm:pt-20">

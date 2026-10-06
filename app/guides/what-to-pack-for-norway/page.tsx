@@ -179,7 +179,9 @@ export default function WhatToPackForNorwayPage() {
         <li>Insulated boots and thick socks</li>
         <li>Warm gloves plus spare liner</li>
         <li>Beanie and neck protection</li>
-        <li>Headlamp or small flashlight</li>
+        <li>
+          A headlamp such as the <a href="https://www.ebay.com/sch/i.html?_nkw=Petzl+ACTIK+CORE+625" rel="sponsored">Petzl ACTIK CORE 625</a> keeps your hands free when sorting gear after dark.
+        </li>
       </ul>
 
       <h2>Common packing mistakes</h2>

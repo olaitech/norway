@@ -641,7 +641,9 @@ export default function DrivingInNorwayGuidePage() {
         <li>First aid kit</li>
         <li>Extra layers in winter</li>
         <li>Ice scraper in winter</li>
-        <li>Flashlight or headlamp</li>
+        <li>
+          A flashlight or headlamp such as the <a href="https://www.ebay.com/sch/i.html?_nkw=Petzl+ACTIK+CORE+625" rel="sponsored">Petzl ACTIK CORE 625</a> can be useful for finding equipment or checking the car after dark.
+        </li>
       </ul>
       <p>
         For remote winter trips, add a blanket and more emergency supplies.

@@ -842,7 +842,7 @@ export default function BestHikesInSenjaPage() {
               <article className="border-t border-white/12 pt-6">
                 <Backpack className="h-5 w-5 text-[#c6a15b]" aria-hidden="true" />
                 <h3 className="mt-5 font-serif text-2xl font-normal">What to bring</h3>
-                <p className="mt-4 text-sm font-light leading-[1.84] text-[#f4efe2]/63">Carry mountain footwear, a windproof layer, rainwear, extra warmth, food, water, offline navigation, a charged phone and first aid. Pack for a delay, not only the moving time.</p>
+                <p className="mt-4 text-sm font-light leading-[1.84] text-[#f4efe2]/63">Carry mountain footwear, a windproof layer, rainwear, extra warmth, food, water, offline navigation, a charged phone and first aid. Pack for a delay, not only the moving time. If there is any chance you may still be out after dusk, carry a headlamp such as the <a href="https://www.ebay.com/sch/i.html?_nkw=Petzl+ACTIK+CORE+625" rel="sponsored">Petzl ACTIK CORE 625</a>.</p>
               </article>
               <article className="border-t border-white/12 pt-6">
                 <ShieldAlert className="h-5 w-5 text-[#c6a15b]" aria-hidden="true" />
