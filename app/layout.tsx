@@ -115,6 +115,17 @@ export default function RootLayout({
         <Script id="sender-universal" strategy="afterInteractive">
           {senderUniversalScript}
         </Script>
+        <Script id="epn-smart-links-config" strategy="afterInteractive">
+          {`window._epn = {
+  campaign: 5339218147,
+  smartPopover: false
+};`}
+        </Script>
+        <Script
+          id="epn-smart-links"
+          src="https://epnt.ebay.com/static/epn-smart-tools.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
