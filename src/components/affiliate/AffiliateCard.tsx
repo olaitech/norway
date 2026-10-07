@@ -23,16 +23,20 @@ export function AffiliateCard({
   const ctaLabel = item.ctaLabel ?? (isCollection ? "Explore options" : "Find on eBay");
 
   return (
-    <article className="flex h-full min-w-0 flex-col rounded-[1.15rem] border border-white/15 bg-[#080e15] p-6 text-[#f4efe2] [overflow-wrap:anywhere] sm:p-7">
+    <article className="group relative isolate flex h-full min-w-0 flex-col rounded-[1.15rem] border border-white/15 bg-[#080e15] p-6 text-[#f4efe2] [overflow-wrap:anywhere] sm:p-7">
       {item.imageUrl ? (
-        <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-xl bg-[#111c23]">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[inherit]">
           <Image
-            src={item.imageUrl}
-            alt={item.imageAlt}
+            src={item.imageUrl.split("/").map(encodeURIComponent).join("/")}
+            alt=""
             fill
-            sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
-            className="object-contain p-4"
+            sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 640px"
+            loading="lazy"
+            className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:group-hover:scale-[1.02]"
           />
+          <div className="absolute inset-0 bg-[#080e15]/40" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,21,0.45)_0%,rgba(8,14,21,0.55)_45%,rgba(8,14,21,0.9)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,14,21,0.35),transparent)]" />
         </div>
       ) : (
         <div aria-hidden="true" className="mb-6 h-px w-12 bg-[#d8c9a7]/50" />

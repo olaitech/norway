@@ -1,9 +1,10 @@
 import type { AffiliateItem } from "@/src/types/affiliate";
 
-// Approved Step 2 catalogue. No live placements or product images yet.
+// Central catalogue for affiliate details and shared card imagery.
 export const affiliateItems: readonly AffiliateItem[] = [
   {
     id: "norway-power-adapter-us",
+    imageUrl: "/images/affiliate/Ceptics Type EF Travel Adapter.png",
     type: "product",
     name: "Ceptics Type E/F Travel Adapter",
     brand: "Ceptics",
@@ -18,6 +19,7 @@ export const affiliateItems: readonly AffiliateItem[] = [
   },
   {
     id: "anker-powerbank-10k",
+    imageUrl: "/images/affiliate/Anker 10,000mAh Power Bank with Built-in USB-C Cable.png",
     type: "product",
     name: "Anker 10,000mAh Power Bank with Built-in USB-C Cable",
     brand: "Anker",
@@ -32,6 +34,7 @@ export const affiliateItems: readonly AffiliateItem[] = [
   },
   {
     id: "anker-usbc-car-charger",
+    imageUrl: "/images/affiliate/Anker 52.5W USB-C Car Charger.png",
     type: "product",
     name: "Anker 52.5W USB-C Car Charger",
     brand: "Anker",
@@ -61,6 +64,7 @@ export const affiliateItems: readonly AffiliateItem[] = [
   },
   {
     id: "iottie-dashboard-phone-mount",
+    imageUrl: "/images/affiliate/iOttie Easy One Touch 6 — Dashboard & Windshield.png",
     type: "product",
     name: "iOttie Easy One Touch 6 — Dashboard & Windshield",
     brand: "iOttie",
@@ -76,6 +80,7 @@ export const affiliateItems: readonly AffiliateItem[] = [
   },
   {
     id: "eagle-creek-packing-cubes",
+    imageUrl: "/images/affiliate/Eagle Creek Pack-It Reveal 3-Piece Packing Cube Set.png",
     type: "product",
     name: "Eagle Creek Pack-It Reveal 3-Piece Packing Cube Set",
     brand: "Eagle Creek",
@@ -90,6 +95,7 @@ export const affiliateItems: readonly AffiliateItem[] = [
   },
   {
     id: "waterproof-dry-bag",
+    imageUrl: "/images/affiliate/Waterproof Roll-Top Dry Bag.png",
     type: "product",
     name: "Waterproof Roll-Top Dry Bag",
     eyebrow: "Keep gear dry",
@@ -105,6 +111,7 @@ export const affiliateItems: readonly AffiliateItem[] = [
   },
   {
     id: "pentax-green-binoculars",
+    imageUrl: "/images/affiliate/PENTAX UD 9×21 Green Binoculars.png",
     type: "product",
     name: "PENTAX UD 9×21 Green Binoculars",
     brand: "PENTAX",
@@ -121,6 +128,7 @@ export const affiliateItems: readonly AffiliateItem[] = [
   },
   {
     id: "helly-hansen-rain-jackets",
+    imageUrl: "/images/affiliate/Helly Hansen Rain Jackets.png",
     type: "collection",
     name: "Helly Hansen Rain Jackets",
     brand: "Helly Hansen",
@@ -136,6 +144,7 @@ export const affiliateItems: readonly AffiliateItem[] = [
   },
   {
     id: "compact-first-aid-kits",
+    imageUrl: "/images/affiliate/Compact First-Aid Kits.png",
     type: "collection",
     name: "Compact First-Aid Kits",
     eyebrow: "Travel preparedness",

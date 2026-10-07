@@ -16,10 +16,10 @@ type AffiliateBase = {
   readonly disclosure?: string;
 };
 
-// An informative image requires alt text; no image needs no placeholder URL.
-type AffiliateImage =
-  | { readonly imageUrl: string; readonly imageAlt: string }
-  | { readonly imageUrl?: undefined; readonly imageAlt?: undefined };
+// Supporting card backgrounds are decorative; visible text describes each item.
+type AffiliateImage = {
+  readonly imageUrl?: string;
+};
 
 export type AffiliateProduct = AffiliateBase & AffiliateImage & {
   readonly type: "product";
